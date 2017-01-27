@@ -1,0 +1,32 @@
+# Back to the previous workspace
+bindsym $mod+z workspace back_and_forth
+
+# Assign workspace variables
+set $WS1 1:[term]
+set $WS2 2:[web]
+set $WS3 3:[dev]
+set $WS4 4:[pdf]
+set $WS5 5:[text]
+set $WS6 6:[vbox]
+set $WS7 7:[media]
+set $WS8 8:[gimp]
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS7

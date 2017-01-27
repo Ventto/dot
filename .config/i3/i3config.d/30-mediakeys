@@ -1,0 +1,12 @@
+# Volume
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Backlight
+bindsym XF86MonBrightnessUp exec lux -m 30 -M 99 -a 20%
+bindsym XF86MonBrightnessDown exec lux -m 30 -M 99 -s 20%
+
+# Multi-screens
+bindsym XF86Display exec docilemons -o
+bindsym XF86Sleep exec docilemons -e left

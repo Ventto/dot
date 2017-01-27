@@ -1,0 +1,7 @@
+assign [class="^Firefox$" instance="^Navigator$"] $WS2
+assign [class="^libreoffice-writer$"] $WS5
+assign [class="^Zathura$"] $WS4
+assign [class="^VirtualBox$"] $WS6
+assign [class="^smplayer$"] $WS7
+assign [class="^transmission$"] $WS7
+assign [class="^Gimp"] $WS8
