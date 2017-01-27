@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+source "$HOME/.zsh/alias.base"
+source "$HOME/.zsh/alias.device"
+source "$HOME/.zsh/alias.dev"
+source "$HOME/.zsh/alias.extension"
+
+[ -f "$HOME/.zsh/alias.extra" ] && source "$HOME/.zsh/alias.extra"

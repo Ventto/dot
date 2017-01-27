@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+alias bb="popd 1>/dev/null"
+alias dd="dcfldd "
+alias dmesg="dmesg -H -Lalways"
+alias dmesgt="dmesg | tail -n20"
+alias dot="/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME"
+alias du='ncdu '
+alias feh='feh --scale-down'
+alias grep='grep -E --color=auto'
+alias ls='ls --color=auto'
+alias la='ls -la'
+alias lda='ls -ld .*(/)'
+alias lf='ls -l | grep -v "^d"'
+alias lfs='ls -lhr --sort=size | grep -v "^d"'
+alias laf='ls -la | grep -v "^d"'
+alias ld='ls -ld *(/)'
+alias ll='ls -l'
+alias reload='source ~/.zshrc'
+alias sak='ssh-add ~/.ssh/id_rsa'
+alias sdiff='grep -vxf'

@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# Package
+alias aurclean="rm -rf pkg src *.gz *.xz"
+alias aurinstall="makepkg -i -C -c --noarchive && rm *.tar.gz"
+alias aurcreate="git clone ssh://aur@aur.archlinux.org"
+alias aurupdate="makepkg --printsrcinfo > .SRCINFO && git add PKGBUILD .SRCINFO"
+
+# Doc
+Help2manView() {
+    help2man -N -n "Short desc." -h -h -v -v "${1}" | groff -man -Tascii | less
+}
+alias xman="Help2manView "
+
+# Bin
+alias gdb="gdb -q -tui"
+alias gdb-arm="arm-none-eabi-gdb"
+alias valgrind="valgrind --leak-check=full --show-leak-kinds=all --show-emwarns=yes "
+alias checkpath="~/.bin/checkpatch.pl --no-tree --strict -show-types \
+--ignore=FILE_PATH_CHANGES,BIT_MACRO -f"

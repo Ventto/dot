@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+alias mosd="sudo mount /dev/mmcblk0p1 /mnt/sd && { echo 'OK'; cd /mnt/sd } || echo 'FAILED'"
+alias umsd="cd ~; sync; sudo umount /mnt/sd && echo 'OK' || echo 'FAILED'"
