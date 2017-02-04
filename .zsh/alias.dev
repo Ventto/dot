@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Package
 alias aurclean="rm -rf pkg src *.gz *.xz"
 alias aurinstall="makepkg -i -C -c --noarchive && rm *.tar.gz"

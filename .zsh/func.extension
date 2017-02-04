@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 function LastExt
 {
 	[ -d "$1" ] && echo "$1/$(ls -1t $1 | grep -i ".($2)$" | head -n1)"

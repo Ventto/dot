@@ -1,4 +1,2 @@
-#!/usr/bin/env zsh
-
 source "$HOME/.zsh/func.base"
 source "$HOME/.zsh/func.extension"

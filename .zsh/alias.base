@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 alias bb="popd 1>/dev/null"
 alias dd="dcfldd "
 alias dmesg="dmesg -H -Lalways"

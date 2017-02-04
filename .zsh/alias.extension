@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 alias pdfmerge="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=out.pdf "
 alias prettyjson="python -m json.tool"
 alias prettyxml="PrettyXML"
