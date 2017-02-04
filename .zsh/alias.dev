@@ -1,3 +1,6 @@
+# SSH
+alias sak='ssh-add ~/.ssh/id_rsa'
+
 # Package
 alias aurclean="rm -rf pkg src *.gz *.xz"
 alias aurinstall="makepkg -i -C -c --noarchive && rm *.tar.gz"

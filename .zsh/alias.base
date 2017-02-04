@@ -1,14 +1,9 @@
-alias ,,='cd -'
-alias ...='cd ../..'
-alias ..='cd ..'
-alias bb='popd 1>/dev/null'
-alias dd='dcfldd '
-alias dmesg='dmesg -H -Lalways'
-alias dmesgt='dmesg | tail -n20'
+# Base
+alias reload='source ~/.zshrc'
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
-alias du='ncdu '
-alias feh='feh --scale-down'
-alias grep='grep -E --color=auto'
+
+# List files
+alias ls='ls --color=auto'
 alias la='ls -la'
 alias laf='ls -la | grep -v "^d"'
 alias ld='ls -ld *(/)'
@@ -16,11 +11,22 @@ alias lda='ls -ld .*(/)'
 alias lf='ls -l | grep -v "^d"'
 alias lfs='ls -lhr --sort=size | grep -v "^d"'
 alias ll='ls -l'
-alias ls='ls --color=auto'
-alias reload='source ~/.zshrc'
-alias sak='ssh-add ~/.ssh/id_rsa'
-alias sdiff='grep -vxf'
 
+# Directory stacks
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
+alias ,,='cd -'
+alias ...='cd ../..'
+alias ..='cd ..'
+alias bb='popd 1>/dev/null'
+
+# System infos
+alias dmesg='dmesg -H -Lalways'
+alias dmesgt='dmesg | tail -n20'
+alias grep='grep -E --color=auto'
+alias sdiff='grep -vxf'
+alias du='ncdu '
+
+# Basic app
+alias feh='feh --scale-down'

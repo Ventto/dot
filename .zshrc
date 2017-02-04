@@ -11,6 +11,10 @@ export LANG=en_US.UTF8
 export PATH="${PATH}:/opt/gnuarmeclipse/qemu/bin/"
 export VISUAL="nvim"
 
+# Sources
+source "$HOME/.zsh/alias"
+source "$HOME/.zsh/completion"
+
 # Bindkeys
 bindkey -v
 bindkey '^A' beginning-of-line
@@ -48,8 +52,3 @@ function precmd {
 	vcs_info
 	[ -z "${vcs_info_msg_0_}" ] && p_pwd=$' %~ ' || p_pwd=$''
 }
-
-# Source
-source "$HOME/.zsh/func"
-source "$HOME/.zsh/alias"
-source "$HOME/.zsh/completion"

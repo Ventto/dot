@@ -1,4 +1,5 @@
 source "$HOME/.zsh/alias.base"
+source "$HOME/.zsh/alias.maths"
 source "$HOME/.zsh/alias.device"
 source "$HOME/.zsh/alias.nohup"
 source "$HOME/.zsh/alias.dev"

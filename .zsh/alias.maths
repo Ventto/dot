@@ -1,0 +1,9 @@
+function _bin2dec { echo "ibase=2; ${1}" | bc }
+function _dec2bin { echo "obase=2; ${1}" | bc }
+function _dec2hex { echo "obase=16; ${1}" | bc }
+function _hex2dec { echo "ibase=16; $(echo $1 | tr '[a-z]' '[A-Z]')" | bc }
+
+alias bin2dec='_bin2dec '
+alias hex2dec='_hex2dec '
+alias dec2bin='_dec2bin '
+alias dec2hex='_dec2hex '
