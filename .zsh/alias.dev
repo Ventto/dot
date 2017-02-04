@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 # Package
 alias aurclean="rm -rf pkg src *.gz *.xz"
@@ -6,11 +6,21 @@ alias aurinstall="makepkg -i -C -c --noarchive && rm *.tar.gz"
 alias aurcreate="git clone ssh://aur@aur.archlinux.org"
 alias aurupdate="makepkg --printsrcinfo > .SRCINFO && git add PKGBUILD .SRCINFO"
 
-# Doc
-Help2manView() {
-    help2man -N -n "Short desc." -h -h -v -v "${1}" | groff -man -Tascii | less
+# Man
+function _vman() {
+    file=$(basename "${1}")
+    echo "$file"
+    if [ "${file##*.}" = "gz" ]; then
+        gzip -dc "${1}" | groff -man -Tascii | less
+    else
+        groff -man -Tascii "${1}" | less
+    fi
 }
-alias xman="Help2manView "
+function _xman() {
+    help2man -N -n "Description" -h -h -v -v "${1}" | groff -man -Tascii | less
+}
+alias vman="_vman "
+alias xman="_xman "
 
 # Bin
 alias gdb="gdb -q -tui"
