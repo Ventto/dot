@@ -3,17 +3,21 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# Sanity check for 'rm *'
+setopt RM_STAR_WAIT
+
 # Variables
 export BROWSER="firefox"
 export EDITOR="nvim"
+export USE_EDITOR="nvim"
+export VISUAL="nvim"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export PATH="${PATH}:/opt/gnuarmeclipse/qemu/bin/"
-export VISUAL="nvim"
 
 # Sources
-source "$HOME/.zsh/alias"
-source "$HOME/.zsh/completion"
+source "$ZDOTDIR/alias"
+source "$ZDOTDIR/completion"
 
 # Bindkeys
 bindkey -v

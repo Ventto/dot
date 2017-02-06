@@ -1,5 +1,5 @@
 # Base
-alias reload='source ~/.zshrc'
+alias reload="source $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 # List files
@@ -30,3 +30,7 @@ alias du='ncdu '
 
 # Basic app
 alias feh='feh --scale-down'
+alias vim='nvim'
+alias vimup="vim +PluginInstall +qall"
+alias i3up="~/.config/i3/contrib/i3up.sh"
+alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"

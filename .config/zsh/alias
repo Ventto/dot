@@ -1,0 +1,8 @@
+source "$ZDOTDIR/alias.base"
+source "$ZDOTDIR/alias.maths"
+source "$ZDOTDIR/alias.device"
+source "$ZDOTDIR/alias.nohup"
+source "$ZDOTDIR/alias.dev"
+source "$ZDOTDIR/alias.extension"
+
+[ -f "$ZDOTDIR/alias.extra" ] && source "$ZDOTDIR/alias.extra"
