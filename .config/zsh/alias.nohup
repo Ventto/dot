@@ -9,7 +9,8 @@ function NoHup {
 	alias "${myalias}=NoHup ${myalias} ${@}"
 }
 
-alias gimp="NoHup gimp "
-alias smplayer="NoHup smplayer "
-alias termite="NoHup termite "
-alias zathura="NoHup zathura "
+alias feh='NoHup feh -Timgviewer'
+alias gimp='NoHup gimp'
+alias smplayer='NoHup smplayer'
+alias termite='NoHup termite'
+alias zathura='NoHup zathura'

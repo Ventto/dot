@@ -29,7 +29,6 @@ alias sdiff='grep -vxf'
 alias du='ncdu '
 
 # Basic app
-alias feh='feh --scale-down'
 alias vim='nvim'
 alias vimup="vim +PluginInstall +qall"
 alias i3up="~/.config/i3/contrib/i3up.sh"
