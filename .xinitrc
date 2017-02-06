@@ -1,20 +1,25 @@
 #!/bin/bash
 
+# X settings
 xhost si:localuser:$USER
 
+# Keybaord
 setxkbmap fr
 
+# Wallpaper
 feh --bg-max --no-fehbg ~/.config/i3/wallpapers/wallpaper.jpg
 
-# To enable fading and transparency
-compton --config ~/.config/compton/compton.conf -b
-
-# To enable the notification deamon
+# Notification deamon
 dunst &
 
-# Brightness 20%
-#lux -m 30 -M 99 -S 20%
+# Brightness
+lux -m 30 -M 99 -S 20%
 
+# Audio
 amixer -q set Master mute
 
+# Fading and transparency
+#compton --config ~/.config/compton/compton.conf -b
+
+# Window manager
 exec i3 --shmlog-size=26214400
