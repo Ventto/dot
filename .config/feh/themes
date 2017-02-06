@@ -1,0 +1,1 @@
+imgviewer --action9 'echo %F | xclip -se c' --scale-down
