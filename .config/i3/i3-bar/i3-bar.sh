@@ -3,4 +3,4 @@
 echo '{"version":1}'
 echo '['
 echo '[],'
-exec conky -c ~/.my_config/i3/conky/conky.conf
+exec conky -c ~/.config/i3/i3-bar/conky.conf
