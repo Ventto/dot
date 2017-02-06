@@ -45,8 +45,8 @@ hi OverLength ctermbg=red ctermfg=white
 match OverLength /\%80v.\+/
 
 " Special treatment
-au! BufRead,BufNewFile Makefile.*   set filetype=make
-au! BufRead,BufNewFile ~/.zsh/*     set filetype=zsh
+au! BufRead,BufNewFile Makefile.*       set filetype=make
+au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
 
 " Removes end-of-line spaces
 autocmd BufWritePre * :%s/\s\+$//e
