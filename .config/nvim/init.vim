@@ -36,6 +36,7 @@ set wildmenu
 set wildmode=list:longest,full
 set foldmethod=indent
 set foldnestmax=1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 
 " Way to edit with sudo
 cnoreabbrev w!! w !sudo tee % > /dev/null
@@ -61,3 +62,12 @@ let g:syntastic_quiet_messages = { "type": "style" }
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" CtrlP
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
