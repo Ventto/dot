@@ -1,8 +1,55 @@
-# This file must be the only 00-numbered file.
 set $mod Mod4
+
+# Assign workspace variables
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7:  "
+
+# Window assignation
+assign [class="^Firefox$" instance="^Navigator$"] $ws1
+assign [class="^Zathura$"] $ws4
+assign [class="^VirtualBox$"] $ws5
+assign [class="^smplayer$"] $ws7
+assign [class="^transmission$"] $ws7
+assign [class="^Gimp"] $ws6
+
+# Window borders
+for_window [class="^.*"] border pixel 2
+for_window [class="^Firefox$"] border pixel 0
+for_window [class="^Termite$"] normal
+
+# Gaps
+gaps inner 15
+
+# Bars
+set $darkblack   #1d2021
+bar {
+	font pango:Hack, FontAwesome 9
+	position top
+    height 25
+	colors { background $darkblack }
+	separator_symbol "  "
+	status_command ~/.config/i3/i3-bar/i3-bar.sh top
+}
+bar {
+	font pango:Hack, FontAwesome 9
+	position bottom
+    height 25
+	colors { background $darkblack }
+	separator_symbol "  "
+	status_command ~/.config/i3/i3-bar/i3-bar.sh bottom
+}
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-# Kill focused window
+
+# Basic
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+q kill
 
 # Change focus
@@ -17,13 +64,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split in horizontal orientation
+# Split
 bindsym $mod+h split h
-
-# Split in vertical orientation
 bindsym $mod+v split v
 
-# Enter fullscreen mode for the focused container
+# Fullscreen
 bindsym $mod+f fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
@@ -36,89 +81,53 @@ bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-# Back to the previous workspace
-bindsym $mod+z workspace back_and_forth
 
-# Assign workspace variables
-set $WS1 1:[term]
-set $WS2 2:[web]
-set $WS3 3:[dev]
-set $WS4 4:[pdf]
-set $WS5 5:[text]
-set $WS6 6:[vbox]
-set $WS7 7:[media]
-set $WS8 8:[gimp]
-
-# switch to workspace
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
-bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3
-bindsym $mod+Shift+4 move container to workspace $WS4
-bindsym $mod+Shift+5 move container to workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS7
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec i3-msg exit
-assign [class="^Firefox$" instance="^Navigator$"] $WS2
-assign [class="^libreoffice-writer$"] $WS5
-assign [class="^Zathura$"] $WS4
-assign [class="^VirtualBox$"] $WS6
-assign [class="^smplayer$"] $WS7
-assign [class="^transmission$"] $WS7
-assign [class="^Gimp"] $WS8
-bar {
-	font pango:DejaVu Sans Mono, FontAwesome 8
-	separator_symbol " | "
-	position top
-	status_command ~/.config/i3/i3-bar/i3-bar.sh
-}
+# Resize
 mode "resize" {
 	bindsym Left resize shrink width 10 px or 10 ppt
 	bindsym Down resize grow height 10 px or 10 ppt
 	bindsym Up resize shrink height 10 px or 10 ppt
 	bindsym Right resize grow width 10 px or 10 ppt
-
 	bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
-bindsym $mod+Ctrl+l exec i3lock -i ~/images/wallpaper.png
-font pango:Lucida Mono 8
+
+# Back to the previous workspace
+bindsym $mod+z workspace back_and_forth
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+
+# Applications
 bindsym $mod+Return exec --no-startup-id termite
-
 bindsym $mod+Ctrl+f exec firefox
-
+bindsym $mod+Ctrl+g exec gimp
+bindsym $mod+Ctrl+l exec i3lock -i ~/.config/i3/wallpapers/wallpaper.jpg
+bindsym $mod+Ctrl+m exec smplayer
 bindsym $mod+Ctrl+s exec vokoscreen
-
+bindsym $mod+Ctrl+t exec transmission-qt
+bindsym $mod+Ctrl+v exec VirtualBox
+bindsym $mod+Ctrl+w exec wireshark
 bindsym Print exec scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
 						&& notify-send -u low "Screenshot !" "Screen"
 bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
 						&& notify-send -u low "Screenshot !" "Window"
 
-bindsym $mod+Ctrl+m exec smplayer
-
-bindsym $mod+Ctrl+g exec gimp
-
-bindsym $mod+Ctrl+t exec transmission-qt
-
-bindsym $mod+Ctrl+v exec VirtualBox
-
-bindsym $mod+Ctrl+w exec wireshark
 # Volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
@@ -127,10 +136,3 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 # Backlight
 bindsym XF86MonBrightnessUp exec lux -m 30 -M 99 -a 20%
 bindsym XF86MonBrightnessDown exec lux -m 30 -M 99 -s 20%
-
-# Multi-screens
-bindsym XF86Display exec docilemons -o
-bindsym XF86Sleep exec docilemons -e left
-for_window [class="^.*"] border pixel 2
-for_window [class="^Firefox$"] border pixel 0
-for_window [class="^Termite$"] normal

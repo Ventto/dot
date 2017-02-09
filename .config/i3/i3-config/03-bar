@@ -1,6 +1,0 @@
-bar {
-	font pango:DejaVu Sans Mono, FontAwesome 8
-	separator_symbol " | "
-	position top
-	status_command ~/.config/i3/i3-bar/i3-bar.sh
-}

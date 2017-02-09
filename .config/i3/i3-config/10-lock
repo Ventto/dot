@@ -1,1 +1,0 @@
-bindsym $mod+Ctrl+l exec i3lock -i ~/images/wallpaper.png
