@@ -64,6 +64,7 @@ let g:syntastic_quiet_messages = { "type": "style" }
 nmap <F8> :TagbarToggle<CR>
 
 " CtrlP
+let g:ctrlp_cmd='CtrlP :pwd'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
