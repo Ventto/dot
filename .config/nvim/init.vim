@@ -36,6 +36,7 @@ set wildmenu
 set wildmode=list:longest,full
 set foldmethod=indent
 set foldnestmax=1
+set mouse=a
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 
 " Way to edit with sudo
