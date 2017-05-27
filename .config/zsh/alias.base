@@ -6,13 +6,11 @@ alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 # List files
 alias ls='ls --color=auto'
-alias la='ls -la'
-alias laf='ls -la | grep -v "^d"'
-alias ld='ls -ld *(/)'
-alias lda='ls -ld .*(/)'
-alias lf='ls -l | grep -v "^d"'
-alias lfs='ls -lhr --sort=size | grep -v "^d"'
 alias ll='ls -l'
+alias la='ls -la'
+alias ld='ls -ld *'
+alias laf='ls -lAd .* | grep -v "^d"'
+alias lls='ls -lhr --sort=size | grep -v "^d"'
 
 # Directory stacks
 DIRSTACKSIZE=8
