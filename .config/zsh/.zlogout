@@ -1,3 +1,3 @@
-if [ -n "$SSH_AGENT_PID" ]; then
-	eval $(ssh-agent -k)
-fi
+#!/bin/sh
+
+[ -n "$SSH_AGENT_PID" ] && eval "$(ssh-agent -k)"
