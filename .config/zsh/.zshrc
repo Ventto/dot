@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
