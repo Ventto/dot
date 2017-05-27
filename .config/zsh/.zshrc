@@ -13,7 +13,7 @@ export USE_EDITOR="nvim"
 export VISUAL="nvim"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
-export PATH="${PATH}:/opt/gnuarmeclipse/qemu/bin/"
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # Sources
 source "$ZDOTDIR/alias"
