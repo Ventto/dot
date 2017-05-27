@@ -20,8 +20,15 @@ export LANG=en_US.UTF8
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # Sources
-source "$ZDOTDIR/alias"
-source "$ZDOTDIR/completion"
+. "${ZDOTDIR}/alias"
+. "${ZDOTDIR}/completion"
+
+# # Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # Bindkeys
 bindkey -v
