@@ -6,6 +6,10 @@ SAVEHIST=1000
 # Sanity check for 'rm *'
 setopt RM_STAR_WAIT
 
+# Directory stack
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+
 # Variables
 export BROWSER="firefox"
 export EDITOR="nvim"
