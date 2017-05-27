@@ -4,6 +4,7 @@
 xhost si:localuser:$USER
 
 # Keybaord
+numlockx &
 setxkbmap fr
 
 # Wallpaper
