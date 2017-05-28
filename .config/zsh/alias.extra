@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Directories
 alias cddl="cd ~/downloads/firefox"
 alias cdvm="cd ~/vm/shared_dir"
