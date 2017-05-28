@@ -13,12 +13,12 @@ alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
 # Directory stacks
-DIRSTACKSIZE=8
-setopt autopushd pushdminus pushdsilent pushdtohome
 alias dh='dirs -v'
 alias ,,='cd -'
-alias ...='cd ../..'
 alias ..='cd ..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
 alias bb='popd 1>/dev/null'
 
 # System infos
