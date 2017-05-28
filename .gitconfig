@@ -34,12 +34,11 @@
 [difftool]
 	prompt = false
 [alias]
-	a = add --all
-	ai = add -i
+    a = "!git archive --format=tar.gz --prefix=$(basename -s .git `git config --get remote.origin.url`)-master/ --output master.tar.gz master"
 	#############
 	ap = apply
-	as = apply --stat
-	ac = apply --check
+	aps = apply --stat
+    apc = apply --check
 	#############
 	ama = am --abort
 	amr = am --resolved
@@ -83,8 +82,9 @@
 	l = log --oneline
 	lb = log --left-right --graph --cherry-pick --decorate
 	lbo = log --left-right --graph --cherry-pick --oneline --decorate
-        lg = log --oneline --graph --decorate
-        lgr = log --graph --full-history --decorate --all --pretty=format:"%h%x09%d%x20%s"
+    lg = log --oneline --graph --decorate
+    lgb = "!git log --oneline --graph --decorate master..$(git symbolic-ref --short HEAD)"
+    lgr = log --graph --full-history --decorate --all --pretty=format:"%h%x09%d%x20%s"
 	ll = log --format=%B -n 1
 	#############
 	ls = ls-files
