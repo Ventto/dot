@@ -1,9 +1,11 @@
 #!/bin/zsh
 
 # Global completion
-. "${ZDOTDIR}/zsh.comp"
+. "${ZDOTDIR}/comp.base"
 
 # Bash
 autoload bashcompinit
 bashcompinit
-. "${ZDOTDIR}/ct-ng.comp"
+
+# Crosstool-ng
+. "${ZDOTDIR}/comp.ctng"
