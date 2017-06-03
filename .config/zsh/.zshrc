@@ -2,8 +2,21 @@
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
 
 # Sanity check for 'rm *'
 setopt RM_STAR_WAIT
@@ -25,7 +38,7 @@ export PATH="${HOME}/.local/bin:${PATH}"
 . "${ZDOTDIR}/alias"
 . "${ZDOTDIR}/completion"
 
-# # Enable Ctrl-x-e to edit command line
+# Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 # Emacs style
 zle -N edit-command-line
