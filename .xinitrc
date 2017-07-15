@@ -7,7 +7,7 @@ nohup numlockx > /dev/null 2>&1 &
 setxkbmap fr
 
 # Wallpaper
-feh --bg-max --no-fehbg ~/.config/i3/wallpapers/wallpaper.jpg
+feh --bg-max --no-fehbg ~/.config/i3/wallpapers/cannabis.jpg
 
 # Notification server
 nohup dunst > /dev/null 2>&1 &
