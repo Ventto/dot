@@ -1,0 +1,91 @@
+[dotfiles]
+    lockFiles = yes
+    matchThreshold = 10
+
+[grep]
+    patternType = extended
+
+[alias]
+
+    helps       = "!echo \"\
+Usage: dot [OPTION PATTERN]\n\
+       dot [size|esize]\n\n\
+  helps:    Prints this help and exits.\n\
+  files:    Lists all committed or matched files from PATTERN.\n\
+  lock:     Locks a matched file from PATTERN.  \n\
+  unlock:   Unlock a matched file from PATTERN.  \n\
+  a:        'git add' a matched file from PATTERN. \n\
+  ap:       'git add -p ' a matched file from PATTERN. \n\
+  edit:     Edits a matched file from PATTERN with your own editor.\n\
+  size:     Prints the total size of the repository.\n\
+  esize:    Prints the exact size of the repository.\n\
+                \""
+
+    # Bare aliases
+    files       = "!git i-files"
+    lock        = "!git i-filept \"$@\" | sudo xargs chattr +i #"
+    unlock      = "!git i-filept \"$@\" | sudo xargs chattr -i #"
+    a           = "!git add $(git i-filept \"$@\") #"
+    ap          = "!git add -p $(git i-filept \"$@\") #"
+    edit        = "!git i-edit $(git i-filept \"$@\") #"
+    size        = "!du -ch $(git i-filept \"$@\") | tail -1 | cut -f 1 #"
+    asize       = "!du --apparent-size -ch $(git i-filept \"$@\") | tail -1 | cut -f1 #"
+
+    # internals
+    i-cfg       = "!git --git-dir=\"$(git rev-parse --git-dir)\" "
+    i-sudo      = "!cmd=\"$1\"; shift; sudo -E git i-cfg \"$cmd\" \"$@\""
+    i-splitl    = "!export IFS=\"$(printf '\\n\\r')\"; echo \"$*\" #"
+
+    i-files     = "!if test $# -eq 0; then "                                  \
+                  "  cmd='git i-cfg ls-files'; "                              \
+                  "else "                                                     \
+                  "  cmd='git i-cfg ls-files | awk \"/$@/{print}\"'; "        \
+                  "fi; "                                                      \
+                  "fmt='$(stat --format \"%A %N\" \"@\" | cut -c 2- )'; "     \
+                  "if [ \"$(git config dotfiles.lockFiles)\" = yes ]; then "  \
+                  "  fmt='$( (lsattr -d \"@\" 2>/dev/null "                   \
+                  "           || echo '----l') | cut -c 5)'\"$fmt\"; "        \
+                  "fi; "                                                      \
+                  "cd \"$HOME\"; "                                            \
+                  "eval $cmd | xargs -I@ sh -c \"echo $fmt\"; #"
+
+    i-filept    = "!if test $# -eq 0; then "              \
+                  "  git i-cfg ls-files "                 \
+                  "    | sed -e \"s|^|$HOME/|g\"; "       \
+                  "else "                                 \
+                  "  git i-cfg ls-files "                 \
+                  "    | awk \"/$@/{print}\" "            \
+                  "    | sed -e \"s|^|$HOME/|g\"; "       \
+                  "fi #"
+
+    i-askpick   = "!git i-splitl \"$@\" | cat -n && echo -n 'Which one to edit: ' #"
+
+    i-dopick    = "!git i-askpick \"$@\" "                                        \
+                  "  && read PICK "                                               \
+                  "  && git i-fedit $(git i-splitl \"$@\" | sed -n $PICK'p') #"
+
+    i-locked    = "!lsattr -d \"$1\" 2>/dev/null | grep -E '^....i.*' >/dev/null #"
+
+    i-feditlk   = "!chattr -i \"$1\"; "                          \
+                  "sudo -Eu \"$SUDO_USER\" \"$EDITOR\" \"$1\"; "  \
+                  "chattr +i \"$1\" #"
+
+    i-fedit-l   = "!if git i-locked \"$1\"; then "    \
+                  "  git i-sudo i-feditlk \"$1\"; "   \
+                  "else "                             \
+                  "  $EDITOR \"$1\" ; "                \
+                  "fi #"
+
+    i-fedit     = "!if [ \"$(git config dotfiles.lockFiles)\" = yes ]; then " \
+                  "  git i-fedit-l \"$1\"; "                                  \
+                  "else "                                                     \
+                  "  $EDITOR \"$1\" ; "                                        \
+                  "fi #"
+
+    i-edit      = "!if test $# -eq 1; "                                           \
+                "  then git i-fedit \"$1\"; "                                   \
+                "elif test $# -gt $(git config dotfiles.matchThreshold); then " \
+                "  echo 'Too many dotfiles matching, restrict the pattern.'; "  \
+                "elif test $# -gt 1; then "                                     \
+                "  git i-dopick \"$@\"; "                                       \
+                "fi #"
