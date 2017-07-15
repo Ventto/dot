@@ -34,16 +34,37 @@ export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export PATH="${HOME}/.local/bin:${PATH}"
 
-# Sources
-. "${ZDOTDIR}/alias"
-. "${ZDOTDIR}/completion"
+# Plugins
+if [ -d "${ZDOTDIR}/zshrc.d" ]; then
+    # Functions
+    if [ -d "${ZDOTDIR}/zshrc.d/function" ]; then
+        for file in ${ZDOTDIR}/zshrc.d/function/*.zsh; do
+            source $file
+        done
+    fi
 
-# Enable Ctrl-x-e to edit command line
-autoload -U edit-command-line
-# Emacs style
-zle -N edit-command-line
-bindkey '^xe' edit-command-line
-bindkey '^x^e' edit-command-line
+    # Aliases
+    if [ -d "${ZDOTDIR}/zshrc.d/alias" ]; then
+        for file in ${ZDOTDIR}/zshrc.d/alias/*.zsh; do
+            source $file
+        done
+    fi
+
+    # Completion: zsh
+    if [ -d "${ZDOTDIR}/zshrc.d/completion" ]; then
+        for file in ${ZDOTDIR}/zshrc.d/completion/*.zsh; do
+            source $file
+        done
+    fi
+    # Completion: bash
+    if [ -d "${ZDOTDIR}/zshrc.d/completion/bash" ]; then
+        autoload bashcompinit
+        bashcompinit
+        for file in ${ZDOTDIR}/zshrc.d/completion/bash/*.zsh; do
+            source $file
+        done
+    fi
+fi
 
 # Bindkeys
 bindkey -v
@@ -57,12 +78,11 @@ bindkey '^[[1;5D' backward-word
 bindkey '\e[3~' delete-char
 bindkey '^[[3~' delete-char
 
-fg-ctrl-z () {
-	if [[ $#BUFFER -eq 0 ]]; then BUFFER="fg"; zle accept-line;
-	else zle push-input; zle clear-screen; fi
-}
-zle -N fg-ctrl-z
-bindkey '^Z' fg-ctrl-z
+if [ -d "${ZDOTDIR}/zshrc.d/bindkey" ]; then
+    for file in ${ZDOTDIR}/zshrc.d/bindkey/*.zsh; do
+        source $file
+    done
+fi
 
 # Prompt
 setopt prompt_subst
