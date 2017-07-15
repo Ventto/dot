@@ -1,17 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-# X settings
 xhost si:localuser:$USER
 
-# Keybaord
-numlockx &
+# Keyboard
+nohup numlockx > /dev/null 2>&1 &
 setxkbmap fr
 
 # Wallpaper
 feh --bg-max --no-fehbg ~/.config/i3/wallpapers/wallpaper.jpg
 
-# Notification deamon
-dunst &
+# Notification server
+nohup dunst > /dev/null 2>&1 &
 
 # Brightness
 lux -m 30 -M 99 -S 20%
@@ -19,8 +18,8 @@ lux -m 30 -M 99 -S 20%
 # Audio
 amixer -q set Master mute
 
-# Fading and transparency
-#compton --config ~/.config/compton/compton.conf -b
+# Monitor display manager
+nohup mons -m > /dev/null 2>&1 &
 
 # Window manager
 exec i3 --shmlog-size=26214400
