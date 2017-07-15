@@ -18,14 +18,14 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-# Sanity check for 'rm *'
+# Options
 setopt RM_STAR_WAIT
 
 # Directory stack
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 
-# Variables
+# Environment
 export BROWSER="firefox"
 export EDITOR="nvim"
 export USE_EDITOR="nvim"
@@ -94,11 +94,10 @@ zstyle ':vcs_info:git*' get-revision true
 zstyle ':vcs_info:git*' formats " %r/%S %F{green} -(%b)%f%F{red}%u%f"
 zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 
-p_pwd=$' %~ '
-PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${p_pwd}${vcs_info_msg_0_}${success_icon} # %{$reset_color%} '
+PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
 
 function precmd {
-	[ "$?" -eq 0 ] && success_icon="" || success_icon=""
+	[ "$?" -eq 0 ] && icon="" || icon=""
 	vcs_info
-	[ -z "${vcs_info_msg_0_}" ] && p_pwd=$' %~ ' || p_pwd=$''
+	[ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
 }
