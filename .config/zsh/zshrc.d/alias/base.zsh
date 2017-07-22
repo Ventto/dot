@@ -48,8 +48,7 @@ alias umsd="cd ~; sync; sudo umount /mnt/sd && echo 'OK' || echo 'FAILED'"
 
 alias gdb="gdb -q -tui"
 alias valgrind="valgrind --leak-check=full --show-leak-kinds=all --show-emwarns=yes "
-alias checkpath="~/.bin/checkpatch.pl --no-tree --strict -show-types \
---ignore=FILE_PATH_CHANGES,BIT_MACRO -f"
+alias checkpatch="$HOME/.local/bin/checkpatch.pl --no-tree --strict -f"
 
 alias cddl="cd ~/downloads/firefox"
 alias cdvm="cd ~/vm/shared_dir"
