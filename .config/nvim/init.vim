@@ -60,7 +60,8 @@ map <A-z> zr
 map <A-e> zm
 
 " Syntastic
-let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_c_checkers = ['checkpatch', 'gcc']
+let g:syntastic_c_check_header = 1
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
