@@ -1,6 +1,6 @@
 alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
-alias sshaddkey='ssh-add ~/.ssh/id_rsa'
+alias ssk='ssh-add ~/.ssh/id_rsa'
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
