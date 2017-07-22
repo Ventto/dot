@@ -22,7 +22,7 @@ syntax on
 colorscheme molokai
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-set cc=80
+set cc=79
 set number
 set relativenumber
 set encoding=utf-8
@@ -43,7 +43,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 cnoreabbrev w!! w !sudo tee % > /dev/null
 
 " Purple dye for excesses
-hi OverLength ctermbg=red ctermfg=white
+hi OverLength ctermbg=red ctermfg=black
 match OverLength /\%80v.\+/
 
 " Special treatment
