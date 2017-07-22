@@ -1,5 +1,3 @@
-#!/bin/sh
-
 NoHup () {
 	_cmd="${1}"; shift
 	if [ -z "$(alias "${1}")" ]; then
@@ -10,11 +8,3 @@ NoHup () {
     nohup "${_cmd}" "${@}" > /dev/null 2>&1 &
 	alias "${_cmd}='NoHup ${_cmd} ${@}'"
 }
-
-alias feh='NoHup feh -Timgviewer'
-alias gimp='NoHup gimp'
-alias nautilus='NoHup nautilus .'
-alias smplayer='NoHup smplayer'
-alias texmaker='NoHup texmaker'
-alias termite='NoHup termite'
-alias zathura='NoHup zathura'

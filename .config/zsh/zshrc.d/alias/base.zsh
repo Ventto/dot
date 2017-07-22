@@ -1,10 +1,7 @@
-#!/bin/sh
-
-# Base
 alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
+alias sshaddkey='ssh-add ~/.ssh/id_rsa'
 
-# List files
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -la'
@@ -12,7 +9,6 @@ alias ld='ls -ld *'
 alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
-# Directory stacks
 alias dh='dirs -v'
 alias ,,='cd -'
 alias ..='cd ..'
@@ -20,18 +16,15 @@ alias ...='cd ../../..'
 alias ....='cd ../../../..'
 alias .....='cd ../../../../..'
 alias bb='popd 1>/dev/null'
+alias cdvm="cd $HOME/vm/shared_dir"
 
-# System infos
-alias dmesg='dmesg -H -Lalways'
-alias dmesgt='dmesg | tail -n20'
 alias grep='grep -E --color=auto'
 alias sdiff='grep -vxf'
 alias du='ncdu '
 
-# Basic app
 alias vim='nvim'
-alias vimup="vim +PluginInstall +qall"
-alias i3up="~/.config/i3/contrib/i3up.sh"
+alias vimup='vim +PluginInstall +qall'
+alias i3up="$HOME/.config/i3/contrib/i3up.sh"
 alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
 
 alias feh='NoHup feh -Timgviewer'
@@ -42,24 +35,13 @@ alias texmaker='NoHup texmaker'
 alias termite='NoHup termite'
 alias zathura='NoHup zathura'
 
-alias dd='dcfldd '
-alias mosd="sudo mount /dev/mmcblk0p1 /mnt/sd && { echo 'OK'; cd /mnt/sd } || echo 'FAILED'"
-alias umsd="cd ~; sync; sudo umount /mnt/sd && echo 'OK' || echo 'FAILED'"
+alias dd='dcfldd'
+alias mosd='sudo mount /dev/mmcblk0p1 /mnt/sd && { echo OK; cd /mnt/sd }'
+alias umsd='sync && { sudo umount /mnt/sd && echo OK || echo FAILED; }'
 
-alias gdb="gdb -q -tui"
-alias valgrind="valgrind --leak-check=full --show-leak-kinds=all --show-emwarns=yes "
-alias checkpatch="$HOME/.local/bin/checkpatch.pl --no-tree --strict -f"
+alias gdb='gdb -q'
+alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
+alias checkpatch='checkpatch.pl --no-tree --strict -f'
 
-alias cddl="cd ~/downloads/firefox"
-alias cdvm="cd ~/vm/shared_dir"
-
-# Bin
-alias dropbox="~/.bin/dropbox "
-
-# Pi
-alias pissh="ssh tom@192.168.1.95"
-alias piimg="sshfs tom@192.168.1.95:/mnt/hd/gdrive/Memories $SSHPI_PICTURES_DIR"
-alias pimov="sshfs tom@192.168.1.95:/mnt/hd/Backup/Movies $SSHPI_VIDEOS_DIR"
-alias pimsc="sshfs tom@192.168.1.95:/mnt/hd/gdrive/Media/Musics $SSHPI_MUSIC_DIR"
-alias pidoc="sshfs tom@192.168.1.95:/mnt/hd/Backup/Documents $SSHPI_DOCUMENTS_DIR"
-alias porn="pimov ; nohup smplayer -add-to-playlist $SSHPI_VIDEOS_DIR/porn &"
+alias pdfmerge='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=out.pdf '
+alias prettyjson='python -m json.tool '

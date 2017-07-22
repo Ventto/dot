@@ -18,14 +18,14 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-# Options
+# Security
 setopt RM_STAR_WAIT
 
-# Directory stack
+# Directory Stack
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 
-# Environment
+# Environment Variables
 export BROWSER="firefox"
 export EDITOR="nvim"
 export USE_EDITOR="nvim"
@@ -33,37 +33,25 @@ export VISUAL="nvim"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 
-# Plugins
-if [ -d "${ZDOTDIR}/zshrc.d" ]; then
-    # Functions
-    if [ -d "${ZDOTDIR}/zshrc.d/function" ]; then
-        for file in ${ZDOTDIR}/zshrc.d/function/*.zsh; do
-            source $file
-        done
-    fi
+source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
-    # Aliases
-    if [ -d "${ZDOTDIR}/zshrc.d/alias" ]; then
-        for file in ${ZDOTDIR}/zshrc.d/alias/*.zsh; do
-            source $file
-        done
-    fi
+# Functions
+add_functions 'file-ext'
+add_functions 'man-helper'
+add_functions 'maths'
+add_functions 'nohup'
 
-    # Completion: zsh
-    if [ -d "${ZDOTDIR}/zshrc.d/completion" ]; then
-        for file in ${ZDOTDIR}/zshrc.d/completion/*.zsh; do
-            source $file
-        done
-    fi
-    # Completion: bash
-    if [ -d "${ZDOTDIR}/zshrc.d/completion/bash" ]; then
-        autoload -U +X bashcompinit && bashcompinit
-        for file in ${ZDOTDIR}/zshrc.d/completion/bash/*.comp; do
-            source $file
-        done
-    fi
-fi
+# Aliases
+add_aliases 'base'
+add_aliases 'pi'
+add_aliases 'aur'
+
+# Completion
+add_comp 'base'
+autoload -U +X bashcompinit && bashcompinit
+add_bash_comp 'ct-ng'
 
 # Bindkeys
 bindkey -v
@@ -77,11 +65,8 @@ bindkey '^[[1;5D' backward-word
 bindkey '\e[3~' delete-char
 bindkey '^[[3~' delete-char
 
-if [ -d "${ZDOTDIR}/zshrc.d/bindkey" ]; then
-    for file in ${ZDOTDIR}/zshrc.d/bindkey/*.zsh; do
-        source $file
-    done
-fi
+add_bindkeys 'edit-command-line'
+add_bindkeys 'fg-ctrlz'
 
 # Prompt
 setopt prompt_subst
