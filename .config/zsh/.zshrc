@@ -58,9 +58,8 @@ if [ -d "${ZDOTDIR}/zshrc.d" ]; then
     fi
     # Completion: bash
     if [ -d "${ZDOTDIR}/zshrc.d/completion/bash" ]; then
-        autoload bashcompinit
-        bashcompinit
-        for file in ${ZDOTDIR}/zshrc.d/completion/bash/*.zsh; do
+        autoload -U +X bashcompinit && bashcompinit
+        for file in ${ZDOTDIR}/zshrc.d/completion/bash/*.comp; do
             source $file
         done
     fi

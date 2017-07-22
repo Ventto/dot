@@ -1,11 +1,7 @@
-#!/bin/bash
-
-export PATH="${HOME}/.xtools/arm-unknown-eabi/bin:${PATH}"
-
 _ct_ng () {
     local cur prev samples show_samples actions steps start_steps stop_steps ct_ng_opts vars
     COMPREPLY=()
-    cur=$(_get_cword)
+    cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
 
     samples=$( "${COMP_WORDS[0]}" list-samples-short 2>/dev/null )
