@@ -47,6 +47,7 @@ hi OverLength ctermbg=red ctermfg=black
 match OverLength /\%80v.\+/
 
 " Special treatment
+au! BufRead,BufNewFile *.gdb            set filetype=gdb
 au! BufRead,BufNewFile Makefile.*       set filetype=make
 au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
 
@@ -72,4 +73,3 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-
