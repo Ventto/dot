@@ -1,12 +1,13 @@
 GNU/Linux system configuration
 =====================================
 
-## Requirements
+## Global Requirements
 
 * zsh
 * i3 - Window manager
 * pavucontrol - Front-end GTK for PulseAudio
 * termite - Terminal emulator
+* neovim - Fork of Vim aiming to improve user experience, plugins, and GUIs
 * pacaur - An AUR helper that minimizes user interaction
 * firefox - Highly customizable web browser
 * mons - Bash script to easily manage 2-plugged-in monitors
@@ -28,7 +29,8 @@ GNU/Linux system configuration
 
 ### TODO
 
-- [ ] Manage multiscreen workspaces
-- [ ] Clang format for nvim
-- [ ] Nvim config
-- [ ] Progress-bar for cp
+- [ ] i3: Manage multiscreen workspaces
+- [ ] cp: Progress-bar
+- [ ] nvim: Clang format
+- [ ] nvim: Xclip
+- [ ] nvim: Ultisnips config
