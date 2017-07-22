@@ -19,10 +19,16 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+" #===========================#
+"
+"            Basic
+"
+" #===========================#
+
 colorscheme molokai
+cnoreabbrev w!! w !sudo tee % > /dev/null
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-set cc=79
 set number
 set relativenumber
 set encoding=utf-8
@@ -38,26 +44,30 @@ set foldmethod=indent
 set foldnestmax=1
 set mouse=a
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+set cc=79
 
-" Way to edit with sudo
-cnoreabbrev w!! w !sudo tee % > /dev/null
-
-" Purple dye for excesses
+" Colors colum limit
 hi OverLength ctermbg=red ctermfg=black
 match OverLength /\%80v.\+/
 
-" Special treatment
+" Deletes eol spaces
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Filetype syntax highlighting
 au! BufRead,BufNewFile *.gdb            set filetype=gdb
 au! BufRead,BufNewFile Makefile.*       set filetype=make
 au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
-
-" Removes end-of-line spaces
-autocmd BufWritePre * :%s/\s\+$//e
 
 " Fold life
 map <A-a> zc
 map <A-z> zr
 map <A-e> zm
+
+" #===========================#
+"
+"           Plugins
+"
+" #===========================#
 
 " Syntastic
 let g:syntastic_c_checkers = ['checkpatch', 'gcc']
