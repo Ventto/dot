@@ -5,7 +5,7 @@ alias ssk='ssh-add ~/.ssh/id_rsa'
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -la'
-alias ld='ls -ld *'
+alias lld='ls -ld */'
 alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
@@ -24,6 +24,7 @@ alias du='ncdu '
 
 alias vim='nvim'
 alias vimup='vim +PluginInstall +qall'
+
 alias i3up="$HOME/.config/i3/contrib/i3up.sh"
 alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
 
