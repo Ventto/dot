@@ -16,28 +16,15 @@ cursor_blink = system
 cursor_shape = block
 browser = firefox
 
-# word characters used for word selection
-# (default if unset: all graphic non-punctuation/space characters)
-#word_chars = -A-Za-z0-9,./?%&#:_=+@~
-
-# set size hints for the window
-#size_hints = false
-
-# emit escape sequences for other keys modified by Control
-#modify_other_keys = false
-
 [colors]
 foreground = #cccccc
 foreground_bold = #ffffff
-#foreground_dim = #888888
-#background = rgba(16, 16, 16, 0.95)
 background = rgba(0, 0, 0, 1)
-#cursor = #dcdccc
 
-# if unset, will reverse foreground and background
+# If unset, will reverse foreground and background
 highlight = #2f2f2f
 
-# colors from color0 to color254 can be set
+# Colors from color0 to color254 can be set
 # Black
 color0 = #000000
 color8 = #666666
@@ -69,11 +56,3 @@ color14 = #99ffff
 # White
 color7 = #cccccc
 color15 = #ffffff
-
-[hints]
-#foreground = #dcdccc
-#background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
