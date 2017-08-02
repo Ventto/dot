@@ -23,7 +23,7 @@ alias sdiff='grep -vxf'
 alias du='ncdu '
 
 alias vim='nvim'
-alias vimup='vim +PluginInstall +qall'
+alias vimup='nvim +PluginInstall +qall'
 
 alias i3up="$HOME/.config/i3/contrib/i3up.sh"
 alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
