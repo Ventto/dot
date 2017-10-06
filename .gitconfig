@@ -1,16 +1,17 @@
 [user]
     email = thomas.venries@gmail.com
-    name = Thomas Venries
+    name = Thomas Venriès
 [core]
     editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore
 [sendemail]
-    from = Thomas Venries <thomas.venries@gmail.com>
-    smtpserver = smtp.gmail.com
+    from = Thomas Venriès <thomas.venries@gmail.com>
     smtpuser = thomas.venries@gmail.com
+    smtpserver = smtp.gmail.com
     smtpencryption = tls
     smtpserverport = 587
+    chainreplyto = false
 [push]
     default = matching
 [color]
