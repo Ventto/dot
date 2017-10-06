@@ -28,7 +28,7 @@ alias vimup='nvim +PluginInstall +qall'
 alias i3up="$HOME/.config/i3/contrib/i3up.sh"
 alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
 
-alias feh='NoHup feh -Timgviewer'
+alias feh='NoHup feh'
 alias gimp='NoHup gimp'
 alias nautilus='NoHup nautilus .'
 alias smplayer='NoHup smplayer'
