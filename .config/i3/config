@@ -16,13 +16,13 @@ assign [class="^smplayer$"] $ws7
 assign [class="^transmission$"] $ws7
 assign [class="^Gimp"] $ws6
 
-workspace $ws1 output DP1
-workspace $ws2 output eDP1
-workspace $ws3 output eDP1
-workspace $ws4 output DP1
-workspace $ws5 output eDP1
-workspace $ws6 output DP1
-workspace $ws7 output DP1
+workspace $ws1 output VGA-1
+workspace $ws2 output LVDS-1
+workspace $ws3 output LVDS-1
+workspace $ws4 output VGA-1
+workspace $ws5 output LVDS-1
+workspace $ws6 output VGA-1
+workspace $ws7 output VGA-1
 
 # Window borders
 for_window [class="^.*"] border pixel 2
