@@ -1,4 +1,22 @@
-set $mod Mod4
+# Variables
+set $mod            Mod4
+set $term           termite
+set $term_exec      --exec
+
+set $browser        firefox
+set $mail           thunderbird
+set $mplayer        smplayer
+set $screenlocker   i3lock -c 000000
+set $torrent        transmission-qt
+set $capture        vokoscreen
+set $irc            'irssi --home=~/.config/irssi' --name 'irssi'
+set $screenshot     scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png && \
+                        notify-send -u low "Screenshot !" "Screen"
+
+# Basic
+for_window [class="^.*"] border pixel 1
+floating_modifier $mod
+gaps inner 15
 
 # Workspaces
 set $ws1 "1:  "
@@ -9,13 +27,7 @@ set $ws5 "5:  "
 set $ws6 "6:  "
 set $ws7 "7:  "
 
-assign [class="^Firefox$" instance="^Navigator$"] $ws1
-assign [class="^Zathura$"] $ws4
-assign [class="^VirtualBox$"] $ws5
-assign [class="^smplayer$"] $ws7
-assign [class="^transmission$"] $ws7
-assign [class="^Gimp"] $ws6
-
+# Screens
 workspace $ws1 output VGA-1
 workspace $ws2 output LVDS-1
 workspace $ws3 output LVDS-1
@@ -24,21 +36,28 @@ workspace $ws5 output LVDS-1
 workspace $ws6 output VGA-1
 workspace $ws7 output VGA-1
 
-# Window borders
-for_window [class="^.*"] border pixel 2
-for_window [class="^Firefox$"] border pixel 0
-for_window [class="^Termite$"] normal
+# Assignation
+assign [instance="Navigator"] $ws1
+assign [class="Thunderbird"] $ws3
+assign [instance="^irssi$"] $ws3
+assign [class="Zathura"] $ws4
+assign [class="VirtualBox"] $ws5
+assign [class="Gimp"] $ws6
+assign [class="smplayer"] $ws7
+assign [class="transmission"] $ws7
 
-# Gaps
-gaps inner 15
+# Startup
+exec --no-startup-id i3-msg 'workspace $ws1; exec $browser'
+exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
+exec --no-startup-id i3-msg 'workspace $ws3; exec $mail; exec $irc'
+exec --no-startup-id i3-msg 'workspace $ws2'
 
 # Bars
-set $darkblack   #1d2021
 bar {
 	font pango:Hack, FontAwesome 9
 	position top
     height 25
-	colors { background $darkblack }
+	colors { background #1d2021 }
 	separator_symbol "  "
 	status_command ~/.config/i3/i3-bar/i3-bar.sh top
 }
@@ -46,48 +65,58 @@ bar {
 	font pango:Hack, FontAwesome 9
 	position bottom
     height 25
-	colors { background $darkblack }
+	colors { background #1d2021 }
 	separator_symbol "  "
 	status_command ~/.config/i3/i3-bar/i3-bar.sh bottom
 }
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Bindkeys
+# Workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
 
 # Basic
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+q kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
 
-# Change focus
+# Focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move focused window
+# Move
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Split
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+h split horizontal
+bindsym $mod+v split vertical
+bindsym $mod+t split toggle
 
-# Fullscreen
-bindsym $mod+f fullscreen toggle
-
-# Change container layout (stacked, tabbed, toggle split)
+# Layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# Toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # Resize
 mode "resize" {
@@ -99,47 +128,33 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Back to the previous workspace
-bindsym $mod+z workspace back_and_forth
-
-# Switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-
-# Applications
-bindsym $mod+Return exec --no-startup-id termite
-bindsym $mod+Ctrl+f exec firefox
-bindsym $mod+Ctrl+g exec gimp
-bindsym $mod+Ctrl+l exec i3lock -i ~/.config/i3/wallpapers/wallpaper.jpg
-bindsym $mod+Ctrl+m exec smplayer
-bindsym $mod+Ctrl+s exec vokoscreen
-bindsym $mod+Ctrl+t exec transmission-qt
-bindsym $mod+Ctrl+v exec VirtualBox
-bindsym $mod+Ctrl+w exec wireshark
-bindsym Print exec scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
-						&& notify-send -u low "Screenshot !" "Screen"
-bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
-						&& notify-send -u low "Screenshot !" "Window"
-
 # Volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-# Backlight
-bindsym XF86MonBrightnessUp exec lux -m 30 -M 99 -a 20%
-bindsym XF86MonBrightnessDown exec lux -m 30 -M 99 -s 20%
+# Brightness
+bindsym XF86MonBrightnessUp exec lux -m 500 -a 20%
+bindsym XF86MonBrightnessDown exec lux -m 500 -s 20%
+bindsym $mod+p exec mons -n left
+
+# Default Applications
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+Ctrl+b exec --no-startup-id $browser
+bindsym $mod+Ctrl+p exec --no-startup-id $player
+bindsym $mod+Ctrl+m exec --no-startup-id $mail
+bindsym $mod+Ctrl+l exec $screenlocker
+bindsym $mod+Ctrl+i exec $term $term_exec $irc
+bindsym $mod+Ctrl+t exec $torrent
+bindsym $mod+Ctrl+c exec $capture
+
+# Screenshot
+bindsym Print exec $screenshot
+bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
+						&& notify-send -u low "Screenshot !" "Window"
+
+# Others Applications
+bindsym $mod+Ctrl+j exec jitsi
+bindsym $mod+Ctrl+g exec gimp
+bindsym $mod+Ctrl+v exec VirtualBox
+bindsym $mod+Ctrl+w exec wireshark
