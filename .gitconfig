@@ -51,15 +51,15 @@
     bd = branch -d
     br = branch -r
     #############
-    c = commit
-    ca = commit -a
+    c = commit -s
+    ca = commit -s -a
     cc = "!git log master..`git symbolic-ref --short HEAD` --pretty=oneline | wc -l"
-    cm = commit -m
-    cem = commit --allow-empty -m
-    cam = commit -am
-    cd = commit --amend
-    cad = commit -a --amend
-    ced = commit --allow-empty --amend
+    cm = commit -s -m
+    cem = commit -s --allow-empty -m
+    cam = commit -s -am
+    cd = commit -s --amend
+    cad = commit -s -a --amend
+    ced = commit -s --allow-empty --amend
     #############
     cl = clean
     cldf = clean -d -f
