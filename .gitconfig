@@ -7,10 +7,11 @@
     excludesfile = ~/.gitignore
 [sendemail]
     from = Thomas Venriès <thomas.venries@gmail.com>
+    suppresscc = self
     smtpuser = thomas.venries@gmail.com
     smtpserver = smtp.gmail.com
-    smtpencryption = tls
-    smtpserverport = 587
+    smtpencryption = ssl
+    smtpserverport = 465
     chainreplyto = false
 [push]
     default = matching

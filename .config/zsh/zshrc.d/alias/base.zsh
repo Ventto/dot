@@ -21,7 +21,6 @@ alias cdvm="cd $HOME/vm/shared_dir"
 alias grep='grep -E --color=auto'
 alias sdiff='grep -vxf'
 alias du='ncdu '
-
 alias vim='nvim'
 alias vimup='nvim +PluginInstall +qall'
 
