@@ -87,7 +87,7 @@
     lbo = log --left-right --graph --cherry-pick --oneline --decorate
     lg = log --oneline --graph --decorate
     lgb = "!git log --oneline --graph --decorate master..$(git symbolic-ref --short HEAD)"
-    lgr = log --graph --full-history --decorate --all --pretty=format:"%h%x09%d%x20%s"
+    lgr = log --full-history --graph  --decorate --all --pretty=format:"%h%x09(%ar)%x09%d%x20%s"
     ll = log --format=%B -n 1
     #############
     ls = ls-files
