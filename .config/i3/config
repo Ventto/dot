@@ -5,13 +5,11 @@ set $term_exec      --exec
 
 set $browser        firefox
 set $mail           thunderbird
-set $mplayer        smplayer
+set $player         smplayer
 set $screenlocker   i3lock -c 000000
 set $torrent        transmission-qt
 set $capture        vokoscreen
 set $irc            'irssi --home=~/.config/irssi' --name 'irssi'
-set $screenshot     scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png && \
-                        notify-send -u low "Screenshot !" "Screen"
 
 # Basic
 for_window [class="^.*"] border pixel 1
@@ -149,7 +147,8 @@ bindsym $mod+Ctrl+t exec $torrent
 bindsym $mod+Ctrl+c exec $capture
 
 # Screenshot
-bindsym Print exec $screenshot
+bindsym Print exec scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png && \
+                        notify-send -u low "Screenshot !" "Screen"
 bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
 						&& notify-send -u low "Screenshot !" "Window"
 
