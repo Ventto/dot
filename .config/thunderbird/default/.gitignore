@@ -1,0 +1,24 @@
+~*
+*.log
+News/news.gwene.org/*.msf
+cookies.sqlite-wal
+global-messages-db.sqlite
+panacea.dat
+places.sqlite
+places.sqlite-wal
+places.sqlite.old
+saved-telemetry-pings
+storage.sdb
+
+# Directories
+ImapMail
+Mail
+cache2
+calendar-data
+crashes
+datareporting
+liberatorCache
+logs
+minidumps
+
+!.gitignore
