@@ -3,12 +3,11 @@ set $mod            Mod4
 set $term           termite
 
 set $browser        firefox
-set $mail           thunderbird
+set $mail           thunderbird --profile ~/.config/thunderbird/default
 set $player         smplayer
 set $screenlocker   i3lock -c 000000
 set $torrent        transmission-qt
 set $capture        vokoscreen
-set $irc            termite --exec "irssi --home=~/.config/irssi" --name irssi
 
 # Basic
 for_window [class="^.*"] border pixel 1
@@ -47,7 +46,6 @@ assign [class="transmission"] $ws7
 exec --no-startup-id i3-msg 'workspace $ws1; exec $browser'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
 exec --no-startup-id i3-msg 'workspace $ws3; exec $mail'
-exec --no-startup-id i3-msg 'workspace $ws3; exec $irc'
 exec --no-startup-id i3-msg 'workspace $ws2'
 
 # Bars
@@ -142,7 +140,6 @@ bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+p exec --no-startup-id $player
 bindsym $mod+Ctrl+m exec --no-startup-id $mail
 bindsym $mod+Ctrl+l exec $screenlocker
-bindsym $mod+Ctrl+i exec $irc
 bindsym $mod+Ctrl+t exec $torrent
 bindsym $mod+Ctrl+c exec $capture
 
