@@ -19,6 +19,7 @@ alias bb='popd 1>/dev/null'
 alias cdvm="cd $HOME/vm/shared_dir"
 
 alias grep='grep -E --color=auto'
+alias less='LESSHISTFILE=- less -R -i'
 alias sdiff='grep -vxf'
 alias du='ncdu '
 alias vim='nvim'
