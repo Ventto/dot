@@ -1,13 +1,14 @@
-# Variables
 set $mod            Mod4
+# Default Applications
 set $term           termite
-
 set $browser        firefox
+set $capture        vokoscreen
+set $git            gitkraken
+set $imgeditor      gimp
 set $mail           thunderbird --profile ~/.config/thunderbird/default
 set $player         smplayer
 set $screenlocker   i3lock -c 000000
 set $torrent        transmission-qt
-set $capture        vokoscreen
 
 # Basic
 for_window [class="^.*"] border pixel 1
@@ -17,10 +18,10 @@ gaps inner 15
 # Workspaces
 set $ws1 "1:  "
 set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
 set $ws7 "7:  "
 
 # Screens
@@ -34,10 +35,9 @@ workspace $ws7 output VGA-1
 
 # Assignation
 assign [instance="Navigator"] $ws1
-assign [class="Thunderbird"] $ws3
-assign [instance="^irssi$"] $ws3
-assign [class="Zathura"] $ws4
-assign [class="VirtualBox"] $ws5
+assign [class="GitKraken"] $ws3
+assign [class="Thunderbird"] $ws4
+assign [class="Zathura"] $ws5
 assign [class="Gimp"] $ws6
 assign [class="smplayer"] $ws7
 assign [class="transmission"] $ws7
@@ -137,11 +137,13 @@ bindsym $mod+p exec mons -n left
 # Default Applications
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
-bindsym $mod+Ctrl+p exec --no-startup-id $player
+bindsym $mod+Ctrl+c exec --no-startup-id $capture
+bindsym $mod+Ctrl+g exec --no-startup-id $git
+bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
+bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
 bindsym $mod+Ctrl+m exec --no-startup-id $mail
-bindsym $mod+Ctrl+l exec $screenlocker
-bindsym $mod+Ctrl+t exec $torrent
-bindsym $mod+Ctrl+c exec $capture
+bindsym $mod+Ctrl+p exec --no-startup-id $player
+bindsym $mod+Ctrl+t exec --no-startup-id $torrent
 
 # Screenshot
 bindsym Print exec scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png && \
@@ -150,7 +152,5 @@ bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
 						&& notify-send -u low "Screenshot !" "Window"
 
 # Others Applications
-bindsym $mod+Ctrl+j exec jitsi
-bindsym $mod+Ctrl+g exec gimp
 bindsym $mod+Ctrl+v exec VirtualBox
 bindsym $mod+Ctrl+w exec wireshark
