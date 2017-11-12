@@ -2,20 +2,18 @@ My own i3 configuration
 ===================
 
 ## Requirements
-### General
+
 * i3-gaps - Window manager
-* i3bar - [Conky](http://conky.sourceforge.net/variables.html) + [Awesome Font](http://fontawesome.io/cheatsheet/)
 * i3lock - An improved screenlocker based upon XCB and PAM
+* conky (>=1.10) - A system monitor for X
+* font awesome (>=4.4) - Iconic font designed for use with Twitter Bootstrap
 
-### From Xorg
-* setxkbmap - Setting keyboard layout
-* xrandr - X11 RandR extension library (dual monitors)
-* xprop - Property displayer for X (to get win's classname)
+## Notifications
 
-### For notifications
 * dunst - Customizable and lightweight notification-daemon
 
-### For fading and transparency
+## Transparency
+
 1. mesa - Open-source implementation of the OpenGL specs
 2. mesa-libgl - Mesa 3-D graphics library
 3. glxinfo - Display info about a GLX extension and OpenGL renderer (AUR)
@@ -23,9 +21,11 @@ My own i3 configuration
 
 ## Debug
 
-### In ~/contrib
+In `~/contrib`:
 * i3dbg-bar.sh - Debug i3bar problems by verbose in term
 * i3log-enable.sh - Enable i3 log (in /dev/shm)
 
-### Useful tool
-* xev - Print contents of X events (to get keyboard's keyname)
+## Useful
+
+* xev - Print contents of X events and helps to get keyboard's keyname
+* xprop - Property displayer for X and helps to get win's classname
