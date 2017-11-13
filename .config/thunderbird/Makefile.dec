@@ -1,9 +1,9 @@
 PROFILE_DEC = profile.zip
 PROFILE_ENC = $(PROFILE_DEC).enc
-KEY_DEC		= ./key.bin
-KEY_ENC		= $(KEY_DEC).enc
-PRVKEY_PEM	= ida_rsa.pem
-PRVKEY_RSA	= ~/.ssh/id_rsa
+KEY_DEC     = ./key.bin
+KEY_ENC     = $(KEY_DEC).enc
+PRVKEY_PEM  = ida_rsa.pem
+PRVKEY_RSA  = ~/.ssh/id_rsa
 
 .PHONY: all
 all: $(PROFILE_DEC)
