@@ -1,11 +1,27 @@
-Memory:
+RAM:
     * common:   
     * 4.7:      
 
 CPU:
-    * common:   
+    * common:   
     * 4.7:      
 
 USB:
     * common:   write 'USB'
     * 4.7:      
+
+Browser:
+    * common:     
+    * 4.7:      
+
+Mail:
+    * common:   
+    * 4.7:      
+
+Git:
+    * common:   
+    * 4.1:      
+    * 4.7:      
+
+Bluetooth:
+    * 4.5:        
