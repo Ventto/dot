@@ -2,6 +2,9 @@
 
 xhost si:localuser:$USER
 
+# Mute bell
+xset b off
+
 # Keyboard
 nohup numlockx > /dev/null 2>&1 &
 setxkbmap fr
