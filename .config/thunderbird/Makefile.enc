@@ -1,0 +1,28 @@
+PROFILE_DEC = profile.zip
+PROFILE_ENC = $(PROFILE_DEC).enc
+KEY_DEC		= ./key.bin
+KEY_ENC		= $(KEY_DEC).enc
+PRVKEY_RSA	= ~/.ssh/id_rsa
+PRVKEY_PEM	= ida_rsa.pem
+
+.PHONY: all
+all: $(PROFILE_ENC)
+
+$(PROFILE_ENC): $(PROFILE_DEC) $(KEY_DEC)
+	openssl enc -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY_DEC)
+
+$(PROFILE_DEC):
+	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" reset; \
+ 	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" add default; \
+	zip -9 $@ $$(git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" status -s -b | grep -E '^A' | cut -c 4-); \
+	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" reset
+
+$(KEY_DEC): $(KEY_ENC) $(PRVKEY_PEM)
+	openssl rsautl -decrypt -inkey $(PRVKEY_PEM) -in $< -out $@
+
+$(PRVKEY_PEM): $(PRVKEY_RSA)
+	openssl rsa -in $< -outform pem > $@
+
+.PHONY: clean
+clean:
+	$(RM) $(PROFILE_ENC) $(PROFILE_DEC) $(KEY_DEC) $(PRVKEY_PEM)
