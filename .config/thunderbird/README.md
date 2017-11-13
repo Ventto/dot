@@ -45,7 +45,7 @@ openssl rand -base64 256 > key.bin
 * Encrypt that key with your public key:
 
 ```bash
-openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key.bin -out key.enc
+openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key.bin -out key.bin.enc
 ```
 
 * Use the encrypted key to encrypt your archive:
@@ -63,7 +63,7 @@ openssl enc -aes-256-cbc -salt               \
 * Decrypt the key with your public key:
 
 ```bash
-openssl rsautl -decrypt -inkey id_rsa.pub.pem -pubin -in key.enc -out key.bin
+openssl rsautl -decrypt -inkey id_rsa.pem -in key.bin.enc -out key.bin
 ```
 
 * Use the key to decrypt your archive:
