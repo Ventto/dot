@@ -3,6 +3,8 @@ Thunderbird
 
 ## Archive
 
+* Add a `.gitignore` file into your profile directory
+
 Let's suppose you've never added the profile directory before.
 
 * `git add` the profile directory:
