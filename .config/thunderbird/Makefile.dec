@@ -9,7 +9,7 @@ PRVKEY_RSA  = ~/.ssh/id_rsa
 all: $(PROFILE_DEC)
 
 $(PROFILE_DEC): $(PROFILE_ENC) $(KEY_DEC)
-	openssl enc -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY_DEC)
+	openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY_DEC)
 
 $(KEY_DEC): $(KEY_ENC) $(PRVKEY_PEM)
 	openssl rsautl -decrypt -inkey $(PRVKEY_PEM) -in $< -out $@
