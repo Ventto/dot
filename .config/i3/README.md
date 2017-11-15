@@ -6,7 +6,8 @@ My own i3 configuration
 * i3-gaps - Window manager
 * i3lock - An improved screenlocker based upon XCB and PAM
 * conky (>=1.10) - A system monitor for X
-* font awesome (>=4.4) - Iconic font designed for use with Twitter Bootstrap
+* font Awesome (>=4.4) - Iconic font used with Twitter Bootstrap
+* font Hack - Terminal font
 
 ## Notifications
 
