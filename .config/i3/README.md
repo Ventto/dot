@@ -22,9 +22,22 @@ My own i3 configuration
 
 ## Debug
 
-In `~/contrib`:
-* i3dbg-bar.sh - Debug i3bar problems by verbose in term
-* i3log-enable.sh - Enable i3 log (in /dev/shm)
+* Help to debug i3bar:
+
+```bash
+i3 reload
+killall i3bar
+for c in $(i3-msg -t get_bar_config | python -c \
+	'import json,sys;print("\n".join(json.load(sys.stdin)))'); do \
+	(i3bar --bar_id=$c >"i3bar.$c.log" 2>&1) & \
+done;
+```
+
+* Enable i3 log in `/dev/shm`:
+
+```bash
+i3-msg 'debuglog on; shmlog on; reload'
+```
 
 ## Useful
 
