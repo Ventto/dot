@@ -43,3 +43,15 @@ i3-msg 'debuglog on; shmlog on; reload'
 
 * xev - Print contents of X events and helps to get keyboard's keyname
 * xprop - Property displayer for X and helps to get win's classname
+
+## Awesome Font
+
+| Categories/Versions | Native | 4.1 | 4.5 | 4.7 |
+|--|--|--|--|--|
+| RAM |   |  |  |   |
+| CPU |   |  |  |   |
+| USB |  |  |  |   |
+| Browser |   |  |  |  |
+| Mail |   |  |  |   |
+| Git |   |   |  |  |
+| Bluetooth |  |  |  |    |
