@@ -6,17 +6,23 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'terryma/vim-multiple-cursors'
+" Edition
 Plugin 'tpope/vim-surround'
-Plugin 'tomasr/molokai'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'mhinz/vim-signify'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-signify'
+Plugin 'vim-syntastic/syntastic'
+" Interface
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomasr/molokai'
+" Git
+Plugin 'tpope/vim-fugitive'
+" Python
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tmhedberg/SimpylFold'
 
 call vundle#end()
 
@@ -24,31 +30,30 @@ filetype plugin indent on
 syntax on
 
 " #===========================#
-"
 "            Basic
-"
 " #===========================#
+
+set autoindent
+set backspace=2
+set cc=79
+set cursorline
+set encoding=utf-8
+set fileformat=unix
+set foldmethod=indent
+set foldnestmax=1
+set laststatus=2
+set mouse=a
+set number relativenumber
+set ruler
+set scrolloff=15
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set visualbell
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+set wildmenu
+set wildmode=list:longest,full
 
 colorscheme molokai
 cnoreabbrev w!! w !sudo tee % > /dev/null
-
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-set number
-set relativenumber
-set encoding=utf-8
-set scrolloff=15
-set autoindent
-set visualbell
-set ruler
-set cursorline
-set laststatus=2
-set wildmenu
-set wildmode=list:longest,full
-set foldmethod=indent
-set foldnestmax=1
-set mouse=a
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
-set cc=79
 
 " Colors colum limit
 hi OverLength ctermbg=red ctermfg=black
@@ -68,9 +73,7 @@ map <A-z> zr
 map <A-e> zm
 
 " #===========================#
-"
 "           Plugins
-"
 " #===========================#
 
 " Syntastic
@@ -102,3 +105,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " | Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" SimplyFold
+let g:SimpylFold_docstring_preview=1
