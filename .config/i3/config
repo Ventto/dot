@@ -55,7 +55,7 @@ bar {
     height 25
 	colors { background #1d2021 }
 	separator_symbol "  "
-	status_command ~/.config/i3/i3bar/i3bar.sh conky top
+	status_command "$HOME/.config/i3/i3bar.sh conky top"
 }
 bar {
 	font pango:Hack, FontAwesome 9
@@ -63,7 +63,7 @@ bar {
     height 25
 	colors { background #1d2021 }
 	separator_symbol "  "
-	status_command ~/.config/i3/i3bar/i3bar.sh conky bottom
+	status_command "$HOME/.config/i3/i3bar.sh conky bottom"
 }
 
 # Bindkeys
