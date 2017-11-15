@@ -5,7 +5,7 @@ set $browser        firefox
 set $capture        vokoscreen
 set $git            gitkraken
 set $imgeditor      gimp
-set $mail           thunderbird --profile ~/.config/thunderbird/default
+set $mail           thunderbird --profile "$HOME/.config/thunderbird/default"
 set $player         smplayer
 set $screenlocker   i3lock -c 000000
 set $torrent        transmission-qt
@@ -146,10 +146,9 @@ bindsym $mod+Ctrl+p exec --no-startup-id $player
 bindsym $mod+Ctrl+t exec --no-startup-id $torrent
 
 # Screenshot
-bindsym Print exec scrot ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png && \
-                        notify-send -u low "Screenshot !" "Screen"
-bindsym $mod+Ctrl+x exec scrot -u ~/images/screenshots/%d-%m-%Y-%H:%M:%S.png \
-						&& notify-send -u low "Screenshot !" "Window"
+set $img "$HOME/images/screenshots/%d-%m-%Y-%H:%M:%S.png"
+bindsym Print exec scrot $img && notify-send -u low "Screen." "Scrot"
+bindsym $mod+Ctrl+x exec scrot -u $img && notify-send -u low "Window." "Scrot"
 
 # Others Applications
 bindsym $mod+Ctrl+v exec VirtualBox
