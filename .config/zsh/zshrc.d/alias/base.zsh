@@ -25,8 +25,6 @@ alias du='ncdu '
 alias vim='nvim -p'
 alias vimup='nvim +PluginInstall +qall'
 alias wget='wget -o /dev/null'
-
-alias i3up="$HOME/.config/i3/contrib/i3up.sh"
 alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
 
 alias feh='NoHup feh'

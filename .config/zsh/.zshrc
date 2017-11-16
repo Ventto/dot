@@ -43,6 +43,7 @@ add_functions 'file-ext'
 add_functions 'man-helper'
 add_functions 'maths'
 add_functions 'nohup'
+add_functions 'net-utils'
 
 # Aliases
 add_aliases 'base'
