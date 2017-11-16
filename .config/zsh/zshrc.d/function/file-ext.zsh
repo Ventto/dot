@@ -1,8 +1,11 @@
 xml_show () {
+    if [ "$#" -ne 1 ] || [ ! -r "$1" ]; then return 1; fi
+
+    local _file="$1"; shift
     local output="${1%%.*}-pretty.${1#*.}"
 
-    xmllint --pretty 1 "$1" > "${output}"
-    mv "${output}" "$1"
+    xmllint --pretty 1 "${_file}" > "${output}"
+    mv "${output}" "${_file}"
 }
 
 pdf_merge () {
@@ -10,5 +13,5 @@ pdf_merge () {
 }
 
 json_show () {
-    python -m json.tool
+    python -m json.tool "$1"
 }
