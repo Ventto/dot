@@ -16,7 +16,7 @@ feh --bg-max --no-fehbg ~/.config/i3/wallpapers/cannabis.jpg
 nohup dunst > /dev/null 2>&1 &
 
 # Brightness
-lux -m 30 -M 99 -S 20%
+lux -S 60%
 
 # Audio
 amixer -q set Master mute
