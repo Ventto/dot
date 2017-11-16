@@ -22,7 +22,7 @@ alias grep='grep -E --color=auto'
 alias less='LESSHISTFILE=- less -R -i'
 alias sdiff='grep -vxf'
 alias du='ncdu '
-alias vim='nvim'
+alias vim='nvim -p'
 alias vimup='nvim +PluginInstall +qall'
 alias wget='wget -o /dev/null'
 
