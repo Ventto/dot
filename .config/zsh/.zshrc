@@ -82,7 +82,7 @@ zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
 
 function precmd {
-	[ "$?" -eq 0 ] && icon="" || icon=""
-	vcs_info
-	[ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
+    [ "$?" -eq 0 ] && icon="" || icon=""
+    vcs_info
+    [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
 }
