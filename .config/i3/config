@@ -90,7 +90,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+q kill
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
