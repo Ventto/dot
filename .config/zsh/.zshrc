@@ -81,6 +81,11 @@ zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 
 PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
 
+function preexec () {
+    # Command line as windows title
+    print -Pn "\e]0;$1\a"
+}
+
 function precmd {
     [ "$?" -eq 0 ] && icon="" || icon=""
     vcs_info
