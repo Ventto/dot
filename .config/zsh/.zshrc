@@ -52,21 +52,13 @@ add_aliases 'aur'
 
 # Completion
 add_comp 'base'
+
+# Completion (bash)
 autoload -U +X bashcompinit && bashcompinit
 add_bash_comp 'ct-ng'
 
 # Bindkeys
-bindkey -v
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^R' history-incremental-search-backward
-bindkey '^d' delete-char
-bindkey '^p' expand-or-complete-prefix
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
-bindkey '\e[3~' delete-char
-bindkey '^[[3~' delete-char
-
+add_bindkeys 'base'
 add_bindkeys 'edit-command-line'
 add_bindkeys 'fg-ctrlz'
 
@@ -82,13 +74,13 @@ zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 
 PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
 
-function preexec () {
-    # Command line as windows title
-    print -Pn "\e]0;$1\a"
-}
-
 function precmd {
     [ "$?" -eq 0 ] && icon="" || icon=""
     vcs_info
     [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
+}
+
+# Print command line in window title
+function preexec () {
+    print -Pn "\e]0;$1\a"
 }
