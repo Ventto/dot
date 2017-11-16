@@ -42,6 +42,3 @@ alias umsd='sync && { sudo umount /mnt/sd && echo OK || echo FAILED; }'
 alias gdb='gdb -q'
 alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
 alias checkpatch='checkpatch.pl --no-tree --strict -f'
-
-alias pdfmerge='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=out.pdf '
-alias prettyjson='python -m json.tool '
