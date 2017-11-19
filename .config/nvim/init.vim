@@ -61,21 +61,22 @@ set wildmode=list:longest,full
 
 colo molokai
 
+" Save changes using sudo without involving nvim
 cnoreabbrev w!! w !sudo tee % > /dev/null
 
-" Colors colum limit
+" Column limit
 hi OverLength ctermbg=red ctermfg=black
 match OverLength /\%80v.\+/
 
-" Deletes eol spaces
+" Deletes EOL spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Filetype syntax highlighting
+" Additional filetype
 au! BufRead,BufNewFile *.gdb            set filetype=gdb
 au! BufRead,BufNewFile Makefile.*       set filetype=make
 au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
 
-" Fold life
+" Collapse or expand
 map , zr
 map ; zm
 
