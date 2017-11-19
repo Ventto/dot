@@ -76,9 +76,8 @@ au! BufRead,BufNewFile Makefile.*       set filetype=make
 au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
 
 " Fold life
-map <A-a> zc
-map <A-z> zr
-map <A-e> zm
+map , zr
+map ; zm
 
 " #===========================#
 "          Syntastic
