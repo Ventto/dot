@@ -37,7 +37,7 @@ filetype plugin indent on
 syntax on
 
 " #===========================#
-"            Basic
+"            Minimal
 " #===========================#
 
 set autoindent
@@ -81,23 +81,31 @@ map <A-z> zr
 map <A-e> zm
 
 " #===========================#
-"           Plugins
+"          Syntastic
 " #===========================#
 
-" Syntastic
 let g:syntastic_c_checkers = ['checkpatch', 'gcc']
 let g:syntastic_c_check_header = 1
 
-" Tagbar
+" #===========================#
+"           Tagbar
+" #===========================#
+
 nmap <F8> :TagbarToggle<CR>
 
-" Ultisnips
+" #===========================#
+"          Ultisnips
+" #===========================#
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
-" CtrlP
+" #===========================#
+"            CtrlP
+" #===========================#
+
 let g:ctrlp_cmd='CtrlP :pwd'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
@@ -106,7 +114,10 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" NerdTree
+" #===========================#
+"           NerdTree
+" #===========================#
+
 map <C-f> :NERDTreeToggle<CR>
 " | Automatically opened when vim starts up with no file specified
 autocmd StdinReadPre * let s:std_in=1
@@ -114,12 +125,22 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " | Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" SimplyFold
+" #===========================#
+"          SimplFold
+" #===========================#
+
 let g:SimpylFold_docstring_preview=1
 
-" Expand-region
+" #===========================#
+"        Expand Region
+" #===========================#
+
 map ù <Plug>(expand_region_expand)
 map * <Plug>(expand_region_shrink)
+
+" #===========================#
+"          Light Line
+" #===========================#
 
 let g:lightline = {
       \ 'active': {
