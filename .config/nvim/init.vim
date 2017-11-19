@@ -4,17 +4,32 @@ filetype off
 
 call plug#begin("~/.config/nvim/bundle")
 
+" Color scheme
 Plug 'tomasr/molokai'
+" Snippet engine
 Plug 'SirVer/ultisnips'
+" Snippet templates
 Plug 'honza/vim-snippets'
+" Displays tags in a window
 Plug 'majutsushi/tagbar'
+" Show a diff in the sign column
 Plug 'mhinz/vim-signify'
+" Syntax checking hacks
 Plug 'vim-syntastic/syntastic'
+" Fuzzy file, buffer, mru, tag, etc finder
 Plug 'ctrlpvim/ctrlp.vim'
+" A tree explorer plugin
 Plug 'scrooloose/nerdtree'
+" Visually selects increasingly larger regions
+Plug 'terryma/vim-expand-region'
+" Allows multiple selections
 Plug 'terryma/vim-multiple-cursors'
+" Git wrapper so awesome
 Plug 'tpope/vim-fugitive'
+" Folds Python code
 Plug 'tmhedberg/SimpylFold'
+" Configurable statusline/tabline plugin
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -101,3 +116,24 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
+
+" Expand-region
+map ù <Plug>(expand_region_expand)
+map * <Plug>(expand_region_shrink)
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [  'syntastic', 'maxlineinfo'  ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'maxlineinfo': "MaxLineInfo",
+      \ },
+      \ }
+function! MaxLineInfo()
+  return line('.') . '/' . line('$')
+endfunction
