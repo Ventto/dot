@@ -10,7 +10,10 @@ nohup numlockx > /dev/null 2>&1 &
 setxkbmap fr
 
 # Wallpaper
-feh --bg-max --no-fehbg ~/.config/i3/wallpapers/cannabis.jpg
+feh --bg-max --no-fehbg ~/.config/i3/wallpapers/fusion.jpg
+
+# Transparency
+nohup compton > /dev/null 2>&1 &
 
 # Notification server
 nohup dunst > /dev/null 2>&1 &
