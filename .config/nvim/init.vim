@@ -4,21 +4,16 @@ filetype off
 
 call plug#begin("~/.config/nvim/bundle")
 
-" Edition
-Plug 'tpope/vim-surround'
+Plug 'tomasr/molokai'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'vim-syntastic/syntastic'
-" Interface
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tomasr/molokai'
-" Git
 Plug 'tpope/vim-fugitive'
-" Python
 Plug 'tmhedberg/SimpylFold'
 
 call plug#end()
@@ -49,7 +44,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 set wildmenu
 set wildmode=list:longest,full
 
-colorscheme molokai
+colo molokai
+
 cnoreabbrev w!! w !sudo tee % > /dev/null
 
 " Colors colum limit
