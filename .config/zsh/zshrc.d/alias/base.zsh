@@ -42,3 +42,6 @@ alias umsd='sync && { sudo umount /mnt/sd && echo OK || echo FAILED; }'
 alias gdb='gdb -q'
 alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
 alias checkpatch='checkpatch.pl --no-tree --strict -f'
+
+alias wfnow="curl -s wttr.in | sed -n '3,7p'"
+alias wf="curl -s wttr.in"
