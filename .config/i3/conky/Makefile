@@ -4,7 +4,7 @@ BARS = build/i3bar-%-bottom.conf build/i3bar-%-top.conf
 all: build conky legacy
 
 build:
-	mkdir $@
+	mkdir -p $@
 
 .PHONY: conky legacy
 conky:  %: $(BARS)
