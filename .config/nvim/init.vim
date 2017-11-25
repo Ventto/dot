@@ -30,6 +30,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tmhedberg/SimpylFold'
 " Configurable statusline/tabline plugin
 Plug 'itchyny/lightline.vim'
+" Increasing and decreasing columns of numbers, dates or daynames
+Plug 'vim-scripts/VisIncr'
 
 call plug#end()
 
