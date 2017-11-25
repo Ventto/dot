@@ -79,6 +79,7 @@ au! BufRead,BufNewFile Makefile.*       set filetype=make
 au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
 
 " Collapse or expand
+map ! zc
 map , zr
 map ; zm
 
