@@ -1,5 +1,5 @@
 NoHup () {
-    [ "$#" -ne 1 ] && return 1
+    [ "$#" -lt 1 ] && return 1
 
     local _bin="${1}"; shift
 
