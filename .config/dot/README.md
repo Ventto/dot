@@ -25,3 +25,7 @@ $ dot pull --rebase origin master
 $ echo "[include]\n\tpath = aliases ;\n" >> "${HOME}/.config/dot/config"
 $ echo "[status]\n\tshowUntrackedFiles = no\n" >> "${HOME}/.config/dot/config"
 ```
+
+## Todo
+
+- [ ] Avoid including alias file manually into the repo config file (third step)
