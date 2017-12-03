@@ -3,7 +3,6 @@ set $mod            Mod4
 set $term           termite
 set $browser        firefox
 set $capture        vokoscreen
-set $git            gitkraken
 set $imgeditor      gimp
 set $mail           thunderbird --profile "$HOME/.config/thunderbird/default"
 set $player         smplayer
@@ -34,7 +33,6 @@ workspace $ws7 output VGA-1
 
 # Assignation
 assign [instance="Navigator"] $ws1
-assign [class="GitKraken"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [class="Zathura"] $ws5
 assign [class="Gimp"] $ws6
@@ -140,7 +138,6 @@ bindsym $mod+p exec mons -n left
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+c exec --no-startup-id $capture
-bindsym $mod+Ctrl+g exec --no-startup-id $git
 bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
 bindsym $mod+Ctrl+m exec --no-startup-id $mail
