@@ -10,6 +10,7 @@ alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
 alias dh='dirs -v'
+alias ~='termite'
 alias ,,='cd -'
 alias ..='cd ..'
 alias ...='cd ../../..'
@@ -29,6 +30,7 @@ alias i3log="DISPLAY=$DISPLAY i3-dump-log | less"
 
 alias feh='NoHup feh'
 alias gimp='NoHup gimp'
+alias gitk='NoHup gitk --all'
 alias nautilus='NoHup nautilus .'
 alias smplayer='NoHup smplayer'
 alias texmaker='NoHup texmaker'
