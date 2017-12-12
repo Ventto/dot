@@ -33,7 +33,7 @@ export VISUAL="nvim"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export GOPATH="$HOME/.config/go"
-export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
 export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
