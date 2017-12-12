@@ -74,9 +74,9 @@ match OverLength /\%80v.\+/
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Additional filetype
-au! BufRead,BufNewFile *.gdb            set filetype=gdb
-au! BufRead,BufNewFile Makefile.*       set filetype=make
-au! BufRead,BufNewFile ~/.config/zsh/*  set filetype=zsh
+au! BufRead,BufNewFile *.rules               set filetype=iptables
+au! BufRead,BufNewFile *.gdb                 set filetype=gdb
+au! BufRead,BufNewFile Makefile.[a-zA-Z0-9]  set filetype=make
 
 " Collapse or expand
 map ! zc
