@@ -1,7 +1,7 @@
 set $mod            Mod4
 # Default Applications
 set $term           termite
-set $browser        firefox
+set $browser        firefox --profile "$HOME/.config/firefox/default"
 set $capture        vokoscreen
 set $imgeditor      gimp
 set $mail           thunderbird --profile "$HOME/.config/thunderbird/default"

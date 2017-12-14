@@ -1,0 +1,151 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#browser { margin-top: -1px !important; }
+
+/*
+==========================
+           App
+==========================
+*/
+
+#appcontent,
+#appcontent > #content,
+#appcontent > #content > tabbox > tabpanels {
+    background: #1d2021 !important;
+}
+
+:root {
+    --tab-min-height: 26px !important;
+}
+
+/*
+==========================
+        Buttons
+==========================
+*/
+
+#alltabs-button,
+#back-button,
+#forward-button,
+#go-button,
+#home-button,
+#library-button,
+#new-tab-button,
+#page-action-buttons,
+#reader-mode-button,
+#reload-button,
+#sidebar-button,
+#star-button,
+#stop-button,
+#PersonalToolbar,
+#CustomizeToolbarWindow,
+#search-container,
+#main-menubar,
+.tabs-newtab-button,
+.tabs-closebutton-box,
+.tab-close-button {
+    display: none !important;
+}
+
+#downloads-button {
+    display: block !important;
+}
+
+/*
+==========================
+          Tabs
+==========================
+*/
+
+.tabbrowser-tab {
+    max-width: 100px !important;
+}
+
+.tabbrowser-tab[selected=true] {
+    color: #c0b18b !important;
+    background: #404040 !important;
+    border-bottom: 0px none !important;
+    box-shadow: none !important;
+}
+
+.tabbrowser-tab *,
+.tab-stack * {
+    font-size: 11px !important;
+    font-family: Hack;
+}
+
+.tabbrowser-tab:before,
+.tabbrowser-tab:after {
+    visibility: hidden !important;
+}
+
+/* Closer pinned tab icons */
+.tab-content[pinned] {
+  padding: 0 10px !important;
+  border-right: 1px solid #333333 !important;
+}
+
+/* Hide the new curved tab edges */
+.tab-background {
+    opacity: 0 !important;
+}
+
+/*
+==========================
+        Tool Bars
+==========================
+*/
+
+#TabsToolbar, #nav-bar, #urlbar {
+    background: #2e3132 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 0 0 0 !important;
+}
+
+#TabsToolbar {
+    -moz-box-ordinal-group: 2 !important;
+}
+
+#nav-bar {
+    -moz-box-ordinal-group: 1 !important;
+    margin-top:-2px !important;
+    height: 28px !important;
+}
+
+#urlbar {
+    border-color: #2e3132 !important;
+    font-family: Hack;
+    font-size: 11px;
+}
+
+#urlbar, .searchbar-textbox {
+    min-height: 28px !important;
+}
+
+/*
+==========================
+       Tab Center
+==========================
+*/
+
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"]: {
+    font-family: Hack !important;
+}
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"]:hover,
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar {
+    min-width: 260px !important;
+    max-width: 260px !important;
+    font-family: Hack !important;
+    font-size: 11px !important;
+}
+
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar-header,
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] ~ #sidebar-splitter {
+    display: none;
+}
+
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar-header {
+    background-color: #31363b;
+    border-bottom: none;
+}
