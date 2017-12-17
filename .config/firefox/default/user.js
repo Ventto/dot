@@ -110,11 +110,11 @@ user_pref("network.IDN_show_punycode", true);
 
 // Prevent sites from sniffing clipboard content:
 // = Further reading
-    // https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/dom.event.clipboardevents.enabled
+// https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/dom.event.clipboardevents.enabled
 user_pref("dom.event.clipboardevents.enabled", false);
 
 // Disable geolocation:
-    // Don't do this on mobile browsers if you want Google Maps or similar to know your location.
+// Don't do this on mobile browsers if you want Google Maps or similar to know your location.
 user_pref("geo.enabled", false);
 user_pref("geo.wifi.uri", "");
 
@@ -128,7 +128,7 @@ user_pref("breakpad.reportURL", ""); // http://kb.mozillazine.org/Breakpad.repor
 
 // Disable telemetry:
 // = Further reading
-    // https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
+// https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
 user_pref("toolkit.telemetry.archive.enabled", false);
 user_pref("toolkit.telemetry.cachedClientID", "");
 user_pref("toolkit.telemetry.enabled", false); // This alone does *not* disable telemetry
@@ -138,7 +138,7 @@ user_pref("toolkit.telemetry.unified", false); // This turns off telemetry compl
 
 // Disable health report:
 // = Further reading
-    // https://gecko.readthedocs.org/en/latest/services/healthreport/healthreport/index.html#legal-and-privacy-concerns
+// https://gecko.readthedocs.org/en/latest/services/healthreport/healthreport/index.html#legal-and-privacy-concerns
 user_pref("datareporting.healthreport.about.reportUrl", "");
 user_pref("datareporting.healthreport.about.reportUrlUnified", "");
 user_pref("datareporting.healthreport.documentServerURI", "");
@@ -401,7 +401,7 @@ user_pref("browser.pocket.site", "");
 
 // Disable "social" crap:
 // = Further reading
-    // http://www.ghacks.net/2013/04/10/mozilla-adds-cliqz-msnnow-and-mixi-as-social-providers-to-firefox/
+// http://www.ghacks.net/2013/04/10/mozilla-adds-cliqz-msnnow-and-mixi-as-social-providers-to-firefox/
 user_pref("social.directories", "");
 user_pref("social.remote-install.enabled", false);
 user_pref("social.share.activationPanelEnabled", false);
@@ -463,15 +463,15 @@ user_pref("browser.contentHandlers.types.0.uri", "");
 // Remove default website protocol handlers:
 // = Further reading
 // http://kb.mozillazine.org/Gecko.handlerService.schemes.%28protocol%29.*.uriTemplate
-user_pref("gecko.handlerService.schemes.irc.0.name", "");           // Mibbit
+user_pref("gecko.handlerService.schemes.irc.0.name", "");       // Mibbit
 user_pref("gecko.handlerService.schemes.irc.0.uriTemplate", "");
 user_pref("gecko.handlerService.schemes.ircs.0.name", "");
 user_pref("gecko.handlerService.schemes.ircs.0.uriTemplate", "");
-user_pref("gecko.handlerService.schemes.mailto.0.name", "");        // Yahoo
+user_pref("gecko.handlerService.schemes.mailto.0.name", "");    // Yahoo
 user_pref("gecko.handlerService.schemes.mailto.0.uriTemplate", "");
-user_pref("gecko.handlerService.schemes.mailto.1.name", "");        // Gmail
+user_pref("gecko.handlerService.schemes.mailto.1.name", "");    // Gmail
 user_pref("gecko.handlerService.schemes.mailto.1.uriTemplate", "");
-user_pref("gecko.handlerService.schemes.webcal.0.name", "");        // 30Boxes
+user_pref("gecko.handlerService.schemes.webcal.0.name", "");    // 30Boxes
 user_pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "");
 
 // Disable "Snippets" (Mozilla content shown on about:home screen):
