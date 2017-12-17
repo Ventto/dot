@@ -7,6 +7,15 @@ user_pref("browser.link.open_newwindow", 3);
 user_pref("browser.link.open_newwindow.restriction", 0);
 user_pref("browser.link.open_newwindow.override.external", -1);
 
+// Browser dark theme:
+user_pref("lightweightThemes.persisted.footerURL", false);
+user_pref("lightweightThemes.persisted.headerURL", false);
+user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
+user_pref("lightweightThemes.usedThemes", "[]");
+
+// Add-on buttons placement:
+user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"jid1-zadieub7xozojw_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"urlbar-container\",\"library-button\",\"sidebar-button\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"toolbar-menubar\":[\"menubar-items\"]},\"seen\":[\"developer-button\",\"jid1-zadieub7xozojw_jetpack-browser-action\",\"_0ad88674-2b41-4cfb-99e3-e206c74a0076_-browser-action\",\"enhancerforyoutube_maximerf_addons_mozilla_org-browser-action\",\"_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action\",\"ublock0_raymondhill_net-browser-action\"],\"dirtyAreaCache\":[\"PersonalToolbar\",\"nav-bar\",\"TabsToolbar\",\"toolbar-menubar\",\"widget-overflow-fixed-list\"],\"currentVersion\":12,\"newElementCount\":3}");
+
 // ====================================================
 //                    Speed & Perf
 // ====================================================
