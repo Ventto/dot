@@ -19,6 +19,9 @@ user_pref("extensions.ui.lastCategory", "addons://list/extension");
 // Add-on buttons placement
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"jid1-zadieub7xozojw_jetpack-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"urlbar-container\",\"downloads-button\",\"library-button\",\"sidebar-button\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"toolbar-menubar\":[\"menubar-items\"]},\"seen\":[\"developer-button\",\"jid1-zadieub7xozojw_jetpack-browser-action\",\"enhancerforyoutube_maximerf_addons_mozilla_org-browser-action\",\"_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"webide-button\",\"_0ad88674-2b41-4cfb-99e3-e206c74a0076_-browser-action\"],\"dirtyAreaCache\":[\"PersonalToolbar\",\"nav-bar\",\"TabsToolbar\",\"toolbar-menubar\"],\"currentVersion\":12,\"newElementCount\":47}");
 
+// Tab size:
+user_pref("browser.tabs.tabMinWidth", 100);
+
 // ====================================================
 //                    Speed & Perf
 // ====================================================

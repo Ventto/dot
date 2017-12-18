@@ -57,10 +57,6 @@
 ==========================
 */
 
-.tabbrowser-tab {
-    max-width: 100px !important;
-}
-
 .tabbrowser-tab[selected=true] {
     color: #c0b18b !important;
     background: #404040 !important;
