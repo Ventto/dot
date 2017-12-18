@@ -47,20 +47,20 @@ exec --no-startup-id i3-msg 'workspace $ws2'
 
 # Bars
 bar {
-	font pango:Hack, FontAwesome 9
-	position top
+    font pango:Hack, FontAwesome 9
+    position top
     height 25
-	colors { background #1d2021 }
-	separator_symbol "  "
-	status_command "$HOME/.config/i3/i3bar.sh conky top"
+    colors { background #1d2021 }
+    separator_symbol "  "
+    status_command "$HOME/.config/i3/i3bar.sh conky top"
 }
 bar {
-	font pango:Hack, FontAwesome 9
-	position bottom
+    font pango:Hack, FontAwesome 9
+    position bottom
     height 25
-	colors { background #1d2021 }
-	separator_symbol "  "
-	status_command "$HOME/.config/i3/i3bar.sh conky bottom"
+    colors { background #1d2021 }
+    separator_symbol "  "
+    status_command "$HOME/.config/i3/i3bar.sh conky bottom"
 }
 
 # Mouse
