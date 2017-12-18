@@ -22,6 +22,37 @@ user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-f
 // Tab size:
 user_pref("browser.tabs.tabMinWidth", 100);
 
+// New tab blank page:
+user_pref("browser.newtabpage.activity-stream.aboutHome.enabled", false);
+user_pref("browser.newtabpage.activity-stream.default.sites", "");
+user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
+user_pref("browser.newtabpage.activity-stream.enabled", false);
+user_pref("browser.newtabpage.activity-stream.feeds.localization", false);
+user_pref("browser.newtabpage.activity-stream.feeds.migration", false);
+user_pref("browser.newtabpage.activity-stream.feeds.newtabinit", false);
+user_pref("browser.newtabpage.activity-stream.feeds.places", false);
+user_pref("browser.newtabpage.activity-stream.feeds.prefs", false);
+user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories.options", "");
+user_pref("browser.newtabpage.activity-stream.feeds.sections", false);
+user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
+user_pref("browser.newtabpage.activity-stream.feeds.systemtick", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref("browser.newtabpage.activity-stream.filterAdult", false);
+user_pref("browser.newtabpage.activity-stream.prerender", false);
+user_pref("browser.newtabpage.activity-stream.showSearch", false);
+user_pref("browser.newtabpage.activity-stream.showTopSites", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry.ping.endpoint", "");
+user_pref("browser.newtabpage.activity-stream.topSitesCount", 0);
+user_pref("browser.newtabpage.columns", 0);
+user_pref("browser.newtabpage.directory.ping", "");
+user_pref("browser.newtabpage.directory.source", "");
+user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.newtabpage.enhanced", false);
+user_pref("browser.newtabpage.introShown", false);
+
 // ====================================================
 //                    Speed & Perf
 // ====================================================
