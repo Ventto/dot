@@ -58,8 +58,13 @@
 */
 
 .tabbrowser-tab[selected=true] {
-    color: #c0b18b !important;
-    background: #404040 !important;
+    background: #5675b9 !important;
+    border-bottom: 0px none !important;
+    box-shadow: none !important;
+}
+
+.tabbrowser-tab:hover {
+    background: #415074 !important;
     border-bottom: 0px none !important;
     box-shadow: none !important;
 }
