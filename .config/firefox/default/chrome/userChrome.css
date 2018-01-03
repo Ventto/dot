@@ -57,16 +57,22 @@
 ==========================
 */
 
-.tabbrowser-tab[selected=true] {
-    background: #5675b9 !important;
+.tabbrowser-tab {
     border-bottom: 0px none !important;
     box-shadow: none !important;
 }
 
+.tabbrowser-tab[selected=true] {
+    background: #5675b9 !important;
+}
+
 .tabbrowser-tab:hover {
     background: #415074 !important;
-    border-bottom: 0px none !important;
-    box-shadow: none !important;
+}
+
+.tabbrowser-tab:before,
+.tabbrowser-tab:after {
+    visibility: hidden !important;
 }
 
 .tabbrowser-tab *,
@@ -75,14 +81,9 @@
     font-family: Hack;
 }
 
-.tabbrowser-tab:before,
-.tabbrowser-tab:after {
-    visibility: hidden !important;
-}
-
 /* Closer pinned tab icons */
 .tab-content[pinned] {
-  padding: 0 10px !important;
+  padding: 0 8px !important;
   border-right: 1px solid #333333 !important;
 }
 
