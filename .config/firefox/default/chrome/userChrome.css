@@ -87,6 +87,11 @@
   border-right: 1px solid #333333 !important;
 }
 
+/* Remove the spinning wheel but keep the loading animation */
+.tab-throbber {
+  list-style-image: url("chrome://mozapps/skin/places/defaultFavicon.png") !important;
+}
+
 /* Hide the new curved tab edges */
 .tab-background {
     opacity: 0 !important;
