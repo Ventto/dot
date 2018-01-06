@@ -1,17 +1,17 @@
-PROFILE 	= profile.zip
+PROFILE     = profile.zip
 PROFILE_ENC = $(PROFILE).enc
-KEY			= ./key.bin
+KEY         = key.bin
 KEY_ENC     = $(KEY).enc
-PRVKEY  	= $(HOME)/.ssh/id_rsa
+PRVKEY      = $(HOME)/.ssh/id_rsa
 
 .PHONY: all
 all: $(PROFILE)
 
 $(PROFILE): $(PROFILE_ENC) $(KEY)
-	openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
+    openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
 
 $(KEY): $(KEY_ENC) $(PRVKEY)
-	openssl rsautl -decrypt -inkey $(PRVKEY) -in $< -out $@
+    openssl rsautl -decrypt -inkey $(PRVKEY) -in $< -out $@
 
 .PHONY: clean
 clean:
