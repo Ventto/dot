@@ -8,10 +8,10 @@ PRVKEY      = $(HOME)/.ssh/id_rsa
 all: $(PROFILE)
 
 $(PROFILE): $(PROFILE_ENC) $(KEY)
-    openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
+	openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
 
 $(KEY): $(KEY_ENC) $(PRVKEY)
-    openssl rsautl -decrypt -inkey $(PRVKEY) -in $< -out $@
+	openssl rsautl -decrypt -inkey $(PRVKEY) -in $< -out $@
 
 .PHONY: clean
 clean:

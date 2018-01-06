@@ -1,28 +1,31 @@
-PROFILE_DEC = profile.zip
-PROFILE_ENC = $(PROFILE_DEC).enc
-KEY_DEC     = ./key.bin
-KEY_ENC     = $(KEY_DEC).enc
-PRVKEY_RSA  = ~/.ssh/id_rsa
-PRVKEY_PEM  = ida_rsa.pem
+PROFILE     = profile.zip
+PROFILE_ENC = $(PROFILE).enc
+KEY         = key.bin
+KEY_ENC     = $(KEY).enc
+PRVKEY      = ~/.ssh/id_rsa
+PUBKEY      = ida_rsa.pub.pem
 
 .PHONY: all
-all: $(PROFILE_ENC)
+all: $(PROFILE_ENC) $(KEY_ENC)
 
-$(PROFILE_ENC): $(PROFILE_DEC) $(KEY_DEC)
-	openssl enc -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY_DEC)
+$(PROFILE_ENC): $(PROFILE) $(KEY)
+	openssl enc -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
 
-$(PROFILE_DEC):
+$(PROFILE):
 	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" reset; \
  	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" add default; \
 	zip -9 $@ $$(git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" status -s -b | grep -E '^A' | cut -c 4-); \
 	git --git-dir="$$HOME/.config/dot/" --work-tree="$$HOME" reset
 
-$(KEY_DEC): $(KEY_ENC) $(PRVKEY_PEM)
-	openssl rsautl -decrypt -inkey $(PRVKEY_PEM) -in $< -out $@
+$(KEY_ENC): $(KEY) $(PUBKEY)
+	openssl rsautl -encrypt -inkey $(PUBKEY) -pubin -in $< -out $@
 
-$(PRVKEY_PEM): $(PRVKEY_RSA)
-	openssl rsa -in $< -outform pem > $@
+$(KEY):
+	openssl rand -base64 256 > $@
+
+$(PUBKEY): $(PRVKEY)
+	openssl rsa -in $< -outform pem > $@ -pubout
 
 .PHONY: clean
 clean:
-	$(RM) $(PROFILE_ENC) $(PROFILE_DEC) $(KEY_DEC) $(PRVKEY_PEM)
+	$(RM) $(PROFILE) $(PROFILE_ENC) $(KEY) $(KEY_ENC) $(PUBKEY)
