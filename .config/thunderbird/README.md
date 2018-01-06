@@ -36,19 +36,13 @@ Enter pass phrase for /home/user/.ssh/id_rsa:
 writing RSA key
 ```
 
-* Generate a key file:
+* Generate a password file:
 
 ```bash
 openssl rand -base64 256 > key.bin
 ```
 
-* Encrypt that key with your public key:
-
-```bash
-openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key.bin -out key.bin.enc
-```
-
-* Use the encrypted key to encrypt your archive:
+* Use the password file to encrypt your archive:
 
 ```bash
 openssl enc -aes-256-cbc -salt               \
@@ -56,20 +50,26 @@ openssl enc -aes-256-cbc -salt               \
         -pass file:./key.bin
 ```
 
-* Do not forget to commit/push the encrypted key
+* Encrypt that file with your public key:
+
+```bash
+openssl rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in key.bin -out key.bin.enc
+```
+
+* Save the encrypted password file and the encrypted profile archive
 
 ## Decrypt
 
-* Decrypt the key with your public key:
+* Decrypt the password file with your private key:
 
 ```bash
-openssl rsautl -decrypt -inkey id_rsa.pem -in key.bin.enc -out key.bin
+openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in key.bin.enc -out key.bin
 ```
 
-* Use the key to decrypt your archive:
+* Use that file to decrypt your archive:
 
 ```bash
 openssl enc -d -aes-256-cbc \
-        -in profile.zip.enc -out profile.zip \
+        -in profile.zip.enc -out profi le.zip \
         -pass file:./key.bin
 ```

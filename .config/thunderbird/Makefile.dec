@@ -1,22 +1,18 @@
-PROFILE_DEC = profile.zip
-PROFILE_ENC = $(PROFILE_DEC).enc
-KEY_DEC     = ./key.bin
-KEY_ENC     = $(KEY_DEC).enc
-PRVKEY_PEM  = ida_rsa.pem
-PRVKEY_RSA  = ~/.ssh/id_rsa
+PROFILE 	= profile.zip
+PROFILE_ENC = $(PROFILE).enc
+KEY			= ./key.bin
+KEY_ENC     = $(KEY).enc
+PRVKEY  	= $(HOME)/.ssh/id_rsa
 
 .PHONY: all
-all: $(PROFILE_DEC)
+all: $(PROFILE)
 
-$(PROFILE_DEC): $(PROFILE_ENC) $(KEY_DEC)
-	openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY_DEC)
+$(PROFILE): $(PROFILE_ENC) $(KEY)
+	openssl enc -d -aes-256-cbc -salt -in $< -out $@ -pass file:$(KEY)
 
-$(KEY_DEC): $(KEY_ENC) $(PRVKEY_PEM)
-	openssl rsautl -decrypt -inkey $(PRVKEY_PEM) -in $< -out $@
-
-$(PRVKEY_PEM): $(PRVKEY_RSA)
-	openssl rsa -in $< -outform pem > $@
+$(KEY): $(KEY_ENC) $(PRVKEY)
+	openssl rsautl -decrypt -inkey $(PRVKEY) -in $< -out $@
 
 .PHONY: clean
 clean:
-	$(RM) $(PROFILE_DEC) $(KEY_DEC) $(PRVKEY_PEM)
+	$(RM) $(PROFILE) $(KEY)
