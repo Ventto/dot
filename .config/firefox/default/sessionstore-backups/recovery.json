@@ -1,0 +1,59 @@
+{
+	"version": [
+		"sessionrestore",
+		1
+	],
+	"windows": [
+		{
+			"tabs": [
+				{
+					"entries": [
+						{
+							"url": "https://github.com/"
+						}
+					],
+					"pinned": true,
+					"index": 2
+				},
+				{
+					"entries": [
+						{
+							"url": "https://evernote.com/"
+						}
+					],
+					"pinned": true,
+					"index": 1
+				},
+				{
+					"entries": [
+						{
+							"url": "https://deezer.com/"
+						}
+					],
+					"pinned": true,
+					"index": 1
+				},
+				{
+					"entries": [
+						{
+							"url": "https://www.reddit.com/"
+						}
+					],
+					"pinned": true,
+					"index": 1
+				}
+			],
+			"selected": 4,
+			"_closedTabs": [],
+			"busy": false,
+			"sizemode": "normal"
+		}
+	],
+	"selectedWindow": 1,
+	"_closedWindows": [],
+	"session": {},
+	"global": {},
+	"cookies": [],
+	"browserConsole": false,
+	"scratchpads": []
+}
