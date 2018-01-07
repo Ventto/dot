@@ -84,7 +84,7 @@
 /* Closer pinned tab icons */
 .tab-content[pinned] {
   padding: 0 8px !important;
-  border-right: 1px solid #333333 !important;
+  border: none !important;
 }
 
 /* Remove the spinning wheel but keep the loading animation */
