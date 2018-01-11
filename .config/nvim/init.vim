@@ -79,7 +79,7 @@ au! BufRead,BufNewFile *.gdb                 set filetype=gdb
 au! BufRead,BufNewFile Makefile.[a-zA-Z0-9]  set filetype=make
 
 " Collapse or expand
-map ! zc
+map <space> za
 map , zr
 map ; zm
 
