@@ -35,6 +35,7 @@ export LANG=en_US.UTF8
 export GOPATH="$HOME/.config/go"
 export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
 export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
+export ANDROID_HOME="/opt/android-sdk"
 
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
