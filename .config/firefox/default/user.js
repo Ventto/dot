@@ -296,6 +296,8 @@ user_pref("security.pki.sha1_enforcement_level", 1);
 //             APPEARANCE / UI / UX
 // ====================================================
 
+user_pref("browser.urlbar.suggest.bookmark", true);
+
 // Show full URLs in the address bar (including "http://"):
 user_pref("browser.urlbar.trimURLs", false);
 
