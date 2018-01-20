@@ -52,10 +52,10 @@ def decompress(file_obj):
     if file_obj.read(8) != b"mozLz40\0":
         raise InvalidHeader("Invalid magic number")
 
-    return lz4.decompress(file_obj.read())
+    return lz4.block.decompress(file_obj.read())
 
 def compress(file_obj):
-    compressed = lz4.compress(file_obj.read())
+    compressed = lz4.block.compress(file_obj.read())
     return b"mozLz40\0" + compressed
 
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     except IOError as e:
         print("Could not open input file `%s' for reading: %s" % (parsed_args.in_file, e), file=sys.stderr)
         sys.exit(2)
-    
+
     try:
         out_file = open(parsed_args.out_file, "wb")
     except IOError as e:

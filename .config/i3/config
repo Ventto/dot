@@ -52,7 +52,7 @@ bar {
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "$HOME/.config/i3/i3bar.sh conky top"
+    status_command "$HOME/.config/i3/conky/i3bar.sh top lua"
 }
 bar {
     font pango:Hack, FontAwesome 9
@@ -60,7 +60,7 @@ bar {
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "$HOME/.config/i3/i3bar.sh conky bottom"
+    status_command "$HOME/.config/i3/conky/i3bar.sh bottom lua"
 }
 
 # Mouse

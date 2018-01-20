@@ -1,13 +1,13 @@
 BARS = build/i3bar-%-bottom.conf build/i3bar-%-top.conf
 
 .PHONY: all
-all: build conky legacy
+all: build lua legacy
 
 build:
 	mkdir -p $@
 
-.PHONY: conky legacy
-conky:  %: $(BARS)
+.PHONY: lua legacy
+lua:  %: $(BARS)
 legacy: %: $(BARS)
 
 i3bar-%:
