@@ -18,6 +18,8 @@ alias bb='popd 1>/dev/null'
 alias cdvm="cd $HOME/vm/shared_dir"
 alias dh='dirs -v'
 
+alias blueon='sudo systemctl start bluetooth.service'
+alias blueoff='sudo systemctl stop bluetooth.service'
 alias du='ncdu '
 alias findhard='find / -type f -iname'
 alias findhere='find . -type f -iname'
