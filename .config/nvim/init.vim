@@ -7,7 +7,7 @@ call plug#begin("~/.config/nvim/bundle")
 " Color scheme
 Plug 'tomasr/molokai'
 " Snippet engine
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 " Snippet templates
 Plug 'honza/vim-snippets'
 " Displays tags in a window
@@ -100,10 +100,10 @@ nmap <F8> :TagbarToggle<CR>
 "          Ultisnips
 " #===========================#
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsEditSplit="vertical"
 
 " #===========================#
 "            CtrlP
