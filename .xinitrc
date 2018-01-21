@@ -10,7 +10,7 @@ nohup numlockx > /dev/null 2>&1 &
 setxkbmap fr
 
 # Wallpaper
-feh --bg-max --no-fehbg ~/.config/i3/wallpapers/fusion.jpg
+feh --bg-max --no-fehb5g "$HOME/images/wallpapers/fusion.jpg"
 
 # Transparency
 nohup compton > /dev/null 2>&1 &
