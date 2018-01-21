@@ -7,37 +7,24 @@
     {
       "tabs": [
         {
-          "entries": [{ "url": "https://github.com/" }],
-          "pinned": true,
-          "index": 2
+          "entries": [{ "url": "https://evernote.com/" }],
+          "pinned": true
         },
         {
-          "entries": [{ "url": "https://evernote.com/" }],
-          "pinned": true,
-          "index": 1
+          "entries": [{ "url": "https://github.com/" }],
+          "pinned": true
         },
         {
           "entries": [{ "url": "https://deezer.com/" }],
-          "pinned": true,
-          "index": 1
+          "pinned": true
         },
         {
           "entries": [{ "url": "https://www.reddit.com/" }],
-          "pinned": true,
-          "index": 1
+          "pinned": true
         }
       ],
-      "selected": 4,
-      "_closedTabs": [],
-      "busy": false,
-      "sizemode": "normal"
+      "busy": false
     }
   ],
-  "selectedWindow": 1,
-  "_closedWindows": [],
-  "session": {},
-  "global": {},
-  "cookies": [],
-  "browserConsole": false,
-  "scratchpads": []
+  "browserConsole": false
 }
