@@ -147,11 +147,12 @@ map * <Plug>(expand_region_shrink)
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \   'left': [ [ 'lineinfo' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [  'syntastic', 'maxlineinfo'  ],
+      \   'right': [ [ 'syntastic', 'maxlineinfo', 'modified' ],
       \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex'] ]
+      \              [ 'fileformat', 'fileencoding',
+      \                'filetype', 'charvaluehex' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
