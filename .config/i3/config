@@ -1,5 +1,12 @@
+# =======================
+#       Variables
+# =======================
+
 set $mod            Mod4
-# Default Applications
+set $margin         13  # px
+set $border         3   # px
+
+# Default Apps
 set $term           termite
 set $browser        firefox --profile "$HOME/.config/firefox/default"
 set $capture        vokoscreen
@@ -9,11 +16,7 @@ set $player         smplayer
 set $screenlocker   i3lock -c 000000
 set $torrent        transmission-qt
 
-# Window shaping
-for_window [class="^.*"] border pixel 3
-gaps inner 15
-
-# Workspaces
+# Workspace Names
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
@@ -22,7 +25,11 @@ set $ws5 "5:  "
 set $ws6 "6:  "
 set $ws7 "7:  "
 
-# Screens
+# =======================
+#       Workspaces
+# =======================
+
+# Monitor Dispatching
 workspace $ws1 output VGA-1
 workspace $ws2 output LVDS-1
 workspace $ws3 output LVDS-1
@@ -31,7 +38,7 @@ workspace $ws5 output LVDS-1
 workspace $ws6 output VGA-1
 workspace $ws7 output VGA-1
 
-# Assignation
+# App Assignation
 assign [instance="Navigator"] $ws1
 assign [class="Thunderbird"] $ws4
 assign [class="Zathura"] $ws5
@@ -39,13 +46,23 @@ assign [class="Gimp"] $ws6
 assign [class="smplayer"] $ws7
 assign [class="transmission"] $ws7
 
-# Startup
+# Startup Apps
 exec --no-startup-id i3-msg 'workspace $ws1; exec $browser'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
 exec --no-startup-id i3-msg 'workspace $ws3; exec $mail'
 exec --no-startup-id i3-msg 'workspace $ws2'
 
-# Bars
+# =======================
+#         Windows
+# =======================
+
+for_window [class="^.*"] border pixel $border
+gaps inner $margin
+
+# =======================
+#          Bars
+# =======================
+
 bar {
     font pango:Hack, FontAwesome 9
     position top
@@ -63,10 +80,13 @@ bar {
     status_command "$HOME/.config/i3/conky/i3bar.sh bottom lua"
 }
 
+# =======================
+#        Bindkeys
+# =======================
+
 # Mouse
 floating_modifier $mod
 
-# Bindkeys
 # Workspaces
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
