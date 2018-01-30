@@ -1,8 +1,8 @@
 add_file () {
     dir="${ZDOTDIR}/zshrc.d/$1"
-    ! [ -d "$dir" ] && { echo "[zsh] $dir: directory not found."; exit 1; }
+    [ ! -d "$dir" ]  && { echo "[zsh] $dir: directory not found."; return 1; }
     file="$dir/$3.$2"
-    ! [ -r "$file" ] && { echo "[zsh] $file: file not found."; exit 1; }
+    [ ! -r "$file" ] && { echo "[zsh] $file: file not found."; return 1; }
     source "$file"
 }
 
