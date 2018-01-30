@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # History
-HISTFILE=~/.histfile
+HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
 SAVEHIST=1000000
 
