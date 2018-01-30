@@ -3,7 +3,7 @@ alias aurcreate='git clone ssh://aur@aur.archlinux.org/'
 alias aurinstall='aurclean && makepkg -i -C -c --noarchive && rm *.tar.gz'
 alias aurshow='git diff --cached'
 alias aurupdate='makepkg --printsrcinfo > .SRCINFO && git add PKGBUILD .SRCINFO'
-alias aurmaster="[ -f PKGBUILD.master ] && mv PKGBUILD PKGBUILD.nat &&
-mv PKGBUILD.master PKGBUILD; cd ../../; git a; bb; mv ../../master.tar.gz ."
-alias aurnat="[ -f PKGBUILD.nat ] && mv PKGBUILD PKGBUILD.master &&
-                mv PKGBUILD.nat PKGBUILD"
+alias aurmaster="[ -f PKGBUILD.master ] && mv PKGBUILD PKGBUILD.nat
+                                        && mv PKGBUILD.master PKGBUILD"
+alias aurnat="[ -f PKGBUILD.nat ] && mv PKGBUILD PKGBUILD.master
+                                  && mv PKGBUILD.nat PKGBUILD"
