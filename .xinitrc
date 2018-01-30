@@ -28,4 +28,4 @@ amixer -q set Master mute
 nohup mons -m > /dev/null 2>&1 &
 
 # Window manager
-exec i3 --shmlog-size=26214400
+exec i3 -c "$HOME/.config/i3-gaps/config" --shmlog-size=26214400
