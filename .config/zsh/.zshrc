@@ -49,7 +49,6 @@ add_functions 'net-utils'
 
 # Aliases
 add_aliases 'base'
-add_aliases 'pi'
 add_aliases 'aur'
 
 # Completion
