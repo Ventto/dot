@@ -9,12 +9,11 @@ alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
 alias ~='termite'
-alias ,,='cd -'
 alias ..='cd ..'
-alias ...='cd ../../..'
-alias ....='cd ../../../..'
-alias .....='cd ../../../../..'
-alias bb='popd 1>/dev/null'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias b='popd 1>/dev/null'
 alias cdvm="cd $HOME/vm/shared_dir"
 alias dh='dirs -v'
 
