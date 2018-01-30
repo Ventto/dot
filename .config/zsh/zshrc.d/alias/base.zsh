@@ -29,7 +29,7 @@ alias sdiff='grep -vxf'
 alias ssk='ssh-add ~/.ssh/id_rsa'
 alias vim='nvim -p'
 alias vimup='nvim +PluginInstall +qall'
-alias wget='wget -o /dev/null'
+alias wget='wget --hsts-file /dev/null'
 
 alias feh='NoHup feh'
 alias gimp='NoHup gimp'

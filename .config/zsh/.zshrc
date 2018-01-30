@@ -36,6 +36,7 @@ export GOPATH="$HOME/.config/go"
 export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
 export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 export ANDROID_HOME="/opt/android-sdk"
+export LESSHISTFILE=/dev/null
 
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
