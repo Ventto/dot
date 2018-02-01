@@ -335,7 +335,8 @@ user_pref("general.warnOnAboutConfig", false);
 user_pref("dom.disable_beforeunload", true);
 
 // Prevent sites from disabling the default right-click menu:
-user_pref("dom.event.contextmenu.enabled", false);
+// Edit: currently enable for Google drive and docs
+user_pref("dom.event.contextmenu.enabled", true);
 
 // Prevent sites/popups from messing with certain UI elements:
 // = Further reading
