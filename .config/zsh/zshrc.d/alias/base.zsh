@@ -5,6 +5,7 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -la'
 alias lld='ls -ld */'
+alias lad='ls -lAd .* | grep -E "^d"'
 alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
@@ -48,5 +49,5 @@ alias checkpatch='checkpatch.pl --no-tree --strict -f'
 alias gdb='gdb -q'
 alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
 
-alias wf="curl -s wttr.in/Charenton+Le+Pont"
-alias wfnow="curl -s wttr.in/Charenton+Le+Pont | sed -n '3,7p'"
+alias weather="curl -s wttr.in/Paris"
+alias weather-now="curl -s wttr.in/Paris | sed -n '3,7p'"
