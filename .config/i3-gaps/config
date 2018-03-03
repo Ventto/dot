@@ -20,9 +20,9 @@ set $torrent        transmission-qt
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
 set $ws7 "7:  "
 
 # =======================
@@ -40,16 +40,15 @@ workspace $ws7 output VGA-1
 
 # App Assignation
 assign [instance="Navigator"] $ws1
-assign [class="Thunderbird"] $ws4
-assign [class="Zathura"] $ws5
-assign [class="Gimp"] $ws6
+assign [class="Thunderbird"] $ws5
+assign [class="Zathura"] $ws4
+assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws7
-assign [class="transmission"] $ws7
 
 # Startup Apps
 exec --no-startup-id i3-msg 'workspace $ws1; exec $browser'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
-exec --no-startup-id i3-msg 'workspace $ws3; exec $mail'
+exec --no-startup-id i3-msg 'workspace $ws5; exec $mail'
 exec --no-startup-id i3-msg 'workspace $ws2'
 
 # =======================
