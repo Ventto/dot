@@ -4,7 +4,7 @@
 
 set $mod            Mod4
 set $margin         13  # px
-set $border         3   # px
+set $border         4   # px
 
 # Default Apps
 set $term           termite
@@ -55,6 +55,10 @@ exec --no-startup-id i3-msg 'workspace $ws2'
 # =======================
 #         Windows
 # =======================
+
+# Colors
+# class             |border |bg     |text
+client.focused      #d04949 #d04949 #333333
 
 for_window [class="^.*"] border pixel $border
 gaps inner $margin
