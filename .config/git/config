@@ -54,7 +54,8 @@
     c = commit -s
     ca = commit -s -a
     cc = "!git log master..`git symbolic-ref --short HEAD` --pretty=oneline | wc -l"
-    cm = commit -s -m
+    cm = commit -m
+    csm = commit -s -m
     cem = commit -s --allow-empty -m
     cam = commit -s -am
     cd = commit -s --amend
