@@ -5,16 +5,16 @@ Firefox
 
 * Close *firefox* browser:
 
-```
+```bash
 $ killall firefox
 ```
 
 * Restore pinned tabs:
 
-```
-cd .make
-make      (or)
-make -B   (erase existing configuration)
+```bash
+$ cd .make
+$ make      (or)
+$ make -B   (erase existing configuration)
 ```
 
 ## See Also
