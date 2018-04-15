@@ -3,12 +3,12 @@ Thunderbird Profile
 
 * Archive and Encrypt
 
-```
-make -f Makefile.enc
+```bash
+$ make -f Makefile.enc
 ```
 
 * Decrypt
 
-```
-make -f Makefile.dec
+```bash
+$ make -f Makefile.dec
 ```
