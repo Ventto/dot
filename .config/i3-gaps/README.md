@@ -1,13 +1,13 @@
-My own i3 configuration
-===================
+I3-gaps
+=======
 
 ## Requirements
 
 * i3-gaps - Window manager
 * i3lock - An improved screenlocker based upon XCB and PAM
-* conky (>=1.10) - A system monitor for X
-* font Awesome (>=4.4) - Iconic font used with Twitter Bootstrap
-* font Hack - Terminal font
+* conky >= 1.9 - A system monitor for X
+* otf Awesome 5.0 - Iconic font used with Twitter Bootstrap
+* ttf Hack - Terminal font
 
 ## Notifications
 
@@ -49,9 +49,9 @@ i3-msg 'debuglog on; shmlog on; reload'
 | Categories/Versions | Native | 4.1 | 4.5 | 4.7 |
 |--|--|--|--|--|
 | RAM |   |  |  |   |
-| CPU |   |  |  |   |
+| CPU |  |  |  |   |
 | USB |  |  |  |   |
-| Browser |   |  |  |  |
+| Browser |  |  |  |  |
 | Mail |   |  |  |   |
 | Git |   |   |  |  |
 | Bluetooth |  |  |  |    |
