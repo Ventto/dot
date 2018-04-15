@@ -10,7 +10,10 @@ SESSION_FILES = $(SESSION_DIR)/previous.jsonlz4  \
 all: $(RECOVERY_FILE)
 
 $(RECOVERY_FILE): pinned-tabs.json
-	@$(RM) $(SESSION_FILES)
+	$(RM) $(SESSION_FILES)
 	python3 mozlz4a.py $< $@
 
-.PHONY: all
+clean:
+	$(RM) $(SESSION_FILES)
+
+.PHONY: all clean
