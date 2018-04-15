@@ -1,14 +1,23 @@
 Firefox
 =======
 
-## Backup Pinned Tab
+## Restore Pinned Tabs
+
+* Close *firefox* browser:
 
 ```
-$ cd default/sessionstore-backups
-$ vim recovery.json
 $ killall firefox
-$ make clean && make
 ```
+
+* Restore pinned tabs:
+
+```
+cd .make
+make      (or)
+make -B   (erase existing configuration)
+```
+
+## See Also
 
 [How to edit](https://wiki.mozilla.org/Firefox/session_restore) the
 `recovery.json` file.
