@@ -13,7 +13,7 @@ setxkbmap fr
 feh --bg-max --no-fehbg "$HOME/images/wallpapers/fusion.jpg"
 
 # Transparency
-nohup compton > /dev/null 2>&1 &
+nohup xcompmgr -c -f -n > /dev/null 2>&1 &
 
 # Notification server
 nohup dunst > /dev/null 2>&1 &
