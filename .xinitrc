@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xhost si:localuser:"$USER"
-
 # Mute bell
 xset b off
 
