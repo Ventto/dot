@@ -1,5 +1,7 @@
 #!/bin/sh
 
+setxkbmap fr
+
 # Wallpaper
 feh --bg-max --no-fehbg "$HOME/images/wallpapers/fusion.jpg"
 
