@@ -67,8 +67,7 @@ colo molokai
 cnoreabbrev w!! w !sudo tee % > /dev/null
 
 " Column limit
-hi OverLength ctermbg=red ctermfg=black
-match OverLength /\%80v.\+/
+" hi OverLength ctermbg=red ctermfg=black match OverLength /\%80v.\+/
 
 " Deletes EOL spaces
 autocmd BufWritePre * :%s/\s\+$//e
