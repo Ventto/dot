@@ -1,12 +1,5 @@
 #!/bin/sh
 
-# Mute bell
-xset b off
-
-# Keyboard
-nohup numlockx > /dev/null 2>&1 &
-setxkbmap fr
-
 # Wallpaper
 feh --bg-max --no-fehbg "$HOME/images/wallpapers/fusion.jpg"
 
