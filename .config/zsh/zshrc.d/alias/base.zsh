@@ -62,5 +62,6 @@ alias blueoff='sudo systemctl stop bluetooth.service'
 #==============================#
 
 alias i3log="DISPLAY=${DISPLAY} i3-dump-log | less"
+alias wanip='curl -s http://ip.tyk.nu/'
 alias weather="curl -s wttr.in/Paris"
 alias weather-now="curl -s wttr.in/Paris | sed -n '3,7p'"

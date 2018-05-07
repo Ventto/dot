@@ -83,7 +83,6 @@ add_functions 'file-ext'
 add_functions 'man-helper'
 add_functions 'maths'
 add_functions 'nohup'
-add_functions 'net-utils'
 
 add_aliases 'base'
 add_aliases 'aur'
