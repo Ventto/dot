@@ -71,13 +71,14 @@ export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 export ANDROID_HOME="/opt/android-sdk"
 export LESSHISTFILE=/dev/null
 
-source "${ZDOTDIR}/zshrc.d/helper.zsh"
-
 #==============================#
 #  Alias/Function/Completion   #
 #==============================#
 
-# Caution: Always source functions before aliases and completions
+# Source functions, aliases, completion and binkeys zsh files elegantly
+source "${ZDOTDIR}/zshrc.d/helper.zsh"
+
+# Caution: Always source functions first (ex: aliases could require functions)
 add_functions 'file-ext'
 add_functions 'man-helper'
 add_functions 'maths'
