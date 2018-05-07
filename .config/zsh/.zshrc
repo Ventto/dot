@@ -1,6 +1,9 @@
 #!/bin/zsh
 
-# History
+#==============================#
+#           History            #
+#==============================#
+
 HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -18,52 +21,18 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-# Security
-setopt RM_STAR_WAIT
+#==============================#
+#           Options            #
+#==============================#
 
-# Directory Stack
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
+setopt RM_STAR_WAIT
 
-# Environment Variables
-export BROWSER="firefox"
-export EDITOR="nvim"
-export USE_EDITOR="nvim"
-export VISUAL="nvim"
-export GIMP2_DIRECTORY=".config/gimp"
-export LANG=en_US.UTF8
-export GOPATH="$HOME/.config/go"
-export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
-export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
-export ANDROID_HOME="/opt/android-sdk"
-export LESSHISTFILE=/dev/null
+#==============================#
+#           Prompt             #
+#==============================#
 
-source "${ZDOTDIR}/zshrc.d/helper.zsh"
-
-# Functions
-add_functions 'file-ext'
-add_functions 'man-helper'
-add_functions 'maths'
-add_functions 'nohup'
-add_functions 'net-utils'
-
-# Aliases
-add_aliases 'base'
-add_aliases 'aur'
-
-# Completion
-add_comp 'base'
-
-# Completion (bash)
-autoload -U +X bashcompinit && bashcompinit
-add_bash_comp 'ct-ng'
-
-# Bindkeys
-add_bindkeys 'base'
-add_bindkeys 'edit-command-line'
-add_bindkeys 'fg-ctrlz'
-
-# Prompt
 setopt prompt_subst
 autoload -U colors && colors
 autoload -Uz vcs_info
@@ -85,3 +54,46 @@ function precmd {
 function preexec () {
     print -Pn "\e]0;$1\a"
 }
+
+#==============================#
+#    Environment Variables     #
+#==============================#
+
+export BROWSER="firefox"
+export EDITOR="nvim"
+export USE_EDITOR="nvim"
+export VISUAL="nvim"
+export GIMP2_DIRECTORY=".config/gimp"
+export LANG=en_US.UTF8
+export GOPATH="$HOME/.config/go"
+export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
+export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
+export ANDROID_HOME="/opt/android-sdk"
+export LESSHISTFILE=/dev/null
+
+source "${ZDOTDIR}/zshrc.d/helper.zsh"
+
+#==============================#
+#  Alias/Function/Completion   #
+#==============================#
+
+# Caution: Always source functions before aliases and completions
+add_functions 'file-ext'
+add_functions 'man-helper'
+add_functions 'maths'
+add_functions 'nohup'
+add_functions 'net-utils'
+
+add_aliases 'base'
+add_aliases 'aur'
+
+add_comp 'base'
+
+# Completion (bash)
+autoload -U +X bashcompinit && bashcompinit
+add_bash_comp 'ct-ng'
+
+# Bindkeys
+add_bindkeys 'base'
+add_bindkeys 'edit-command-line'
+add_bindkeys 'fg-ctrlz'
