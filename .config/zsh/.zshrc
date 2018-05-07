@@ -79,8 +79,8 @@ export LESSHISTFILE=/dev/null
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
 # Caution: Always source functions first (ex: aliases could require functions)
-add_functions 'file-ext'
-add_functions 'man-helper'
+add_functions 'file'
+add_functions 'manpage'
 add_functions 'maths'
 add_functions 'nohup'
 
