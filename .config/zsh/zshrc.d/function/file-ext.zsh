@@ -1,17 +1,16 @@
-xml_show () {
-    if [ "$#" -ne 1 ] || [ ! -r "$1" ]; then return 1; fi
+#==============================#
+#        PDF Processing        #
+#==============================#
 
-    local _file="$1"; shift
-    local output="${1%%.*}-pretty.${1#*.}"
-
-    xmllint --pretty 1 "${_file}" > "${output}"
-    mv "${output}" "${_file}"
-}
-
-pdf_merge () {
+# Usage: PDFMerge [FILES...]
+PDFMerge() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=out.pdf "$@"
 }
 
-json_show () {
-    python -m json.tool "$1"
+#==============================#
+#       Pretty Printers        #
+#==============================#
+
+PrintJson () {
+    cat "$1" | jq
 }
