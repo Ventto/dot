@@ -39,14 +39,16 @@ alias lad='ls -lAd .* | grep -E "^d"'
 alias laf='ls -lAd .* | grep -v "^d"'
 alias lls='ls -lhr --sort=size | grep -v "^d"'
 
+# Clear clipboard
+alias c='echo -n | xclip -display :0 -selection clipboard'
+alias b='popd > /dev/null'
+# Show directory stack history
+alias ds='dirs -v'
 alias e='nvim -p'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
-alias b='popd 1>/dev/null'
-alias cdvm="cd $HOME/vm/shared_dir"
-alias dh='dirs -v'
 
 #==============================#
 #         Privileged           #
