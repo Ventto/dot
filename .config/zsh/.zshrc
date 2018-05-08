@@ -28,6 +28,9 @@ setopt HIST_VERIFY
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt RM_STAR_WAIT
+setopt NOGLOBDOTS
+setopt AUTO_CD
+REPORTTIME=5
 
 #==============================#
 #           Prompt             #
@@ -60,9 +63,9 @@ function preexec () {
 #==============================#
 
 export BROWSER="firefox"
-export EDITOR="nvim"
-export USE_EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="nvim -p"
+export USE_EDITOR="nvim -p"
+export VISUAL="nvim -p"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export GOPATH="$HOME/.config/go"
