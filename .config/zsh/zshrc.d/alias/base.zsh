@@ -42,8 +42,8 @@ alias .....='cd ../../../../'
 
 # Clear clipboard
 alias c='echo -n | xclip -display :0 -selection clipboard'
-alias e="${EDUTOR}"
-alias e.="${EDUTOR} ."
+alias e="${EDITOR}"
+alias e.="${EDITOR} ."
 
 #==============================#
 #         Privileged           #
