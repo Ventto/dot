@@ -8,12 +8,12 @@ set $border         4   # px
 
 # Default Apps
 set $term           termite
-set $browser        firefox --profile "$HOME/.config/firefox/default"
+set $browser        firefox --profile "${HOME}/.config/firefox/default"
 set $capture        vokoscreen
 set $imgeditor      gimp
-set $mail           thunderbird --profile "$HOME/.config/thunderbird/default"
+set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
 set $player         smplayer
-set $screenlocker   i3lock -c 000000
+set $screenlocker   i3lock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
 set $torrent        transmission-qt
 
 # Workspace Names
