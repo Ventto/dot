@@ -2,6 +2,9 @@
 
 setxkbmap fr
 
+# Lock Screen before suspending
+xss-lock -- /usr/bin/i3lock -c 000000 &
+
 # Wallpaper
 feh --bg-max --no-fehbg "$HOME/images/wallpapers/fusion.jpg"
 
