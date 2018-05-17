@@ -14,10 +14,6 @@
     background: #1d2021 !important;
 }
 
-:root {
-    --tab-min-height: 26px !important;
-}
-
 /*
 ==========================
         Buttons
@@ -83,7 +79,6 @@
 
 /* Closer pinned tab icons */
 .tab-content[pinned] {
-  padding: 0 8px !important;
   border: none !important;
 }
 
@@ -97,6 +92,11 @@
     opacity: 0 !important;
 }
 
+/* Align the non-pinned tabs with urlbar */
+#TabsToolbar .tabbrowser-tab:first-child {
+    margin-left: 3px !important;
+}
+
 /*
 ==========================
         Tool Bars
@@ -108,6 +108,7 @@
     padding: 0 !important;
     margin: 0 !important;
     border-radius: 0 0 0 0 !important;
+    height: 28px !important;
 }
 
 #TabsToolbar {
@@ -117,7 +118,6 @@
 #nav-bar {
     -moz-box-ordinal-group: 1 !important;
     margin-top:-2px !important;
-    height: 28px !important;
 }
 
 #urlbar {
@@ -128,6 +128,15 @@
 
 #urlbar, .searchbar-textbox {
     min-height: 28px !important;
+}
+
+/* Align toolbar plugin's buttons with pinned tabs */
+#urlbar {
+    margin-left: 2px !important;
+}
+
+#nav-bar .toolbarbutton-1 {
+    margin-left: 5px !important;
 }
 
 /*
