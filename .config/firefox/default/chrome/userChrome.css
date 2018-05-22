@@ -14,8 +14,8 @@
     background: #1d2021 !important;
 }
 
-:root[uidensity="touch"] #tabbrowser-tabs {
-    --tab-min-height: 28px !important;
+:root {
+    --toolbarbutton-border-radius: 0px !important;
 }
 
 /*
@@ -86,6 +86,16 @@
   border: none !important;
 }
 
+.tabbrowser-tab[pinned], .tabs-newtab-button {
+    max-width: 36px !important;
+    min-width: 36px !important;
+}
+
+.tabbrowser-tab[pinned] .tab-icon-image {
+    -moz-margin-start: 2px !important;
+    -moz-margin-end: 2px !important;
+}
+
 /* Remove the spinning wheel but keep the loading animation */
 .tab-throbber {
   list-style-image: url("chrome://mozapps/skin/places/defaultFavicon.png") !important;
@@ -107,6 +117,21 @@
 ==========================
 */
 
+/* Set toolbars height */
+#titlebar, #tabbrowser-tabs {
+    --tab-min-height: 26px !important;
+}
+#nav-bar {
+    height: 26px !important;
+    margin-top:-2px !important;
+}
+
+/* Align toolbar plugin's buttons with pinned tabs */
+#nav-bar .toolbarbutton-1 {
+    margin-left: 5px !important;
+    padding: 0 2px !important;
+}
+
 #TabsToolbar, #nav-bar, #urlbar {
     background: #2e3132 !important;
     padding: 0 !important;
@@ -114,14 +139,9 @@
     border-radius: 0 0 0 0 !important;
 }
 
-#TabsToolbar {
-    -moz-box-ordinal-group: 2 !important;
-}
-
-#nav-bar {
-    -moz-box-ordinal-group: 1 !important;
-    margin-top:-2px !important;
-}
+/* Set toolbars order */
+#nav-bar { -moz-box-ordinal-group: 1 !important; }
+#TabsToolbar { -moz-box-ordinal-group: 2 !important; }
 
 #urlbar {
     border-color: #2e3132 !important;
@@ -130,16 +150,7 @@
 }
 
 #urlbar, .searchbar-textbox {
-    min-height: 28px !important;
-}
-
-/* Align toolbar plugin's buttons with pinned tabs */
-#urlbar {
-    margin-left: 2px !important;
-}
-
-#nav-bar .toolbarbutton-1 {
-    margin-left: 5px !important;
+    min-height: 20px !important;
 }
 
 /*
