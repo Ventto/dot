@@ -1,4 +1,5 @@
-SESSION_DIR   = ../default/sessionstore-backups
+PROFILE_DIR   = ../default
+SESSION_DIR   = $(PROFILE_DIR)/sessionstore-backups
 
 RECOVERY_FILE = $(SESSION_DIR)/recovery.jsonlz4
 
@@ -10,10 +11,32 @@ SESSION_FILES = $(SESSION_DIR)/previous.jsonlz4  \
 all: $(RECOVERY_FILE)
 
 $(RECOVERY_FILE): pinned-tabs.json
-	$(RM) $(SESSION_FILES)
+	mkdir -p $(SESSION_DIR)
 	python3 mozlz4a.py $< $@
 
 clean:
-	$(RM) $(SESSION_FILES)
+	$(RM) -r $(SESSION_DIR)
 
-.PHONY: all clean
+test: checkout all
+	sleep 1
+	nohup firefox --profile $(PROFILE_DIR) >/dev/null 2>&1 &
+
+checkout:
+	killall firefox || /bin/true
+	if [ -d ../default.bkp ]; then \
+		$(RM) -r $(PROFILE_DIR); \
+		git --git-dir="${HOME}/.config/dot/" --work-tree="${HOME}" checkout $(PROFILE_DIR); \
+	else \
+		mv $(PROFILE_DIR) ../default.bkp; \
+		git --git-dir="${HOME}/.config/dot/" --work-tree="${HOME}" checkout $(PROFILE_DIR); \
+	fi
+
+stop-test:
+	if [ ! -d ../default.bkp ]; then \
+		echo "default.bkp: directory not found"; \
+		/bin/false; \
+	fi
+	$(RM) -r $(PROFILE_DIR)
+	mv ../default.bkp $(PROFILE_DIR)
+
+.PHONY: all clean checkout stop-test test

@@ -1,4 +1,4 @@
-{
+﻿{
   "version": [
     "sessionrestore",
     1
@@ -7,24 +7,42 @@
     {
       "tabs": [
         {
-          "entries": [{ "url": "https://evernote.com/" }],
+          "entries": [
+            {
+              "url": "https://github.com/Ventto",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
           "pinned": true
         },
         {
-          "entries": [{ "url": "https://github.com/" }],
+          "entries": [
+            {
+              "url": "https://www.deezer.com/",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
           "pinned": true
         },
         {
-          "entries": [{ "url": "https://deezer.com/" }],
+          "entries": [
+            {
+              "url": "https://www.youtube.com/",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
           "pinned": true
         },
         {
-          "entries": [{ "url": "https://www.reddit.com/" }],
+          "entries": [
+            {
+              "url": "https://www.reddit.com/",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
           "pinned": true
         }
-      ],
-      "busy": false
+      ]
     }
-  ],
-  "browserConsole": false
+  ]
 }
