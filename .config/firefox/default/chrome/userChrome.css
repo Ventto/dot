@@ -14,6 +14,10 @@
     background: #1d2021 !important;
 }
 
+:root[uidensity="touch"] #tabbrowser-tabs {
+    --tab-min-height: 28px !important;
+}
+
 /*
 ==========================
         Buttons
@@ -108,7 +112,6 @@
     padding: 0 !important;
     margin: 0 !important;
     border-radius: 0 0 0 0 !important;
-    height: 28px !important;
 }
 
 #TabsToolbar {
