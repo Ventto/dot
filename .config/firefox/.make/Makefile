@@ -11,11 +11,12 @@ SESSION_FILES = $(SESSION_DIR)/previous.jsonlz4  \
 all: $(RECOVERY_FILE)
 
 $(RECOVERY_FILE): pinned-tabs.json
+	$(RM) $(SESSION_FILES)
 	mkdir -p $(SESSION_DIR)
 	python3 mozlz4a.py $< $@
 
 clean:
-	$(RM) -r $(SESSION_DIR)
+	$(RM) $(SESSION_FILES)
 
 test: checkout all
 	sleep 1
