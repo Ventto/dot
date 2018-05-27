@@ -18,7 +18,7 @@
         {
           "entries": [
             {
-              "url": "https://www.deezer.com/",
+              "url": "https://www.deezer.com/login",
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
@@ -27,7 +27,16 @@
         {
           "entries": [
             {
-              "url": "https://www.youtube.com/",
+              "url": "https://www.evernote.com/Login.action",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
+          "pinned": true
+        },
+        {
+          "entries": [
+            {
+              "url": "https://winds.getstream.io/login",
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
@@ -37,6 +46,15 @@
           "entries": [
             {
               "url": "https://www.reddit.com/",
+              "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
+            }
+          ],
+          "pinned": true
+        },
+        {
+          "entries": [
+            {
+              "url": "https://www.youtube.com/",
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
