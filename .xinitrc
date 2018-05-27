@@ -3,10 +3,11 @@
 setxkbmap fr
 
 # Lock Screen before suspending
-xss-lock -- /usr/bin/i3lock -c 000000 &
+xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
+                            -i "${HOME}/images/wallpapers/matin.png" &
 
 # Wallpaper
-feh --bg-max --no-fehbg "$HOME/images/wallpapers/fusion.jpg"
+feh --bg-max --no-fehbg "${HOME}/images/wallpapers/fusion.jpg"
 
 # Transparency
 nohup xcompmgr -c -f -n > /dev/null 2>&1 &
@@ -24,4 +25,4 @@ amixer -q set Master mute
 nohup mons -m > /dev/null 2>&1 &
 
 # Window manager
-exec i3 -c "$HOME/.config/i3-gaps/config" --shmlog-size=26214400
+exec i3 -c "${HOME}/.config/i3-gaps/config" --shmlog-size=26214400
