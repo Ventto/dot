@@ -316,6 +316,8 @@ user_pref("full-screen-api.warning.timeout", 0);
 
 // Disable fullscreen URL bar animation:
 user_pref("browser.fullscreen.animate", false);
+// Show the URL bar in fullscreen mode:
+user_pref("browser.fullscreen.autohide", false);
 
 // Disable tab animation:
 // = Further reading
