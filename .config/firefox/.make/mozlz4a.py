@@ -30,15 +30,12 @@
 # IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import lz4.block
 import sys
-
 from argparse import ArgumentParser
-
+import lz4.block
 
 class MozLz4aError(Exception):
     pass
-
 
 class InvalidHeader(MozLz4aError):
     def __init__(self, msg):
@@ -46,7 +43,6 @@ class InvalidHeader(MozLz4aError):
 
     def __str__(self):
         return self.msg
-
 
 def decompress(file_obj):
     if file_obj.read(8) != b"mozLz40\0":
@@ -58,36 +54,29 @@ def compress(file_obj):
     compressed = lz4.block.compress(file_obj.read())
     return b"mozLz40\0" + compressed
 
-
-if __name__ == "__main__":
+def main():
     argparser = ArgumentParser(description="MozLz4a compression/decompression utility")
-    argparser.add_argument(
-            "-d", "--decompress", "--uncompress",
-            action="store_true",
-            help="Decompress the input file instead of compressing it."
-        )
-    argparser.add_argument(
-            "in_file",
-            help="Path to input file."
-        )
-    argparser.add_argument(
-            "out_file",
-            help="Path to output file."
-        )
+    argparser.add_argument("-d", "--decompress", "--uncompress",
+                           action="store_true",
+                           help="Decompress the input file instead of compressing it.")
+    argparser.add_argument("in_file", help="Path to input file.")
+    argparser.add_argument("out_file", help="Path to output file.")
 
     parsed_args = argparser.parse_args()
 
 
     try:
         in_file = open(parsed_args.in_file, "rb")
-    except IOError as e:
-        print("Could not open input file `%s' for reading: %s" % (parsed_args.in_file, e), file=sys.stderr)
+    except IOError as ex:
+        print("Could not open input file `%s' for reading: %s"
+              % (parsed_args.in_file, ex), file=sys.stderr)
         sys.exit(2)
 
     try:
         out_file = open(parsed_args.out_file, "wb")
-    except IOError as e:
-        print("Could not open output file `%s' for writing: %s" % (parsed_args.out_file, e), file=sys.stderr)
+    except IOError as ex:
+        print("Could not open output file `%s' for writing: %s"
+              % (parsed_args.out_file, ex), file=sys.stderr)
         sys.exit(3)
 
     try:
@@ -95,14 +84,19 @@ if __name__ == "__main__":
             data = decompress(in_file)
         else:
             data = compress(in_file)
-    except Exception as e:
-        print("Could not compress/decompress file `%s': %s" % (parsed_args.in_file, e), file=sys.stderr)
+    except Exception as ex:
+        print("Could not compress/decompress file `%s': %s" %
+              (parsed_args.in_file, ex), file=sys.stderr)
         sys.exit(4)
 
     try:
         out_file.write(data)
-    except IOError as e:
-        print("Could not write to output file `%s': %s" % (parsed_args.out_file, e), file=sys.stderr)
+    except IOError as ex:
+        print("Could not write to output file `%s': %s"
+              % (parsed_args.out_file, ex), file=sys.stderr)
         sys.exit(5)
     finally:
         out_file.close()
+
+if __name__ == "__main__":
+    main()
