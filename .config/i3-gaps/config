@@ -75,7 +75,7 @@ bar {
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "$HOME/.config/i3-gaps/conky/i3bar.sh top lua"
+    status_command "${HOME}/.config/i3-gaps/conky/i3bar.sh top"
 }
 bar {
     font pango:Hack, FontAwesome 9
@@ -83,7 +83,7 @@ bar {
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "$HOME/.config/i3-gaps/conky/i3bar.sh bottom lua"
+    status_command "${HOME}/.config/i3-gaps/conky/i3bar.sh bottom"
 }
 
 # =======================
