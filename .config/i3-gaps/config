@@ -9,6 +9,7 @@ set $border         4   # px
 # Default Apps
 set $term           termite
 set $browser        firefox --profile "${HOME}/.config/firefox/default"
+set $chat           pidgin -c "${HOME}/.config/pidgin"
 set $capture        vokoscreen
 set $imgeditor      gimp
 set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
@@ -40,8 +41,9 @@ workspace $ws7 output VGA-1
 
 # App Assignation
 assign [instance="Navigator"] $ws1
-assign [class="Thunderbird"] $ws5
 assign [class="Zathura"] $ws4
+assign [class="Pidgin"] $ws5
+assign [class="Thunderbird"] $ws5
 assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws7
 
@@ -49,6 +51,7 @@ assign [class="smplayer"] $ws7
 exec --no-startup-id i3-msg 'workspace $ws1; exec $browser'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
 exec --no-startup-id i3-msg 'workspace $ws5; exec $mail'
+exec --no-startup-id i3-msg 'workspace $ws5; exec $chat'
 exec --no-startup-id i3-msg 'workspace $ws2'
 
 # =======================
@@ -160,7 +163,8 @@ bindsym $mod+p exec mons -n left
 # Default Applications
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
-bindsym $mod+Ctrl+c exec --no-startup-id $capture
+bindsym $mod+Ctrl+c exec --no-startup-id $chat
+bindsym $mod+Ctrl+f exec --no-startup-id $capture
 bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
 bindsym $mod+Ctrl+m exec --no-startup-id $mail
