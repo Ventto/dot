@@ -32,6 +32,8 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'itchyny/lightline.vim'
 " Increasing and decreasing columns of numbers, dates or daynames
 Plug 'vim-scripts/VisIncr'
+" Syntaxs
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
@@ -75,6 +77,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Additional filetype
 au! BufRead,BufNewFile *.rules               set filetype=iptables
 au! BufRead,BufNewFile *.gdb                 set filetype=gdb
+au! BufRead,BufNewFile *.qrc                 set filetype=xml
 au! BufRead,BufNewFile Makefile.[a-zA-Z0-9]  set filetype=make
 
 " Collapse or expand
