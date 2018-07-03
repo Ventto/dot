@@ -12,7 +12,6 @@ alias gdb='gdb -q'
 alias less='LESSHISTFILE=- less -R -i'
 alias ls='ls -bh -CF --color=always'
 alias sdiff='grep -vxf'
-alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
 alias wget='wget --hsts-file /dev/null'
 
 # GUI Apps:
@@ -34,16 +33,20 @@ alias ld='ls -ld *'
 alias lad='ls -lAd .* | grep --color=never "^d"'
 alias laf='ls -lAd .* | grep --color=never -v "^d"'
 
-alias b='popd > /dev/null'
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
+alias bb='popd > /dev/null'
+alias b='cd ..'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
 
 # Clear clipboard
 alias c='echo -n | xclip -display :0 -selection clipboard'
-alias e="${EDITOR}"
-alias e.="${EDITOR} ."
+alias e="$EDITOR"
+alias ~="$TERMINAL"
+
+alias clip='xclip -sel c < '
+
+alias leak='valgrind --leak-check=full --show-leak-kinds=all'
 
 #==============================#
 #         Privileged           #

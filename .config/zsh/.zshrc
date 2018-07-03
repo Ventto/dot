@@ -62,10 +62,11 @@ function preexec () {
 #    Environment Variables     #
 #==============================#
 
-export BROWSER="firefox"
+export TERMINAL="termite"
+export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
 export EDITOR="nvim -p"
-export USE_EDITOR="nvim -p"
-export VISUAL="nvim -p"
+export USE_EDITOR="$EDITOR"
+export VISUAL="$EDITOR"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF8
 export GOPATH="$HOME/.config/go"
