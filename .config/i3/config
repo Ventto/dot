@@ -18,12 +18,14 @@ set $screenlocker   i3lock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/mati
 set $torrent        transmission-qt
 
 # Workspace Names
+font pango:Hack, Font Awesome 5 Free 9
+
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
 set $ws4 "4:  "
 set $ws5 "5:  "
-set $ws6 "6:  "
+set $ws6 "6:  "
 set $ws7 "7:  "
 
 # =======================
@@ -70,20 +72,20 @@ gaps inner $margin
 # =======================
 
 bar {
-    font pango:Hack, FontAwesome 9
+    font pango:Hack, Font Awesome 5 Free 9
     position top
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "${HOME}/.config/i3-gaps/conky/i3bar.sh top"
+    status_command "${HOME}/.config/i3/conky/i3bar.sh top"
 }
 bar {
-    font pango:Hack, FontAwesome 9
+    font pango:Hack, Font Awesome 5 Free 9
     position bottom
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
-    status_command "${HOME}/.config/i3-gaps/conky/i3bar.sh bottom"
+    status_command "${HOME}/.config/i3/conky/i3bar.sh bottom"
 }
 
 # =======================
