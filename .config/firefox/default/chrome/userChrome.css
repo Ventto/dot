@@ -86,14 +86,15 @@
   border: none !important;
 }
 
+/* Resize the pinned tabs */
 .tabbrowser-tab[pinned], .tabs-newtab-button {
     max-width: 36px !important;
     min-width: 36px !important;
 }
 
-.tabbrowser-tab[pinned] .tab-icon-image {
-    -moz-margin-start: 2px !important;
-    -moz-margin-end: 2px !important;
+/* Keep the pinned tab icon aligned center when tabs are compacted */
+:root:not([uidensity="compact"]) .tab-content[pinned] {
+    padding: 0 10px !important;
 }
 
 /* Remove the spinning wheel but keep the loading animation */
@@ -104,11 +105,6 @@
 /* Hide the new curved tab edges */
 .tab-background {
     opacity: 0 !important;
-}
-
-/* Align the non-pinned tabs with urlbar */
-#TabsToolbar .tabbrowser-tab:first-child {
-    margin-left: 3px !important;
 }
 
 /*
@@ -128,8 +124,8 @@
 
 /* Align toolbar plugin's buttons with pinned tabs */
 #nav-bar .toolbarbutton-1 {
-    margin-left: 5px !important;
-    padding: 0 2px !important;
+    max-width: 36px !important;
+    min-width: 36px !important;
 }
 
 #TabsToolbar, #nav-bar, #urlbar {
