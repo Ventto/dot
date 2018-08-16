@@ -10,8 +10,9 @@
 
 #appcontent,
 #appcontent > #content,
-#appcontent > #content > tabbox > tabpanels {
-    background: #1d2021 !important;
+#appcontent > #content > tabbox > tabpanels,
+#navigator-toolbox, #TabsToolbar, #nav-bar, #urlbar {
+    background: #2e3132 !important;
 }
 
 :root {
@@ -62,7 +63,7 @@
     box-shadow: none !important;
 }
 
-.tabbrowser-tab[selected=true] {
+.tabbrowser-tab[selected=true] .tab-background {
     background: #5675b9 !important;
 }
 
@@ -102,8 +103,8 @@
   list-style-image: url("chrome://mozapps/skin/places/defaultFavicon.png") !important;
 }
 
-/* Hide the new curved tab edges */
-.tab-background {
+/* Hide the selected-tab-border edges */
+.tabbrowser-tab[selected=true] .tab-background .tab-line {
     opacity: 0 !important;
 }
 
@@ -129,15 +130,19 @@
 }
 
 #TabsToolbar, #nav-bar, #urlbar {
-    background: #2e3132 !important;
     padding: 0 !important;
     margin: 0 !important;
     border-radius: 0 0 0 0 !important;
 }
 
 /* Set toolbars order */
-#nav-bar { -moz-box-ordinal-group: 1 !important; }
-#TabsToolbar { -moz-box-ordinal-group: 2 !important; }
+#TabsToolbar {
+    -moz-box-ordinal-group: 2 !important;
+    margin-bottom: 1px !important;
+}
+#nav-bar {
+    -moz-box-ordinal-group: 1 !important;
+}
 
 #urlbar {
     border-color: #2e3132 !important;
