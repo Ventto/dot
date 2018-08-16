@@ -91,6 +91,7 @@ add_functions 'nohup'
 
 add_aliases 'base'
 add_aliases 'aur'
+add_aliases 'dev'
 
 add_comp 'base'
 
