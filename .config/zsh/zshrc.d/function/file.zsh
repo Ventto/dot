@@ -11,6 +11,6 @@ PDFMerge() {
 #       Pretty Printers        #
 #==============================#
 
-PrintJson () {
-    cat "$1" | jq
+JSON_PrettyPrint () {
+    cat "$1" | python -m json.tool
 }
