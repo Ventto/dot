@@ -87,7 +87,6 @@ add_functions 'file'
 add_functions 'i3'
 add_functions 'manpage'
 add_functions 'maths'
-add_functions 'nohup'
 
 add_aliases 'base'
 add_aliases 'aur'

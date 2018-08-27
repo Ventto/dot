@@ -15,13 +15,13 @@ alias sdiff='grep -vxf'
 alias wget='wget --hsts-file /dev/null'
 
 # GUI Apps:
-alias gimp='NoHup gimp'
-alias gitk='NoHup gitk --all'
-alias nautilus='NoHup nautilus .'
-alias smplayer='NoHup smplayer'
-alias termite='NoHup termite'
-alias texmaker='NoHup texmaker'
-alias zathura='NoHup zathura'
+alias gimp='nohup gimp >/dev/null 2>&1 & disown'
+alias gitk='nohup gitk >/dev/null 2>&1 & disown'
+alias nautilus='nohup nautilus >/dev/null 2>&1 & disown'
+alias smplayer='nohup smplayer >/dev/null 2>&1 & disown'
+alias termite='nohup termite >/dev/null 2>&1 & disown'
+alias texmaker='nohup texmaker >/dev/null 2>&1 & disown'
+alias zathura='nohup zathura >/dev/null 2>&1 & disown'
 
 #==============================#
 #       Super Shortcuts        #
