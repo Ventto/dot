@@ -1,4 +1,3 @@
-alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 #==============================#

@@ -7,7 +7,7 @@ add_file () {
 }
 
 add_functions () { add_file 'function' 'zsh' "$1"; }
-add_aliases () { add_file 'alias' 'zsh' "$1"; }
+add_aliases () { add_file 'alias' 'sh' "$1"; }
 add_bindkeys () { add_file 'bindkey' 'zsh' "$1"; }
 add_comp () { add_file 'completion' 'comp' "$1"; }
 add_bash_comp () { add_file 'completion/bash' 'comp' "$1"; }
