@@ -1,22 +1,20 @@
-PROFILE_DIR   = ../default
-SESSION_DIR   = $(PROFILE_DIR)/sessionstore-backups
+PROFILE        := default
+PINS_FILE      := $(HOME)/.config/firefox/pins/default.json
 
-RECOVERY_FILE = $(SESSION_DIR)/recovery.jsonlz4
-
-SESSION_FILES = $(SESSION_DIR)/previous.jsonlz4  \
-                $(SESSION_DIR)/recovery.baklz4   \
-                $(SESSION_DIR)/upgrade.jsonlz4-* \
-                $(SESSION_DIR)/../sessionstore.jsonlz4
+PROFILE_DIR    = $(HOME)/.config/firefox/profiles/$(PROFILE)
+SESSION_DIR    = $(PROFILE_DIR)/sessionstore-backups
+RECOVERY_FILE  = $(SESSION_DIR)/recovery.jsonlz4
+SESSION_FILE   = $(PROFILE_DIR)/sessionstore.jsonlz4
 
 all: $(RECOVERY_FILE)
 
-$(RECOVERY_FILE): pinned-tabs.json
-	$(RM) $(SESSION_FILES)
+$(RECOVERY_FILE): $(PINS_FILE)
+	$(RM) -r $(SESSION_DIR) $(SESSION_FILE)
 	mkdir -p $(SESSION_DIR)
 	python3 mozlz4a.py $< $@
 
 clean:
-	$(RM) $(SESSION_FILES)
+	$(RM) -r $(SESSION_DIR) $(SESSION_FILE)
 
 test: checkout all
 	sleep 1

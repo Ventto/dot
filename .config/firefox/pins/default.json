@@ -13,7 +13,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 1
         },
         {
           "entries": [
@@ -22,7 +23,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 8
         },
         {
           "entries": [
@@ -31,7 +33,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 7
         },
         {
           "entries": [
@@ -40,7 +43,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 8
         },
         {
           "entries": [
@@ -49,7 +53,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 3
         },
         {
           "entries": [
@@ -58,7 +63,8 @@
               "triggeringPrincipal_base64": "SmIS26zLEdO3ZQBgsLbOywAAAAAAAAAAwAAAAAAAAEY="
             }
           ],
-          "pinned": true
+          "pinned": true,
+          "userContextId": 8
         }
       ]
     }
