@@ -78,10 +78,10 @@ export ANDROID_HOME="/opt/android-sdk"
 export LESSHISTFILE=/dev/null
 
 #==============================#
-#  Alias/Function/Completion   #
+#           Sourcing           #
 #==============================#
 
-# Source functions, aliases, completion and binkeys zsh files elegantly
+# Source functions, aliases, completion and binkeys zsh files, elegantly...
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
 # Caution: Always source functions first (ex: aliases could require functions)
@@ -100,7 +100,6 @@ add_comp 'base'
 autoload -U +X bashcompinit && bashcompinit
 add_bash_comp 'ct-ng'
 
-# Bindkeys
 add_bindkeys 'base'
 add_bindkeys 'edit-command-line'
 add_bindkeys 'fg-ctrlz'
