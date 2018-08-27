@@ -8,7 +8,7 @@ set $border         4   # px
 
 # Default Apps
 set $term           termite
-set $browser        firefox --profile "${HOME}/.config/firefox/default"
+set $browser        firefox --profile "${HOME}/.config/firefox/profiles/default"
 set $capture        vokoscreen
 set $imgeditor      gimp
 set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
