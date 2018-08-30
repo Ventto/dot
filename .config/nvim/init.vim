@@ -34,6 +34,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/VisIncr'
 " Syntaxs
 Plug 'peterhoeg/vim-qml'
+" Internal sudo edition (https://github.com/neovim/neovim/issues/8527)
+Plug 'lambdalisue/suda.vim'
 
 call plug#end()
 
@@ -66,7 +68,7 @@ set wildmode=list:longest,full
 colo molokai
 
 " Save changes using sudo without involving nvim
-cnoreabbrev w!! w !sudo tee % > /dev/null
+cnoreabbrev w!! w suda://%
 
 " Column limit
 " hi OverLength ctermbg=red ctermfg=black match OverLength /\%80v.\+/
