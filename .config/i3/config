@@ -78,6 +78,7 @@ bar {
 bar {
     font pango:Hack, Font Awesome 5 Free 9
     position bottom
+    workspace_buttons no
     height 25
     colors { background #1d2021 }
     separator_symbol "  "
