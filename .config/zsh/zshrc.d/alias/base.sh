@@ -6,7 +6,7 @@ alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 # CLI Apps:
 alias checkpatch='checkpatch.pl --no-tree --strict -f'
-alias dd='dcfldd status=on'
+alias dd='dd status=progress'
 alias gdb='gdb -q'
 alias less='LESSHISTFILE=- less -R -i'
 alias ls='ls -bh -CF --color=always'
