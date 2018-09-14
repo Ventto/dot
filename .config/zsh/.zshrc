@@ -13,8 +13,10 @@ if [[ $TERM == xterm-termite ]]; then
 fi
 
 #==============================#
-#           History            #
+#           Options            #
 #==============================#
+
+# History
 
 HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
@@ -33,9 +35,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-#==============================#
-#           Options            #
-#==============================#
+# Directory
 
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
