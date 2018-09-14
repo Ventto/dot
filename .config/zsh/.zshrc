@@ -3,6 +3,16 @@
 alias reload=". $ZDOTDIR/.zshrc"
 
 #==============================#
+#           Terminal           #
+#==============================#
+
+# Open a new terminal from current directory
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+
+#==============================#
 #           History            #
 #==============================#
 
@@ -64,7 +74,6 @@ function preexec () {
 #    Environment Variables     #
 #==============================#
 
-export TERMINAL="termite"
 export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
 export EDITOR="nvim -p"
 export USE_EDITOR="$EDITOR"

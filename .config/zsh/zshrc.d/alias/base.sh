@@ -41,7 +41,6 @@ alias ....='cd ../../../../'
 # Clear clipboard
 alias c='echo -n | xclip -display :0 -selection clipboard'
 alias e="$EDITOR"
-alias ~="$TERMINAL"
 
 alias clip='xclip -sel c < '
 
