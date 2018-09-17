@@ -36,6 +36,8 @@ Plug 'vim-scripts/VisIncr'
 Plug 'peterhoeg/vim-qml'
 " Internal sudo edition (https://github.com/neovim/neovim/issues/8527)
 Plug 'lambdalisue/suda.vim'
+" Robot Framework syntax"
+Plug 'mfukar/robotframework-vim'
 
 call plug#end()
 
