@@ -8,8 +8,16 @@ alias reload=". $ZDOTDIR/.zshrc"
 
 # Open a new terminal from current directory
 if [[ $TERM == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
-  __vte_osc7
+    if ! . "/etc/profile.d/vte.sh" > /dev/null 2>&1; then
+        if ! . "/usr/local/etc/profile.d/vte.sh" > /dev/null 2>&1; then
+            echo "Error: feature/open a new terminal from current directory"
+            echo "Error: cannot find 'vte.sh'"
+        else
+            __vte_osc7
+        fi
+    else
+        __vte_osc7
+    fi
 fi
 
 #==============================#
