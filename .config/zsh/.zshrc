@@ -63,11 +63,16 @@ function precmd {
     [ "$?" -eq 0 ] && icon="" || icon=""
     vcs_info
     [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
+    [ -n "$WINDOW_TITLE" ] && print -Pn "\e]0;${WINDOW_TITLE}\a"
+}
+
+function set_title () {
+    export WINDOW_TITLE="$1"
 }
 
 # Print command line in window title
 function preexec () {
-    print -Pn "\e]0;$1\a"
+    [ -z "$WINDOW_TITLE" ] && print -Pn "\e]0;$1\a"
 }
 
 #==============================#
