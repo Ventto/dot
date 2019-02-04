@@ -23,8 +23,8 @@
     close = ctrl+space
 
 [frame]
-	color = "#000000"
-	width = 1
+    color = "#000000"
+    width = 1
 
 [urgency_low]
     background = "#008800"
