@@ -17,6 +17,7 @@ alias wget='wget --hsts-file /dev/null'
 #       Super Shortcuts        #
 #==============================#
 
+alias l='ls -1'
 alias ll='ls -lhF'
 alias la='ls -lhAF'
 alias ld='ls -ld *'
