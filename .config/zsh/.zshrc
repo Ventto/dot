@@ -62,7 +62,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' check-for-changes true
 zstyle ':vcs_info:git*' get-revision true
-zstyle ':vcs_info:git*' formats " %r/%S %F{green} -(%b)%f%F{red}%u%f"
+zstyle ':vcs_info:git*' formats " %r/%S %F{green} -(%b)%u%f"
 zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 
 PROMPT=$'%{$bg[red]%}[%D{%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
