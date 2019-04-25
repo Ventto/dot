@@ -89,6 +89,9 @@ map <space> za
 map , zr
 map ; zm
 
+" Clipboard copy:
+vnoremap  <leader>y  "+y
+
 " #===========================#
 "          Syntastic
 " #===========================#
