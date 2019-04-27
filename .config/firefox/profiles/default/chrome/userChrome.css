@@ -137,11 +137,11 @@
 
 /* Set toolbars order */
 #TabsToolbar {
-    -moz-box-ordinal-group: 2 !important;
-    margin-bottom: 1px !important;
+    -moz-box-ordinal-group: 1 !important;
+    margin-bottom: -1px !important;
 }
 #nav-bar {
-    -moz-box-ordinal-group: 1 !important;
+    -moz-box-ordinal-group: 0 !important;
 }
 
 #urlbar {
