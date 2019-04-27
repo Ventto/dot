@@ -9,9 +9,6 @@ xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
 # Wallpaper
 feh --bg-max --no-fehbg "${HOME}/images/wallpapers/fusion.jpg"
 
-# Transparency
-nohup xcompmgr -c -f -n > /dev/null 2>&1 &
-
 # Notification server
 nohup dunst > /dev/null 2>&1 &
 
