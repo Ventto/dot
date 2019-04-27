@@ -3,7 +3,7 @@
 alias reload=". $ZDOTDIR/.zshrc"
 
 #==============================#
-#           Terminal           #
+#           Patches            #
 #==============================#
 
 # Open a new terminal from current directory
@@ -19,6 +19,11 @@ if [[ $TERM == xterm-termite ]]; then
         __vte_osc7
     fi
 fi
+
+# Fix slow git autocompletion in huge repositories
+__git_files () {
+    _wanted files expl 'local files' _files
+}
 
 #==============================#
 #           Options            #
