@@ -499,8 +499,8 @@ user_pref("dom.vibrator.enabled", false);
 user_pref("dom.vr.enabled", false);
 user_pref("dom.vr.oculus.enabled", false);
 user_pref("dom.vr.oculus050.enabled", false);
-user_pref("dom.webnotifications.enabled", false);
-user_pref("dom.webnotifications.serviceworker.enabled", false);
+//user_pref("dom.webnotifications.enabled", false);
+//user_pref("dom.webnotifications.serviceworker.enabled", false);
 user_pref("media.webspeech.recognition.enable", false);
 
 // Remove default feed content handlers:
