@@ -1,0 +1,22 @@
+#!/bin/sh
+
+setxkbmap us
+
+# Lock Screen before suspending
+xss-lock -- /usr/bin/swaylock -e -f -n -c 000000 \
+                            -i "${HOME}/images/wallpapers/matin.png" &
+
+# Notification server
+nohup dunst > /dev/null 2>&1 &
+
+# Brightness
+lux -S 60%
+
+# Audio
+amixer -q set Master mute
+
+# Monitor display manager
+#nohup mons -m > /dev/null 2>&1 &
+
+# Window manager
+sway -V
