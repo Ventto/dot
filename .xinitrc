@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap fr
+setxkbmap us
 
 # Lock Screen before suspending
 xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
