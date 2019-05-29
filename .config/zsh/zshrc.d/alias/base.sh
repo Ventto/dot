@@ -63,3 +63,5 @@ alias grep='grep --color=auto'
 alias kbwriter='setxkbmap -layout us -variant intl'
 # Writing with French accent (ex: alt + ' + e = é)
 alias kbdev='xkbcomp -w 0 "${HOME}/.config/xkbmap/us_intl" "$DISPLAY"'
+
+alias sway='sh "${HOME}/.winitrc"'
