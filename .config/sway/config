@@ -1,0 +1,187 @@
+# =======================
+#       Variables
+# =======================
+
+set $mod            Mod4
+set $gap            16px
+set $border         4px
+
+# Default Apps
+set $term           termite
+set $browser        firefox --profile "${HOME}/.config/firefox/profiles/default"
+set $capture        vokoscreen
+set $filemanager    nautilus
+set $imgeditor      gimp
+set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
+set $player         smplayer
+set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
+set $torrent        transmission-qt
+
+# =======================
+#        Beautify
+# =======================
+
+output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
+
+# =======================
+#       Workspaces
+# =======================
+
+# Workspace Names
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7:  "
+
+# Monitor Dispatching
+workspace $ws1 output DP-2
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output DP-2
+workspace $ws5 output eDP-1
+workspace $ws6 output DP-2
+workspace $ws7 output DP-2
+
+# App Assignation
+assign [class="Firefox"] $ws1
+assign [class="Zathura"] $ws4
+assign [class="Pidgin"] $ws5
+assign [class="Thunderbird"] $ws5
+assign [class="Gimp"] $ws7
+assign [class="smplayer"] $ws7
+
+# Startup Apps
+exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
+
+# =======================
+#         Windows
+# =======================
+
+# class         border      background  text        indicator   child_border
+client.focused  #d95e40     #d95e40     #333333     #d95e40     #d95e40
+
+for_window [class="^.*"] border pixel $border
+gaps inner $gap
+
+# =======================
+#          Bars
+# =======================
+
+bar {
+    separator_symbol "  "
+    status_command "${HOME}/.config/sway/conky/i3bar.sh top"
+    font pango:Hack, Font Awesome 5 Free 9
+    position top
+    height 25
+    colors {
+        background #1d2021
+    }
+}
+bar {
+    separator_symbol "  "
+    status_command "${HOME}/.config/sway/conky/i3bar.sh bottom"
+    font pango:Hack, Font Awesome 5 Free 9
+    position bottom
+    workspace_buttons no
+    height 25
+    colors {
+        background #1d2021
+    }
+}
+
+# =======================
+#        Bindkeys
+# =======================
+
+# Mouse
+floating_modifier $mod
+
+# Workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+
+# Basic
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+q kill
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split
+bindsym $mod+h split horizontal
+bindsym $mod+v split vertical
+bindsym $mod+t split toggle
+
+# Layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Resize
+mode "resize" {
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Volume
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Brightness
+bindsym XF86MonBrightnessUp exec lux -m 500 -a 20%
+bindsym XF86MonBrightnessDown exec lux -m 500 -s 20%
+bindsym $mod+p exec mons -n left
+
+# Default Applications
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+Ctrl+b exec --no-startup-id $browser
+bindsym $mod+Ctrl+c exec --no-startup-id $capture
+bindsym $mod+Ctrl+f exec --no-startup-id $filemanager
+bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
+bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
+bindsym $mod+Ctrl+m exec --no-startup-id $mail
+bindsym $mod+Ctrl+p exec --no-startup-id $player
+bindsym $mod+Ctrl+t exec --no-startup-id $torrent
+
+# Screenshot
+set $img "$HOME/images/screenshots/%d-%m-%Y-%H:%M:%S.png"
+bindsym Print exec scrot $img && notify-send -u low "Screen." "Scrot"
+bindsym $mod+Ctrl+x exec scrot -u $img && notify-send -u low "Window." "Scrot"
+
+# Others Applications
+bindsym $mod+Ctrl+v exec VirtualBox
+bindsym $mod+Ctrl+w exec wireshark
