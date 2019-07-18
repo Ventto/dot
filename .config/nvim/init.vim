@@ -92,6 +92,23 @@ map ; zm
 " Clipboard copy:
 vnoremap  <leader>y  "+y
 
+map <C-q> <ESC>^
+imap <C-q> <ESC>I
+map <C-e> <ESC>$
+imap <C-e> <ESC>A
+
+" Copy Paste Craziness
+nnoremap yu y$
+nnoremap yt y^
+nnoremap df d$
+nnoremap ds d^
+
+" Browse function definitions
+" Open definition in tab
+nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Open definition in vertical split
+nnoremap <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " #===========================#
 "          Syntastic
 " #===========================#
