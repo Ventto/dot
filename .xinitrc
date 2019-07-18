@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap us
+xkbcomp -w 0 .config/xkbmap/us_intl "$DISPLAY"
 
 # Lock Screen before suspending
 xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
