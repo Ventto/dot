@@ -105,6 +105,10 @@ let g:syntastic_c_check_header = 1
 
 nmap <F8> :TagbarToggle<CR>
 
+" Tagbar automatically updates its buffer every 'updatetime' which is by
+" default 4s, which is actually slow.
+set updatetime=1000
+
 " #===========================#
 "          Ultisnips
 " #===========================#
