@@ -1,6 +1,6 @@
 rofi.theme:             Monokai
 rofi.font:              hack 10
-rofi.modi:              run,window,ssh
+rofi.modi:              run,ssh
 rofi.terminal:          termite
 rofi.ssh-client:        ssh
 rofi.ssh-command:       {terminal} -e "{ssh-client} {host}"
