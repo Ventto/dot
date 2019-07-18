@@ -9,7 +9,7 @@ alias checkpatch='checkpatch.pl --no-tree --strict -f'
 alias dd='dd status=progress'
 alias gdb='gdb -q'
 alias less='LESSHISTFILE=- less -R -i'
-alias ls='ls -bh -CF --color=always'
+alias ls='ls -bh -CF --color=always --hide="*~"'
 alias sdiff='grep -vxf'
 alias wget='wget --hsts-file /dev/null'
 
