@@ -1,0 +1,13 @@
+rofi.theme:             Monokai
+rofi.font:              hack 10
+rofi.modi:              run,window,ssh
+rofi.terminal:          termite
+rofi.ssh-client:        ssh
+rofi.ssh-command:       {terminal} -e "{ssh-client} {host}"
+rofi.run-command:       zsh -c -i '{cmd}'
+rofi.run-shell-command: {terminal} -e '{cmd}'
+rofi.disable-history:   false
+rofi.levenshtein-sort:  false
+rofi.case-sensitive:    false
+rofi.auto-select:       false
+rofi.parse-hosts:       false
