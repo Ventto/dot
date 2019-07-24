@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Unmute
+if amixer | grep "'Master'" -A 4 | grep -E '\[on\]$' >/dev/null 2>&1; then
+    amixer set Master mute
+    amixer set Speaker mute
+    amixer set Headphone mute
+else
+    amixer set Master unmute
+    amixer set Speaker unmute
+    amixer set Headphone unmute
+fi
