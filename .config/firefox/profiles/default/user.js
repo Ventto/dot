@@ -2,6 +2,10 @@
 //                      Ergonomy
 // ====================================================
 
+// Avoid quiting the browser accidentally with CTRL-Q by always asking
+user_pref("browser.sessionstore.warnOnQuit", true);
+user_pref("browser.warnOnQuit", true);
+
 // Force new window to tab:
 user_pref("browser.link.open_newwindow", 3);
 user_pref("browser.link.open_newwindow.restriction", 0);
