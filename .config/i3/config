@@ -35,13 +35,16 @@ set $ws7 "7:  "
 # =======================
 
 # Monitor Dispatching
-workspace $ws1 output VGA-1
-workspace $ws2 output LVDS-1
-workspace $ws3 output LVDS-1
-workspace $ws4 output VGA-1
-workspace $ws5 output LVDS-1
-workspace $ws6 output VGA-1
-workspace $ws7 output VGA-1
+workspace $ws1 output secondary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output secondary
+workspace $ws5 output primary
+workspace $ws6 output secondary
+workspace $ws7 output secondary
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws0 output primary
 
 # App Assignation
 assign [class="Firefox"] $ws1
