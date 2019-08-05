@@ -24,11 +24,14 @@ font pango:Hack, Font Awesome 5 Free 9
 
 set $ws1 "1:  "
 set $ws2 "2:  "
-set $ws3 "3:  "
+set $ws3 "3:  "
 set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
 set $ws7 "7:  "
+set $ws8 "8:  "
+set $ws9 "9:  "
+set $ws0 "~  "
 
 # =======================
 #       Workspaces
@@ -80,6 +83,7 @@ bar {
     separator_symbol "  "
     status_command "${HOME}/.config/i3/conky/i3bar.sh top"
 }
+
 bar {
     font pango:Hack, Font Awesome 5 Free 9
     position bottom
@@ -105,6 +109,9 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -113,6 +120,9 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 # Basic
 bindsym $mod+Shift+r restart
