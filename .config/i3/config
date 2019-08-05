@@ -55,7 +55,6 @@ assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws7
 
 # Startup Apps
-exec --no-startup-id i3-msg 'workspace $ws5; exec $mail'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
 
 # =======================
