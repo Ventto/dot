@@ -5,6 +5,7 @@ alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 #==============================#
 
 # CLI Apps:
+alias cal='cal --monday'
 alias checkpatch='checkpatch.pl --no-tree --strict -f'
 alias dd='dd status=progress'
 alias gdb='gdb -q'
@@ -12,6 +13,7 @@ alias less='LESSHISTFILE=- less -R -i'
 alias ls='ls -bh -CF --color=always --hide="*~"'
 alias sdiff='grep -vxf'
 alias wget='wget --hsts-file /dev/null'
+alias watch='watch -c '
 
 #==============================#
 #       Super Shortcuts        #
@@ -34,6 +36,8 @@ alias ....='cd ../../../../'
 alias c='echo -n | xclip -display :0 -selection clipboard'
 alias e="$EDITOR"
 
+alias tmp="cd $(mktemp -d)"
+
 alias clip='xclip -sel c < '
 
 alias leak='valgrind --leak-check=full --show-leak-kinds=all'
@@ -42,8 +46,11 @@ alias leak='valgrind --leak-check=full --show-leak-kinds=all'
 #         Privileged           #
 #==============================#
 
-alias blueon='sudo systemctl start bluetooth.service'
-alias blueoff='sudo systemctl stop bluetooth.service'
+alias bluetooth-on='sudo systemctl start bluetooth.service'
+alias bluetooth-off='sudo systemctl stop bluetooth.service'
+alias wifi-on='sudo rfkill unblock wifi && sudo ip link set wlo0 up'
+alias wifi-list='watch -c -n 1 nmcli -c yes device wifi list'
+alias wifi-connect='nmtui-connect'
 
 #==============================#
 #          Features            #
@@ -63,5 +70,4 @@ alias grep='grep --color=auto'
 alias kbwriter='setxkbmap -layout us -variant intl'
 # Writing with French accent (ex: alt + ' + e = é)
 alias kbdev='xkbcomp -w 0 "${HOME}/.config/xkbmap/us_intl" "$DISPLAY"'
-
 alias sway='sh "${HOME}/.winitrc"'
