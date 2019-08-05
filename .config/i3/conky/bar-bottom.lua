@@ -49,7 +49,7 @@ i3bar = {
     wlan = [[
         ${if_match "${exec rfkill -n list wifi \
             | sed -n 's%.*blocked: \(yes\)%\1%p' \
-            | head -n1}" == "yes" }
+            | head -n1}" == "yes"}
             {
                 "full_text":"]] .. icon.wlan .. [[ x",
                 "color": "\#F08080"
@@ -79,15 +79,15 @@ i3bar = {
     ]],
     bluetooth = [[
         ${if_match "${exec rfkill -n list bluetooth \
-            | sed -n 's%.*blocked: \(yes\)%\1%p' \
-                | head -n1}" == "yes" }
+                        | sed -n 's%.*blocked: \(yes\)%\1%p' \
+                        | head -n1}" == "yes"}
             {
                 "full_text":"]] .. icon.bluetooth .. [[ x",
                 "color": "\#F08080"
             }
         ${else}
             ${if_match "${exec systemctl status bluetooth.service \
-                    | sed -n 's/.*Active: \([a-z]\+\).*/\1/p'}" == "active"}
+                            | sed -n 's/.*Active: \([a-z]\+\).*/\1/p'}" == "active"}
                 {
                     "full_text":"]] .. icon.bluetooth .. [[ ",
                     "border": "\#9FBC00",
