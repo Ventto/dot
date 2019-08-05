@@ -47,10 +47,10 @@ workspace $ws9 output primary
 workspace $ws0 output primary
 
 # App Assignation
-assign [class="Firefox"] $ws1
-assign [class="Zathura"] $ws4
-assign [class="Pidgin"] $ws5
-assign [class="Thunderbird"] $ws5
+assign [class="firefox"] $ws1
+assign [class="Evince"] $ws4
+assign [class="Pidgin"] $ws6
+assign [class="Thunderbird"] $ws6
 assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws7
 
