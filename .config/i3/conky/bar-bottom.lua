@@ -20,7 +20,7 @@ icon = {
 
 i3bar = {
     eth = [[
-        ${if_match "${exec ip addr show ]] .. my.network.eth .. [[ up }" == "" }
+        ${if_empty "${exec ip addr show ]] .. my.network.eth .. [[ up}"}
             {
                 "full_text":"]] .. icon.eth .. [[ x",
                 "color": "\#F08080"
