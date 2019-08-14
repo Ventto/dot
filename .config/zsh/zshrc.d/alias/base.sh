@@ -14,6 +14,7 @@ alias ls='ls -bh -CF --color=always --hide="*~"'
 alias sdiff='grep -vxf'
 alias wget='wget --hsts-file /dev/null'
 alias watch='watch -c '
+alias scrot='scrot "$HOME/images/screenshots/%Y-%m-%d_%H:%M:%S.jpg" -q 90'
 
 #==============================#
 #       Super Shortcuts        #
