@@ -70,8 +70,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 set wildmenu
 set wildmode=list:longest,full
 
-colo molokai
-
 " Save changes using sudo without involving nvim
 cnoreabbrev w!! w suda://%
 
@@ -111,6 +109,14 @@ nnoremap ds d^
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open definition in vertical split
 nnoremap <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" #===========================#
+"            Theme
+" #===========================#
+
+if isdirectory(bundle_dir . "/molokai")
+    colo molokai
+endif
 
 " #===========================#
 "          Syntastic
