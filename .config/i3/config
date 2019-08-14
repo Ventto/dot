@@ -188,9 +188,8 @@ bindsym $mod+Ctrl+p exec --no-startup-id $player
 bindsym $mod+Ctrl+t exec --no-startup-id $torrent
 
 # Screenshot
-set $img "$HOME/images/screenshots/%d-%m-%Y-%H:%M:%S.png"
-bindsym Print exec scrot $img && notify-send -u low "Screen." "Scrot"
-bindsym $mod+Ctrl+x exec scrot -u $img && notify-send -u low "Window." "Scrot"
+set $imgpath "$HOME/images/screenshots/%d-%m-%Y-%H:%M:%S.png"
+bindsym Print exec scrot $imgpath && notify-send -u low "Print screen !" "Scrot"
 
 # Others Applications
 bindsym $mod+Ctrl+v exec VirtualBox
