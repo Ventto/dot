@@ -1,9 +1,17 @@
+function PlugExists(name)
+    if isdirectory(g:bundle_dir . "/" . a:name)
+        return 1
+    else
+        echo a:name . ": plugin not found"
+    endif
+endfunction
+
 set nocompatible
 set viminfo=
 filetype off
 
-let config_dir = $HOME . "/.config/nvim"
-let bundle_dir = config_dir . "/bundle"
+let g:config_dir = $HOME . "/.config/nvim"
+let g:bundle_dir = config_dir . "/bundle"
 
 call plug#begin(bundle_dir)
 
@@ -111,93 +119,77 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " #===========================#
-"            Theme
+"           Plugins
 " #===========================#
 
-if isdirectory(bundle_dir . "/molokai")
+if PlugExists("molokai")
     colo molokai
 endif
 
-" #===========================#
-"          Syntastic
-" #===========================#
+if PlugExists("syntastic")
+    let g:syntastic_c_checkers = ['checkpatch', 'gcc']
+    let g:syntastic_c_check_header = 1
+endif
 
-let g:syntastic_c_checkers = ['checkpatch', 'gcc']
-let g:syntastic_c_check_header = 1
+if PlugExists("tagbar")
+    nmap <F8> :TagbarToggle<CR>
 
-" #===========================#
-"           Tagbar
-" #===========================#
+    " Tagbar automatically updates its buffer every 'updatetime' which is by
+    " default 4s, which is actually slow.
+    set updatetime=1000
+endif
 
-nmap <F8> :TagbarToggle<CR>
+if PlugExists("ultisnips")
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsEditSplit="vertical"
+endif
 
-" Tagbar automatically updates its buffer every 'updatetime' which is by
-" default 4s, which is actually slow.
-set updatetime=1000
-
-" #===========================#
-"          Ultisnips
-" #===========================#
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-
-" #===========================#
-"            CtrlP
-" #===========================#
-
-let g:ctrlp_cmd='CtrlP :pwd'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-" #===========================#
-"           NerdTree
-" #===========================#
-
-map <C-f> :NERDTreeToggle<CR>
-" | Automatically opened when vim starts up with no file specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" | Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" #===========================#
-"          SimplFold
-" #===========================#
-
-let g:SimpylFold_docstring_preview=1
-
-" #===========================#
-"        Expand Region
-" #===========================#
-
-map ù <Plug>(expand_region_expand)
-map * <Plug>(expand_region_shrink)
-
-" #===========================#
-"          Light Line
-" #===========================#
-
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'lineinfo' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'syntastic', 'maxlineinfo', 'modified' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding',
-      \                'filetype', 'charvaluehex' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'maxlineinfo': "MaxLineInfo",
-      \ },
+if PlugExists("ctrlp.vim")
+    let g:ctrlp_cmd='CtrlP :pwd'
+    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
       \ }
-function! MaxLineInfo()
-  return line('.') . '/' . line('$')
-endfunction
+endif
+
+if PlugExists("nerdtree")
+    map <C-f> :NERDTreeToggle<CR>
+    " | Automatically opened when vim starts up with no file specified
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    " | Close vim if the only window left open is a NERDTree
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+endif
+
+if PlugExists("SimpylFold")
+    let g:SimpylFold_docstring_preview=1
+endif
+
+if PlugExists("vim-expand-region")
+    map ù <Plug>(expand_region_expand)
+    map * <Plug>(expand_region_shrink)
+endif
+
+if PlugExists("lightline.vim")
+    let g:lightline = {
+          \ 'active': {
+          \   'left': [ [ 'lineinfo' ],
+          \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+          \   'right': [ [ 'syntastic', 'maxlineinfo', 'modified' ],
+          \              [ 'percent' ],
+          \              [ 'fileformat', 'fileencoding',
+          \                'filetype', 'charvaluehex' ] ]
+          \ },
+          \ 'component_function': {
+          \   'gitbranch': 'fugitive#head',
+          \   'maxlineinfo': "MaxLineInfo",
+          \ },
+          \ }
+    function! MaxLineInfo()
+      return line('.') . '/' . line('$')
+    endfunction
+endif
