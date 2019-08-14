@@ -2,7 +2,10 @@ set nocompatible
 set viminfo=
 filetype off
 
-call plug#begin("~/.config/nvim/bundle")
+let config_dir = $HOME . "/.config/nvim"
+let bundle_dir = config_dir . "/bundle"
+
+call plug#begin(bundle_dir)
 
 " Color scheme
 Plug 'tomasr/molokai'
