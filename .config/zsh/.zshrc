@@ -94,6 +94,8 @@ function preexec () {
 
 export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
 export EDITOR="nvim -p"
+export SUDO_EDITOR="rnano"
+export TERMINAL="termite"
 export USE_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 export GIMP2_DIRECTORY=".config/gimp"
