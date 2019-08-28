@@ -120,6 +120,7 @@ add_functions 'manpage'
 add_functions 'maths'
 
 add_aliases 'base'
+add_aliases 'security'
 add_aliases 'aur'
 add_aliases 'dev'
 
