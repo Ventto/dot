@@ -69,6 +69,7 @@ exec --no-startup-id i3-msg 'workspace $ws2; exec $term'
 client.focused      #d95e40 #d95e40 #333333
 
 for_window [class="^.*"] border pixel $border
+popup_during_fullscreen smart
 gaps inner $margin
 
 # =======================
