@@ -46,7 +46,7 @@ call plug#end()
 filetype plugin indent on
 
 " #===========================#
-"           Settings
+"          Functions
 " #===========================#
 
 function PlugExists(name)
@@ -56,6 +56,10 @@ function PlugExists(name)
         echo a:name . ": plugin not found"
     endif
 endfunction
+
+" #===========================#
+"           Settings
+" #===========================#
 
 if PlugExists("molokai")
     colo molokai
