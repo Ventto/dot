@@ -5,19 +5,19 @@
     format = "<b>%s</b>\n%b"
     geometry = "300x5-20+20"
     horizontal_padding = 10
+    icon_folders = /usr/share/icons/custom
+    icon_position = left
     idle_threshold = 0
     indicate_hidden = true
     padding = 20
     separator_color = frame
     separator_height = 2
     show_age_threshold = 60
+    show_icons = yes
     sort = yes
     startup_notification = false
     sticky_history = yes
     word_wrap = yes
-    show_icons = yes
-    icon_position = left
-    icon_folders = /usr/share/icons/custom
 
 [shortcuts]
     close = ctrl+space
