@@ -57,7 +57,7 @@ assign [class="firefox"] $ws1
 assign [app_id="evince"] $ws4
 assign [class="Thunderbird"] $ws6
 assign [class="Gimp"] $ws7
-assign [class="smplayer"] $ws7
+assign [class="smplayer"] $ws8
 
 # Startup Apps
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
