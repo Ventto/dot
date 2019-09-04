@@ -41,16 +41,16 @@ set $ws9 "9:  "
 set $ws0 "~  "
 
 # Monitor Dispatching
-workspace $ws1 output secondary
-workspace $ws2 output primary
-workspace $ws3 output primary
-workspace $ws4 output secondary
-workspace $ws5 output primary
-workspace $ws6 output secondary
-workspace $ws7 output secondary
-workspace $ws8 output primary
-workspace $ws9 output primary
-workspace $ws0 output primary
+workspace $ws1 output DP-2
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output DP-2
+workspace $ws5 output eDP-1
+workspace $ws6 output DP-2
+workspace $ws7 output DP-2
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws0 output eDP-1
 
 # App Assignation
 assign [class="firefox"] $ws1
