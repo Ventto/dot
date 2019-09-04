@@ -4,7 +4,7 @@ i3bar_conky_print_config() {
         echo "${_filepath}: file not found" >2
         return 2
     fi
-    conky -i 1 -c "$_filepath" | sed -e 's/],$/]/' | jq ''
+    conky -i 1 -c "$_filepath" | sed -e 's/],$/]/' | jq
 }
 
 # Display an i3's layout in a specific workspace
