@@ -1,7 +1,5 @@
 #!/bin/sh
 
-setxkbmap us
-
 # Lock Screen before suspending
 xss-lock -- /usr/bin/swaylock -e -f -n -c 000000 \
                               -i "${HOME}/images/wallpapers/matin.png" &
