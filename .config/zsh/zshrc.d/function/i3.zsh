@@ -1,4 +1,16 @@
-i3bar_conky_print_config() {
+#!/bin/zsh
+
+# Valid and pretty-print json resulting from conky
+#
+# Remove the last comma from the conky output.
+#
+# $1    Conky entry file
+#
+conky_to_json() {
+    if [ "$#" -lt 1 ] ; then
+        echo "Usage: conky_to_json CONKY_FILE"
+        return 2
+    fi
     local _filepath="$1"; shift
     if [ ! -f "$_filepath" ] || [ ! -r "$_filepath" ]; then
         echo "${_filepath}: file not found" >2
