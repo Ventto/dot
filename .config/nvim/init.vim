@@ -64,6 +64,9 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open definition in vertical split
 nnoremap <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
 " #===========================#
 "           Plugins
 " #===========================#
