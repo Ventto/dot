@@ -54,8 +54,7 @@ workspace $ws0 output eDP-1
 
 # App Assignation
 assign [class="firefox"] $ws1
-assign [class="Evince"] $ws4
-assign [class="Pidgin"] $ws6
+assign [app_id="evince"] $ws4
 assign [class="Thunderbird"] $ws6
 assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws7
