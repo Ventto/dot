@@ -19,7 +19,10 @@ set $player         smplayer
 set $screenlocker   i3lock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
 set $torrent        transmission-qt
 
-# Workspace Names
+# =======================
+#       Workspaces
+# =======================
+
 font pango:Hack, Font Awesome 5 Free 9
 
 set $ws1 "1:  "
@@ -32,10 +35,6 @@ set $ws7 "7:  "
 set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws0 "~  "
-
-# =======================
-#       Workspaces
-# =======================
 
 # Monitor Dispatching
 workspace $ws1 output secondary
