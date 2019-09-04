@@ -60,6 +60,7 @@ assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws8
 
 # Startup Apps
+exec --no-startup-id dunst -config "${HOME}/.config/dunst/dunstrc_wayland"
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
 
 # =======================

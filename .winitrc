@@ -4,9 +4,6 @@
 xss-lock -- /usr/bin/swaylock -e -f -n -c 000000 \
                               -i "${HOME}/images/wallpapers/matin.png" &
 
-# Notification server
-nohup dunst -config "${HOME}/.config/dunst/dunstrc_wayland" > /dev/null 2>&1 &
-
 # Brightness
 lux -S 60%
 
@@ -16,5 +13,5 @@ amixer -q set Master mute
 # Keyboard
 export XKB_DEFAULT_LAYOUT=myus
 
-# Window manager
-sway -V
+# Window manager (dunt as notification server exec by wm)
+exec sway -V
