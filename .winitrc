@@ -5,7 +5,7 @@ xss-lock -- /usr/bin/swaylock -e -f -n -c 000000 \
                               -i "${HOME}/images/wallpapers/matin.png" &
 
 # Notification server
-nohup dunst -c "${HOME}/.config/dunst/dunstrc_wayland" > /dev/null 2>&1 &
+nohup dunst -config "${HOME}/.config/dunst/dunstrc_wayland" > /dev/null 2>&1 &
 
 # Brightness
 lux -S 60%

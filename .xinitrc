@@ -8,7 +8,7 @@ xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
 feh --bg-max --no-fehbg "${HOME}/images/wallpapers/fusion.jpg"
 
 # Notification server
-nohup dunst -c "${HOME}/.config/dunst/dunstrc_x11" > /dev/null 2>&1 &
+nohup dunst -config "${HOME}/.config/dunst/dunstrc_x11" > /dev/null 2>&1 &
 
 # Brightness
 lux -S 60%
