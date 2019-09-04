@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xkbcomp -w 0 .config/xkbmap/us_intl "$DISPLAY"
-
 # Lock Screen before suspending
 xss-lock -- /usr/bin/i3lock -e -f -n -c 000000 \
                             -i "${HOME}/images/wallpapers/matin.png" &
@@ -20,6 +18,9 @@ amixer -q set Master mute
 
 # Monitor display manager
 nohup mons -m > /dev/null 2>&1 &
+
+#Keyboard
+xkbcomp -w 0 .config/xkb/x11/myus "$DISPLAY"
 
 # Window manager
 exec i3 -c "${HOME}/.config/i3/config" --shmlog-size=26214400

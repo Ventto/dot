@@ -1197,11 +1197,11 @@ xkb_symbols "pc+us(intl)+inet(evdev)" {
     };
     key <AE04> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               4,          dollar,        currency,        sterling ]
+        symbols[Group1]= [               4,          dollar,        EuroSign,        sterling ]
     };
     key <AE05> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [               5,         percent,        EuroSign,    dead_cedilla ]
+        symbols[Group1]= [               5,         percent,        currency,    dead_cedilla ]
     };
     key <AE06> {
         type= "FOUR_LEVEL",
@@ -1239,7 +1239,7 @@ xkb_symbols "pc+us(intl)+inet(evdev)" {
     };
     key <AD02> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [               w,               W,           aring,           Aring ]
+        symbols[Group1]= [               w,               W,           egrave,           Aring ]
     };
     key <AD03> {
         type= "FOUR_LEVEL_ALPHABETIC",
@@ -1285,7 +1285,7 @@ xkb_symbols "pc+us(intl)+inet(evdev)" {
     key <LCTL> {         [       Control_L ] };
     key <AC01> {
         type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [               a,               A,          aacute,          Aacute ]
+        symbols[Group1]= [               a,               A,          agrave,          Aacute ]
     };
     key <AC02> {
         type= "FOUR_LEVEL_SEMIALPHABETIC",
