@@ -1,0 +1,9 @@
+flash-on-focus: true
+flash-lone-windows: 'never'
+
+flash-opacity: 0.8
+default-opacity: 1
+
+simple: false
+time: 500
+ntimepoints: 10

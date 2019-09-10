@@ -62,6 +62,7 @@ assign [class="smplayer"] $ws8
 # Startup Apps
 exec --no-startup-id dunst -config "${HOME}/.config/dunst/dunstrc_wayland"
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
+exec --no-startup-id flashfocus
 
 # =======================
 #         Windows
