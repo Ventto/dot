@@ -12,7 +12,6 @@ set $appviewer      rofi -show window
 set $term           termite
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $capture        vokoscreen
-set $filemanager    nautilus
 set $imgeditor      gimp
 set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
 set $player         smplayer
@@ -186,7 +185,6 @@ bindsym $mod+F3     exec --no-startup-id $appviewer
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+c exec --no-startup-id $capture
-bindsym $mod+Ctrl+f exec --no-startup-id $filemanager
 bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
 bindsym $mod+Ctrl+m exec --no-startup-id $mail
