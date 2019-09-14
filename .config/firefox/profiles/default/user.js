@@ -2,6 +2,10 @@
 //                      Ergonomy
 // ====================================================
 
+// Force load userChrome.css as legacy user profile customization
+// Since Firefox 69.0
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 // Avoid quiting the browser accidentally with CTRL-Q by always asking
 user_pref("browser.sessionstore.warnOnQuit", true);
 user_pref("browser.warnOnQuit", true);
