@@ -6,7 +6,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
     ellipsize = middle
     follow = keyboard
-    font = Hack 14
+    font = Hack 9
     force_xinerama = false
     format = "<b>%s</b>\n%b"
     frame_width = 4
@@ -38,24 +38,28 @@
     title = Dunst
     transparency = 0
     word_wrap = yes
+
 [experimental]
     per_monitor_dpi = false
+
 [shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
     history = ctrl+grave
     context = ctrl+shift+period
+
 [urgency_low]
     background = "#008800"
     foreground = "#ffffff"
     timeout = 4
 
 [urgency_normal]
-    background = "#285577"
+    background = "#1d2021"
     foreground = "#ffffff"
     timeout = 4
 
 [urgency_critical]
     background = "#B00000"
     foreground = "#ffffff"
+    frame_color = "#ffffff"
     timeout = 0
