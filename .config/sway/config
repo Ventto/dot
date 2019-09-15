@@ -14,7 +14,7 @@ set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firef
 set $capture        vokoscreen
 set $imgeditor      gimp
 set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
-set $player         smplayer
+set $player         firejail smplayer
 set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
 set $torrent        transmission-qt
 
@@ -39,17 +39,17 @@ set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws0 "~  "
 
-# Monitor Dispatching
+# Monitor Dispatching (second monitor only or native one)
 workspace $ws1 output DP-2
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
+workspace $ws2 output DP-2
+workspace $ws3 output DP-2
 workspace $ws4 output DP-2
-workspace $ws5 output eDP-1
+workspace $ws5 output DP-2
 workspace $ws6 output DP-2
 workspace $ws7 output DP-2
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws0 output eDP-1
+workspace $ws8 output DP-2
+workspace $ws9 output DP-2
+workspace $ws0 output DP-2
 
 # App Assignation
 assign [class="firefox"] $ws1
