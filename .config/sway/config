@@ -12,7 +12,7 @@ set $appviewer      rofi -cache-dir "$(mktemp -d)" -show window
 set $term           termite
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $capture        vokoscreen
-set $imgeditor      gimp
+set $imgeditor      firejail gimp
 set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
 set $player         firejail smplayer
 set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
