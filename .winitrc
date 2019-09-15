@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# Brightness
-lux -S 60%
+if [ "$(tty)" = "/dev/tty1" ]; then
+    # Brightness
+    lux -S 60%
 
-# Audio
-amixer -q set Master mute
+    # Audio
+    amixer -q set Master mute
 
-# Keyboard
-export XKB_DEFAULT_LAYOUT=myus
+    # Keyboard
+    export XKB_DEFAULT_LAYOUT=myus
 
-# Window manager (dunt as notification server exec by wm)
-exec sway -V
+    # Window manager
+    exec sway -V
+fi
