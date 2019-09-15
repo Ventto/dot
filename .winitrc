@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Lock screen before suspending
-xss-lock -- /usr/bin/swaylock -e -f -n -c 000000 \
-                              -i "${HOME}/images/wallpapers/matin.png" &
-
 # Brightness
 lux -S 60%
 
