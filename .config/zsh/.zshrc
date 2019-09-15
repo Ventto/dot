@@ -115,7 +115,7 @@ source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
 # Caution: Always source functions first (ex: aliases could require functions)
 add_functions 'file'
-add_functions 'i3'
+add_functions 'xenv'
 add_functions 'manpage'
 add_functions 'maths'
 

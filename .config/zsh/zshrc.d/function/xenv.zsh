@@ -1,12 +1,41 @@
 #!/bin/zsh
 
+#
+# Graphical Environment Helpers
+#
+
+screenshot_monitor()
+{
+	imgpath="$(xdg-user-dir PICTURES)/screenshots"
+	imgpath="${imgpath}/$(date +'screen_%Y-%m-%d-%H%M%S.png')"
+    monitor="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')"
+
+	grim -o "$monitor" "$imgpath" \
+		&& notify-send -u normal -a Grim \
+                       "Print Screen" "$(basename "$imgpath")"
+}
+
+test_notification_server()
+{
+    killall dunst >/dev/null 2>&1
+    while true; do
+        dunst -config .config/dunst/dunstrc_wayland &
+        pid="$!"
+        sleep 1
+        notify-send "This is a title 1" "This is a notification."
+        notify-send "This is a title 2" "This is a notification."
+        sleep 5
+        killall dunst >/dev/null 2>&1
+    done
+}
+
 # Valid and pretty-print json resulting from conky
 #
 # Remove the last comma from the conky output.
 #
 # $1    Conky entry file
 #
-conky_to_json() {
+i3_conky_print() {
     if [ "$#" -lt 1 ] ; then
         echo "Usage: conky_to_json CONKY_FILE"
         return 2
