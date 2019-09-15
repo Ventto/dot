@@ -80,8 +80,10 @@ exec --no-startup-id swayidle -w \
 #         Windows
 # =======================
 
-# class         border      background  text        indicator   child_border
-client.focused  #d95e40     #d95e40     #333333     #d95e40     #d95e40
+# class           border      background  text        indicator   child_border
+client.focused    #a2e6dc     #a2e6dc     #333333     #a2e6dc     #a2e6dc
+client.unfocused  #2b383c     #2b383c     #333333     #2b383c     #2b383c
+client.background #2b383c     #2b383c     #333333     #2b383c     #2b383c
 
 default_border pixel $border
 gaps inner $gap
