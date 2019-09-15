@@ -4,7 +4,7 @@
 
 set $mod            Mod4
 set $gap            16
-set $border         6
+set $border         4
 
 # Default Apps
 set $applauncher    SUDO_ASKPASS="${HOME}/.local/bin/askpass-rofi" rofi -show run
