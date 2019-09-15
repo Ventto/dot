@@ -207,8 +207,10 @@ bindsym $mod+Ctrl+p exec --no-startup-id $player
 bindsym $mod+Ctrl+t exec --no-startup-id $torrent
 
 # Screenshot
-set $imgpath "$HOME/images/screenshots/%d-%m-%Y-%H:%M:%S.png"
-bindsym Print exec scrot $imgpath && notify-send -u low "Print screen !" "Scrot"
+set $imgpath "$(xdg-user-dir PICTURES)/screenshots/$(date +'region_%Y-%m-%d-%H%M%S.png')"
+bindsym Print exec grim -g "$(slurp)" $imgpath \
+                   && notify-send -u normal -a Grim \
+                                  "Print Region" "$(basename "$imgpath")"
 
 # Others Applications
 bindsym $mod+Ctrl+v exec VirtualBox
