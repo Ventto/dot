@@ -8,7 +8,7 @@ set $border         6
 
 # Default Apps
 set $applauncher    SUDO_ASKPASS="${HOME}/.local/bin/askpass-rofi" rofi -show run
-set $appviewer      rofi -show window
+set $appviewer      rofi -cache-dir "$(mktemp -d)" -show window
 set $term           termite
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $capture        vokoscreen
