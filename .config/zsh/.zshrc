@@ -133,3 +133,18 @@ add_bash_comp 'ct-ng'
 add_bindkeys 'base'
 add_bindkeys 'edit-command-line'
 add_bindkeys 'fg-ctrlz'
+
+#==============================#
+#        WM auto-start         #
+#==============================#
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+    # Brightness
+    lux -S 60%
+    # Audio
+    amixer -q set Master mute
+    # Keyboard
+    export XKB_DEFAULT_LAYOUT=myus
+    # Window manager
+    exec sway -V
+fi
