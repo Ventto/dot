@@ -63,7 +63,7 @@ exec --no-startup-id dunst -config "${HOME}/.config/dunst/dunstrc_wayland"
 exec --no-startup-id dunstify -a "changeVolume" -u low -t 1 -i audio-volume-muted "Volume muted"
 exec --no-startup-id dunstify -a "changeVolume" -u normal -t 1 -i audio-volume-muted "Volume muted"
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
-exec --no-startup-id flashfocus
+exec --no-startup-id nohup flashfocus >/dev/null 2>&1 &
 
 # =======================
 #         Windows
