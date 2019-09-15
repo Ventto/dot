@@ -58,10 +58,18 @@ assign [class="Thunderbird"] $ws6
 assign [class="Gimp"] $ws7
 assign [class="smplayer"] $ws8
 
-# Startup Apps
-exec --no-startup-id nohup mako >/dev/null 2>&1 &
-exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
+# =======================
+#       Auto Start
+# =======================
+
+# Apps
+exec --no-startup-id mako
 exec --no-startup-id nohup flashfocus >/dev/null 2>&1 &
+
+# Open terminal at startup
+exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
+
+# Setup idle behaviour
 exec --no-startup-id swayidle -w \
             timeout 300 'swaylock -e -f -n -c 000000 -i "${HOME}/images/wallpapers/matin.png"' \
             timeout 600 'swaymsg "output * dpms off"' \
