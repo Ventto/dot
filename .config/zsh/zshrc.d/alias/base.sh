@@ -62,6 +62,9 @@ alias wanip='curl -s http://ip.tyk.nu/'
 alias weather="curl -s wttr.in/Paris"
 alias weather-now="curl -s wttr.in/Paris | sed -n '3,7p'"
 
+alias pickcolor="grim -g \"\$(slurp -p)\" -t ppm - \
+                    | convert - -format '%[pixel:p{0,0}]' txt:-"
+
 # Allez-y M. Monet !
 alias grep='grep --color=auto'
 
