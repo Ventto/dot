@@ -41,6 +41,9 @@ Plug 'peterhoeg/vim-qml'
 Plug 'lambdalisue/suda.vim'
 " Robot Framework syntax"
 Plug 'mfukar/robotframework-vim'
+" Latex
+Plug 'lervag/vimtex'
+Plug 'matze/vim-tex-fold'
 
 call plug#end()
 filetype plugin indent on
