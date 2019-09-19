@@ -37,7 +37,7 @@ set $ws6 "6:  "
 set $ws7 "7:  "
 set $ws8 "8:  "
 set $ws9 "9:  "
-set $ws0 "~  "
+set $ws0 "10:  "
 
 # Monitor Dispatching (second monitor only or native one)
 workspace $ws1 output DP-2
