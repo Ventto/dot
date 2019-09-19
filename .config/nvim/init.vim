@@ -22,6 +22,7 @@ set visualbell
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 set wildmenu
 set wildmode=list:longest,full
+set title titlestring=Edit\:\ %t%(\ %M%)%(\ [%{expand(\"%:~:.:h\")}]%)%(\ %a%)
 
 syntax on
 
