@@ -44,6 +44,8 @@ Plug 'mfukar/robotframework-vim'
 " Latex
 Plug 'lervag/vimtex'
 Plug 'matze/vim-tex-fold'
+" ACPI ASL symtax
+Plug 'martinlroth/vim-acpi-asl'
 
 call plug#end()
 filetype plugin indent on
