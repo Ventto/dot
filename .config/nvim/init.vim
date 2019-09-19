@@ -6,6 +6,7 @@ set nocompatible
 set autoindent
 set backspace=2
 set cc=79
+set clipboard=unnamedplus
 set cursorline
 set encoding=utf-8
 set fileformat=unix
