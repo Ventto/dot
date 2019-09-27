@@ -7,8 +7,7 @@ set $gap            16
 set $border         4
 
 # Default Apps
-set $applauncher    SUDO_ASKPASS="${HOME}/.local/bin/askpass-rofi" rofi -show run
-set $appviewer      rofi -cache-dir "$(mktemp -d)" -show window
+set $launcher       compgen -c | sort -u | fzf --reverse --border | xargs swaymsg exec
 set $term           termite
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $capture        vokoscreen
@@ -196,8 +195,9 @@ bindsym XF86MonBrightnessDown exec lux -m 500 -s 20%
 bindsym $mod+p exec mons -n left
 
 # Default Applications
-bindsym $mod+F2     exec --no-startup-id $applauncher
-bindsym $mod+F3     exec --no-startup-id $appviewer
+bindsym $mod+F2     exec termite -c "${HOME}/.config/termite/config_dmenu" \
+                                 --name launcher \
+                                 -e "zsh -c 'source ${HOME}/.config/zsh/.zshrc; $launcher'"
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+c exec --no-startup-id $capture
