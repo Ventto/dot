@@ -24,6 +24,14 @@ set $torrent        transmission-qt
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
 # =======================
+#        Inputs
+# =======================
+
+input 1:1:AT_Translated_Set_2_keyboard {
+     xkb_layout myus
+}
+
+# =======================
 #       Workspaces
 # =======================
 
@@ -64,6 +72,12 @@ assign [class="smplayer"] $ws8
 # Apps
 exec --no-startup-id mako
 exec --no-startup-id nohup flashfocus >/dev/null 2>&1 &
+
+# Brightness
+exec --no-startup-id lux -S 40%
+
+# Volume
+exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ true
 
 # Open terminal at startup
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
