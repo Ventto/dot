@@ -69,8 +69,8 @@ assign [class="smplayer"] $ws8
 #       Auto Start
 # =======================
 
-# Apps
-exec --no-startup-id mako
+# Run in background
+exec --no-startup-id nohup mako >/dev/null 2>&1 &
 exec --no-startup-id nohup flashfocus >/dev/null 2>&1 &
 
 # Brightness

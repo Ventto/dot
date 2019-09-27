@@ -6,20 +6,6 @@ alias reload=". $ZDOTDIR/.zshrc"
 #           Patches            #
 #==============================#
 
-# Open a new terminal from current directory
-if [[ $TERM == xterm-termite && $- == *i* ]]; then
-    if ! . "/etc/profile.d/vte.sh" > /dev/null 2>&1; then
-        if ! . "/usr/local/etc/profile.d/vte.sh" > /dev/null 2>&1; then
-            echo "Error: feature/open a new terminal from current directory"
-            echo "Error: cannot find 'vte.sh'"
-        else
-            __vte_osc7
-        fi
-    else
-        __vte_osc7
-    fi
-fi
-
 # Fix slow git autocompletion in huge repositories
 __git_files () {
     _wanted files expl 'local files' _files
@@ -147,3 +133,13 @@ add_bash_comp 'ct-ng'
 add_bindkeys 'base'
 add_bindkeys 'edit-command-line'
 add_bindkeys 'fg-ctrlz'
+
+##
+# Plugins:
+#
+# Caution: Plugins are standalone files which do not depend from external
+#          function, alias or anything else.
+#
+
+# Open a new terminal from current directory
+[ $TERM = "xterm-termite" ] && add_plugin 'vte-current-dir'
