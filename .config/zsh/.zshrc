@@ -106,36 +106,53 @@ export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 export ANDROID_HOME="/opt/android-sdk"
 export LESSHISTFILE=/dev/null
 
-#==============================#
-#           Sourcing           #
-#==============================#
-
+#
+# Warning:
 # Source functions, aliases, completion and binkeys zsh files, elegantly...
+#
 source "${ZDOTDIR}/zshrc.d/helper.zsh"
 
-# Caution: Always source functions first (ex: aliases could require functions)
+#==============================#
+#          Functions           #
+#==============================#
+#
+# Caution: Source functions first, aliases could require functions, but
+#          functions don't require alias.
+#
 add_functions 'file'
 add_functions 'xenv'
 add_functions 'manpage'
 add_functions 'maths'
+
+#==============================#
+#           Aliases            #
+#==============================#
 
 add_aliases 'base'
 add_aliases 'security'
 add_aliases 'aur'
 add_aliases 'dev'
 
+#==============================#
+#          Completion          #
+#==============================#
+
 add_comp 'base'
 
-# Completion (bash)
 autoload -U +X bashcompinit && bashcompinit
 add_bash_comp 'ct-ng'
+
+#==============================#
+#           Bindkeys           #
+#==============================#
 
 add_bindkeys 'base'
 add_bindkeys 'edit-command-line'
 add_bindkeys 'fg-ctrlz'
 
-##
-# Plugins:
+#==============================#
+#           Plugins            #
+#==============================#
 #
 # Caution: Plugins are standalone files which do not depend from external
 #          function, alias or anything else.
