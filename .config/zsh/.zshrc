@@ -7,7 +7,7 @@ alias reload=". $ZDOTDIR/.zshrc"
 #==============================#
 
 # Open a new terminal from current directory
-if [[ $TERM == xterm-termite ]]; then
+if [[ $TERM == xterm-termite && $- == *i* ]]; then
     if ! . "/etc/profile.d/vte.sh" > /dev/null 2>&1; then
         if ! . "/usr/local/etc/profile.d/vte.sh" > /dev/null 2>&1; then
             echo "Error: feature/open a new terminal from current directory"
