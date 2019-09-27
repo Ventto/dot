@@ -72,20 +72,34 @@ zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
 
 PROMPT=$'%{$bg[red]%}[%D{%H:%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
 
+is_precmd=false
+
 function precmd {
     [ "$?" -eq 0 ] && icon="" || icon=""
     vcs_info
     [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
-    [ -n "$WINDOW_TITLE" ] && print -Pn "\e]0;${WINDOW_TITLE}\a"
+    if [ -n "$WINDOW_TITLE" ]; then
+        print -Pn "\e]0;${WINDOW_TITLE}\a"
+    else
+        ! $is_precmd && print -Pn "\e]0;Shell\a"
+        is_precmd=true
+    fi
 }
 
-function set_title () {
+function set_window_title () {
     export WINDOW_TITLE="$1"
 }
 
 # Print command line in window title
 function preexec () {
-    [ -z "$WINDOW_TITLE" ] && print -Pn "\e]0;$1\a"
+    if [ -z "$WINDOW_TITLE" ] && $is_precmd; then
+        if [ "$(echo "$1" | wc -c)" -gt 32 ]; then
+            cmdline="$(echo -n "$1" | cut -c1-32; echo "...")"
+        else
+            cmdline="$1"
+        fi
+        print -Pn "\e]0;Shell: ${cmdline} \a"
+    fi
 }
 
 #==============================#
