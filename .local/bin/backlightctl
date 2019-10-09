@@ -1,0 +1,44 @@
+#!/bin/sh
+
+set -e
+
+. "${HOME}/.local/lib/notify_helper.sh"
+
+error()
+{
+    notify_error "backlightctl" "Error"
+}
+
+usage()
+{
+    desc='Controls the backlight level.'
+    args='  ACTION    increase "+" or decrease "-" the backlight level of 10%'
+    printf 'Usage: backlightctl ACTION\n\n%s\n\nArguments\n%s\n' \
+           "$desc" "$args"
+}
+
+main()
+{
+    [ "$#" -ne 1 ] && { error; usage; exit 2; }
+
+    case $1 in
+        -) opt="-s";;
+        +) opt="-a";;
+        *) error; usage; return 2;;
+    esac
+
+    if ! lux -m 1 "$opt" 10% >/dev/null; then
+        error; return 1
+    fi
+
+    level_in_percent="$(lux -G | sed 's/.$//')"
+    summary=$(notify_percent_to_bar "$level_in_percent")
+    icon="sunny"
+
+    makoctl dismiss --all && \
+        notify-send -a "backlightctl" \
+                    -i "$(notify_get_icon "$icon")" \
+                    "$summary"
+}
+
+main "$@"
