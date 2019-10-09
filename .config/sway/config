@@ -203,13 +203,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Volume
-bindsym XF86AudioRaiseVolume exec amixer-volume 5%+
-bindsym XF86AudioLowerVolume exec amixer-volume 5%-
-bindsym XF86AudioMute exec amixer-toggle
+bindsym XF86AudioRaiseVolume exec volumectl +
+bindsym XF86AudioLowerVolume exec volumectl -
+bindsym XF86AudioMute exec volumectl toggle
 
 # Brightness
-bindsym XF86MonBrightnessUp exec lux -m 500 -a 20%
-bindsym XF86MonBrightnessDown exec lux -m 500 -s 20%
+bindsym XF86MonBrightnessUp exec backlightctl +
+bindsym XF86MonBrightnessDown exec backlightctl -
 bindsym $mod+p exec mons -n left
 
 # Default Applications
