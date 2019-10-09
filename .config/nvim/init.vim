@@ -43,24 +43,30 @@ au! BufRead,BufNewFile *.gdb                 set filetype=gdb
 au! BufRead,BufNewFile *.qrc                 set filetype=xml
 au! BufRead,BufNewFile Makefile.[a-zA-Z0-9]  set filetype=make
 
-" Collapse or expand
-map <space> za
-map , zr
-map ; zm
-
-" Clipboard copy:
-vnoremap  <leader>y  "+y
-
-map <C-q> <ESC>^
-imap <C-q> <ESC>I
-map <C-e> <ESC>$
-imap <C-e> <ESC>A
-
-" Copy Paste Craziness
-nnoremap yu y$
+" Expand/collapse block (toggle)
+noremap <space> za
+" Collapse all blocks
+noremap , zr
+" Expand all blocks
+noremap ; zm
+" Copy selection to secondary clipboard
+noremap  <C-c>  "+y
+" Select the word under the cursor
+noremap <A-w> viw
+" Go to the begin of line
+noremap <C-q> <ESC>^
+inoremap <C-q> <ESC>I
+" Go to the end of line
+noremap <C-e> <ESC>$
+inoremap <C-e> <ESC>A
+" Copy before the cursor
 nnoremap yt y^
-nnoremap df d$
+" Copy after the cursor
+nnoremap yu y$
+" Cut before the cursor
 nnoremap ds d^
+" Cut after the cursor
+nnoremap df d$
 
 " Browse function definitions
 " Open definition in tab
@@ -68,8 +74,9 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open definition in vertical split
 nnoremap <A-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+" Run clang format on the selection
+noremap <C-K> :pyf /usr/share/clang/clang-format.py<cr>
+inoremap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 
 " #===========================#
 "           Plugins
