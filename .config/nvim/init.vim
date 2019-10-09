@@ -19,6 +19,7 @@ set numberwidth=6
 set ruler
 set scrolloff=15
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set showcmd      " show partial commands in status line
 set visualbell
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
 set wildmenu
