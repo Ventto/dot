@@ -36,6 +36,7 @@ alias ....='cd ../../../../'
 # Clear clipboard
 alias c='echo -n | xclip -display :0 -selection clipboard'
 alias e="$EDITOR"
+alias ro="nvim -p -R"    # editor in read-only mode
 
 alias tmp="cd $(mktemp -d)"
 
