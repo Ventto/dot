@@ -96,6 +96,8 @@ exec --no-startup-id swayidle -w \
 default_border pixel $border
 gaps inner $gap
 
+for_window [app_id="^launcher$"] floating enable, border none
+
 # Customize
 # class                 border      background  text        indicator   child_border
 client.focused          #A2E6DC     #A2E6DC     #111E25     #A2E6DC     #A2E6DC
@@ -165,7 +167,7 @@ bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+q kill
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # Focus
 bindsym $mod+Left focus left
