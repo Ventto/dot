@@ -83,11 +83,7 @@ exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ true
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
 
 # Setup idle behaviour
-exec --no-startup-id swayidle -w \
-            timeout 300 'swaylock -e -f -n -c 000000 -i "${HOME}/images/wallpapers/matin.png"' \
-            timeout 600 'swaymsg "output * dpms off"' \
-            resume 'swaymsg "output * dpms on"' \
-            before-sleep 'swaylock -e -f -n -c 000000 -i "${HOME}/images/wallpapers/matin.png"'
+exec --no-startup-id "${HOME}/.config/sway/idle/run.sh"
 
 # =======================
 #         Windows
