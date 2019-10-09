@@ -93,14 +93,15 @@ exec --no-startup-id swayidle -w \
 #         Windows
 # =======================
 
-# class                 border      background  text        indicator   child_border
-client.focused          #a2e6dc     #a2e6dc     #1d2021     #a2e6dc     #a2e6dc
-client.focused_inactive #2b383c     #2b383c     #aaaaaa     #2b383c     #2b383c
-client.unfocused        #2b383c     #2b383c     #aaaaaa     #2b383c     #2b383c
-client.background       #2b383c     #2b383c     #aaaaaa     #2b383c     #2b383c
-
 default_border pixel $border
 gaps inner $gap
+
+# Customize
+# class                 border      background  text        indicator   child_border
+client.focused          #A2E6DC     #A2E6DC     #111E25     #A2E6DC     #A2E6DC
+client.focused_inactive #53666D     #111E25     #53666D     #2B383C     #53666D
+client.unfocused        #53666D     #111E25     #53666D     #2B383C     #53666D
+client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
 
 # =======================
 #          Bars
@@ -113,7 +114,7 @@ bar {
     position top
     height 25
     colors {
-        background #2b383c
+        background #111E25
     }
 }
 bar {
@@ -124,7 +125,7 @@ bar {
     workspace_buttons no
     height 25
     colors {
-        background #2b383c
+        background #111E25
     }
 }
 
