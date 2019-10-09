@@ -12,6 +12,6 @@ conky.config = {
     if_up_strictness = 'address',
     cpu_avg_samples = 2,
     total_run_times = 0,
-    update_interval = 5.0,
+    update_interval = 3.0,
     use_spacer = 'right',
 }
