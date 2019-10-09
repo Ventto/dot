@@ -78,11 +78,13 @@ if PlugExists("syntastic")
 endif
 
 if PlugExists("tagbar")
-    nmap <F8> :TagbarToggle<CR>
+    nmap <F3> :TagbarToggle<CR>
 
     " Tagbar automatically updates its buffer every 'updatetime' which is by
     " default 4s, which is actually slow.
     set updatetime=1000
+
+    let g:tagbar_width=80
 endif
 
 if PlugExists("ultisnips")
