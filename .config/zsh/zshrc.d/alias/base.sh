@@ -67,11 +67,3 @@ alias pickcolor="grim -g \"\$(slurp -p)\" -t ppm - \
 
 # Allez-y M. Monet !
 alias grep='grep --color=auto'
-
-## Writing with French accent (writing mode)
-# map: ' + e = é
-# lalt + shift + ' = ")
-alias kbwriter='setxkbmap -layout us -variant intl'
-# Writing with French accent (ex: alt + ' + e = é)
-alias kbdev='xkbcomp -w 0 "${HOME}/.config/xkbmap/us_intl" "$DISPLAY"'
-alias sway='sh "${HOME}/.winitrc"'
