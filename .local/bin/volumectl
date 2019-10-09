@@ -1,0 +1,114 @@
+#!/bin/bash
+
+set -e
+
+. "${HOME}/.local/lib/notify_helper.sh"
+
+error()
+{
+    notify_error "volumectl" "Error"
+}
+
+# Get the index of the selected sink:
+get_sink() {
+    pacmd list-sinks | awk '/index:/{i++} /* index:/{print i; exit}'
+}
+
+# Get the selected sink volume
+get_volume() {
+    pacmd list-sinks | \
+        awk "/^\\svolume:/{i++} i==$(get_sink){print \$5; exit}" | \
+        sed 's/.$//'
+}
+
+default_sink_is_muted()
+{
+    ##
+    # In the pacmd's output, the default sink is marked with an asterisk
+    # followed by its index (ex: '[[:space:]]* index: 2').
+    # We look for that index and we extract its following properties
+    # without including the index.
+    output="$(pacmd list-sinks | grep -E '^  \* index: [0-9]+' -A 30 | \
+              tail -n +2)"
+
+    while read -r line; do
+        ##
+        # If we found another index it means we are done with the properties
+        # of the default sink.
+        if echo "$line" | grep -E 'index: [0-9]' >/dev/null 2>&1; then
+            break
+        fi
+        if echo "$line" | grep -E 'muted' >/dev/null 2>&1; then
+            muted="$(echo "$line" | sed -n 's/.*muted: \([a-z]\+\)/\1/p')"
+            set +e
+            [ "$muted" = "yes" ] && return 0 || return 1
+            break
+        fi
+        i=$((i+1))
+    done < <(echo "$output")
+    return 2
+}
+
+volume_set_level()
+{
+    _sign="$1"
+
+    if [ "$_sign" = '+' ] && [ "$(get_volume)" -eq 100 ]; then
+        icon="volume_up"
+        summary="$(notify_print_bar "  " 10)"
+        return
+    fi
+
+    [ "$_sign" = '+' ] && icon="volume_up" || icon="volume_down"
+
+    if ! pactl set-sink-volume @DEFAULT_SINK@ "$_sign"10% ; then
+        error
+        return 1
+    fi
+
+    if [ "$(get_volume)" -eq 0 ]; then
+        icon="volume_off"
+    fi
+    summary="$(notify_percent_to_bar "$(get_volume)")"
+}
+
+volume_toggle()
+{
+    if ! pactl set-sink-mute @DEFAULT_SINK@ toggle; then
+        error
+        return 1
+    fi
+
+    ret=$(default_sink_is_muted; echo "$?";)
+    case $ret in
+        0) icon="volume_off"; summary="$(notify_print_bar "   " 10)";;
+        1) icon="volume_up";  summary="$(notify_percent_to_bar "$(get_volume)")";;
+        2) error; return 1;;
+    esac
+}
+
+usage()
+{
+    desc='Sets the volume and sends a notification.'
+    args='  ACTION    "+", "-" or "toggle" '
+    printf 'Usage: volumectl ACTION\n\n%s\n\nArgument:\n%s\n' \
+           "$desc" "$args"
+}
+
+main()
+{
+    [ "$#" -ne 1 ] && { error; usage; exit 2; }
+
+    case $1 in
+        -|+)    volume_set_level "$1";;
+        toggle) volume_toggle;;
+        *)      error; usage; exit 2;;
+    esac
+
+    notify_dismiss_all && \
+        notify-send -a "volumectl" \
+                    -i "$(notify_get_icon "$icon")" \
+                    "$summary"
+}
+
+main "$@"
