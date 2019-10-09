@@ -46,6 +46,8 @@ Plug 'lervag/vimtex'
 Plug 'matze/vim-tex-fold'
 " ACPI ASL symtax
 Plug 'martinlroth/vim-acpi-asl'
+" Implement EditorConfig (https://editorconfig.org/)
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 filetype plugin indent on
