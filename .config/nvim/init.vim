@@ -14,7 +14,8 @@ set foldmethod=indent
 set foldnestmax=1
 set laststatus=2
 set mouse=a
-set number relativenumber
+set nu relativenumber
+set numberwidth=6
 set ruler
 set scrolloff=15
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
