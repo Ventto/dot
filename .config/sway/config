@@ -70,8 +70,8 @@ workspace $ws0 output DP-2
 # =======================
 
 # Run in background
-exec --no-startup-id nohup mako >/dev/null 2>&1 &
-exec --no-startup-id nohup flashfocus >/dev/null 2>&1 &
+exec --no-startup-id mako
+exec --no-startup-id flashfocus
 
 # Brightness
 exec --no-startup-id lux -S 40%
