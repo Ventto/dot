@@ -112,17 +112,18 @@ client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
 bar {
     separator_symbol "  "
     status_command "${HOME}/.config/sway/conky/i3bar.sh top"
-    font pango:Hack, Font Awesome 5 Free 9
+    font pango:Hack, Font Awesome 5 Free Solid 10
     position top
     height 25
     colors {
         background #111E25
     }
 }
+
 bar {
     separator_symbol "  "
     status_command "${HOME}/.config/sway/conky/i3bar.sh bottom"
-    font pango:Hack, Font Awesome 5 Free 9
+    font pango:Hack, Font Awesome 5 Free Solid 10
     position bottom
     workspace_buttons no
     height 25
