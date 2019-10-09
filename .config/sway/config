@@ -18,7 +18,7 @@ set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/ma
 set $torrent        transmission-qt
 
 # =======================
-#        Beautify
+#        Monitors
 # =======================
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
@@ -46,6 +46,13 @@ set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws0 "10:  "
 
+assign [class="firefox"] $ws1
+assign [app_id="evince"] $ws4
+assign [class="Thunderbird"] $ws6
+assign [class="Gimp"] $ws7
+assign [class="smplayer"] $ws8
+assign [class="Riot"] $ws9
+
 # Monitor Dispatching (second monitor only or native one)
 workspace $ws1 output DP-2
 workspace $ws2 output DP-2
@@ -57,13 +64,6 @@ workspace $ws7 output DP-2
 workspace $ws8 output DP-2
 workspace $ws9 output DP-2
 workspace $ws0 output DP-2
-
-# App Assignation
-assign [class="firefox"] $ws1
-assign [app_id="evince"] $ws4
-assign [class="Thunderbird"] $ws6
-assign [class="Gimp"] $ws7
-assign [class="smplayer"] $ws8
 
 # =======================
 #       Auto Start
