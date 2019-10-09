@@ -19,7 +19,7 @@ browser = firefox
 [colors]
 foreground = #cccccc
 foreground_bold = #ffffff
-background = #121212
+background = rgba(18,18,18,0.92)
 
 # If unset, will reverse foreground and background
 highlight = #2f2f2f
