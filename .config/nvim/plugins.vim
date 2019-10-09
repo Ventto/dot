@@ -87,6 +87,12 @@ if PlugExists("tagbar")
     let g:tagbar_width=80
 endif
 
+if PlugExists("vim-snippets")
+    let g:snips_author="Thomas \"Ventto\" Venriès"
+    let g:snips_email="thomas.venries@gmail.com"
+    let g:snips_github="https://github.com/Ventto"
+endif
+
 if PlugExists("ultisnips")
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-b>"
