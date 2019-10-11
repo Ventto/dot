@@ -1,4 +1,18 @@
 #!/bin/bash
+#
+# Controls the volume level and sends a notification (c.f usage() below).
+#
+# For custom display, add the following lines to the mako's config file:
+#
+# ```
+#   [app-name=volumectl]
+#   font=Font Awesome 5 Free Solid 14
+#   format=%s
+#
+#   [app-name=error]
+#   format=<b>%s</b>
+# ```
+#
 
 set -e
 

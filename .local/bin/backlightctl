@@ -1,4 +1,18 @@
 #!/bin/sh
+#
+# Controls the backlight level and sends a notification (c.f usage() below).
+#
+# For custom display, add the following lines to the mako's config file:
+#
+# ```
+#   [app-name=backlightctl]
+#   font=Font Awesome 5 Free Solid 14
+#   format=%s\n%b
+#
+#   [app-name=error]
+#   format=<b>%s</b>
+# ```
+#
 
 set -e
 
@@ -11,7 +25,7 @@ error()
 
 usage()
 {
-    desc='Controls the backlight level.'
+    desc='Controls the backlight level and sends a notification'
     args='  ACTION    increase "+" or decrease "-" the backlight level of 10%'
     printf 'Usage: backlightctl ACTION\n\n%s\n\nArguments\n%s\n' \
            "$desc" "$args"
