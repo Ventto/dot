@@ -96,7 +96,7 @@ for_window [app_id="^launcher$"] floating enable, border none
 
 # Customize
 # class                 border      background  text        indicator   child_border
-client.focused          #A2E6DC     #A2E6DC     #111E25     #A2E6DC     #A2E6DC
+client.focused          #268bd2     #268bd2     #111E25     #268bd2     #268bd2
 client.focused_inactive #53666D     #111E25     #53666D     #2B383C     #53666D
 client.unfocused        #53666D     #111E25     #53666D     #2B383C     #53666D
 client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
