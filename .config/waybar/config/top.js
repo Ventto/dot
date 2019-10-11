@@ -124,6 +124,7 @@
 			"critical": 15
 		},
 		"format": "{icon} {capacity}%",
+		"format-charging": "+ {capacity}%",
 		"format-icons": [ "", "", "", "", "" ]
 	},
 	"tray": {
