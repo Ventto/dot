@@ -10,7 +10,7 @@
 #
 set -e
 
-. "$(dirname "$0")/../lib/utils.sh"
+. "$(dirname "$0")/../../lib/utils.sh"
 
 waybar_module()
 {
