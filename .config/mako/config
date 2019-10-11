@@ -14,7 +14,7 @@ max-visible=6
 layer=overlay
 default-timeout=5000
 ignore-timeout=0
-group-by=none
+group-by=app-name
 max-icon-size=64
 
 [hidden]
