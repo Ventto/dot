@@ -1,3 +1,7 @@
+/* ======================= */
+/*         Global          */
+/* ======================= */
+
 * {
 	font-size: 16px;
     font-weight: bold;
@@ -9,44 +13,9 @@ window#waybar {
 	color: #fdf6e3;
 }
 
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-	color: #1a1a1a;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-	color: #292b2e;
-	background: #1a1a1a;
-}
-
-/* Top bar */
-#workspaces,
-#clock.1,
-#clock.2,
-#clock.3,
-#pulseaudio,
-#backlight,
-#memory,
-#cpu,
-#temperature,
-#battery,
-#tray,
-#custom-disk-root,
-#custom-disk-home,
-/* Bottom bar */
-#network,
-#custom-bluetooth-devices,
-#custom-storage-devices,
-#custom-serial-devices
-{
-	color: #268bd2;
-	background: #1a1a1a;
-}
-
-#custom-bluetooth-devices,
-#tray {
-	padding: 0 10px;
-}
+/* ======================= */
+/*       Workspaces        */
+/* ======================= */
 
 #workspaces button {
 	padding: 0 2px;
@@ -65,11 +34,42 @@ window#waybar {
 	padding: 0 3px;
 }
 
-#battery.warning { color: orange; }
-#battery.critical { color: red; }
-#temperature.critical { color: red; }
+/* ======================= */
+/*       Separators        */
+/* ======================= */
 
-#network,
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: #1a1a1a;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: #292b2e;
+	background: #1a1a1a;
+}
+
+/* ======================= */
+/*         Top Bar         */
+/* ======================= */
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#backlight,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#tray,
+#custom-disk-root,
+#custom-disk-home
+{
+	color: #268bd2;
+	background: #1a1a1a;
+}
+
 #clock,
 #pulseaudio,
 #backlight,
@@ -77,16 +77,37 @@ window#waybar {
 #cpu,
 #temperature,
 #battery,
-#network,
 #custom-disk-root,
-#custom-disk-home,
-#custom-storage-devices,
-#custom-serial-devices
+#custom-disk-home
 {
 	padding: 0 10px;
 }
 
-#network {
+#battery.warning { color: orange; }
+#battery.critical { color: red; }
+#temperature.critical { color: red; }
+
+/* ======================= */
+/*       Bottom Bar        */
+/* ======================= */
+
+#custom-bluetooth-devices,
+#tray {
+	padding: 0 10px;
+}
+
+#network,
+#custom-bluetooth-devices,
+#custom-storage-devices,
+#custom-serial-devices
+{
+	color: #268bd2;
+	background: #1a1a1a;
+	padding: 0 10px;
+}
+
+#network,
+#tray {
     padding-top: 4px;
     padding-bottom: 4px;
 }
