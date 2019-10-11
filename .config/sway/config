@@ -103,6 +103,9 @@ client.focused_inactive #53666D     #111E25     #53666D     #2B383C     #53666D
 client.unfocused        #53666D     #111E25     #53666D     #2B383C     #53666D
 client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
 
+# Move floarting with mouse
+floating_modifier $mod
+
 # =======================
 #          Bars
 # =======================
@@ -116,9 +119,6 @@ for_window [app_id="^waybar-onclick$"] floating enable, border none
 # =======================
 #        Bindkeys
 # =======================
-
-# Mouse
-floating_modifier $mod
 
 # Workspaces
 bindsym $mod+1 workspace $ws1
@@ -193,10 +193,12 @@ bindsym XF86MonBrightnessUp exec backlightctl +
 bindsym XF86MonBrightnessDown exec backlightctl -
 bindsym $mod+p exec mons -n left
 
-# Default Applications
+# Launcher
 bindsym $mod+F2     exec termite -c "${HOME}/.config/termite/config_dmenu" \
                                  --name launcher \
                                  -e "zsh -c 'source ${HOME}/.config/zsh/.zshrc; $launcher'"
+
+# Default Applications
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+c exec --no-startup-id $capture
