@@ -105,7 +105,7 @@ main()
         *)      error; usage; exit 2;;
     esac
 
-    notify_dismiss_all && \
+    makoctl dismiss --all && \
         notify-send -a "volumectl" \
                     -i "$(notify_get_icon "$icon")" \
                     "$summary"
