@@ -105,7 +105,7 @@ client.focused_inactive #53666D     #111E25     #53666D     #2B383C     #53666D
 client.unfocused        #53666D     #111E25     #53666D     #2B383C     #53666D
 client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
 
-# Move floarting with mouse
+# Move floating with mouse
 floating_modifier $mod
 
 # =======================
