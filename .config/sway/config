@@ -68,11 +68,13 @@ workspace $ws9 output DP-2
 workspace $ws0 output DP-2
 
 # =======================
-#       Auto Start
+#          Run
 # =======================
 
-# Run in background
+# Notification server
 exec --no-startup-id mako
+
+# Moving to windows fades their opacity
 exec --no-startup-id flashfocus
 
 # Brightness
@@ -81,10 +83,10 @@ exec --no-startup-id lux -S 40%
 # Volume
 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ true
 
-# Open terminal at startup
+# Open a terminal
 exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
 
-# Setup idle behaviour
+# Setup idle and inhibitors
 exec --no-startup-id "${HOME}/.config/sway/idle/run.sh"
 
 # =======================
