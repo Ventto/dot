@@ -7,36 +7,32 @@
         "custom/right-arrow-dark"
     ],
     "modules-center": [
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
-        "custom/left-arrow-dark",
-        "network",
-        "custom/right-arrow-dark",
         "custom/right-arrow-light",
+        "network",
         "custom/right-arrow-dark"
     ],
     "modules-right": [
-        "custom/left-arrow-dark",
+        "custom/right-arrow-light",
         "custom/bluetooth-devices",
-        "custom/left-arrow-light",
+        "custom/right-arrow-dark",
 
-        "custom/left-arrow-dark",
+        "custom/right-arrow-light",
         "custom/storage-devices",
-        "custom/left-arrow-light",
+        "custom/right-arrow-dark",
 
-        "custom/left-arrow-dark",
+        "custom/right-arrow-light",
         "custom/serial-devices",
-        "custom/left-arrow-light",
+        "custom/right-arrow-dark",
 
-        "custom/left-arrow-dark",
+        "custom/right-arrow-light",
         "custom/disk-root",
-        "custom/left-arrow-light",
+        "custom/right-arrow-dark",
 
-        "custom/left-arrow-dark",
+        "custom/right-arrow-light",
         "custom/disk-home",
-        "custom/left-arrow-light",
+        "custom/right-arrow-dark",
 
-        "custom/left-arrow-dark"
+        "custom/right-arrow-light"
     ],
     "custom/left-arrow-dark": {
         "format": "",
