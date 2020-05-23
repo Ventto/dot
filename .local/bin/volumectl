@@ -67,7 +67,7 @@ volume_set_level()
 {
     _sign="$1"
 
-    if [ "$_sign" = '+' ] && [ "$(get_volume)" -eq 100 ]; then
+    if [ "$_sign" = '+' ] && [ "$(get_volume)" -ge 100 ]; then
         icon="volume_up"
         summary="$(notify_print_bar "  " 10)"
         return
