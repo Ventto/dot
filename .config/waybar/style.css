@@ -3,14 +3,20 @@
 /* ======================= */
 
 * {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
-    font-family: Hack;
+    font-family: "Source Code Pro Medium", "Font Awesome 5 Free Solid";
+    border: none;
+    margin:0;
 }
 
 window#waybar {
     background: #292b2e;
-    color: #fdf6e3;
+    color: #5294E2;
+}
+
+window#waybar.hidden {
+    opacity: 0.0;
 }
 
 /* ======================= */
@@ -18,20 +24,18 @@ window#waybar {
 /* ======================= */
 
 #workspaces button {
-    padding: 0 2px;
-    color: #fdf6e3;
+    padding: 2px 4px;
+    color: #3A4B64;
 }
 #workspaces button.focused {
-    color: #268bd2;
+    color: #5294E2;
 }
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-}
-#workspaces button:hover {
-    background: #1a1a1a;
+    background: #333333;
     border: #1a1a1a;
-    padding: 0 3px;
+    color: #268bd2;
 }
 
 /* ======================= */
@@ -40,10 +44,16 @@ window#waybar {
 
 #custom-right-arrow-dark,
 #custom-left-arrow-dark {
+    border: none;
+    padding: 3px 0px 0px 0px;
+    margin:0;
+    font-size: 19px;
     color: #1a1a1a;
 }
 #custom-right-arrow-light,
 #custom-left-arrow-light {
+    padding: 3px 0px 0px 0px;
+    font-size: 19px;
     color: #292b2e;
     background: #1a1a1a;
 }
@@ -63,10 +73,9 @@ window#waybar {
 #temperature,
 #battery,
 #tray,
-#custom-disk-root,
-#custom-disk-home
+#custom-disk-partitions
 {
-    color: #268bd2;
+    color: #5294E2;
     background: #1a1a1a;
 }
 
@@ -77,8 +86,7 @@ window#waybar {
 #cpu,
 #temperature,
 #battery,
-#custom-disk-root,
-#custom-disk-home
+#custom-disk-partitions
 {
     padding: 0 10px;
 }
@@ -91,23 +99,22 @@ window#waybar {
 /*       Bottom Bar        */
 /* ======================= */
 
-#custom-bluetooth-devices,
-#tray {
-    padding: 0 10px;
-}
-
 #network,
-#custom-bluetooth-devices,
-#custom-storage-devices,
-#custom-serial-devices
+#tray,
+#custom-bluetooth,
+#custom-usb-serial
 {
-    color: #268bd2;
+    color: #5294E2;
     background: #1a1a1a;
-    padding: 0 10px;
+    padding: 4px 10px;
 }
 
-#network,
-#tray {
-    padding-top: 4px;
-    padding-bottom: 4px;
+#custom-bluetooth.off,
+#custom-usb-serial.off {
+    color: #3A4B64;
+}
+
+#custom-bluetooth.on,
+#custom-usb-serial.on {
+    color: #5294E2;
 }

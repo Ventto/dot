@@ -13,23 +13,11 @@
     ],
     "modules-right": [
         "custom/right-arrow-light",
-        "custom/bluetooth-devices",
+        "custom/bluetooth",
         "custom/right-arrow-dark",
 
         "custom/right-arrow-light",
-        "custom/storage-devices",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
-        "custom/serial-devices",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
-        "custom/disk-root",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
-        "custom/disk-home",
+        "custom/usb-serial",
         "custom/right-arrow-dark",
 
         "custom/right-arrow-light"
@@ -50,31 +38,17 @@
         "format": "",
         "tooltip": false
     },
-    "custom/disk-home": {
-        "format": "home {} ",
-        "interval": 30,
-        "exec": "df -h --output=avail $HOME | tail -1 | tr -d ' '"
-    },
-    "custom/disk-root": {
-        "format": "root {} ",
-        "interval": 30,
-        "exec": "df -h --output=avail / | tail -1 | tr -d ' '"
-    },
-    "custom/bluetooth-devices": {
-        "format": "{}",
+    "custom/bluetooth": {
+        "format": "{}",
+        "return-type": "json",
         "exec": "${HOME}/.config/waybar/modules/bluetooth/exec.sh",
-        "on-click": "termite -c /home/ventto/.config/termite/config_dmenu --name waybar-onclick -e \"zsh -c 'bluetoothctl'\"",
-        /* "on-click": "${HOME}/.config/waybar/modules/bluetooth/onclick.sh", */
+        "on-click": "${HOME}/.config/waybar/modules/bluetooth/onclick.sh",
         "interval": 3
     },
-    "custom/serial-devices": {
-        "format": " x {} ",
-        "exec": "${HOME}/.config/waybar/modules/serial.sh",
-        "interval": 5
-    },
-    "custom/storage-devices": {
-        "format": " x {} ",
-        "exec": "${HOME}/.config/waybar/modules/storage.sh",
+    "custom/usb-serial": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "${HOME}/.config/waybar/modules/usb-serial/exec.sh",
         "interval": 5
     },
     "network": {
@@ -82,8 +56,13 @@
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "Disconnected ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "interval": 3,
+        "on-click": "${HOME}/.config/waybar/modules/network/onclick.sh",
+        "on-click-right": "${HOME}/.config/waybar/modules/network/onclick-right.sh",
         "tooltip": false
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 14
     }
 }

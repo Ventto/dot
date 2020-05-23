@@ -21,6 +21,10 @@
     ],
     "modules-right": [
         "custom/right-arrow-light",
+        "custom/disk-partitions",
+        "custom/right-arrow-dark",
+
+        "custom/right-arrow-light",
         "temperature",
         "cpu",
         "custom/right-arrow-dark",
@@ -78,6 +82,11 @@
         "format": "{:%d %b}",
         "tooltip": false
     },
+    "custom/disk-partitions": {
+        "format": " {}",
+        "interval": 30,
+        "exec": "df -h --output=avail / /home | tail -n 2 | tr -d ' ' | tr '\n' ' ' | sed -e 's%.$%%'"
+    },
     "backlight": {
         "format": "{icon} {percent}%",
         "format-alt": "{percent}% {icon}",
@@ -86,7 +95,7 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
         "format-muted": " x",
         "format-icons": {
             "headphones": "",
@@ -101,6 +110,8 @@
         "tooltip": true
     },
     "temperature": {
+        "thermal-zone": 2,
+	    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
         "critical-threshold": 80,
         "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C "
@@ -120,8 +131,5 @@
         "format": "{icon} {capacity}%",
         "format-charging": "+ {capacity}%",
         "format-icons": [ "", "", "", "", "" ]
-    },
-    "tray": {
-        "icon-size": 20
     }
 }
