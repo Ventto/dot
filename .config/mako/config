@@ -1,20 +1,20 @@
-font=Hack 12
+font=Source Code Pro Medium 12
 format=<b>%a</b>\n\n%s\n%b
 width=460
-height=500
+height=480
 padding=16
-margin=0
-anchor=center
-border-size=4
-background-color=#268BD2D0
+margin=32
+anchor=top-right
+border-size=12
+background-color=#5294E2DD
 text-color=#000000
-border-color=#53666DD0
-border-radius=8
+border-color=#384F6BD0
+border-radius=12
 max-visible=6
 layer=overlay
 default-timeout=5000
 ignore-timeout=0
-group-by=app-name
+group-by=none
 max-icon-size=64
 
 [hidden]
@@ -22,17 +22,19 @@ format=(and %h more)
 text-color=#777777
 
 [app-name=batify]
-format=<b>%s</b>
 
 [app-name=backlightctl]
+group-by=app-name
 font=Font Awesome 5 Free Solid 14
 format=%s
 
 [app-name=volumectl]
+group-by=app-name
 font=Font Awesome 5 Free Solid 14
 format=%s
 
 [app-name=error]
+group-by=app-name
 format=<b>%s</b>
 
 [urgency=high]
