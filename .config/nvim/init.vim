@@ -67,6 +67,12 @@ nnoremap yu y$
 nnoremap ds d^
 " Cut after the cursor
 nnoremap df d$
+" Move cursor to split windows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 
 " Browse function definitions
 " Open definition in tab
