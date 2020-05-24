@@ -1,4 +1,6 @@
-add_file () {
+#!/bin/zsh
+
+function add_file() {
     dir="${ZDOTDIR}/zshrc.d/$1"
     [ ! -d "$dir" ]  && { echo "[zsh] $dir: directory not found."; return 1; }
     file="$dir/$3.$2"
@@ -6,9 +8,9 @@ add_file () {
     source "$file"
 }
 
-add_functions () { add_file 'function' 'zsh' "$1"; }
-add_aliases () { add_file 'alias' 'sh' "$1"; }
-add_bindkeys () { add_file 'bindkey' 'zsh' "$1"; }
-add_comp () { add_file 'completion' 'comp' "$1"; }
-add_bash_comp () { add_file 'completion/bash' 'comp' "$1"; }
-add_plugin () { add_file 'plugins' 'zsh' "$1"; }
+function add_functions() { add_file 'function' 'zsh' "$1"; }
+function add_aliases() { add_file 'alias' 'sh' "$1"; }
+function add_bindkeys() { add_file 'bindkey' 'zsh' "$1"; }
+function add_comp() { add_file 'completion' 'comp' "$1"; }
+function add_bash_comp() { add_file 'completion/bash' 'comp' "$1"; }
+function add_plugin() { add_file 'plugins' 'zsh' "$1"; }

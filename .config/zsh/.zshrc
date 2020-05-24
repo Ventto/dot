@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 alias reload=". $ZDOTDIR/.zshrc"
+alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 #==============================#
 #           Patches            #
@@ -24,7 +25,7 @@ SAVEHIST=1000000
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
+#setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -44,94 +45,63 @@ setopt AUTO_CD
 REPORTTIME=5
 
 #==============================#
-#           Prompt             #
-#==============================#
-
-setopt prompt_subst
-autoload -U colors && colors
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' check-for-changes true
-zstyle ':vcs_info:git*' get-revision true
-zstyle ':vcs_info:git*' formats " %r/%S %F{green} -(%b)%u%f"
-zstyle ':vcs_info:git*' actionformats " %r/%S %F{green} -(%b|%a)%u%f"
-
-PROMPT=$'%{$bg[red]%}[%D{%H:%M:%S}]${cpwd}${vcs_info_msg_0_}${icon} # %{$reset_color%} '
-
-is_precmd=false
-
-function precmd {
-    [ "$?" -eq 0 ] && icon="" || icon=""
-    vcs_info
-    [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
-    if [ -n "$WINDOW_TITLE" ]; then
-        print -Pn "\e]0;${WINDOW_TITLE}\a"
-    else
-        ! $is_precmd && print -Pn "\e]0;Shell\a"
-        is_precmd=true
-    fi
-}
-
-function set_window_title () {
-    export WINDOW_TITLE="$1"
-}
-
-# Print command line in window title
-function preexec () {
-    if [ -z "$WINDOW_TITLE" ] && $is_precmd; then
-        if [ "$(echo "$1" | wc -c)" -gt 32 ]; then
-            cmdline="$(echo -n "$1" | cut -c1-32; echo "...")"
-        else
-            cmdline="$1"
-        fi
-        print -Pn "\e]0;Shell: ${cmdline} \a"
-    fi
-}
-
-#==============================#
 #    Environment Variables     #
 #==============================#
 
 export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
-export EDITOR="nvim -p"
+export EDITOR="nvim"
 export SUDO_EDITOR="rnano"
 export TERMINAL="termite"
-export USE_EDITOR="$EDITOR"
+export USE_EDITOR="$EDITOR -p"
 export VISUAL="$EDITOR"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF-8
 export GOPATH="$HOME/.config/go"
 export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
 export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
+export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME="/opt/android-sdk"
 export LESSHISTFILE=/dev/null
+export XDG_CURRENT_DESKTOP=Unity
 
-#
-# Warning:
-# Source functions, aliases, completion and binkeys zsh files, elegantly...
-#
-source "${ZDOTDIR}/zshrc.d/helper.zsh"
+#==============================#
+#           Prompt             #
+#==============================#
+
+if [ -f "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh" ];
+then
+    source "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh"
+fi
 
 #==============================#
 #          Functions           #
 #==============================#
-#
+
+##
+# The helper script provides "add_*" functions for adding Shell's resources
+# such as functions, aliases and more in an elegant way.
+# For more details, see the sources. The resources are stored in the "zshrc.d"
+# directory.
+source "${ZDOTDIR}/zshrc.d/helper.zsh"
+
+##
 # Caution: Source functions first, aliases could require functions, but
 #          functions don't require alias.
 #
-add_functions 'file'
-add_functions 'xenv'
-add_functions 'manpage'
+add_functions 'dev'
+add_functions 'file-utils'
 add_functions 'maths'
 
 #==============================#
 #           Aliases            #
 #==============================#
 
+add_aliases 'apps'
 add_aliases 'base'
-add_aliases 'security'
-add_aliases 'aur'
 add_aliases 'dev'
+add_aliases 'firejail'
+add_aliases 'network'
+add_aliases 'overrided-cmds'
 
 #==============================#
 #          Completion          #
@@ -156,7 +126,10 @@ add_bindkeys 'fg-ctrlz'
 #
 # Caution: Plugins are standalone files which do not depend from external
 #          function, alias or anything else.
-#
 
 # Open a new terminal from current directory
 [ $TERM = "xterm-termite" ] && add_plugin 'vte-current-dir'
+
+# Helps setting the terminal title at runtime
+add_plugin 'mywin_title'
+add_plugin 'ordissimo/plugin'
