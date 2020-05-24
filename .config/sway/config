@@ -9,15 +9,12 @@ set $gap            16
 set $border         4
 
 # Default Apps
-set $launcher       compgen -c | sort -u | fzf --reverse --border | xargs swaymsg exec
+#set $launcher       compgen -c | sort -u | fzf --reverse --border | xargs swaymsg exec
+set $launcher       rofi -show
 set $term           termite
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
-set $capture        vokoscreen
-set $imgeditor      firejail gimp
-set $mail           thunderbird --profile "${HOME}/.config/thunderbird/default"
-set $player         firejail smplayer
+set $filemanager    QT_QPA_PLATFORMTHEME=qt5ct dolphin
 set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
-set $torrent        transmission-qt
 
 # =======================
 #        Monitors
@@ -25,10 +22,14 @@ set $torrent        transmission-qt
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
+bindswitch lid:on output primary enable
+bindswitch lid:off output primary disable
+
 # =======================
 #        Inputs
 # =======================
 
+# Custom us keyboard with alt+character shortcuts for frenchy accents
 input 1:1:AT_Translated_Set_2_keyboard {
      xkb_layout myus
 }
@@ -40,32 +41,33 @@ input 1:1:AT_Translated_Set_2_keyboard {
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
-set $ws7 "7:  "
-set $ws8 "8:  "
-set $ws9 "9:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7:  "
+set $ws8 "8:  "
+set $ws9 "9:  "
 set $ws0 "10:  "
 
-assign [class="firefox"] $ws1
-assign [app_id="evince"] $ws4
-assign [class="Thunderbird"] $ws6
+assign [app_id="firefox"] $ws1
+assign [class="Gitk"] $ws4
+assign [class="okular"] $ws5
+assign [app_id="evince"] $ws5
+assign [class="Riot"] $ws6
 assign [class="Gimp"] $ws7
-assign [class="smplayer"] $ws8
-assign [class="Riot"] $ws9
+assign [class="Unity"] $ws7
+assign [class="Vlc"] $ws7
 
-# Monitor Dispatching (second monitor only or native one)
-workspace $ws1 output DP-2
-workspace $ws2 output DP-2
-workspace $ws3 output DP-2
-workspace $ws4 output DP-2
-workspace $ws5 output DP-2
-workspace $ws6 output DP-2
-workspace $ws7 output DP-2
-workspace $ws8 output DP-2
-workspace $ws9 output DP-2
-workspace $ws0 output DP-2
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws0 output primary
 
 # =======================
 #          Run
@@ -100,10 +102,10 @@ for_window [app_id="^launcher$"] floating enable, border none
 
 # Customize
 # class                 border      background  text        indicator   child_border
-client.focused          #268bd2     #268bd2     #111E25     #268bd2     #268bd2
-client.focused_inactive #53666D     #111E25     #53666D     #2B383C     #53666D
-client.unfocused        #53666D     #111E25     #53666D     #2B383C     #53666D
-client.background       #53666D     #111E25     #53666D     #2B383C     #53666D
+client.focused          #5294E2     #5294E2     #111E25     #5294E2     #5294E2
+client.focused_inactive #384F6B     #111E25     #384F6B     #2B383C     #384F6B
+client.unfocused        #384F6B     #111E25     #384F6B     #2B383C     #384F6B
+client.background       #384F6B     #111E25     #384F6B     #2B383C     #384F6B
 
 # Move floating with mouse
 floating_modifier $mod
@@ -121,6 +123,9 @@ for_window [app_id="^waybar-onclick$"] floating enable, border none
 # =======================
 #        Bindkeys
 # =======================
+
+# Hide bars
+bindsym $mod+b exec killall -SIGUSR1 waybar
 
 # Workspaces
 bindsym $mod+1 workspace $ws1
@@ -151,7 +156,6 @@ bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+q kill
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
-#bindsym $mod+space focus mode_toggle
 
 # Focus
 bindsym $mod+Left focus left
@@ -196,26 +200,17 @@ bindsym XF86MonBrightnessDown exec backlightctl -
 bindsym $mod+p exec mons -n left
 
 # Launcher
-bindsym $mod+F2     exec termite -c "${HOME}/.config/termite/config_dmenu" \
-                                 --name launcher \
-                                 -e "zsh -c 'source ${HOME}/.config/zsh/.zshrc; $launcher'"
+bindsym $mod+F2 exec $launcher run
+bindsym $mod+F3 exec $launcher ssh
 
 # Default Applications
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
-bindsym $mod+Ctrl+c exec --no-startup-id $capture
-bindsym $mod+Ctrl+i exec --no-startup-id $imgeditor
+bindsym $mod+Ctrl+f exec --no-startup-id $filemanager
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
-bindsym $mod+Ctrl+m exec --no-startup-id $mail
-bindsym $mod+Ctrl+p exec --no-startup-id $player
-bindsym $mod+Ctrl+t exec --no-startup-id $torrent
 
 # Screenshot
 set $imgpath "$(xdg-user-dir PICTURES)/screenshots/$(date +'region_%Y-%m-%d-%H%M%S.png')"
 bindsym Print exec grim -g "$(slurp)" $imgpath \
                    && notify-send -u normal -a Grim \
                                   "Print Region" "$(basename "$imgpath")"
-
-# Others Applications
-bindsym $mod+Ctrl+v exec VirtualBox
-bindsym $mod+Ctrl+w exec wireshark
