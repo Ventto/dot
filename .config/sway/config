@@ -22,8 +22,9 @@ set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/ma
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
-bindswitch lid:on output primary enable
-bindswitch lid:off output primary disable
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 # =======================
 #        Inputs
