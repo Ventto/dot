@@ -59,17 +59,6 @@ assign [class="Gimp"] $ws7
 assign [class="Unity"] $ws7
 assign [class="Vlc"] $ws7
 
-workspace $ws1 output primary
-workspace $ws2 output primary
-workspace $ws3 output primary
-workspace $ws4 output primary
-workspace $ws5 output primary
-workspace $ws6 output primary
-workspace $ws7 output primary
-workspace $ws8 output primary
-workspace $ws9 output primary
-workspace $ws0 output primary
-
 # =======================
 #          Run
 # =======================
