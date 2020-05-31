@@ -50,14 +50,15 @@ bth_connected_list()
 
 waybar_action()
 {
+    local list
     if bth_on; then
         if bth_enabled; then
-            declare -a list
-            list=( $(bth_connected_list) )
-            if [ "${#list[@]}" -gt 0 ]; then
+            list="$(bth_connected_list)"
+            if [ "$list" != "" ]; then
+                count="$(echo "$list" | wc -l)"
                 printf '{"text":"%s","tooltip":"%s","class":"on"}' \
-                       "x ${#list[@]}" \
-                       "$(waybar_tooltip "${list[@]}")"
+                       " x ${count}" \
+                       "$(waybar_tooltip "$list")"
             else
                 printf '{"text":" x 0","tooltip":"%s","class":"on"}' \
                        "No device connected"
