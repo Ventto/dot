@@ -63,6 +63,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME="/opt/android-sdk"
 export LESSHISTFILE=/dev/null
 export XDG_CURRENT_DESKTOP=Unity
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 #==============================#
 #           Prompt             #

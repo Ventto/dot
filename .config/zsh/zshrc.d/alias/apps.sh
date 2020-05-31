@@ -9,5 +9,6 @@ alias weather-now="curl -s wttr.in/Paris | sed -n '3,7p'"
 alias pickcolor="grim -g \"\$(slurp -p)\" -t ppm - \
                     | convert - -format '%[pixel:p{0,0}]' txt:-"
 alias dolphin-here="QT_QPA_PLATFORMTHEME=qt5ct nohup dolphin . >/dev/null 2>&1 &"
-alias pdfviewer="QT_QPA_PLATFORMTHEME=qt5ct okular"
-alias imgviewer="QT_QPA_PLATFORMTHEME=qt5ct nomacs"
+alias pdfviewer="okular"
+alias imgviewer="nomacs"
+alias VirtualBox="QT_QPA_PLATFORM=xcb QT_FONT_DPI=96 VirtualBox"
