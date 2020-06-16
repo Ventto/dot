@@ -5,6 +5,5 @@ alias rfirefox="firejail --private --nogroups \
                                  -private-window"
 
 alias riot-desktop="firejail riot-desktop"
-alias gimp="firejail gimp"
 alias smplayer="firejail smplayer"
 alias okular="firejail okular"
