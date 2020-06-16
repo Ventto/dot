@@ -11,4 +11,7 @@ alias pickcolor="grim -g \"\$(slurp -p)\" -t ppm - \
 alias dolphin-here="QT_QPA_PLATFORMTHEME=qt5ct nohup dolphin . >/dev/null 2>&1 &"
 alias pdfviewer="okular"
 alias imgviewer="nomacs"
+alias imgeditor="gimp"
+alias printer-manager="system-config-printer"
 alias VirtualBox="QT_QPA_PLATFORM=xcb QT_FONT_DPI=96 VirtualBox"
+alias virtualbox="QT_QPA_PLATFORM=xcb QT_FONT_DPI=96 VirtualBox"
