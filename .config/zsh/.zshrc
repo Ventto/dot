@@ -65,6 +65,9 @@ export LESSHISTFILE=/dev/null
 export XDG_CURRENT_DESKTOP=Unity
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
+export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.0"
+export GTK_DATA_PREFIX=
+export GTK_THEME=Arc-Dark
 
 #==============================#
 #           Prompt             #
