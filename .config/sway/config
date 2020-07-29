@@ -1,39 +1,6 @@
 # vi: set ft=ruby :
 
-# =======================
-#       Variables
-# =======================
-
 set $mod            Mod4
-set $gap            16
-set $border         4
-
-# Default Apps
-#set $launcher       compgen -c | sort -u | fzf --reverse --border | xargs swaymsg exec
-set $launcher       rofi -show
-set $term           termite
-set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
-set $filemanager    QT_QPA_PLATFORMTHEME=qt5ct dolphin
-set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
-
-# =======================
-#        Monitors
-# =======================
-
-output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
-
-set $laptop eDP-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
-
-# =======================
-#        Inputs
-# =======================
-
-# Custom us keyboard with alt+character shortcuts for frenchy accents
-input 1:1:AT_Translated_Set_2_keyboard {
-     xkb_layout myus
-}
 
 # =======================
 #       Workspaces
@@ -50,18 +17,85 @@ set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws0 "10:  "
 
+# =======================
+#        Outputs
+# =======================
+
+set $laptop_monitor   "eDP-1"
+set $extern_monitor   "DP-2"
+
+output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
+
+bindsym $mod+Alt+p output $extern_monitor disable,output $laptop_monitor enable
+bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
+bindsym $mod+Alt+m output $laptop_monitor enable,output $extern_monitor enable
+
+# Monitor Dispatching
+workspace $ws1 output $extern_monitor
+workspace $ws2 output $laptop_monitor
+workspace $ws3 output $laptop_monitor
+workspace $ws4 output $extern_monitor
+workspace $ws5 output $extern_monitor
+workspace $ws6 output $laptop_monitor
+workspace $ws7 output $extern_monitor
+workspace $ws8 output $laptop_monitor
+workspace $ws9 output $laptop_monitor
+workspace $ws0 output $laptop_monitor
+
+# =======================
+#        Inputs
+# =======================
+
+# Custom us keyboard with alt+character shortcuts for frenchy accents
+input 1:1:AT_Translated_Set_2_keyboard {
+     xkb_layout myus
+}
+
+# =======================
+#         Windows
+# =======================
+
+default_border pixel 4
+gaps inner 16
+
+for_window [app_id="^launcher$"] floating enable, border none
+for_window [app_id="^nm-connection-editor$"] floating enable, border none
+
+##
+# When using WebRTC, sharing indicator (microphone, camera, and so on) icons
+# window appear as a new browser window, not as floating one
+for_window [title="^Firefox - Sharing Indicator$"] floating enable
+
+# Click on waybar's buttons can make appear floating windows
+for_window [app_id="^waybar-onclick$"] floating enable, border none
+
+# Specific app's window assignations
 assign [app_id="firefox"] $ws1
 assign [class="Gitk"] $ws4
-assign [class="okular"] $ws5
-assign [app_id="evince"] $ws5
+assign [app_id="org.kde.okular"] $ws5
+assign [class="Slack"] $ws6
 assign [class="Riot"] $ws6
 assign [class="Gimp"] $ws7
 assign [class="Unity"] $ws7
 assign [class="Vlc"] $ws7
 
+# Customize
+# class                 border      background  text        indicator   child_border
+client.focused          #5294E2     #5294E2     #111E25     #5294E2     #5294E2
+client.focused_inactive #384F6B     #111E25     #384F6B     #2B383C     #384F6B
+client.unfocused        #384F6B     #111E25     #384F6B     #2B383C     #384F6B
+client.background       #384F6B     #111E25     #384F6B     #2B383C     #384F6B
+
+# Move floating with mouse
+floating_modifier $mod
+
 # =======================
-#          Run
+#        AutoRun
 # =======================
+
+# Bars
+exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/top.js"
+exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/bottom.js"
 
 # Notification server
 exec --no-startup-id mako
@@ -81,41 +115,46 @@ exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
 # Setup idle and inhibitors
 exec --no-startup-id "${HOME}/.config/sway/idle/run.sh"
 
-# =======================
-#         Windows
-# =======================
-
-default_border pixel $border
-gaps inner $gap
-
-for_window [app_id="^launcher$"] floating enable, border none
-
-# Customize
-# class                 border      background  text        indicator   child_border
-client.focused          #5294E2     #5294E2     #111E25     #5294E2     #5294E2
-client.focused_inactive #384F6B     #111E25     #384F6B     #2B383C     #384F6B
-client.unfocused        #384F6B     #111E25     #384F6B     #2B383C     #384F6B
-client.background       #384F6B     #111E25     #384F6B     #2B383C     #384F6B
-
-# Move floating with mouse
-floating_modifier $mod
+# Network Manager Applet
+exec --no-startup-id nm-applet --indicator
 
 # =======================
-#          Bars
+#      Bindkeys: Fn
 # =======================
 
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/top.js"
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/bottom.js"
+bindsym XF86AudioRaiseVolume exec volumectl +
+bindsym XF86AudioLowerVolume exec volumectl -
+bindsym XF86AudioMute exec volumectl toggle
 
-# Click on waybar's buttons can make appear floating windows
-for_window [app_id="^waybar-onclick$"] floating enable, border none
+bindsym XF86MonBrightnessUp exec backlightctl +
+bindsym XF86MonBrightnessDown exec backlightctl -
 
 # =======================
-#        Bindkeys
+#     Bindkeys: Apps
 # =======================
 
+set $launcher       rofi -show
+set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
+set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
+set $term           termite
+
+bindsym $mod+Ctrl+b exec --no-startup-id $browser
+bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+F2 exec $launcher run
+bindsym $mod+F3 exec $launcher ssh
+
+# Take a screenshot
+set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+bindsym Print exec grim -g "$(slurp)" $img_path \
+                   && notify-send -u normal -a Grim \
+                                  "Print Region" "$(basename "$img_path")"
 # Hide bars
 bindsym $mod+b exec killall -SIGUSR1 waybar
+
+# =======================
+#      Bindkeys: WM
+# =======================
 
 # Workspaces
 bindsym $mod+1 workspace $ws1
@@ -178,29 +217,3 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-# Volume
-bindsym XF86AudioRaiseVolume exec volumectl +
-bindsym XF86AudioLowerVolume exec volumectl -
-bindsym XF86AudioMute exec volumectl toggle
-
-# Brightness
-bindsym XF86MonBrightnessUp exec backlightctl +
-bindsym XF86MonBrightnessDown exec backlightctl -
-bindsym $mod+p exec mons -n left
-
-# Launcher
-bindsym $mod+F2 exec $launcher run
-bindsym $mod+F3 exec $launcher ssh
-
-# Default Applications
-bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+Ctrl+b exec --no-startup-id $browser
-bindsym $mod+Ctrl+f exec --no-startup-id $filemanager
-bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
-
-# Screenshot
-set $imgpath "$(xdg-user-dir PICTURES)/screenshots/$(date +'region_%Y-%m-%d-%H%M%S.png')"
-bindsym Print exec grim -g "$(slurp)" $imgpath \
-                   && notify-send -u normal -a Grim \
-                                  "Print Region" "$(basename "$imgpath")"
