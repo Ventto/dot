@@ -74,9 +74,23 @@ export GTK_THEME=Arc-Dark
 #           Prompt             #
 #==============================#
 
-if [ -f "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh" ];
-then
-    source "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh"
+# Shell is running in a pseudo terminal slave
+if tty | grep -E '^/dev/pts/[0-9]+$' >/dev/null 2>&1; then
+    if [ -f "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh" ];
+    then
+        source "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh"
+    fi
+else
+    setopt prompt_subst
+
+    # Enable colors in prompt
+    autoload -U colors && colors
+
+    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%M:%S}]${cpwd}${icon} # %{$reset_color%} '
+    function precmd {
+        [ "$?" -eq 0 ] && prompt_bg_color="green" || prompt_bg_color="red"
+        [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
+    }
 fi
 
 #==============================#
