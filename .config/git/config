@@ -58,7 +58,7 @@
     csm = commit -s -m
     cem = commit -s --allow-empty -m
     cam = commit -s -am
-    cd = commit -s --amend
+    cd = commit --amend
     cad = commit -s -a --amend
     ced = commit -s --allow-empty --amend
     #############
