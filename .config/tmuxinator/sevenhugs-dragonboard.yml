@@ -1,0 +1,55 @@
+# /home/ventto/.config/tmuxinator/sevenhugs-dragonboard.yml
+
+name: sevenhugs-dragonboard
+root: ~/workspace/crydio/customers/sevenhugs
+
+windows:
+    #- development:
+    #    layout: main-vertical
+    #    panes:
+    #      - title "Sevenhugs - Driver/Code"
+    #        && 7hugs-decawave
+    #        && "$EDITOR"
+    #        && clear
+    #      - title "Sevenhugs - Driver/Explorer"
+    #        && 7hugs-decawave
+    #        && git lgb
+    #        && clear
+    #      - title "Sevenhugs - Cobra/Explorer"
+    #        && 7hugs-cobra
+    #        && clear
+    #      - title "Sevenhugs - Linux/Explorer"
+    #        && 7hugs-linux
+    #        && clear
+  - debugging:
+      layout: main-vertical
+      panes:
+        - title "Target SSH Logs"
+          && clear
+          && 7hugs-target-ssh
+        - title "Target SSH Run"
+          && clear
+          && 7hugs-target-ssh
+        - title "Target Serial Logs"
+          && clear
+          && 7hugs-target-serial
+  ##
+  # Hack:
+  # This window resizes some project's panes and will be killed afterwards.
+  # We must run a `sleep` before any command to wait enough (1 second)
+  # for the panes being created by `tmux` and then waiting more before killing
+  # the "setup" window. Otherwise the "setup" window could be killed
+  # before resizing any pane.
+  # While we are waiting for built-in resizing setup, we are using this
+  # workaround.
+  - setup-panes:
+      panes:
+        - sleep 1
+            && tmux resize-pane -x 100 -t debugging.1
+            && tmux kill-window -t setup-panes
+  - setup-debugging:
+      panes:
+        - sleep 5
+            && tmux send-keys -t debugging.0 'clear && journalctl -k -f -n20' C-m
+            && tmux send-keys -t debugging.1 'clear && ls -l' C-m
+            && tmux kill-window -t setup-debugging
