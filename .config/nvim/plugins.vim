@@ -52,6 +52,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 " Nix syntax
 Plug 'LnL7/vim-nix'
+" Make your Nvim as smart as VSCode, snippet & additional text editing support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 filetype plugin indent on
