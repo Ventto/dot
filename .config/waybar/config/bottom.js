@@ -6,11 +6,6 @@
         "tray",
         "custom/right-arrow-dark"
     ],
-    "modules-center": [
-        "custom/right-arrow-light",
-        "network",
-        "custom/right-arrow-dark"
-    ],
     "modules-right": [
         "custom/right-arrow-light",
         "custom/bluetooth",
@@ -50,16 +45,6 @@
         "return-type": "json",
         "exec": "${HOME}/.config/waybar/modules/usb-serial/exec.sh",
         "interval": 5
-    },
-    "network": {
-        "format-wifi": "<span color='#589df6'></span> <span color='gray'>{essid}</span> <span color='#589df6'>{signalStrength}%</span> {ipaddr}/{cidr}",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "Disconnected ",
-        "interval": 3,
-        "on-click": "${HOME}/.config/waybar/modules/network/onclick.sh",
-        "on-click-right": "${HOME}/.config/waybar/modules/network/onclick-right.sh",
-        "tooltip": false
     },
     "tray": {
         "icon-size": 21,
