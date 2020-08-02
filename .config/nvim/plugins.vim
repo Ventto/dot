@@ -50,6 +50,8 @@ Plug 'martinlroth/vim-acpi-asl'
 Plug 'editorconfig/editorconfig-vim'
 " Comment / uncomment lines regarding the filetype
 Plug 'scrooloose/nerdcommenter'
+" Nix syntax
+Plug 'LnL7/vim-nix'
 
 call plug#end()
 filetype plugin indent on
