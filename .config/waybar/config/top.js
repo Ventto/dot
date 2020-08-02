@@ -8,15 +8,7 @@
     ],
     "modules-center": [
         "custom/right-arrow-light",
-        "clock#1",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
-        "clock#2",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
-        "clock#3",
+        "clock",
         "custom/right-arrow-dark"
     ],
     "modules-right": [
@@ -70,16 +62,8 @@
         "format": "{name}"
     },
 
-    "clock#1": {
-        "format": "{:%A}",
-        "tooltip": false
-    },
-    "clock#3": {
-        "format": "{:%H:%M}",
-        "tooltip": false
-    },
-    "clock#2": {
-        "format": "{:%d %b}",
+    "clock": {
+        "format": "{:%A  %d %b  %H:%M}",
         "tooltip": false
     },
     "custom/disk-partitions": {
