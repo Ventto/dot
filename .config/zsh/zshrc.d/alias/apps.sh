@@ -11,6 +11,6 @@ alias dolphin-here="QT_QPA_PLATFORMTHEME=qt5ct nohup dolphin . >/dev/null 2>&1 &
 alias pdfviewer="okular"
 alias imgviewer="nomacs"
 alias imgeditor="gimp"
-alias printer-manager="system-config-printer"
+alias printer-config="system-config-printer"
 alias VirtualBox="QT_QPA_PLATFORM=xcb VirtualBox"
 alias virtualbox="QT_QPA_PLATFORM=xcb VirtualBox"
