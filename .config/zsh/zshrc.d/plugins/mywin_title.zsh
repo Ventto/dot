@@ -12,14 +12,11 @@ function _mywin_title_precmd() {
 
 function _mywin_title_preexec() {
     if [ -z "$MYWIN_TITLE" ]; then
-        if [ "$(echo "$1" | wc -c)" -gt 32 ]; then
-            cmdline="$(echo -n "$1" | cut -c1-32; echo "...")"
-        else
-            cmdline="$1"
-        fi
-        print -Pn "\e]0;Shell: ${cmdline} \a"
+        print -Pn "\e]0;Shell\a"
     fi
 }
+
+alias title="_mywin_title_set"
 
 precmd_functions=($precmd_functions _mywin_title_precmd)
 preexec_functions=($preexec_functions _mywin_title_preexec)
