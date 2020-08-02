@@ -16,6 +16,5 @@ alias ....='cd ../../../../'
 alias tmp="cd $(mktemp -d)"
 alias klog="journalctl --dmesg -o short -f"
 
-alias e="$USE_EDITOR"
-
+alias e="$EDITOR -p"
 alias grep='grep --color=auto'
