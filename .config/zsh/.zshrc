@@ -152,4 +152,3 @@ add_bindkeys 'fg-ctrlz'
 
 # Helps setting the terminal title at runtime
 add_plugin 'mywin_title'
-add_plugin 'ordissimo/plugin'
