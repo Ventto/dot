@@ -93,10 +93,6 @@ floating_modifier $mod
 #        AutoRun
 # =======================
 
-# Bars
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/top.js"
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/bottom.js"
-
 # Notification server
 exec --no-startup-id mako
 
@@ -117,6 +113,10 @@ exec --no-startup-id "${HOME}/.config/sway/idle/run.sh"
 
 # Network Manager Applet
 exec --no-startup-id nm-applet --indicator
+
+# Bars
+exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/top.js"
+exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/bottom.js"
 
 # =======================
 #      Bindkeys: Fn
