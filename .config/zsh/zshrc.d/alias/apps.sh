@@ -15,3 +15,4 @@ alias mux='tmuxinator'
 alias printer-config="system-config-printer"
 alias VirtualBox="QT_QPA_PLATFORM=xcb VirtualBox"
 alias virtualbox="QT_QPA_PLATFORM=xcb VirtualBox"
+alias webcam-viewer="ffplay /dev/video0"
