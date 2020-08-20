@@ -9,3 +9,4 @@ rofi.levenshtein-sort:  false
 rofi.case-sensitive:    false
 rofi.auto-select:       false
 rofi.parse-hosts:       false
+rofi.show-icons:        true
