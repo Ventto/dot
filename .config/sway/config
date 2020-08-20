@@ -133,7 +133,7 @@ bindsym XF86MonBrightnessDown exec backlightctl -
 #     Bindkeys: Apps
 # =======================
 
-set $launcher       rofi -show
+set $launcher       rofi -show run -modi run,drun,ssh
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
 set $term           termite
@@ -141,8 +141,7 @@ set $term           termite
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
 bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+F2 exec $launcher run
-bindsym $mod+F3 exec $launcher ssh
+bindsym $mod+F2 exec $launcher
 
 # Take a screenshot
 set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
