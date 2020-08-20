@@ -1,4 +1,4 @@
-rofi.theme:             Monokai
+rofi.theme:             Arc-Dark
 rofi.font:              hack 10
 rofi.modi:              run,ssh
 rofi.terminal:          termite
