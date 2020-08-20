@@ -1,7 +1,5 @@
 rofi.theme:             Arc-Dark
 rofi.font:              hack 10
-rofi.modi:              run,ssh
-rofi.terminal:          termite
 rofi.ssh-client:        ssh
 rofi.ssh-command:       {terminal} -e "zsh -c -i 'TERM=xterm {ssh-client} {host}'" -t "SSH: {host}"
 rofi.run-command:       zsh -c -i '{cmd}'
