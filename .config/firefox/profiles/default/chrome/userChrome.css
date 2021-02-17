@@ -162,80 +162,29 @@
 ==========================
 */
 
-#urlbar {
-    position: relative;
-    z-index: 1;
-}
-
-#identity-box::after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-color: transparent;
-    opacity: 0.3;
-}
-
-/* about:about */
-#urlbar[pageproxystate='valid'] #identity-box.unknownIdentity:after {
-	background: #ff0039; /* Firefox Red 50 */
-}
-
-/* about:config */
-#urlbar[pageproxystate='valid'] #identity-box.chromeUI:after {
-	background: #0a84ff; /* Firefox Blue 50 */
-}
-
-/* uBlock Origin Dashboard */
-#urlbar[pageproxystate='valid'] #identity-box.extensionPage:after {
-	background: #45a1ff; /* Firefox Blue 40 */
-}
-
 /* https://www.github.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.verifiedIdentity:after{
-	background: #058b00; /* Firefox Green 70 */
-}
-
+#urlbar[pageproxystate='valid'] #identity-box.verifiedIdentity,
 /* https://www.google.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.verifiedDomain:after{
-	background: #12bc00; /* Firefox Green 60 */
+#urlbar[pageproxystate='valid'] #identity-box.verifiedDomain {
+       background: #12bc00 !important; /* ok=green */
 }
 
-/* https://mixed-script.badssl.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.mixedActiveBlocked:after {
-	background: #30e60b; /* Firefox Green 50 */
-}
-
+/* https://mixed-script.badssl.com/ (form subits to HTTP) */
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveBlocked,
 /* https://mixed.badssl.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent:after {
-	background: #d7b600; /* Firefox Yellow 60 */
-}
-
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent,
 /* https://very.badssl.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked:after {
-	background: #d7b600; /* Firefox Yellow 60 */
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked {
+       background: #d7b600 !important; /* risky=yellow */
 }
 
 /* https://self-signed.badssl.com/ but add certificate exception */
-#urlbar[pageproxystate='valid'] #identity-box.certUserOverridden:after {
-	background: #ffe900; /* Firefox Yellow 50 */
-}
-
+#urlbar[pageproxystate='valid'] #identity-box.certUserOverridden,
 /* Don't know an example for this */
-#urlbar[pageproxystate='valid'] #identity-box.weakCipher:after {
-	background: #a47f00; /* Firefox Yellow 70 */
-}
-
+#urlbar[pageproxystate='valid'] #identity-box.weakCipher,
 /* https://mixed-script.badssl.com/ but disable protection */
-#urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent:after {
-	background: #d70022;  /* Firefox Red 60 */
-}
-
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent,
 /* http://http-login.badssl.com/ */
-#urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms:after {
-	background: #a4000f;  /* Firefox Red 70 */
+#urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms {
+       background: #d70022 !important;  /* dangerous=red */
 }
