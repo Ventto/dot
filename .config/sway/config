@@ -62,9 +62,11 @@ for_window [app_id="^launcher$"] floating enable, border none
 for_window [app_id="^nm-connection-editor$"] floating enable, border none
 
 ##
-# When using WebRTC, sharing indicator (microphone, camera, and so on) icons
-# window appear as a new browser window, not as floating one
-for_window [title="^Firefox - Sharing Indicator$"] floating enable
+# Issue: https://bugzilla.mozilla.org/show_bug.cgi?id=1628431
+# When using webRTC with Firefox, the browser opens a sharing indicator
+# window like a new browser page window. This sharing indicator icons must be
+# integrated in the browser UI instead.
+for_window [title="Firefox — Sharing Indicator"] kill
 
 # Click on waybar's buttons can make appear floating windows
 for_window [app_id="^waybar-onclick$"] floating enable, border none
