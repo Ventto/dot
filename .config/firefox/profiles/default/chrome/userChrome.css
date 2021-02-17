@@ -72,8 +72,8 @@
     background: #415074 !important;
 }
 
-.tabbrowser-tab:before,
-.tabbrowser-tab:after {
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
     visibility: hidden !important;
 }
 
@@ -143,12 +143,12 @@
 }
 #nav-bar {
     -moz-box-ordinal-group: 0 !important;
+    font-size: 11px;
 }
 
 #urlbar {
     border-color: #2e3132 !important;
     font-family: Hack;
-    font-size: 11px;
 }
 
 #urlbar, .searchbar-textbox {
@@ -167,7 +167,7 @@
     z-index: 1;
 }
 
-#identity-box:after {
+#identity-box::after {
     content: '';
     position: absolute;
     height: 100%;
