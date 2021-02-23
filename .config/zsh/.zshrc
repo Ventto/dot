@@ -69,6 +69,7 @@ export QT_FONT_DPI=96
 export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.0"
 export GTK_DATA_PREFIX=
 export GTK_THEME=Arc-Dark
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 #==============================#
 #           Prompt             #
