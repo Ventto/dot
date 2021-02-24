@@ -73,7 +73,7 @@ main() {
         timeout "$LOCK_TIMEOUT" "${ACTION_DIR}/lock.sh" \
         timeout "$MONITOR_OFF_TIMEOUT" "${ACTION_DIR}/monitor-off.sh" \
             resume "swaymsg 'output * dpms on'" \
-        before-sleep "${ACTION_DIR}/lock.sh" \
+        before-sleep "${ACTION_DIR}/lock.sh --force" \
         timeout "$SUSPEND_TIMEOUT" "${ACTION_DIR}/suspend.sh"
 }
 
