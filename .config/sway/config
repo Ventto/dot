@@ -26,10 +26,6 @@ set $extern_monitor   "DP-2"
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
-bindsym $mod+Alt+p output $extern_monitor disable,output $laptop_monitor enable
-bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
-bindsym $mod+Alt+m output $laptop_monitor enable,output $extern_monitor enable
-
 # Monitor Dispatching
 workspace $ws1 output $extern_monitor
 workspace $ws2 output $laptop_monitor
@@ -141,6 +137,8 @@ set $launcher       rofi -modi "run,drun,ssh" -show run
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   sh -c "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
+
+bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
 
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
 bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
