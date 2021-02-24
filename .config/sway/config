@@ -135,7 +135,7 @@ bindsym XF86Sleep exec systemctl suspend
 
 set $launcher       rofi -modi "run,drun,ssh" -show run
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
-set $screenlocker   sh -c "${HOME}/.config/sway/idle/actions/lock.sh" --force
+set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
 
 bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
