@@ -8,13 +8,15 @@ LOCK_TIMEOUT=$((10 * MINUTE))
 MONITOR_OFF_TIMEOUT=$((LOCK_TIMEOUT + 2 * MINUTE))
 SUSPEND_TIMEOUT=$((MONITOR_OFF_TIMEOUT + 3 * MINUTE))
 
-check_conf_val() {
+conf_val_to_secs() {
+    # Print zero if fails
     if ! echo "$1" | grep -E '^[1-9][0-9]*[smh]$' >/dev/null 2>&1; then
-        return 1
+        echo 0
+        return
     fi
     duration="$(echo "$1" | sed -n 's/\(.*\)[smh]$/\1/p')"
-    duration_type="$(echo "$1" | sed -n 's/.*\([smh]\)$/\1/p')"
-    case $duration_type in
+    unit="$(echo "$1" | sed -n 's/.*\([smh]\)$/\1/p')"
+    case $unit in
         s) seconds="$duration";;
         m) seconds=$((duration * 60));;
         h) seconds=$((duration * 60 * 60 ));;
@@ -22,38 +24,36 @@ check_conf_val() {
     echo "$seconds"
 }
 
-load_conf() {
+conf_apply() {
     key="$1"
     val="$2"
+    if [ -z "$key" ] || [ -z "$val" ]; then
+        return 1
+    fi
     case "$key" in
         LockActionTimeout)
-            res="$(check_conf_val "$val")"
-            [ "$?" -ne 0 ] && return 1
-            LOCK_TIMEOUT="$res"
-            ;;
+            secs="$(conf_val_to_secs "$val")"
+            [ "$secs" -eq 0 ] && return 1 || LOCK_TIMEOUT="$secs";;
         MonitorOffActionTimeout)
-            res="$(check_conf_val "$val")"
-            [ "$?" -ne 0 ] && return 1
-            MONITOR_OFF_TIMEOUT="$res"
-            ;;
+            secs="$(conf_val_to_secs "$val")"
+            [ "$secs" -eq 0 ] && return 1 || MONITOR_OFF_TIMEOUT="$secs";;
         SuspendActionTimeout)
-            res="$(check_conf_val "$val")"
-            [ "$?" -ne 0 ] && return 1
-            SUSPEND_TIMEOUT="$res"
-            ;;
+            secs="$(conf_val_to_secs "$val")"
+            [ "$secs" -eq 0 ] && return 1 || SUSPEND_TIMEOUT="$secs";;
         *) return 1;;
     esac
 }
 
-load_conf_file() {
+conf_load_file() {
     if ! test -f "${CDIR}/idle.conf"; then
         echo "${CDIR}/idle.conf: cannot read configuration file"
         return 1
     fi
+    # shellcheck disable=2013
     for line in $(cat "${CDIR}/idle.conf"); do
         key=$(echo "$line" | cut -d= -f1)
         val=$(echo "$line" | cut -d= -f2)
-        if ! load_conf "$key" "$val"; then
+        if ! conf_apply "$key" "$val"; then
             echo "${CDIR}/idle.conf: invalid configuration value"
             return 1
         fi
@@ -61,7 +61,8 @@ load_conf_file() {
 }
 
 main() {
-    if ! load_conf_file; then
+    if ! conf_load_file; then
+        echo "It will use the default timeouts."
         exit 1
     fi
 
