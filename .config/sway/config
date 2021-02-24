@@ -139,7 +139,7 @@ bindsym XF86Sleep exec systemctl suspend
 
 set $launcher       rofi -modi "run,drun,ssh" -show run
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
-set $screenlocker   swaylock -n -e -f -c 000000 -i "${HOME}/images/wallpapers/matin.png"
+set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
 
 bindsym $mod+Ctrl+b exec --no-startup-id $browser
