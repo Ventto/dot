@@ -131,6 +131,8 @@ bindsym XF86AudioMute exec volumectl toggle
 bindsym XF86MonBrightnessUp exec backlightctl +
 bindsym XF86MonBrightnessDown exec backlightctl -
 
+bindsym XF86Sleep exec systemctl suspend
+
 # =======================
 #     Bindkeys: Apps
 # =======================
