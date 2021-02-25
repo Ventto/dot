@@ -1,4 +1,3 @@
-include /etc/firejail/firefox.profile
 whitelist ${HOME}/.config/firefox/profiles
 
 # Enable native notification
