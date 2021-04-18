@@ -21,22 +21,13 @@ set $ws0 "10:  "
 #        Outputs
 # =======================
 
-set $laptop_monitor   "eDP-1"
-set $extern_monitor   "DP-2"
+set $laptop "eDP-1"
+set $external "DP-1"
+
+bindswitch --reload --locked lid:on output $external enable, output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable, output $external disable
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
-
-# Monitor Dispatching
-workspace $ws1 output $extern_monitor
-workspace $ws2 output $laptop_monitor
-workspace $ws3 output $laptop_monitor
-workspace $ws4 output $extern_monitor
-workspace $ws5 output $extern_monitor
-workspace $ws6 output $laptop_monitor
-workspace $ws7 output $extern_monitor
-workspace $ws8 output $laptop_monitor
-workspace $ws9 output $laptop_monitor
-workspace $ws0 output $laptop_monitor
 
 # =======================
 #        Inputs
