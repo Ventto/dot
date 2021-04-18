@@ -21,22 +21,27 @@ set $ws0 "10:  "
 #        Outputs
 # =======================
 
-set $laptop_monitor   "eDP-1"
-set $extern_monitor   "DP-2"
+##
+# Laptop-specific settings:
+# Closing the lid disables the builtin screen (first of all for power-saving)
+# and only enables the external monitor if plugged in because we like
+# focusing on only one screen. For instance, when using the docking station
+# with both external monitor and keyboard, we close the lid and put the laptop
+# aside.
+# Opening the lid enables the builtin screen and disables the external monitor.
+# In this case, we assume the laptop is unplugged in from the docking station.
+set $laptop_output "eDP-1"
+set $extern_output "DP-1"
+bindswitch --reload --locked lid:on output $extern_output enable, output $laptop_output disable
+bindswitch --reload --locked lid:off output $laptop_output enable, output $extern_output disable
+##
+# We want to focus on only one screen. When using an external monitor
+# but no external keyboard, we are using the builtin one so we cannot rely on
+# lid action. That's why we need to choose the output manually.
+bindsym $mod+Alt+s output $laptop_output disable,output $extern_output enable
+bindsym $mod+Alt+p output $extern_output disable,output $laptop_output enable
 
 output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
-
-# Monitor Dispatching
-workspace $ws1 output $extern_monitor
-workspace $ws2 output $laptop_monitor
-workspace $ws3 output $laptop_monitor
-workspace $ws4 output $extern_monitor
-workspace $ws5 output $extern_monitor
-workspace $ws6 output $laptop_monitor
-workspace $ws7 output $extern_monitor
-workspace $ws8 output $laptop_monitor
-workspace $ws9 output $laptop_monitor
-workspace $ws0 output $laptop_monitor
 
 # =======================
 #        Inputs
@@ -140,8 +145,6 @@ set $launcher       rofi -modi "run,drun,ssh" -show run
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
-
-bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
 
 bindsym $mod+Ctrl+b exec $browser
 bindsym $mod+Ctrl+l exec $screenlocker
