@@ -96,6 +96,9 @@ floating_modifier $mod
 #        AutoRun
 # =======================
 
+# SSH Agent
+exec systemctl --user enable ssh-agent
+
 # Notification server
 exec nohup mako >/dev/null 2>&1 &!
 
