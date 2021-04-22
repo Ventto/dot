@@ -92,29 +92,32 @@ floating_modifier $mod
 # =======================
 
 # Notification server
-exec --no-startup-id mako
+exec nohup mako >/dev/null 2>&1 &!
 
 # Moving to windows fades their opacity
-exec --no-startup-id flashfocus
+exec flashfocus
 
 # Brightness
-exec --no-startup-id lux -S 40%
+exec lux -S 40%
 
 # Volume
-exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ true
+exec pactl set-sink-mute @DEFAULT_SINK@ true
+
+# Run X11 apps as root
+exec xhost si:localuser:root
 
 # Open a terminal
-exec --no-startup-id swaymsg 'workspace $ws2; exec $term'
+exec swaymsg 'workspace $ws2; exec $term'
 
 # Setup idle and inhibitors
-exec --no-startup-id "${HOME}/.config/sway/idle/run.sh"
+exec "${HOME}/.config/sway/idle/run.sh"
 
 # Network Manager Applet
-exec --no-startup-id nm-applet --indicator
+exec nm-applet --indicator
 
-# Bars
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/top.js"
-exec --no-startup-id waybar -c "${HOME}/.config/waybar/config/bottom.js"
+# Status Bars
+exec waybar -c "${HOME}/.config/waybar/config/top.js"
+exec waybar -c "${HOME}/.config/waybar/config/bottom.js"
 
 # =======================
 #      Bindkeys: Fn
@@ -140,10 +143,10 @@ set $term           termite
 
 bindsym $mod+Alt+s output $laptop_monitor disable,output $extern_monitor enable
 
-bindsym $mod+Ctrl+b exec --no-startup-id $browser
-bindsym $mod+Ctrl+l exec --no-startup-id $screenlocker
-bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+F2 exec $launcher
+bindsym $mod+Ctrl+b exec $browser
+bindsym $mod+Ctrl+l exec $screenlocker
+bindsym $mod+Return exec $term
+bindsym Alt+Return exec $launcher
 
 # Take a screenshot
 set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
