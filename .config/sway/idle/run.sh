@@ -69,7 +69,7 @@ main() {
     echo "${LOCK_TIMEOUT} ${MONITOR_OFF_TIMEOUT} ${SUSPEND_TIMEOUT}"
 
     swayidle -w \
-        timeout 1 "${ACTION_DIR}/turn-on-native-output.sh" \
+        timeout 1 "${ACTION_DIR}/active-remaining-output.sh" \
         timeout "$LOCK_TIMEOUT" "${ACTION_DIR}/lock.sh" \
         timeout "$MONITOR_OFF_TIMEOUT" "${ACTION_DIR}/monitor-off.sh" \
             resume "swaymsg 'output * dpms on'" \
