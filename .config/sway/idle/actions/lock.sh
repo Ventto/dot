@@ -1,6 +1,10 @@
 #!/bin/sh
 
-INHIBITORS_DIR="$(dirname "$0")/../inhibitors"
+CDIR=$(dirname "$0")
+INHIBITORS_DIR="${CDIR}/../inhibitors"
+
+. "${CDIR}/../common/log.sh"
+
 # This script is used as shortcut to lock screen manually.
 if [ "$#" -ne 1 ] && [ "$1" != "--force" ]; then
     if "${INHIBITORS_DIR}/inhibitors.sh"; then
@@ -8,6 +12,5 @@ if [ "$#" -ne 1 ] && [ "$1" != "--force" ]; then
     fi
 fi
 
-echo "Locking..."
-swaylock -e -F -f -n -c 000000 \
-         -i "${HOME}/images/wallpapers/matin.png"
+log "Locking..."
+swaylock -e -F -f -n -c 000000 -i "${HOME}/images/wallpapers/matin.png"

@@ -3,6 +3,9 @@
 CDIR="$(dirname "$0")"
 ACTION_DIR="${CDIR}/actions"
 
+. "${CDIR}/common/log.sh"
+
+# If no config file exists, use these default values
 MINUTE=60
 LOCK_TIMEOUT=$((10 * MINUTE))
 MONITOR_OFF_TIMEOUT=$((LOCK_TIMEOUT + 2 * MINUTE))
@@ -46,7 +49,7 @@ conf_apply() {
 
 conf_load_file() {
     if ! test -f "${CDIR}/idle.conf"; then
-        echo "${CDIR}/idle.conf: cannot read configuration file"
+        log "idle.conf: cannot read configuration file"
         return 1
     fi
     # shellcheck disable=2013
@@ -54,7 +57,7 @@ conf_load_file() {
         key=$(echo "$line" | cut -d= -f1)
         val=$(echo "$line" | cut -d= -f2)
         if ! conf_apply "$key" "$val"; then
-            echo "${CDIR}/idle.conf: invalid configuration value"
+            log "idle.conf: invalid configuration value"
             return 1
         fi
     done
@@ -62,11 +65,10 @@ conf_load_file() {
 
 main() {
     if ! conf_load_file; then
-        echo "It will use the default timeouts."
-        exit 1
+        log "config file not found using default timeouts"
     fi
 
-    echo "${LOCK_TIMEOUT} ${MONITOR_OFF_TIMEOUT} ${SUSPEND_TIMEOUT}"
+    log "lock=${LOCK_TIMEOUT}s turn_off_monitors=${MONITOR_OFF_TIMEOUT}s sleep=${SUSPEND_TIMEOUT}s"
 
     swayidle -w \
         timeout 1 "${ACTION_DIR}/active-remaining-output.sh" \
