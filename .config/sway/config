@@ -49,7 +49,10 @@ output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
 # Custom us keyboard with alt+character shortcuts for frenchy accents
 input 1:1:AT_Translated_Set_2_keyboard {
-     xkb_layout myus
+  xkb_layout myus
+}
+input 17498:4641:DZTECH_DZ60RGB_ANSI {
+  xkb_layout myus
 }
 
 # =======================
