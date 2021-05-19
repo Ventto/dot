@@ -4,7 +4,8 @@
 #           Man Pages          #
 #==============================#
 
-function man_read_mangz() {
+function man_read_mangz()
+{
     if [ "$#" -ne 1 ] || [ ! -r "$1" ]; then return 1; fi
 
     local _file="$1"; shift
@@ -16,7 +17,8 @@ function man_read_mangz() {
     fi
 }
 
-function man_generate_and_read() {
+function man_generate_and_read()
+{
     if [ "$#" -ne 1 ] || [ ! -r "$1" ]; then return 1; fi
 
     local _file="$1"; shift
@@ -32,6 +34,7 @@ function tar_xz()
     tar --xz -cvf "${_dir}.tar.xz" "$_dir"
 }
 
-function gitk_run() {
+function gitk_run()
+{
     nohup gitk --max-count=100 $1 . >/dev/null 2>&1 &
 }
