@@ -14,7 +14,6 @@ alias ...='cd ../../../'
 alias ....='cd ../../../../'
 
 alias tmp="cd $(mktemp -d)"
-alias klog="journalctl --dmesg -o short -f"
 
 alias e="$EDITOR -p"
 alias calc="bc -l"
