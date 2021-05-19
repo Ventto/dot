@@ -43,6 +43,7 @@ conf_apply() {
         SuspendActionTimeout)
             secs="$(conf_val_to_secs "$val")"
             [ "$secs" -eq 0 ] && return 1 || SUSPEND_TIMEOUT="$secs";;
+        \#*) return 0;;
         *) return 1;;
     esac
 }
