@@ -109,9 +109,10 @@ source "${ZDOTDIR}/zshrc.d/helper.zsh"
 # Caution: Source functions first, aliases could require functions, but
 #          functions don't require alias.
 #
-add_functions 'dev'
 add_functions 'file-utils'
 add_functions 'maths'
+add_functions 'systemd'
+add_functions 'dev'
 
 #==============================#
 #           Aliases            #
@@ -119,6 +120,7 @@ add_functions 'maths'
 
 add_aliases 'apps'
 add_aliases 'base'
+add_aliases 'systemd'
 add_aliases 'dev'
 add_aliases 'firejail'
 add_aliases 'network'
