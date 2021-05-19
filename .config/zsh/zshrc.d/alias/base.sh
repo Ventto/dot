@@ -18,3 +18,4 @@ alias tmp="cd \$(mktemp -d)"
 alias e="$EDITOR -p"
 alias calc="bc -l"
 alias grep='grep --color=auto'
+alias cp='rsync -avz'
