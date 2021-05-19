@@ -144,7 +144,7 @@ bindsym XF86Sleep exec systemctl suspend
 #     Bindkeys: Apps
 # =======================
 
-set $launcher       rofi -modi "run,drun,ssh" -show run
+set $launcher       rofi -modi "drun,run" -show drun
 set $browser        firejail firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
