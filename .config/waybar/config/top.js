@@ -75,10 +75,10 @@
         "tooltip": false
     },
     "backlight": {
+        "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-alt": "{percent}% {icon}",
-        "format-alt-click": "click-right",
-        "format-icons": [ "" ]
+        "format-icons": [ "", "", ""],
+        "tooltip": false
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -109,7 +109,8 @@
         "max-length": 10
     },
     "battery": {
-        "interval": 2,
+        "bat": "BAT0",
+        "interval": 60,
         "states": {
             "good": 95,
             "warning": 30,
