@@ -60,20 +60,19 @@
         "format": "",
         "tooltip": false
     },
-
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name}"
     },
-
     "clock": {
         "format": "{:%A  %d %b  %H:%M}",
         "tooltip": false
     },
     "custom/disk-partitions": {
         "format": " {}",
-        "interval": 30,
-        "exec": "df -h --output=avail / /home | tail -n 2 | tr -d ' ' | tr '\n' ' ' | sed -e 's%.$%%'"
+        "interval": 10,
+        "exec": "df -h --output=avail / /home | tail -n 2 | tr -d ' ' | tr '\n' ' ' | sed -e 's%.$%%'",
+        "tooltip": false
     },
     "backlight": {
         "format": "{icon} {percent}%",
@@ -93,7 +92,7 @@
         "on-click": "pavucontrol"
     },
     "memory": {
-        "interval": 2,
+        "interval": 3,
         "format": " {}%",
         "tooltip": true
     },
@@ -105,7 +104,7 @@
         "format": "{temperatureC}°C "
     },
     "cpu": {
-        "interval": 2,
+        "interval": 3,
         "format": " {usage}%",
         "max-length": 10
     },
