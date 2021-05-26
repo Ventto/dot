@@ -37,6 +37,10 @@
         "battery",
         "custom/right-arrow-dark",
 
+        "custom/right-arrow-light",
+        "custom/logout",
+        "custom/right-arrow-dark",
+
         "custom/right-arrow-light"
     ],
 
@@ -115,5 +119,10 @@
         "format": "{icon} {capacity}%",
         "format-charging": "+ {capacity}%",
         "format-icons": [ "", "", "", "", "" ]
+    },
+    "custom/logout": {
+        "format": "",
+        "on-click": "wlogout -p layer-shell -b 2",
+        "tooltip": false
     }
 }

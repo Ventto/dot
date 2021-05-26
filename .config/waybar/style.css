@@ -71,6 +71,7 @@ window#waybar.hidden {
 #temperature,
 #battery,
 #tray,
+#custom-logout,
 #custom-disk-partitions
 {
     color: #5294E2;
@@ -84,6 +85,7 @@ window#waybar.hidden {
 #cpu,
 #temperature,
 #battery,
+#custom-logout,
 #custom-disk-partitions
 {
     padding: 0 10px;
