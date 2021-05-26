@@ -1,0 +1,13 @@
+configuration {
+	font: "hack 10";
+	show-icons: true;
+	ssh-client: "ssh";
+	ssh-command: "{terminal} -e "zsh -c -i 'TERM=xterm {ssh-client} {host}'" -t "SSH: {host}"";
+	run-command: "zsh -c -i '{cmd}'";
+	run-shell-command: "{terminal} -e '{cmd}'";
+	disable-history: false;
+	case-sensitive: false;
+	auto-select: false;
+	parse-hosts: false;
+	theme: "Arc-Dark";
+}
