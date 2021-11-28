@@ -9,6 +9,7 @@
     "modules-center": [
         "custom/right-arrow-light",
         "clock",
+        "custom/clock-brasil",
         "custom/right-arrow-dark"
     ],
     "modules-right": [
@@ -66,7 +67,14 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%A  %d %b  %H:%M}",
+        "format": "{:%A  %d %b  %H:%M}  /",
+        "timezone": "Europe/Paris",
+        "interval": 60,
+        "tooltip": false
+    },
+    "custom/clock-brasil": {
+        "exec": "TZ=America/Sao_Paulo date +%H:%M",
+        "interval": 60,
         "tooltip": false
     },
     "custom/disk-partitions": {
@@ -77,8 +85,9 @@
     },
     "backlight": {
         "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": [ "", ""],
+        "format": " {percent}%",
+        "exec": "echo",
+        "exec-if": "laptop-detect && swaymsg -t get_outputs | jq -r '.[]  | \"\\(.name) \\(.active)\"' | grep 'eDP-1 true'",
         "tooltip": false
     },
     "pulseaudio": {
@@ -123,7 +132,7 @@
     },
     "custom/logout": {
         "format": "",
-        "on-click": "wlogout -p layer-shell -b 2",
+        "on-click": "wlogout -p layer-shell",
         "tooltip": false
     }
 }
