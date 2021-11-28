@@ -110,33 +110,34 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
+# Status Bars
+exec waybar -c "${HOME}/.config/waybar/config/bar-top.js"
+exec waybar -c "${HOME}/.config/waybar/config/bar-bottom.js"
+
 # Notification server
-exec nohup mako >/dev/null 2>&1 &!
+exec mako
 
 # Moving to windows fades their opacity
 exec flashfocus
 
-# Brightness
+# Avoid any laptop's screen with high brightness to burn my eyes
 exec lux -S 40%
 
-# Volume
+# Mute volume
 exec pactl set-sink-mute @DEFAULT_SINK@ true
 
 # Run X11 apps as root
 exec xhost si:localuser:root
 
-# Open a terminal
+# Open a terminal on dedicated workspace
 exec swaymsg 'workspace $ws2; exec $term'
 
-# Setup idle and inhibitors
+# Setup swayidle and my own inhibitors
 exec "${HOME}/.config/sway/idle/run.sh"
 
 # Network Manager Applet
 exec nm-applet --indicator
 
-# Status Bars
-exec waybar -c "${HOME}/.config/waybar/config/top.js"
-exec waybar -c "${HOME}/.config/waybar/config/bottom.js"
 
 # =======================
 #      Bindkeys: Fn
