@@ -138,6 +138,11 @@ exec "${HOME}/.config/sway/idle/run.sh"
 # Network Manager Applet
 exec nm-applet --indicator
 
+# Blueman-manager cannot run without the applet
+exec blueman-applet
+
+# Password Manager
+exec keepassxc
 
 # =======================
 #      Bindkeys: Fn
