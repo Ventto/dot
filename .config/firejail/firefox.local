@@ -1,5 +1,10 @@
 whitelist ${HOME}/.config/firefox/profiles
 
+# NOTE: start KeePassXC before Firefox and keep it open to allow communication
+# between them.
+whitelist ${RUNUSER}/kpxc_server
+whitelist ${RUNUSER}/org.keepassxc.KeePassXC.BrowserServer
+
 # Enable native notification
 dbus-user.talk org.freedesktop.Notifications
 
