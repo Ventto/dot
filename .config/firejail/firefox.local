@@ -12,5 +12,8 @@ dbus-user.talk org.freedesktop.Notifications
 whitelist ${RUNUSER}/pipewire-0
 dbus-user.talk org.freedesktop.portal.*
 
+# Disable U2F in browsers, default enabled.
+ignore nou2f
+
 env GTK_THEME=""
 env MOZ_ENABLE_WAYLAND=1
