@@ -66,8 +66,9 @@ seat * hide_cursor when-typing enable
 default_border pixel 4
 gaps inner 16
 
-for_window [app_id="^launcher$"] floating enable, border none
-for_window [app_id="^nm-connection-editor$"] floating enable, border none
+for_window [app_id="^launcher$"] floating enable
+for_window [app_id="^nm-connection-editor$"] floating enable
+for_window [app_id="^blueman-manager$"] floating enable
 
 ##
 # Issue: https://bugzilla.mozilla.org/show_bug.cgi?id=1628431
