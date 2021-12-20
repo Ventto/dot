@@ -47,10 +47,12 @@ output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 #        Inputs
 # =======================
 
-# Custom us keyboard with alt+character shortcuts for frenchy accents
+# Laptop builtin keyboard
 input 1:1:AT_Translated_Set_2_keyboard {
   xkb_layout myus
 }
+
+# External 60% custom keyboard
 input 17498:4641:DZTECH_DZ60RGB_ANSI {
   xkb_layout myus
 }
