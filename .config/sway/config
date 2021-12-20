@@ -170,13 +170,13 @@ set $launcher       rofi -modi "drun,run" -show drun
 set $browser        firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           termite
-set $logout         wlogout -p layer-shell -b 2
+set $logout         wlogout -p layer-shell
 
 bindsym $mod+Ctrl+b exec $browser
 bindsym $mod+Ctrl+l exec $screenlocker
 bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
-bindsym Ctrl+Alt+Delete exec $logout
+bindsym Ctrl+Alt+Backspace exec $logout
 
 # Take a screenshot
 set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
