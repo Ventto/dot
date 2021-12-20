@@ -180,8 +180,6 @@ set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d
 bindsym Print exec grim -g "$(slurp)" $img_path \
                    && notify-send -u normal -a Grim \
                                   "Print Region" "$(basename "$img_path")"
-# Hide bars
-bindsym $mod+b exec killall -SIGUSR1 waybar
 
 # =======================
 #      Bindkeys: WM
