@@ -55,6 +55,8 @@ input 17498:4641:DZTECH_DZ60RGB_ANSI {
   xkb_layout myus
 }
 
+seat * hide_cursor when-typing enable
+
 # =======================
 #         Windows
 # =======================
