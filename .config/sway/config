@@ -169,7 +169,7 @@ bindsym XF86Sleep exec systemctl suspend
 set $launcher       rofi -modi "drun,run" -show drun
 set $browser        firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
-set $term           termite
+set $term           alacritty
 set $logout         wlogout -p layer-shell
 
 bindsym $mod+Ctrl+b exec $browser
