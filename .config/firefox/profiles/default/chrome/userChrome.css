@@ -121,7 +121,6 @@
 }
 #nav-bar {
     height: 26px !important;
-    margin-top:-2px !important;
 }
 
 /* Align toolbar plugin's buttons with pinned tabs */
@@ -144,6 +143,7 @@
 #nav-bar {
     -moz-box-ordinal-group: 0 !important;
     font-size: 11px;
+    margin-top: 2px !important;
 }
 
 #urlbar {
@@ -152,7 +152,15 @@
 }
 
 #urlbar, .searchbar-textbox {
-    min-height: 20px !important;
+    min-height: 22px !important;
+}
+
+#identity-box {
+    border-radius: 4px !important;
+}
+
+toolbarbutton .toolbarbutton-badge-stack {
+    margin-top: -4px !important;
 }
 
 /*
