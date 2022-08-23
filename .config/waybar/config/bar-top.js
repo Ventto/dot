@@ -4,77 +4,23 @@
 
     "modules-left": [
         "sway/workspaces",
-        "custom/right-arrow-dark"
     ],
     "modules-center": [
-        "custom/right-arrow-light",
-        "clock",
-        "custom/clock-brasil",
-        "custom/right-arrow-dark"
     ],
     "modules-right": [
-        "custom/right-arrow-light",
         "custom/disk-partitions",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "temperature",
         "cpu",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "memory",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "backlight",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "pulseaudio",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "battery",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "custom/logout",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light"
     ],
 
-    "custom/left-arrow-dark": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/left-arrow-light": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/right-arrow-dark": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/right-arrow-light": {
-        "format": "",
-        "tooltip": false
-    },
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name}",
-        "tooltip": false
-    },
-    "clock": {
-        "format": "{:%A  %d %b  %H:%M}  /",
-        "timezone": "Europe/Paris",
-        "interval": 60,
-        "tooltip": false
-    },
-    "custom/clock-brasil": {
-        "exec": "TZ=America/Sao_Paulo date +%H:%M",
-        "interval": 60,
         "tooltip": false
     },
     "custom/disk-partitions": {
@@ -103,15 +49,16 @@
     },
     "memory": {
         "interval": 3,
-        "format": " {}%",
+        "format": "﬙ {}%",
         "tooltip": true
     },
     "temperature": {
         "thermal-zone": 2,
 	    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
         "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C",
+        "max-length": 10
     },
     "cpu": {
         "interval": 3,

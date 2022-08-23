@@ -4,40 +4,39 @@
 
     "modules-left": [
         "tray",
-        "custom/right-arrow-dark"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/clock-sao",
+        "custom/clock-las",
     ],
     "modules-right": [
-        "custom/right-arrow-light",
         "custom/bluetooth",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light",
         "custom/usb-serial",
-        "custom/right-arrow-dark",
-
-        "custom/right-arrow-light"
     ],
-    "custom/left-arrow-dark": {
-        "format": "",
+    "clock": {
+        "format": "{: %a %d %b, Week %W |  Paris %H:%M}",
+        "timezone": "Europe/Paris",
+        "interval": 60,
         "tooltip": false
     },
-    "custom/left-arrow-light": {
-        "format": "",
+    "custom/clock-sao": {
+        "format": "Sao Paolo {}",
+        "exec": "TZ=America/Sao_Paulo date +%H:%M",
+        "interval": 60,
         "tooltip": false
     },
-    "custom/right-arrow-dark": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/right-arrow-light": {
-        "format": "",
+    "custom/clock-las": {
+        "format": "Los Angeles {}",
+        "exec": "TZ=US/Pacific date +%H:%M",
+        "interval": 60,
         "tooltip": false
     },
     "custom/bluetooth": {
         "format": "{}",
         "return-type": "json",
         "exec": "${HOME}/.config/waybar/modules/bluetooth/exec.sh",
-        "on-click": "${HOME}/.config/waybar/modules/bluetooth/onclick.sh",
+        "on-click": "blueman-manager",
         "interval": 3
     },
     "custom/usb-serial": {

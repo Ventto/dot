@@ -34,16 +34,17 @@ bth_enabled() {
     return 1
 }
 
+
 bth_connected_list()
 {
-    declare -a mac_lst
-
-    mac_lst=( $(bluetoothctl devices | cut -d' ' -f2) )
-
-    for mac in "${mac_lst[@]}"
+    bluetoothctl devices | cut -f2 -d' ' |
+    while read -r mac
     do
-        if bth_connected "$mac"; then
-            bluetoothctl info "$mac" | sed -n 's%.*Name: \(.*\)%\1%p'
+        info=$(bluetoothctl info "$mac")
+        if echo "$info" | grep -q "Connected: yes"; then
+            printf '%s - %s\n' \
+                "$(echo "$info" | sed -n 's%.*Icon: \([0-9a-zA-Z].*[0-9A-Za-z]\).*%\1%p')" \
+                "$(echo "$info" | sed -n 's%.*Name: \([0-9a-zA-Z].*[0-9A-Za-z]\).*%\1%p')"
         fi
     done
 }

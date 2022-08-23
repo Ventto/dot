@@ -15,9 +15,9 @@ waybar_action()
     declare -a lst=( $(ls -1 /dev | grep -E 'tty(USB|ACM)') )
 
     if [ "${#lst[@]}" -gt 0 ]; then
-        printf '{"text":"%s","tooltip":"%s","class":"on"}' " x ${#lst[@]}" "$(waybar_tooltip "$lst")"
+        printf '{"text":"%s","tooltip":"%s","class":"active"}' " x ${#lst[@]}" "$(waybar_tooltip "$lst")"
     else
-        printf '{"text":"","tooltip":"","class":"off"}'
+        printf '{"text":"","tooltip":"","class":"inactive"}'
     fi
 }
 

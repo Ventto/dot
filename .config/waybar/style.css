@@ -1,86 +1,49 @@
+@define-color active-color rgb(13, 235, 255); /* #0DEBFF */
+@define-color inactive-color rgb(60, 87, 124); /* #3C577C */
+@define-color warning-color rgb(255, 165, 0); /* orange */
+@define-color urgent-color rgb(255, 0, 0); /* red */
+
 /* ======================= */
 /*         Global          */
 /* ======================= */
 
 * {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
-    font-family: "Source Code Pro Medium", "Font Awesome 5 Free Solid";
+    font-family: "SauceCodePro Nerd Font";
     border: none;
     margin:0;
 }
-
 window#waybar {
-    background: #292b2e;
-    color: #5294E2;
+    background: transparent;
+    color: @active-color;
+    opacity: 1;
 }
-
-window#waybar.hidden {
-    opacity: 0.0;
+window#waybar > * > * {
+    border-top: 2px;
+    border-style: solid;
+    border-color: @active-color;
 }
-
-/* ======================= */
-/*       Workspaces        */
-/* ======================= */
+.active { color: @active-color; }
+.inactive { color: @inactive-color; }
+.warning { color: @warning-color; }
+.critical { color: @urgent-color; }
 
 #workspaces button {
-    padding: 2px 4px;
-    color: #3A4B64;
+    color: @inactive-color;
+    padding: 0px 10px;
 }
 #workspaces button.focused {
-    color: #5294E2;
+    color: @active-color;
 }
 #workspaces button:hover {
+    background: inherit;
     box-shadow: inherit;
     text-shadow: inherit;
-    background: #333333;
-    border: #1a1a1a;
-    color: #268bd2;
+    color: @active-color;
 }
-
-/* ======================= */
-/*       Separators        */
-/* ======================= */
-
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-    border: none;
-    padding: 3px 0px 0px 0px;
-    margin:0;
-    font-size: 19px;
-    color: #1a1a1a;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-    padding: 3px 0px 0px 0px;
-    font-size: 19px;
-    color: #292b2e;
-    background: #1a1a1a;
-}
-
-/* ======================= */
-/*         Top Bar         */
-/* ======================= */
 
 #workspaces,
-#clock,
-#custom-clock-brasil,
-#pulseaudio,
-#backlight,
-#memory,
-#cpu,
-#temperature,
-#battery,
-#tray,
-#custom-logout,
-#custom-disk-partitions
-{
-    color: #5294E2;
-    background: #1a1a1a;
-}
-
-#clock,
-#custom-clock-brasil,
 #pulseaudio,
 #backlight,
 #memory,
@@ -88,34 +51,16 @@ window#waybar.hidden {
 #temperature,
 #battery,
 #custom-logout,
-#custom-disk-partitions
-{
-    padding: 0 10px;
-}
-
-#battery.warning { color: orange; }
-#battery.critical { color: red; }
-#temperature.critical { color: red; }
-
-/* ======================= */
-/*       Bottom Bar        */
-/* ======================= */
-
+#custom-disk-partitions,
 #tray,
+#clock,
+#custom-clock-sao,
+#custom-clock-las,
 #custom-bluetooth,
-#custom-usb-serial
-{
-    color: #5294E2;
-    background: #1a1a1a;
+#custom-usb-serial {
+    margin: 0 10px;
     padding: 4px 10px;
-}
-
-#custom-bluetooth.off,
-#custom-usb-serial.off {
-    color: #3A4B64;
-}
-
-#custom-bluetooth.on,
-#custom-usb-serial.on {
-    color: #5294E2;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: @active-color;
 }
