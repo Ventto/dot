@@ -1,6 +1,6 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#browser { margin-top: -1px !important; }
+#browser { margin-top: -1px !important;}
 
 /*
 ==========================
@@ -13,6 +13,7 @@
 #appcontent > #content > tabbox > tabpanels,
 #navigator-toolbox, #TabsToolbar, #nav-bar, #urlbar {
     background: #2e3132 !important;
+    font-family: "Hack" !important;
 }
 
 :root {
@@ -80,7 +81,6 @@
 .tabbrowser-tab *,
 .tab-stack * {
     font-size: 11px !important;
-    font-family: Hack;
 }
 
 /* Closer pinned tab icons */
@@ -138,6 +138,7 @@
 /* Set toolbars order */
 #TabsToolbar {
     -moz-box-ordinal-group: 1 !important;
+    font-family: "Hack" !important;
     margin-bottom: -1px !important;
 }
 #nav-bar {
@@ -148,7 +149,6 @@
 
 #urlbar {
     border-color: #2e3132 !important;
-    font-family: Hack;
 }
 
 #urlbar, .searchbar-textbox {
