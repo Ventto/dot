@@ -132,8 +132,8 @@ add_aliases 'overrided-cmds'
 
 add_comp 'base'
 
-autoload -U +X bashcompinit && bashcompinit
-add_bash_comp 'ct-ng'
+#autoload -U +X bashcompinit && bashcompinit
+#add_bash_comp 'ct-ng'
 
 #==============================#
 #           Bindkeys           #
