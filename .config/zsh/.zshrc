@@ -51,8 +51,6 @@ REPORTTIME=5
 export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
 export EDITOR="nvim"
 export SUDO_EDITOR="rnano"
-export TERMINAL="termite"
-#export USE_EDITOR="$EDITOR -p"
 export VISUAL="$EDITOR"
 export GIMP2_DIRECTORY=".config/gimp"
 export LANG=en_US.UTF-8
@@ -75,19 +73,22 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 #           Prompt             #
 #==============================#
 
+default_prompt=true
 # Shell is running in a pseudo terminal slave
 if tty | grep -E '^/dev/pts/[0-9]+$' >/dev/null 2>&1; then
     if [ -f "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh" ];
     then
         source "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh"
+        default_prompt=false
     fi
-else
+fi
+if $default_prompt; then
     setopt prompt_subst
 
     # Enable colors in prompt
     autoload -U colors && colors
 
-    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%M:%S}]${cpwd}${icon} # %{$reset_color%} '
+    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%H:%M}]${cpwd}${icon}  %{$reset_color%} '
     function precmd {
         [ "$?" -eq 0 ] && prompt_bg_color="green" || prompt_bg_color="red"
         [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
