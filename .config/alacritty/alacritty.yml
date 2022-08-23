@@ -21,8 +21,8 @@ window:
     y: 0
 
   decorations: full
-
   dynamic_title: true
+  opacity: 0.9
 
 scrolling:
   multiplier: 1
@@ -121,8 +121,6 @@ colors:
   #   `- { index: 16, color: '0xff00ff' }`
   #
   indexed_colors: []
-
-background_opacity: 0.9
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
