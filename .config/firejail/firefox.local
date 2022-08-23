@@ -1,4 +1,4 @@
-whitelist ${HOME}/.config/firefox/profiles
+whitelist ${HOME}/.config/firefox/
 
 # NOTE: start KeePassXC before Firefox and keep it open to allow communication
 # between them.
