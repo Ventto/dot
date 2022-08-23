@@ -1,5 +1,30 @@
 #!/bin/zsh
 
+function _zsh_log()
+{
+    printf "zshrc log: %s(): %s\n" "${funcstack[2]}" "$1"
+}
+
+function _zsh_err()
+{
+    printf "zshrc error: %s(): %s\n" "${funcstack[2]}" "$1"
+}
+
+##
+# _require_cmds() - Verify command's executables exist
+#
+# $1: command names
+#
+# Return: 0 on success, else positive error code.
+function require_cmds() {
+    for cmd in "$@"; do
+        if ! command -vp "$cmd" > /dev/null 2>&1; then
+            _zsh_err "'${cmd}' command not found"
+            return 127
+        fi
+    done
+}
+
 function add_file() {
     dir="${ZDOTDIR}/zshrc.d/$1"
     [ ! -d "$dir" ]  && { echo "[zsh] $dir: directory not found."; return 1; }

@@ -1,8 +1,11 @@
-#!/bin/zsh
-
-#==============================#
-#           Man Pages          #
-#==============================#
+require_cmds \
+    gitk \
+    groff \
+    gzip \
+    help2man \
+    less \
+    nohup \
+    tar
 
 function man_read_mangz()
 {

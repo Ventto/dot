@@ -4,15 +4,6 @@ alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
 #==============================#
-#           Patches            #
-#==============================#
-
-# Fix slow git autocompletion in huge repositories
-__git_files () {
-    _wanted files expl 'local files' _files
-}
-
-#==============================#
 #           Options            #
 #==============================#
 
@@ -21,7 +12,6 @@ __git_files () {
 HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
 SAVEHIST=1000000
-
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
@@ -68,6 +58,7 @@ export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.
 export GTK_DATA_PREFIX=
 export GTK_THEME=Arc-Dark
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 #==============================#
 #           Prompt             #
@@ -110,10 +101,15 @@ source "${ZDOTDIR}/zshrc.d/helper.zsh"
 # Caution: Source functions first, aliases could require functions, but
 #          functions don't require alias.
 #
+add_functions 'common'
+add_functions 'base'
+add_functions 'browser'
 add_functions 'file-utils'
 add_functions 'maths'
 add_functions 'systemd'
+add_functions 'docker'
 add_functions 'dev'
+add_functions 'home-mounts'
 
 #==============================#
 #           Aliases            #
@@ -125,6 +121,7 @@ add_aliases 'systemd'
 add_aliases 'dev'
 add_aliases 'firejail'
 add_aliases 'network'
+add_aliases 'mounts'
 add_aliases 'overrided-cmds'
 
 #==============================#
@@ -156,3 +153,10 @@ add_bindkeys 'fg-ctrlz'
 
 # Helps setting the terminal title at runtime
 add_plugin 'mywin_title'
+
+#==============================#
+#      External Shell RC       #
+#==============================#
+
+. "${HOME}/workspace/crydio/config/bashrc"
+#. "${HOME}/workspace/crydio/customers/scaleway/zsh/zshrc"

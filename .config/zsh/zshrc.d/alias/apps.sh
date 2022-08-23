@@ -7,12 +7,20 @@ alias weather="curl -s wttr.in/Paris"
 alias weather-now="curl -s wttr.in/Paris | sed -n '3,7p'"
 alias pickcolor="grim -g \"\$(slurp -p)\" -t ppm - \
                     | convert - -format '%[pixel:p{0,0}]' txt:-"
-alias dolphin-here="nohup dolphin . >/dev/null 2>&1 &"
+alias dolphin="nohup dolphin . >/dev/null 2>&1 &"
 alias pdfviewer="okular"
 alias imgviewer="nomacs"
 alias imgeditor="gimp"
 alias mux='tmuxinator'
 alias printer-config="system-config-printer"
 alias VirtualBox="QT_QPA_PLATFORM=xcb VirtualBox"
-alias virtualbox="QT_QPA_PLATFORM=xcb VirtualBox"
-alias webcam-viewer="ffplay /dev/video0"
+alias nomacs="QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.2 nomacs"
+alias qt5ct="QT_QPA_PLATFORM=xcb qt5ct"
+alias mycamera="ffplay /dev/video0"
+alias myphone="scrcpy --turn-screen-off --disable-screensaver --window-width 480"
+alias nvim-install="nvim +PlugInstall"
+alias nvim-update="nvim +PlugClean +PlugUpdate"
+alias ssh="TERM=xterm ssh"
+alias pdfmixtool='QT_QPA_PLATFORM=xcb pdfmixtool'
+alias firefox='MOZ_ENABLE_WAYLAND=1 taskset -c 6,7 firefox -no-remote --profile "${HOME}/.config/firefox/"'
+alias yay='taskset -c 5 yay'

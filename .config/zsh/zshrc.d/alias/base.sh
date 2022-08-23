@@ -13,9 +13,7 @@ alias ..='cd ../../'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 
-alias tmp="cd \$(mktemp -d)"
-
-alias e="$EDITOR -p"
 alias calc="bc -l"
 alias grep='grep --color=auto'
-alias cp='rsync -avz'
+alias cp=' rsync -auz --progress'
+alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSUSED,FSUSE%,TYPE,MOUNTPOINT'

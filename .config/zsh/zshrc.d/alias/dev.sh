@@ -34,3 +34,11 @@ alias aur-nat="[ -f PKGBUILD.nat ] && mv PKGBUILD PKGBUILD.master
 
 alias adbkey-fingerprint="awk '{print \$1}' < \"${HOME}/.android/adbkey.pub\" \
     | openssl base64 -A -d -a | openssl md5 -c"
+
+#==============================#
+#            Apps              #
+#==============================#
+
+alias waybar-restart="killall waybar; sleep 1; \
+    waybar --config \"\${HOME}/.config/waybar/config/bar-top.js\" &! \
+    waybar --config \"\${HOME}/.config/waybar/config/bar-bottom.js\" &!"

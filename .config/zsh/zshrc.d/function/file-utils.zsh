@@ -1,4 +1,6 @@
-#!/bin/zsh
+require_cmds \
+    gs \
+    python
 
 function pdf_merge()
 {
