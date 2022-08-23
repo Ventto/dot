@@ -590,13 +590,13 @@ xkb_types "complete" {
         level_name[Level4]= "Shift Alt";
     };
     type "FOUR_LEVEL_ALPHABETIC" {
-        modifiers= Shift+Lock+LevelThree;
+        modifiers= Shift+Lock+RAlt;
         map[Shift]= Level2;
         map[Lock]= Level2;
-        map[LevelThree]= Level3;
-        map[Shift+LevelThree]= Level4;
-        map[Lock+LevelThree]= Level4;
-        map[Shift+Lock+LevelThree]= Level3;
+        map[RAlt]= Level3;
+        map[Shift+RAlt]= Level4;
+        map[Lock+RAlt]= Level4;
+        map[Shift+Lock+RAlt]= Level3;
         level_name[Level1]= "Base";
         level_name[Level2]= "Shift";
         level_name[Level3]= "Alt Base";
