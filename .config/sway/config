@@ -75,9 +75,8 @@ client.focused_inactive $inactive_br $inactive_br $inactive_fg $inactive_br $ina
 client.unfocused        $inactive_br $inactive_br $inactive_fg $inactive_br $inactive_br
 client.background       $bg
 
-# =======================
-#      Assignments
-# =======================
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
 
 for_window [class="^ffplay$"] floating enable
 for_window [class="^scrcpy$"] floating enable
