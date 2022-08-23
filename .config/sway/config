@@ -40,23 +40,23 @@ bindswitch --reload --locked lid:off output $laptop_output enable, output $exter
 bindsym $mod+Alt+s output $laptop_output disable,output $extern_output enable
 bindsym $mod+Alt+p output $extern_output disable,output $laptop_output enable
 
-output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
+exec_always swaymsg output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
 
 # =======================
 #        Inputs
 # =======================
 
 # Laptop builtin keyboard
-input 1:1:AT_Translated_Set_2_keyboard {
+exec_always swaymsg input 1:1:AT_Translated_Set_2_keyboard {
   xkb_layout myus
 }
 
 # External 60% custom keyboard
-input 17498:4641:DZTECH_DZ60RGB_ANSI {
+exec_always swaymsg input 17498:4641:DZTECH_DZ60RGB_ANSI {
   xkb_layout myus
 }
 
-seat * hide_cursor when-typing enable
+exec_always swaymsg geat * hide_cursor when-typing enable
 
 # =======================
 #         Windows
