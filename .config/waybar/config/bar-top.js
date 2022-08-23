@@ -79,7 +79,7 @@
     },
     "custom/logout": {
         "format": "",
-        "on-click": "wlogout -p layer-shell",
+        "on-click": "${HOME}/.config/rofi/scripts/powermenu",
         "tooltip": false
     }
 }
