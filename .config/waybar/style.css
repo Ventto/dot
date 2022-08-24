@@ -1,7 +1,8 @@
-@define-color active-color rgb(13, 235, 255); /* #0DEBFF */
-@define-color inactive-color rgb(60, 87, 124); /* #3C577C */
-@define-color warning-color rgb(255, 165, 0); /* orange */
-@define-color urgent-color rgb(255, 0, 0); /* red */
+@define-color theme-bg-color rgb(30, 43, 62); /* #1e2b3e */
+@define-color theme-active-color rgb(13, 235, 255); /* #0debff */
+@define-color theme-inactive-color rgb(60, 87, 124); /* #3c577Cc*/
+@define-color theme-warning-color rgb(255, 165, 0); /* #ffa500 */
+@define-color theme-urgent-color rgb(255, 0, 0); /* #ff0000 */
 
 /* ======================= */
 /*         Global          */
@@ -13,54 +14,72 @@
     font-family: "SauceCodePro Nerd Font";
     border: none;
     margin:0;
+    opacity: 0.95;
 }
+
 window#waybar {
     background: transparent;
-    color: @active-color;
-    opacity: 1;
+    color: @theme-active-color;
 }
+/* Module container */
 window#waybar > * > * {
     border-top: 2px;
     border-style: solid;
-    border-color: @active-color;
+    border-color: @theme-active-color;
 }
-.active { color: @active-color; }
-.inactive { color: @inactive-color; }
-.warning { color: @warning-color; }
-.critical { color: @urgent-color; }
+/* Modules */
+window#waybar > * > * > * > * {
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: @theme-active-color;
+    margin: 0 10px;
+    padding: 4px 10px;
+}
+
+#tray menu, tooltip {
+    background-color: @theme-bg-color;
+    border: 2px solid @theme-active-color;
+}
+
+/* ======================= */
+/*         Modules         */
+/* ======================= */
 
 #workspaces button {
-    color: @inactive-color;
+    color: @theme-inactive-color;
     padding: 0px 10px;
 }
 #workspaces button.focused {
-    color: @active-color;
+    color: @theme-active-color;
+}
+#workspaces button.urgent {
+    color: @theme-urgent-color;
 }
 #workspaces button:hover {
     background: inherit;
     box-shadow: inherit;
     text-shadow: inherit;
-    color: @active-color;
+    color: @theme-active-color;
 }
 
-#workspaces,
-#pulseaudio,
-#backlight,
-#memory,
-#cpu,
-#temperature,
-#battery,
-#custom-logout,
-#custom-disk-partitions,
-#tray,
-#clock,
-#custom-clock-sao,
-#custom-clock-las,
-#custom-bluetooth,
-#custom-usb-serial {
-    margin: 0 10px;
-    padding: 4px 10px;
-    border-bottom: 2px;
-    border-style: solid;
-    border-color: @active-color;
+#custom-usb-serial.active {
+    color: @theme-active-color;
+    border-color: @theme-active-color;
+}
+#custom-usb-serial.inactive {
+    color: @theme-inactive-color;
+    border-color: @theme-inactive-color;
+}
+
+#battery.warning,
+#pulseaudio.muted,
+#idle_inhibitor.activated {
+    color: @theme-warning-color;
+    border-color: @theme-warning-color;
+}
+
+#temperature.critical,
+#battery.critical {
+    color: @theme-urgent-color;
+    border-color: @theme-urgent-color;
 }

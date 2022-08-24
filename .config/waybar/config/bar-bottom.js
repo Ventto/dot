@@ -47,6 +47,6 @@
     },
     "tray": {
         "icon-size": 21,
-        "spacing": 14
+        "spacing": 30
     }
 }
