@@ -1,0 +1,11 @@
+* {
+    font:                        "SauceCodePro Nerd Font Mono 11";
+    background:                  #1E2B3E;
+    background-alt:              #24344A;
+    foreground:                  #FFFFFF;
+    selected:                    #0CBFD1;
+    selected-text:               black;
+    active:                      #0CBFD1;
+    inactive:                    #3C577C;
+    urgent:                      red;
+}
