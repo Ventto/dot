@@ -177,19 +177,19 @@ bindsym XF86Sleep exec systemctl suspend
 set $launcher       "${HOME}"/.config/rofi/scripts/launcher
 set $browser        firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
 set $term           alacritty
-set $logout         wlogout -p layer-shell
+set $powermenu      "${HOME}"/.config/rofi/scripts/powermenu
 
 bindsym $mod+Ctrl+b exec $browser
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
-bindsym Ctrl+Alt+Backspace exec $logout
 
 # Take a screenshot
 set $img_path "$(xdg-user-dir PICTURES)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
 bindsym Print exec grim -g "$(slurp)" $img_path \
                    && notify-send -u normal -a Grim \
                                   "Print Region" "$(basename "$img_path")"
+bindsym $mod+Space+Backspace exec $powermenu
 
 # =======================
 #  Bindkeys: Workspaces
