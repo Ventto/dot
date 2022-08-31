@@ -27,11 +27,17 @@ group-by=app-name
 font=SauceCodePro Nerd Font 14
 group-by=app-name
 format=%s
+anchor=top-center
+default-timeout=1500
+width=476
 
 [app-name=volumectl]
 font=SauceCodePro Nerd Font 14
 group-by=app-name
 format=%s
+anchor=top-center
+default-timeout=1500
+width=476
 
 [app-name=error]
 group-by=app-name
