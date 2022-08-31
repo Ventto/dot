@@ -21,6 +21,7 @@ format=(and %h more)
 text-color=#777777
 
 [app-name=batify]
+group-by=app-name
 
 [app-name=backlightctl]
 font=SauceCodePro Nerd Font 14
