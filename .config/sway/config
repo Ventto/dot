@@ -143,8 +143,10 @@ exec xhost si:localuser:root
 # Open a terminal on dedicated workspace
 exec swaymsg 'workspace $ws2; exec $term'
 
-# Setup swayidle and my own inhibitors
-exec "${HOME}/.config/sway/idle/run.sh"
+# Setup auto-sleep (with locking)
+set $lock "${HOME}/.config/sway/lock.sh"
+exec swayidle -d -w timeout 600 'systemctl suspend' \
+              before-sleep "${lock}; sleep 5;"
 
 # Network Manager Applet
 exec nm-applet --indicator
@@ -174,12 +176,11 @@ bindsym XF86Sleep exec systemctl suspend
 
 set $launcher       "${HOME}"/.config/rofi/scripts/launcher
 set $browser        firefox -no-remote --profile "${HOME}/.config/firefox/profiles/default"
-set $screenlocker   sh "${HOME}/.config/sway/idle/actions/lock.sh" --force
 set $term           alacritty
 set $logout         wlogout -p layer-shell
 
 bindsym $mod+Ctrl+b exec $browser
-bindsym $mod+Ctrl+l exec $screenlocker
+bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
 bindsym Ctrl+Alt+Backspace exec $logout
