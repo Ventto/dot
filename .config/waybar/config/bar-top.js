@@ -8,6 +8,7 @@
     "modules-center": [
     ],
     "modules-right": [
+        "idle_inhibitor",
         "custom/disk-partitions",
         "temperature",
         "cpu",
@@ -22,6 +23,13 @@
         "disable-scroll": true,
         "format": "{name}",
         "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "custom/disk-partitions": {
         "format": " {}",
