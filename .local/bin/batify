@@ -17,23 +17,30 @@ set -e
 
 . "${HOME}/.local/lib/notify_helper.sh"
 
-error()
+prog="batify"
+_err()
 {
-    notify_error "batify" "$1"
+    notify_err "$prog" "$1"
+}
+
+_usage()
+{
+    desc='Sends a notification of the event'
+    args='  EVENTS    plug, unplug, low and critical'
+    printf 'Usage: %s EVENTS\n\n%s\n\nArgument:\n%s\n' "$prog" "$desc" "$args"
 }
 
 main()
 {
-    [ "$#" -ne 1 ] && { error; usage; exit 2; }
-
+    [ "$#" -ne 1 ] && { _err; _usage; exit 2; }
     case $1 in
-        plug)         summary="AC Adapter: plugged";   icon="link";;
-        unplug)       summary="AC Adapter: unplugged"; icon="link_off";;
-        low|critical) summary="Battery: ${1} level";   icon="battery_alert";;
-        *) error "bad args"; return 2;;
+        plug) summary="AC Adapter: plugged"; icon="link";;
+        unplug) summary="AC Adapter: unplugged"; icon="link_off";;
+        low|critical) summary="Battery: ${1} level"; icon="battery_alert";;
+        *) _err "bad args"; return 2;;
     esac
 
-    notify-send -a "batify" -i "$(notify_get_icon "$icon")" "$summary"
+    notify_log "$prog" "$icon" "$summary"
 }
 
 main "$@"

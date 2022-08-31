@@ -18,41 +18,37 @@ set -e
 
 . "${HOME}/.local/lib/notify_helper.sh"
 
-error()
+prog="backlightctl"
+_die()
 {
-    notify_error "backlightctl" "Error"
+    notify_err "$prog" "Error"
+    exit "$1"
 }
 
-usage()
+_usage()
 {
     desc='Controls the backlight level and sends a notification'
     args='  ACTION    increase "+" or decrease "-" the backlight level of 10%'
-    printf 'Usage: backlightctl ACTION\n\n%s\n\nArguments\n%s\n' \
-           "$desc" "$args"
+
+    printf 'Usage: %s ACTION\n\n%s\n\nArguments\n%s\n' "$prog" "$desc" "$args"
 }
 
 main()
 {
-    [ "$#" -ne 1 ] && { error; usage; exit 2; }
-
+    [ "$#" -ne 1 ] && { _usage; _die 2; }
     case $1 in
         -) opt="-s";;
         +) opt="-a";;
-        *) error; usage; return 2;;
+        *) _usage; _die 2;;
     esac
-
     if ! lux -m 1 "$opt" 10% >/dev/null; then
-        error; return 1
+        _die 1
     fi
+    # Level in percentage
+    level="$(lux -G | sed 's/.$//')"
+    summary=$(notify_percent_to_summary "$level")
 
-    level_in_percent="$(lux -G | sed 's/.$//')"
-    summary=$(notify_percent_to_bar "$level_in_percent")
-    icon="sunny"
-
-    makoctl dismiss --all && \
-        notify-send -a "backlightctl" \
-                    -i "$(notify_get_icon "$icon")" \
-                    "$summary"
+    notify_log "$prog" "sunny" "$summary"
 }
 
 main "$@"

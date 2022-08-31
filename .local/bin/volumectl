@@ -18,24 +18,27 @@ set -e
 
 . "${HOME}/.local/lib/notify_helper.sh"
 
-error()
+
+prog="volumectl"
+_die()
 {
-    notify_error "volumectl" "Error"
+    notify_err "$prog" "Error"
+    exit "$1"
 }
 
 # Get the index of the selected sink:
-get_sink() {
+_get_sink() {
     pacmd list-sinks | awk '/index:/{i++} /* index:/{print i; exit}'
 }
 
 # Get the selected sink volume
-get_volume() {
+_get_volume() {
     pacmd list-sinks | \
-        awk "/^\\svolume:/{i++} i==$(get_sink){print \$5; exit}" | \
+        awk "/^\\svolume:/{i++} i==$(_get_sink){print \$5; exit}" | \
         sed 's/.$//'
 }
 
-default_sink_is_muted()
+_default_sink_is_muted()
 {
     ##
     # In the pacmd's output, the default sink is marked with an asterisk
@@ -63,11 +66,11 @@ default_sink_is_muted()
     return 2
 }
 
-volume_set_level()
+_volume_set_level()
 {
     _sign="$1"
 
-    if [ "$_sign" = '+' ] && [ "$(get_volume)" -ge 100 ]; then
+    if [ "$_sign" = '+' ] && [ "$(_get_volume)" -ge 100 ]; then
         icon="volume_up"
         summary="$(notify_print_bar "  " 10)"
         return
@@ -76,53 +79,43 @@ volume_set_level()
     [ "$_sign" = '+' ] && icon="volume_up" || icon="volume_down"
 
     if ! pactl set-sink-volume @DEFAULT_SINK@ "$_sign"10% ; then
-        error
-        return 1
+        _die 1
     fi
 
-    if [ "$(get_volume)" -eq 0 ]; then
+    if [ "$(_get_volume)" -eq 0 ]; then
         icon="volume_off"
     fi
-    summary="$(notify_percent_to_bar "$(get_volume)")"
+    summary="$(notify_percent_to_summary "$(_get_volume)")"
 }
 
-volume_toggle()
+_volume_toggle()
 {
     if ! pactl set-sink-mute @DEFAULT_SINK@ toggle; then
-        error
-        return 1
+        _die 1
     fi
-
-    ret=$(default_sink_is_muted; echo "$?";)
+    ret=$(_default_sink_is_muted; echo "$?";)
     case $ret in
-        0) icon="volume_off"; summary="$(notify_print_bar "   " 10)";;
-        1) icon="volume_up";  summary="$(notify_percent_to_bar "$(get_volume)")";;
-        2) error; return 1;;
+        0) icon="volume_off"; summary="Muted";;
+        1) icon="volume_up";  summary="Unmuted";;
+        2) _die 1;;
     esac
 }
 
-usage()
+_usage()
 {
     desc='Sets the volume and sends a notification.'
     args='  ACTION    "+", "-" or "toggle" '
-    printf 'Usage: volumectl ACTION\n\n%s\n\nArgument:\n%s\n' \
-           "$desc" "$args"
+    printf 'Usage: %s ACTION\n\n%s\n\nArgument:\n%s\n' "$prog" "$desc" "$args"
 }
 
 main()
 {
-    [ "$#" -ne 1 ] && { error; usage; exit 2; }
-
+    [ "$#" -ne 1 ] && { _usage; _die 2; }
     case $1 in
-        -|+)    volume_set_level "$1";;
-        toggle) volume_toggle;;
-        *)      error; usage; exit 2;;
+        -|+) _volume_set_level "$1";;
+        toggle) _volume_toggle;;
+        *) _usage; _die 2;;
     esac
-
-    makoctl dismiss --all && \
-        notify-send -a "volumectl" \
-                    -i "$(notify_get_icon "$icon")" \
-                    "$summary"
+    notify_log "$prog" "$icon" "$summary"
 }
-
 main "$@"
