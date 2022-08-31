@@ -1,15 +1,14 @@
-font=Source Code Pro Medium 12
+font=SauceCodePro Nerd Font 11
 format=<b>%a</b>\n\n%s\n%b
-width=460
-height=480
+width=512
 padding=16
 margin=32
 anchor=top-right
-border-size=6
-background-color=#5294E2DD
-text-color=#000000
-border-color=#384F6BD0
-border-radius=16
+border-size=2
+background-color=#1e2b4eDD
+text-color=#ffffff
+border-color=#0cbfd1DD
+border-radius=2
 max-visible=6
 layer=overlay
 default-timeout=5000
@@ -24,13 +23,13 @@ text-color=#777777
 [app-name=batify]
 
 [app-name=backlightctl]
+font=SauceCodePro Nerd Font 14
 group-by=app-name
-font=Font Awesome 5 Free Solid 14
 format=%s
 
 [app-name=volumectl]
+font=SauceCodePro Nerd Font 14
 group-by=app-name
-font=Font Awesome 5 Free Solid 14
 format=%s
 
 [app-name=error]
@@ -38,5 +37,6 @@ group-by=app-name
 format=<b>%s</b>
 
 [urgency=high]
-background-color=#B00000
+background-color=#e52d2d
+border-color=#000000
 text-color=#ffffff
