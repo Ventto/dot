@@ -40,7 +40,8 @@ bindswitch --reload --locked lid:off output $laptop_output enable, output $exter
 bindsym $mod+Alt+s output $laptop_output disable,output $extern_output enable
 bindsym $mod+Alt+p output $extern_output disable,output $laptop_output enable
 
-exec_always swaymsg output "*" background "${HOME}/images/wallpapers/fusion.jpg" fill
+exec_always swaymsg output "*" \
+                    background "${HOME}/images/wallpapers/current.jpg" fill
 
 # =======================
 #        Inputs
@@ -164,10 +165,8 @@ exec keepassxc
 bindsym XF86AudioRaiseVolume exec volumectl +
 bindsym XF86AudioLowerVolume exec volumectl -
 bindsym XF86AudioMute exec volumectl toggle
-
 bindsym XF86MonBrightnessUp exec backlightctl +
 bindsym XF86MonBrightnessDown exec backlightctl -
-
 bindsym XF86Sleep exec systemctl suspend
 
 # =======================
