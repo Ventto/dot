@@ -1,8 +1,8 @@
 @define-color theme-bg-color rgb(30, 43, 62); /* #1e2b3e */
 @define-color theme-active-color rgb(13, 235, 255); /* #0debff */
 @define-color theme-inactive-color rgb(60, 87, 124); /* #3c577Cc*/
-@define-color theme-warning-color rgb(255, 165, 0); /* #ffa500 */
-@define-color theme-urgent-color rgb(255, 0, 0); /* #ff0000 */
+@define-color theme-warning-color rgb(255, 140, 0); /* #ff8c00 */
+@define-color theme-urgent-color rgb(229, 45, 45); /* #e52d2d */
 
 /* ======================= */
 /*         Global          */
@@ -14,7 +14,7 @@
     font-family: "SauceCodePro Nerd Font";
     border: none;
     margin:0;
-    opacity: 0.95;
+    opacity: 1;
 }
 
 window#waybar {
@@ -36,7 +36,12 @@ window#waybar > * > * > * > * {
     padding: 4px 10px;
 }
 
+/* Tray icons (make sure dark ones will be visible) */
+#tray > * {
+    background-color: white;
+}
 #tray menu, tooltip {
+    opacity: 0.8;
     background-color: @theme-bg-color;
     border: 2px solid @theme-active-color;
 }
