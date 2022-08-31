@@ -157,9 +157,6 @@ exec nm-applet --indicator
 # Blueman-manager cannot run without the applet
 exec blueman-applet
 
-# Password Manager
-exec keepassxc
-
 # =======================
 #     Bindkeys: Media
 # =======================
