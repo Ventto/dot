@@ -6,7 +6,7 @@ set nocompatible
 set autoindent
 set backspace=2
 set cc=79
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 set cursorline
 set encoding=utf-8
 set fileformat=unix
@@ -26,13 +26,29 @@ set wildmenu
 set wildmode=list:longest,full
 set title titlestring=Edit\:\ %t%(\ %M%)%(\ [%{expand(\"%:~:.:h\")}]%)%(\ %a%)
 
+"disable title modification
+set notitle
 syntax on
+
+"let mapleader=","
 
 " Save changes using sudo without involving nvim
 cnoreabbrev w!! w suda://%
 
 " Column limit
 " hi OverLength ctermbg=red ctermfg=black match OverLength /\%80v.\+/
+
+" gutter space for lsp info on left
+set signcolumn=yes
+
+" increased for lsp code actions
+set updatetime=100
+
+" highlights yanked text
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
 
 " Deletes EOL spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -51,11 +67,17 @@ noremap , zr
 noremap ; zm
 " Copy selection to secondary clipboard
 noremap  <C-c>  "+y
+" Paste from secondary clipboard
+"noremap  <C-v>  "+p
 " Select the word under the cursor
-noremap <A-w> viw
+inoremap <C-w> <ESC>viw
+noremap <C-w> <ESC>viw
+" Select all of current paragraph
+inoremap <C-p> <ESC>vip
+noremap <C-p> <ESC>vip
 " Go to the begin of line
 noremap <C-q> <ESC>^
-inoremap <C-q> <ESC>I
+inoremap <C-q> <ESC>^
 " Go to the end of line
 noremap <C-e> <ESC>$
 inoremap <C-e> <ESC>A
@@ -73,7 +95,17 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 " Browse function definitions
 " Open definition in tab
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -90,3 +122,4 @@ inoremap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
 
 let g:config_dir = $HOME . "/.config/nvim"
 exec "source " . g:config_dir . "/plugins.vim"
+exec "source " . g:config_dir . "/plugin-settings.vim"
