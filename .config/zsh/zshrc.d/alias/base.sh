@@ -4,8 +4,8 @@ alias ls='ls -bh -CF --color=always --hide="*~" --color -h --group-directories-f
 alias l='ls -1'
 alias ll='ls -lhF'
 alias la='ls -lhAF'
-alias ld='ls -ld *'
-alias lad='ls -lAd .* | grep --color=never "^d"'
+alias ld='ls -ld */'
+alias lad='ls -lAd .*/'
 alias laf='ls -lAd .* | grep --color=never -v "^d"'
 
 alias less='LESSHISTFILE=- less -R -i'
