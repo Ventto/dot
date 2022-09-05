@@ -38,11 +38,12 @@ REPORTTIME=5
 #    Environment Variables     #
 #==============================#
 
-export BROWSER="firefox --profile '${HOME}/.config/firefox/default'"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export BROWSER="firefox --profile '${XDG_CONFIG_HOME}/firefox/default'"
 export EDITOR="nvim"
 export SUDO_EDITOR="rnano"
 export VISUAL="$EDITOR"
-export GIMP2_DIRECTORY=".config/gimp"
+export GIMP2_DIRECTORY=".config/gimp" # FIXME: sure about relative path ?
 export LANG=en_US.UTF-8
 export GOPATH="$HOME/.config/go"
 export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
@@ -89,57 +90,37 @@ fi
 #==============================#
 #          Functions           #
 #==============================#
-
-##
-# The helper script provides "add_*" functions for adding Shell's resources
-# such as functions, aliases and more in an elegant way.
-# For more details, see the sources. The resources are stored in the "zshrc.d"
-# directory.
-source "${ZDOTDIR}/zshrc.d/helper.zsh"
-
-##
 # Caution: Source functions first, aliases could require functions, but
-#          functions don't require alias.
+# functions don't require alias.
 #
-add_functions 'common'
-add_functions 'base'
-add_functions 'browser'
-add_functions 'file-utils'
-add_functions 'maths'
-add_functions 'systemd'
-add_functions 'docker'
-add_functions 'dev'
-add_functions 'home-mounts'
+. "${ZDOTDIR}/zshrc.d/function/common.zsh"
+
+for file in {base,dev} ; do
+    . "${ZDOTDIR}/zshrc.d/function/${file}.zsh"
+done
 
 #==============================#
 #           Aliases            #
 #==============================#
 
-add_aliases 'apps'
-add_aliases 'base'
-add_aliases 'systemd'
-add_aliases 'dev'
-add_aliases 'firejail'
-add_aliases 'network'
-add_aliases 'mounts'
-add_aliases 'overrided-cmds'
+for file in {base,dev,firejail,mounts} ; do
+    . "${ZDOTDIR}/zshrc.d/alias/${file}.sh"
+done
 
 #==============================#
 #          Completion          #
 #==============================#
 
-add_comp 'base'
-
+. "${ZDOTDIR}/zshrc.d/completion/base.zsh"
 #autoload -U +X bashcompinit && bashcompinit
-#add_bash_comp 'ct-ng'
 
 #==============================#
 #           Bindkeys           #
 #==============================#
 
-add_bindkeys 'base'
-add_bindkeys 'edit-command-line'
-add_bindkeys 'fg-ctrlz'
+for file in {base,edit-command-line,fg-ctrlz} ; do
+    . "${ZDOTDIR}/zshrc.d/bindkey/${file}.zsh"
+done
 
 #==============================#
 #           Plugins            #
@@ -149,10 +130,12 @@ add_bindkeys 'fg-ctrlz'
 #          function, alias or anything else.
 
 # Open a new terminal from current directory
-[ $TERM = "xterm-termite" ] && add_plugin 'vte-current-dir'
+if [ $TERM = "xterm-termite" ]; then
+    . "${ZDOTDIR}/zshrc.d/plugins/vte-current-dir.zsh"
+fi
 
 # Helps setting the terminal title at runtime
-add_plugin 'mywin_title'
+. "${ZDOTDIR}/zshrc.d/plugins/mywin_title.zsh"
 
 #==============================#
 #      External Shell RC       #

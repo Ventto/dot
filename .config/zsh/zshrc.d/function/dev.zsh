@@ -1,10 +1,9 @@
-require_cmds \
+_require \
     gitk \
     groff \
     gzip \
     help2man \
     less \
-    nohup \
     tar
 
 function man_read_mangz()
@@ -39,5 +38,5 @@ function tar_xz()
 
 function gitk_run()
 {
-    nohup gitk --max-count=100 $1 . >/dev/null 2>&1 &
+    run gitk --max-count=100 $1 .
 }

@@ -4,7 +4,7 @@
 #         Programming          #
 #==============================#
 
-alias full-leaks='valgrind --leak-check=full --show-leak-kinds=all'
+alias leaks='valgrind --leak-check=full --show-leak-kinds=all'
 
 #==============================#
 #          Archives            #
@@ -32,13 +32,5 @@ alias aur-nat="[ -f PKGBUILD.nat ] && mv PKGBUILD PKGBUILD.master
 #           Android            #
 #==============================#
 
-alias adbkey-fingerprint="awk '{print \$1}' < \"${HOME}/.android/adbkey.pub\" \
-    | openssl base64 -A -d -a | openssl md5 -c"
-
-#==============================#
-#            Apps              #
-#==============================#
-
-alias waybar-restart="killall waybar; sleep 1; \
-    waybar --config \"\${HOME}/.config/waybar/config/bar-top.js\" &! \
-    waybar --config \"\${HOME}/.config/waybar/config/bar-bottom.js\" &!"
+alias adbkey-fingerprint='awk "{print \$1}" < "${HOME}/.android/adbkey.pub" \
+    | openssl base64 -A -d -a | openssl md5 -c'

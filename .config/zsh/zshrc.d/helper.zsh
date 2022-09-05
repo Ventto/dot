@@ -11,12 +11,12 @@ function _zsh_err()
 }
 
 ##
-# _require_cmds() - Verify command's executables exist
+# _check() - Verify command's executables exist
 #
 # $1: command names
 #
 # Return: 0 on success, else positive error code.
-function require_cmds() {
+function check() {
     for cmd in "$@"; do
         if ! command -vp "$cmd" > /dev/null 2>&1; then
             _zsh_err "'${cmd}' command not found"

@@ -1,4 +1,4 @@
-require_cmds fd
+_require fd
 
 ##
 # browser_copy_to_downloads_dir()
@@ -13,6 +13,8 @@ function browser_copy_to_downloads_dir()
     if [ "$#" -eq 0 ]; then
         return 2
     fi
+
+$(xdg-user-dir "$xdg_type")/browser/uploads"
     dest="$(_my_xdg_dir_subpath_exist DOWNLOAD "browser/uploads")"
     ret="$?"
     if [ "$ret" -ne 0 ]; then
