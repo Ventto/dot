@@ -59,6 +59,18 @@ exec_always swaymsg input 17498:4641:DZTECH_DZ60RGB_ANSI {
 
 exec_always swaymsg geat * hide_cursor when-typing enable
 
+
+# =======================
+#         Theme
+# =======================
+
+seat seat0 xcursor_theme "breeze_cursors"
+
+set $gnome_schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome_schema cursor-theme 'breeze_cursors'
+}
+
 # =======================
 #         Windows
 # =======================
