@@ -2,17 +2,6 @@
 
 set $mod Mod4
 
-set $ws1 "1:  "
-set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws4 "4:  "
-set $ws5 "5:  "
-set $ws6 "6:  "
-set $ws7 "7:  "
-set $ws8 "8:  "
-set $ws9 "9: "
-set $ws0 "10: ' "
-
 # =======================
 #        Outputs
 # =======================
@@ -111,7 +100,21 @@ for_window [title="Firefox — Sharing Indicator"] kill
 # Click on waybar's buttons can make appear floating windows
 for_window [app_id="^waybar-onclick$"] floating enable, border none
 
-# Specific app's window assignations
+# =======================
+#       Workspaces
+# =======================
+
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7:  "
+set $ws8 "8:  "
+set $ws9 "9: ' "
+set $ws0 "10: "
+
 assign [app_id="^[fF]irefox"] $ws1
 assign [class="^[gG]itk"] $ws4
 assign [app_id="^org.kde.okular"] $ws5
