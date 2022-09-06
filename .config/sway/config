@@ -41,7 +41,7 @@ bindsym $mod+Alt+s output $laptop_output disable,output $extern_output enable
 bindsym $mod+Alt+p output $extern_output disable,output $laptop_output enable
 
 exec_always swaymsg output "*" \
-                    background "${HOME}/images/wallpapers/current.jpg" fill
+  background "${XDG_CONFIG_HOME}/sway/wallpapers/current.jpg" fill
 
 # =======================
 #        Inputs

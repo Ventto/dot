@@ -6,7 +6,7 @@
 swaylock --ignore-empty-password \
     --daemonize \
     --show-failed-attempts \
-    --image "${HOME}/images/wallpapers/current.jpg" \
+    --image "${XDG_CONFIG_HOME}/sway/wallpapers/current.jpg" \
     --scaling fill \
     --font "$THEME_FONT" \
     --font-size $((THEME_FONT_SIZE*3)) \
