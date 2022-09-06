@@ -58,12 +58,12 @@ export XDG_CURRENT_DESKTOP=Unity
 ## GTK2
 ### Force the theme and settings of few applications still in GTK2 (ex: gimp)
 export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.0"
-export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp"
+export GIMP2_DIRECTORY=".config/gimp"
 ## GTK3
+## Force the theme of few applications such as gnome ones
+export GTK_THEME=Arc-Dark
 export GTK_DATA_PREFIX=
-export GTK_THEME=Arc-Dark # force theme for gnome apps
 ## QT5
-export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
