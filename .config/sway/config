@@ -125,8 +125,8 @@ exec dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
 # Status Bars
-exec waybar -c "${HOME}/.config/waybar/config/bar-top.js"
-exec waybar -c "${HOME}/.config/waybar/config/bar-bottom.js"
+exec waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-top.js"
+exec waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-bottom.js"
 
 # Notification server
 exec mako
@@ -147,7 +147,7 @@ exec xhost si:localuser:root
 exec swaymsg 'workspace $ws2; exec $term'
 
 # Setup auto-sleep (with locking)
-set $lock "${HOME}/.config/sway/lock.sh"
+set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
 exec swayidle -d -w timeout 600 'systemctl suspend' \
               before-sleep "${lock}; sleep 5;"
 
@@ -172,10 +172,10 @@ bindsym XF86Sleep exec systemctl suspend
 #     Bindkeys: Apps
 # =======================
 
-set $launcher       "${HOME}"/.config/rofi/scripts/launcher
+set $launcher       "${XDG_CONFIG_HOME}/rofi/scripts/launcher"
 set $browser        MOZ_ENABLE_WAYLAND=1 firefox -no-remote --profile "${HOME}/.config/firefox/"
 set $term           alacritty
-set $powermenu      "${HOME}"/.config/rofi/scripts/powermenu
+set $powermenu      "${XDG_CONFIG_HOME}/rofi/scripts/powermenu"
 set $screenshot     grimshot --notify save area
 
 bindsym Print exec $screenshot
