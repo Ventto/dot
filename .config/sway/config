@@ -125,8 +125,9 @@ exec dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
 # Status Bars
-exec waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-top.js"
-exec waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-bottom.js"
+exec_always killall waybar; \
+            waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-top.js" & \
+            waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-bottom.js"
 
 # Notification server
 exec mako
