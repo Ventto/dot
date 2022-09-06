@@ -2,7 +2,8 @@
 @define-color theme-active-color rgb(13, 235, 255); /* #0debff */
 @define-color theme-inactive-color rgb(60, 87, 124); /* #3c577Cc*/
 @define-color theme-warning-color rgb(255, 140, 0); /* #ff8c00 */
-@define-color theme-urgent-color rgb(229, 45, 45); /* #e52d2d */
+@define-color theme-urgent-color rgb(229, 60, 76); /* #e53c4c */
+@define-color theme-urgent-color rgb(255, 40, 40); /* #ff2828 */
 
 /* ======================= */
 /*         Global          */

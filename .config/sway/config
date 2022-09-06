@@ -60,11 +60,11 @@ exec_always {
     gsettings set $gnome_schema cursor-theme 'breeze_cursors'
 }
 
-set $active_br #0DEBFF
+set $active_br #0debff
 set $active_fg #000000
-set $inactive_br #3C577C
-set $inactive_fg #FFFFFF
-set $bg #0D1117
+set $inactive_br #3c577c
+set $inactive_fg #ffffff
+set $bg #0d1117
 
 # Customize
 # class                 border       background   text         indicator    child_border
