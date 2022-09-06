@@ -13,9 +13,6 @@ set $ws8 "8:  "
 set $ws9 "9: "
 set $ws0 "10: ' "
 
-default_border pixel 4
-gaps inner 16
-
 # =======================
 #        Outputs
 # =======================
@@ -64,16 +61,15 @@ exec_always swaymsg geat * hide_cursor when-typing enable
 #         Theme
 # =======================
 
+default_border pixel 4
+gaps inner 16
+
 seat seat0 xcursor_theme "breeze_cursors"
 
 set $gnome_schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome_schema cursor-theme 'breeze_cursors'
 }
-
-# =======================
-#         Windows
-# =======================
 
 set $active_br #0DEBFF
 set $active_fg #000000
@@ -87,6 +83,10 @@ client.focused          $active_br   $active_br   $active_fg   $active_br   $act
 client.focused_inactive $inactive_br $inactive_br $inactive_fg $inactive_br $inactive_br
 client.unfocused        $inactive_br $inactive_br $inactive_fg $inactive_br $inactive_br
 client.background       $bg
+
+# =======================
+#         Windows
+# =======================
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
