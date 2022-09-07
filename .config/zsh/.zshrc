@@ -134,10 +134,3 @@ done
 
 # Set the title of the current terminal's graphical window
 . "${ZDOTDIR}/zshrc.d/plugins/term_window_title.zsh"
-
-#==============================#
-#      External Shell RC       #
-#==============================#
-
-. "${HOME}/workspace/crydio/config/bashrc"
-#. "${HOME}/workspace/crydio/customers/scaleway/zsh/zshrc"
