@@ -131,14 +131,6 @@ done
 #==============================#
 #           Plugins            #
 #==============================#
-#
-# Caution: Plugins are standalone files which do not depend from external
-#          function, alias or anything else.
-
-# Open a new terminal from current directory
-if [ $TERM = "xterm-termite" ]; then
-    . "${ZDOTDIR}/zshrc.d/plugins/vte-current-dir.zsh"
-fi
 
 # Helps setting the terminal title at runtime
 . "${ZDOTDIR}/zshrc.d/plugins/mywin_title.zsh"
