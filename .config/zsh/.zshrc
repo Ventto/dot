@@ -8,7 +8,6 @@ alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 #==============================#
 
 # History
-
 HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -37,29 +36,37 @@ REPORTTIME=5
 #==============================#
 #    Environment Variables     #
 #==============================#
-
+#
 export XDG_CONFIG_HOME="${HOME}/.config"
-export BROWSER="firefox --profile '${XDG_CONFIG_HOME}/firefox/default'"
+# Basic internals
+export BROWSER="env MOZ_ENABLE_WAYLAND=1 firefox --profile ${XDG_CONFIG_HOME}/firefox"
 export EDITOR="nvim"
+export LANG=en_US.UTF-8
+export LESSHISTFILE=/dev/null
+export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
 export SUDO_EDITOR="rnano"
 export VISUAL="$EDITOR"
-export GIMP2_DIRECTORY=".config/gimp" # FIXME: sure about relative path ?
-export LANG=en_US.UTF-8
-export GOPATH="$HOME/.config/go"
-export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
-export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
-export PATH="$HOME/.cargo/bin:$PATH"
+# Dev
 export ANDROID_HOME="/opt/android-sdk"
-export LESSHISTFILE=/dev/null
+export GOPATH="$HOME/.config/go"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export XDG_CURRENT_DESKTOP=Unity
+# Themes, cursors and icons
+## GTK2
+### Force the theme and settings of few applications still in GTK2 (ex: gimp)
+export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.0"
+export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp"
+## GTK3
+export GTK_DATA_PREFIX=
+export GTK_THEME=Arc-Dark # force theme for gnome apps
+## QT5
+export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
-export GTK2_RC_FILES="/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc:${HOME}/.gtkrc-2.0"
-export GTK_DATA_PREFIX=
-export GTK_THEME=Arc-Dark
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 #==============================#
 #           Prompt             #
@@ -92,7 +99,6 @@ fi
 #==============================#
 # Caution: Source functions first, aliases could require functions, but
 # functions don't require alias.
-#
 . "${ZDOTDIR}/zshrc.d/function/common.zsh"
 
 for file in {base,dev} ; do
