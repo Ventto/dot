@@ -132,8 +132,8 @@ done
 #           Plugins            #
 #==============================#
 
-# Helps setting the terminal title at runtime
-. "${ZDOTDIR}/zshrc.d/plugins/mywin_title.zsh"
+# Set the title of the current terminal's graphical window
+. "${ZDOTDIR}/zshrc.d/plugins/term_window_title.zsh"
 
 #==============================#
 #      External Shell RC       #
