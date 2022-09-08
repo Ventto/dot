@@ -137,11 +137,6 @@ assign [class="^[sS]tremio"] $ws6
 #        AutoRun
 # =======================
 
-# Status Bars
-exec_always killall waybar; \
-            waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-top.js" & \
-            waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-bottom.js"
-
 # Notification server
 exec mako
 
@@ -161,11 +156,11 @@ exec swaymsg 'workspace $ws2; exec $term'
 set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
 exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
 
-# Network Manager Applet
+# Network manager applet
 exec nm-applet --indicator
 
-# Blueman-manager cannot run without the applet
-exec blueman-applet
+# Wayland status bars and Bluetooth manager applet
+exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
 
 # =======================
 #     Bindkeys: Media
