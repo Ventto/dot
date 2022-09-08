@@ -183,13 +183,11 @@ bindsym XF86Sleep exec systemctl suspend
 # =======================
 
 set $launcher       "${XDG_CONFIG_HOME}/rofi/scripts/launcher"
-set $browser        MOZ_ENABLE_WAYLAND=1 firefox -no-remote --profile "${HOME}/.config/firefox/"
 set $term           alacritty
 set $powermenu      "${XDG_CONFIG_HOME}/rofi/scripts/powermenu"
 set $screenshot     grimshot --notify save area
 
 bindsym Print exec $screenshot
-bindsym $mod+Ctrl+b exec $browser
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
