@@ -191,7 +191,7 @@ bindsym Print exec $screenshot
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
-bindsym $mod+Space+Backspace exec $powermenu
+bindsym Alt+Ctrl+Backspace exec $powermenu
 
 # =======================
 #  Bindkeys: Workspaces
