@@ -170,8 +170,7 @@ exec swaymsg 'workspace $ws2; exec $term'
 
 # Setup auto-sleep (with locking)
 set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
-exec swayidle -d -w timeout 600 'systemctl suspend' \
-              before-sleep "${lock}; sleep 5;"
+exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
 
 # Network Manager Applet
 exec nm-applet --indicator
