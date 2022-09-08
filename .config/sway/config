@@ -137,13 +137,6 @@ assign [class="^[sS]tremio"] $ws6
 #        AutoRun
 # =======================
 
-# Set required graphical-session environment variables for systemd user
-# environment as well as for traditional D-Bus session services.
-include "${XDG_CONFIG_HOME}/sway/config.d/50-systemd-user.conf"
-
-# SSH Agent
-exec systemctl --user enable ssh-agent
-
 # Status Bars
 exec_always killall waybar; \
             waybar -c "${XDG_CONFIG_HOME}/waybar/config/bar-top.js" & \
@@ -151,9 +144,6 @@ exec_always killall waybar; \
 
 # Notification server
 exec mako
-
-# Moving to windows fades their opacity
-exec flashfocus
 
 # Avoid any laptop's screen with high brightness to burn my eyes
 exec lux -S 40%
@@ -276,3 +266,17 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# =======================
+#      After Sway
+# =======================
+
+# SSH agent shared across the graphical session
+exec systemctl --user enable ssh-agent
+
+# Simple focus animations for tiling window managers
+exec systemctl --user enable flashfocus
+
+# Synchronization point to launch services part of "graphical-session" after
+exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
+      systemctl --user start sway-session.target"
