@@ -137,13 +137,12 @@ assign [class="^[sS]tremio"] $ws6
 #        AutoRun
 # =======================
 
+# Set required graphical-session environment variables for systemd user
+# environment as well as for traditional D-Bus session services.
+include "${XDG_CONFIG_HOME}/sway/config.d/50-systemd-user.conf"
+
 # SSH Agent
 exec systemctl --user enable ssh-agent
-
-# To make screen sharing work with browsers (feeding xdg-desktop-portal-wlr)
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
 # Status Bars
 exec_always killall waybar; \
