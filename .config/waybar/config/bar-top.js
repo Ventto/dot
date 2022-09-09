@@ -67,13 +67,15 @@
         "format": "﬙ {}%",
         "tooltip": true
     },
+    /* Highest temperature from CPU core sensors: dell_smm-isa-0000 */
     "temperature": {
         "thermal-zone": 2,
-	    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+	    "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
         "critical-threshold": 80,
         "format-critical": " {temperatureC}°C",
         "format": " {temperatureC}°C",
-        "max-length": 10
+        "max-length": 10,
+        "interval": 3,
     },
     "cpu": {
         "interval": 3,
