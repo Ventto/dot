@@ -11,7 +11,7 @@
         "custom/clock-las",
     ],
     "modules-right": [
-        "custom/bluetooth",
+        "bluetooth",
         "custom/usb-serial",
     ],
     "clock": {
@@ -32,12 +32,15 @@
         "interval": 60,
         "tooltip": false
     },
-    "custom/bluetooth": {
-        "format": "{}",
-        "return-type": "json",
-        "exec": "${HOME}/.config/waybar/modules/bluetooth/exec.sh",
+    "bluetooth": {
+	    "format": " on",
+	    "format-disabled": " off", // an empty format will hide the module
+	    "format-connected": " x {num_connections}",
+	    "tooltip-format": "{controller_alias}\t{controller_address}",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager",
-        "interval": 3
+        "on-click-right": "blueman-adapters"
     },
     "custom/usb-serial": {
         "format": "{}",
