@@ -84,6 +84,7 @@ window#waybar > * > * > * > * {
     border-color: @theme-warning-color;
 }
 
+#bluetooth.disabled,
 #temperature.critical,
 #battery.critical {
     color: @theme-urgent-color;

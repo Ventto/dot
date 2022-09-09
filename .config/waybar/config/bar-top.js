@@ -9,7 +9,8 @@
     ],
     "modules-right": [
         "idle_inhibitor",
-        "custom/disk-partitions",
+        "custom/disk-root",
+        "custom/disk-home",
         "temperature",
         "cpu",
         "memory",
@@ -31,10 +32,16 @@
             "deactivated": ""
         }
     },
-    "custom/disk-partitions": {
-        "format": " {}",
+    "custom/disk-root": {
         "interval": 10,
-        "exec": "df -h --output=avail / /home | tail -n 2 | tr -d ' ' | tr '\n' ' ' | sed -e 's%.$%%'",
+        "format": " / {}",
+        "exec": "df -h --output=avail / | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
+        "tooltip": false
+    },
+    "custom/disk-home": {
+        "interval": 10,
+        "format": " /home {}",
+        "exec": "df -h --output=avail /home | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
         "tooltip": false
     },
     "backlight": {
