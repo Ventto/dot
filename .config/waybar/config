@@ -7,8 +7,6 @@
     ],
     "modules-center": [
         "clock",
-        "custom/clock-sao",
-        "custom/clock-las",
     ],
     "modules-right": [
         "bluetooth",
@@ -17,18 +15,6 @@
     "clock": {
         "format": "{: %a %d %b, Week %W |  Paris %H:%M}",
         "timezone": "Europe/Paris",
-        "interval": 60,
-        "tooltip": false
-    },
-    "custom/clock-sao": {
-        "format": "Sao Paolo {}",
-        "exec": "TZ=America/Sao_Paulo date +%H:%M",
-        "interval": 60,
-        "tooltip": false
-    },
-    "custom/clock-las": {
-        "format": "Los Angeles {}",
-        "exec": "TZ=US/Pacific date +%H:%M",
         "interval": 60,
         "tooltip": false
     },
@@ -41,12 +27,6 @@
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager",
         "on-click-right": "blueman-adapters"
-    },
-    "custom/usb-serial": {
-        "format": "{}",
-        "return-type": "json",
-        "exec": "${HOME}/.config/waybar/modules/usb-serial/exec.sh",
-        "interval": 5
     },
     "tray": {
         "icon-size": 21,
@@ -69,7 +49,6 @@
         "temperature",
         "cpu",
         "memory",
-        "backlight",
         "pulseaudio",
         "battery",
         "custom/logout",
@@ -97,13 +76,6 @@
         "interval": 10,
         "format": " /home {}",
         "exec": "df -h --output=avail /home | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
-        "tooltip": false
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": " {percent}%",
-        "exec": "echo",
-        "exec-if": "laptop-detect && swaymsg -t get_outputs | jq -r '.[]  | \"\\(.name) \\(.active)\"' | grep 'eDP-1 true'",
         "tooltip": false
     },
     "pulseaudio": {
