@@ -13,7 +13,7 @@
         "custom/usb-serial",
     ],
     "clock": {
-        "format": "{: %a %d %b, Week %W |  Paris %H:%M}",
+        "format": "{: %a %d %b - Week %W |  %H:%M}",
         "timezone": "Europe/Paris",
         "interval": 60,
         "tooltip": false
