@@ -19,12 +19,12 @@
         "tooltip": false
     },
     "bluetooth": {
-	    "format": " on",
-	    "format-disabled": " off", // an empty format will hide the module
-	    "format-connected": " x {num_connections}",
-	    "tooltip-format": "{controller_alias}\t{controller_address}",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "format": " on",
+        "format-disabled": " off", // an empty format will hide the module
+        "format-connected": " x {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager",
         "on-click-right": "blueman-adapters"
     },
@@ -51,7 +51,7 @@
         "memory",
         "pulseaudio",
         "battery",
-        "custom/logout",
+        "custom/powermenu",
     ],
 
     "sway/workspaces": {
@@ -68,13 +68,13 @@
     },
     "custom/disk-root": {
         "interval": 10,
-        "format": " / {}",
+        "format": "root: {}",
         "exec": "df -h --output=avail / | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
         "tooltip": false
     },
     "custom/disk-home": {
         "interval": 10,
-        "format": " /home {}",
+        "format": "home: {}",
         "exec": "df -h --output=avail /home | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
         "tooltip": false
     },
@@ -86,7 +86,7 @@
             "headphones": "",
             "default": [ "", "" ]
         },
-        "scroll-step": 1,
+        "scroll-step": 0,
         "on-click": "pavucontrol"
     },
     "memory": {
@@ -97,7 +97,7 @@
     /* Highest temperature from CPU core sensors: dell_smm-isa-0000 */
     "temperature": {
         "thermal-zone": 2,
-	    "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
         "critical-threshold": 80,
         "format-critical": " {temperatureC}°C",
         "format": " {temperatureC}°C",
@@ -121,7 +121,7 @@
         "format-charging": "+ {capacity}%",
         "format-icons": [ "", "", "", "", "" ]
     },
-    "custom/logout": {
+    "custom/powermenu": {
         "format": "",
         "on-click": "${HOME}/.config/rofi/scripts/powermenu",
         "tooltip": false
