@@ -19,12 +19,6 @@ set $laptop_output "eDP-1"
 set $extern_output "DP-1"
 bindswitch --reload --locked lid:on output $extern_output enable, output $laptop_output disable
 bindswitch --reload --locked lid:off output $laptop_output enable, output $extern_output disable
-##
-# We want to focus on only one screen. When using an external monitor
-# but no external keyboard, we are using the builtin one so we cannot rely on
-# lid action. That's why we need to choose the output manually.
-bindsym $mod+Alt+s output $laptop_output disable,output $extern_output enable
-bindsym $mod+Alt+p output $extern_output disable,output $laptop_output enable
 
 exec_always swaymsg output "*" \
   background "${XDG_CONFIG_HOME}/sway/wallpapers/current.jpg" fill
@@ -163,8 +157,18 @@ exec nm-applet --indicator
 exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
 
 # =======================
-#     Bindkeys: Media
+#        Bindkeys
 # =======================
+
+# Output
+
+# We want to focus on only one screen. When using an external monitor
+# but no external keyboard, we are using the builtin one so we cannot rely on
+# lid action. That's why we need to choose the output manually.
+bindsym $mod+Alt+1 output $extern_output disable,output $laptop_output enable
+bindsym $mod+Alt+2 output $laptop_output disable,output $extern_output enable
+
+# Media
 
 bindsym XF86AudioRaiseVolume exec volumectl +
 bindsym XF86AudioLowerVolume exec volumectl -
@@ -173,9 +177,7 @@ bindsym XF86MonBrightnessUp exec backlightctl +
 bindsym XF86MonBrightnessDown exec backlightctl -
 bindsym XF86Sleep exec systemctl suspend
 
-# =======================
-#     Bindkeys: Apps
-# =======================
+# Applications
 
 set $launcher       "${XDG_CONFIG_HOME}/rofi/scripts/launcher"
 set $term           alacritty
@@ -188,9 +190,7 @@ bindsym $mod+Return exec $term
 bindsym Alt+Return exec $launcher
 bindsym Alt+Ctrl+Backspace exec $powermenu
 
-# =======================
-#  Bindkeys: Workspaces
-# =======================
+# Workspaces
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -214,9 +214,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
-# =======================
-#   Bindkeys: Windows
-# =======================
+# Windows
 
 # Move floating with mouse
 floating_modifier $mod
