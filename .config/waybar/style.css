@@ -38,8 +38,8 @@ window#waybar > * > * > * > * {
 }
 
 #tray menu, tooltip {
-    opacity: 0.8;
     background-color: @theme-bg-color;
+    color: #ffffff;
     border: 2px solid @theme-active-color;
 }
 
