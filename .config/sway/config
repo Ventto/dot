@@ -128,35 +128,6 @@ assign [class="^[vV]lc"] $ws6
 assign [class="^[sS]tremio"] $ws6
 
 # =======================
-#        AutoRun
-# =======================
-
-# Notification server
-exec mako
-
-# Avoid any laptop's screen with high brightness to burn my eyes
-exec lux -S 40%
-
-# Mute volume
-exec pactl set-sink-mute @DEFAULT_SINK@ true
-
-# Run X11 apps as root
-exec xhost si:localuser:root
-
-# Open a terminal on dedicated workspace
-exec swaymsg 'workspace $ws2; exec $term'
-
-# Setup auto-sleep (with locking)
-set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
-exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
-
-# Network manager applet
-exec nm-applet --indicator
-
-# Wayland status bars and Bluetooth manager applet
-exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
-
-# =======================
 #        Bindkeys
 # =======================
 
@@ -259,7 +230,36 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # =======================
-#      After Sway
+#     Run In Config
+# =======================
+
+# Notification server
+exec mako
+
+# Avoid any laptop's screen with high brightness to burn my eyes
+exec lux -S 40%
+
+# Mute volume
+exec pactl set-sink-mute @DEFAULT_SINK@ true
+
+# Run X11 apps as root
+exec xhost si:localuser:root
+
+# Open a terminal on dedicated workspace
+exec swaymsg 'workspace $ws2; exec $term'
+
+# Setup auto-sleep (with locking)
+set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
+exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
+
+# Network manager applet
+exec nm-applet --indicator
+
+# Wayland status bars and Bluetooth manager applet
+exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
+
+# =======================
+#    Run After Config
 # =======================
 
 # SSH agent shared across the graphical session
