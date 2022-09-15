@@ -5,5 +5,5 @@ flash-opacity: 0.4
 default-opacity: 1
 
 simple: false
-time: 500
+time: 200
 ntimepoints: 10
