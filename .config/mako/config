@@ -1,6 +1,7 @@
 font=SauceCodePro Nerd Font 11
-format=<b>%a</b>\n\n%s\n%b
+format=<b>%a</b>\n%s\n%b
 width=512
+height=150
 padding=16
 margin=32
 anchor=top-right
@@ -9,41 +10,42 @@ background-color=#1e2b3edd
 text-color=#ffffffdd
 border-color=#0cbfd1dd
 border-radius=4
-max-visible=6
+max-visible=5
 layer=overlay
-default-timeout=5000
-ignore-timeout=0
-group-by=none
 max-icon-size=64
-
-[hidden]
-format=(and %h more)
-text-color=#777777
-
-[app-name=batify]
-group-by=app-name
-
-[app-name=backlightctl]
-font=SauceCodePro Nerd Font 14
-group-by=app-name
-format=%s
-anchor=top-center
-default-timeout=1500
-width=476
-
-[app-name=volumectl]
-font=SauceCodePro Nerd Font 14
-group-by=app-name
-format=%s
-anchor=top-center
-default-timeout=1500
-width=476
-
-[app-name=error]
-group-by=app-name
-format=<b>%s</b>
+group-by=summary,body
 
 [urgency=high]
 background-color=#ff2828dd
 border-color=#ffffffdd
 text-color=#ffffffdd
+
+[hidden]
+format=(and %h more)
+text-color=#777777
+
+[app-name=blueman]
+default-timeout=5000
+ignore-timeout=0
+
+[app-name=batify]
+default-timeout=5000
+ignore-timeout=0
+
+[app-name=backlightctl]
+font=SauceCodePro Nerd Font 14
+format=%s
+anchor=top-center
+text-alignment=center
+group-by=app-name
+default-timeout=2000
+ignore-timeout=0
+
+[app-name=volumectl]
+font=SauceCodePro Nerd Font 14
+format=%s
+anchor=top-center
+text-alignment=center
+group-by=app-name
+default-timeout=2000
+ignore-timeout=0
