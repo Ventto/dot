@@ -10,8 +10,7 @@
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
-dir="$HOME/.config/rofi/powermenu/starcitizen"
-theme='style'
+dir="${XDG_CONFIG_HOME}/rofi/powermenus/starcitizen"
 
 # CMDs
 lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
@@ -33,7 +32,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "$USER@$host" \
 		-mesg " Last Login: $lastlogin |  Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme ${dir}/style.rasi
 }
 
 # Confirmation CMD
