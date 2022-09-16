@@ -206,9 +206,6 @@ bindsym $mod+r mode "resize"
 #     Run In Config
 # =======================
 
-# Notification server
-exec mako
-
 # Avoid any laptop's screen with high brightness to burn my eyes
 exec lux -S 40%
 
@@ -240,6 +237,9 @@ exec systemctl --user enable ssh-agent
 
 # Simple focus animations for tiling window managers
 exec systemctl --user enable flashfocus
+
+# Lightweight Wayland notification daemon
+exec systemctl --user enable mako
 
 # Synchronization point to launch services part of "graphical-session" after
 exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
