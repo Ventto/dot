@@ -235,12 +235,6 @@ exec mako
 #    Run After Config
 # =======================
 
-# SSH agent shared across the graphical session
-exec systemctl --user enable ssh-agent
-
-# Simple focus animations for tiling window managers
-exec systemctl --user enable flashfocus
-
 # Synchronization point to launch services part of "graphical-session" after
 exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
       systemctl --user start sway-session.target"
