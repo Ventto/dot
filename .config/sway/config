@@ -228,6 +228,9 @@ exec nm-applet --indicator
 # Wayland status bars and Bluetooth manager applet
 exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
 
+# Lightweight Wayland notification daemon
+exec mako
+
 # =======================
 #    Run After Config
 # =======================
@@ -237,9 +240,6 @@ exec systemctl --user enable ssh-agent
 
 # Simple focus animations for tiling window managers
 exec systemctl --user enable flashfocus
-
-# Lightweight Wayland notification daemon
-exec systemctl --user enable mako
 
 # Synchronization point to launch services part of "graphical-session" after
 exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
