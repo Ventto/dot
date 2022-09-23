@@ -2,14 +2,14 @@
 
 if _require nohup; then
     function run () {
-    	nohup "$@" >/dev/null 2>&1 & disown
+        nohup "$@" >/dev/null 2>&1 & disown
     }
 fi
 
 # `e` with no arguments opens the current directory in Vim, otherwise opens the
 # given location
 if _require nvim; then
-    e() {
+    function e() {
         if [ $# -eq 0 ]; then
             nvim .
         else
@@ -21,7 +21,7 @@ fi
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 if _require xdg-open; then
-    o() {
+    function o() {
         if [ $# -eq 0 ]; then
             run xdg-open .
         else
@@ -31,14 +31,14 @@ if _require xdg-open; then
 fi
 
 # Create a new directory and enter it
-mkd() {
+function mkd() {
     mkdir -p "$@"
     cd "$@" || exit
 }
 
 # Make a temporary directory and enter it
 if _require mktemp; then
-    tmpd() {
+    function tmpd() {
         local dir
         if [ $# -eq 0 ]; then
             dir=$(mktemp -d)
@@ -51,8 +51,8 @@ fi
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 if _require tar; then
-    targz() {
-        local tmpFile="${1%/}.tar"
+    function targz() {
+        local readonly tmpFile="${1%/}.tar"
         tar -cvf "${tmpFile}" --exclude=".DS_Store" "${1}" || return 1
 
         size=$(
@@ -80,11 +80,11 @@ if _require tar; then
 fi
 
 # Determine size of a file or total size of a directory
-fs() {
+function fs() {
     if du -b /dev/null > /dev/null 2>&1; then
-        local arg=-sbh
+        local readonly arg=-sbh
     else
-        local arg=-sh
+        local readonly arg=-sh
     fi
     # shell_check disable=SC2199
     if [[ -n "$@" ]]; then
@@ -96,13 +96,13 @@ fs() {
 
 # Use Git’s colored diff when available
 if _require git; then
-    diff() {
+    function diff() {
         git diff --no-index --color-words "$@"
     }
 fi
 
 # Create a data URL from a file
-dataurl() {
+function dataurl() {
     local mimeType
     mimeType=$(file -b --mime-type "$1")
     if [[ $mimeType == text/* ]]; then
@@ -113,7 +113,7 @@ dataurl() {
 
 if _require curl; then
 # Create a git.io short URL
-    gitio() {
+    function gitio() {
         if [ -z "${1}" ] || [ -z "${2}" ]; then
             echo "Usage: \`gitio slug url\`"
             return 1
@@ -132,7 +132,7 @@ fi
 # Start an HTTP server from a directory, optionally specifying the port
 if _require python2; then
     server() {
-        local port="${1:-8000}"
+        local readonly port="${1:-8000}"
         sleep 1 && open "http://localhost:${port}/" &
         # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
         # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
@@ -153,16 +153,24 @@ if _require python pygmentize; then
 fi
 
 # Print process information based on name, ps(pgrep(name))
-p() {
-    if [[ $# == 0 ]]; then
-        return 1
-    fi
-    local pid="$(pgrep -d, -x "$1")"
-    if [[ -z $pid ]]; then
-        return 1
-    fi
-    ps -fp "$pid"
-}
+if _require pgrep; then
+    p() {
+        if [[ $# == 0 ]]; then
+            return 1
+        fi
+        local readonly pid="$(pgrep -d, -x "$1")"
+        if [[ -z $pid ]]; then
+            return 1
+        fi
+        ps -fp "$pid"
+    }
+fi
+
+if _require smem; then
+    m() {
+        smem -M "$1" -s pss --total --abbreviate
+    }
+fi
 
 if _require bc tr; then
     function bin2dec () { echo "ibase=2; ${1}" | bc; }
@@ -171,19 +179,30 @@ if _require bc tr; then
     function hex2dec () { echo "ibase=16; $(echo "${1}" | tr '[a-z]' '[A-Z]')" | bc; }
 fi
 
-function on() {
-    case $1 in
-        bluetooth)
-            sudo rfkill unblock $1
-            sudo systemctl restart bluetooth;;
-        wifi)
-            sudo rfkill unblock $1
-            sudo ip link set wlo0 up;;
-    esac
-}
+if _require rfkill systemctl ip; then
+    function on() {
+        case $1 in
+            bluetooth)
+                sudo rfkill unblock $1
+                sudo systemctl restart bluetooth;;
+            wifi)
+                sudo rfkill unblock $1
+                sudo ip link set wlo0 up;;
+        esac
+    }
 
-function off() {
-    case $1 in
-        bluetooth|wifi) sudo rfkill block $1;;
-    esac
-}
+    function off() {
+        case $1 in
+            bluetooth|wifi) sudo rfkill block $1;;
+        esac
+    }
+fi
+
+if _require tar xz; then
+    function tarxz()
+    {
+        local readonly _dir="$1"
+
+        tar --xz -cvf "${_dir}.tar.xz" "$_dir"
+    }
+fi

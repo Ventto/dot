@@ -1,21 +1,3 @@
-#!/bin/sh
-
-#==============================#
-#         Programming          #
-#==============================#
-
-alias leaks='valgrind --leak-check=full --show-leak-kinds=all'
-
-#==============================#
-#          Archives            #
-#==============================#
-
-alias tarball="tar_xz "
-
-#==============================#
-#         Arch Linux           #
-#==============================#
-
 alias aur-clean='touch a.{gz,zip,xz}; rm -rf pkg/ src/ *.{gz,xz,zip}'
 # Usage: aur-create PKGNAME
 alias aur-create='git clone ssh://aur@aur.archlinux.org/'
@@ -27,10 +9,3 @@ alias aur-master="[ -f PKGBUILD.master ] && mv PKGBUILD PKGBUILD.nat
                                          && mv PKGBUILD.master PKGBUILD"
 alias aur-nat="[ -f PKGBUILD.nat ] && mv PKGBUILD PKGBUILD.master
                                    && mv PKGBUILD.nat PKGBUILD"
-
-#==============================#
-#           Android            #
-#==============================#
-
-alias adbkey-fingerprint='awk "{print \$1}" < "${HOME}/.android/adbkey.pub" \
-    | openssl base64 -A -d -a | openssl md5 -c'

@@ -1,14 +1,14 @@
 function _log()
 {
-    local msg="$1"
+    local readonly msg="$1"
 
     printf "zshrc: Log from %s(): %s\n" "${funcstack[2]}" "$msg"
 }
 
 function _err()
 {
-    local msg="$1"
-    local errcode="$2"
+    local readonly msg="$1"
+    local readonly errcode="$2"
 
     printf "zshrc: Error from %s(): %s\n" "${funcstack[2]}" "$msg" >&2
     return "$errcode"
@@ -16,6 +16,8 @@ function _err()
 
 # Checks the given command is an existing plain executable
 function _require() {
+    local cmd
+
     for cmd in "$@"; do
         if ! hash "$cmd" > /dev/null 2>&1; then
             _err "'${cmd}' command not found"

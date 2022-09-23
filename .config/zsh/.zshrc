@@ -3,11 +3,16 @@
 alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
+# Fix slow git autocompletion
+# FIXME: Did it work ?
+fpath=("${ZDOTDIR}/zshrc.d/completions" $fpath)
+
 #==============================#
 #           Options            #
 #==============================#
 
 # History
+
 HISTFILE=~/.cache/zsh_hist
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -69,21 +74,24 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
 
 #==============================#
-#           Prompt             #
+#          Prompts             #
 #==============================#
 
-default_prompt=true
 # Shell is running in a pseudo terminal slave
 if tty | grep -E '^/dev/pts/[0-9]+$' >/dev/null 2>&1; then
-    if [ -f "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh" ];
+    custom_prompt="${ZDOTDIR}/.p10k.zsh"
+    if [ -f $custom_prompt ];
     then
-        source "${HOME}/.config/zsh/zshrc.d/prompts/stupid-zsh-prompt/prompt.zsh"
+        source "${HOME}/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
+        source "$custom_prompt"
         default_prompt=false
     fi
+    unset custom_prompt
+else
+    default_prompt=true
 fi
 if $default_prompt; then
     setopt prompt_subst
-
     # Enable colors in prompt
     autoload -U colors && colors
 
@@ -95,42 +103,26 @@ if $default_prompt; then
 fi
 
 #==============================#
-#          Functions           #
+#           Sources            #
 #==============================#
 # Caution: Source functions first, aliases could require functions, but
 # functions don't require alias.
-. "${ZDOTDIR}/zshrc.d/function/common.zsh"
+# Before sourcing
+source "${ZDOTDIR}/zshrc.d/funcs/internals.zsh"
 
-for file in {base,dev} ; do
-    . "${ZDOTDIR}/zshrc.d/function/${file}.zsh"
+typeset -a _bindkeys _funcs _aliases _completions
+
+_bindkeys=( base edit-command-line fg-ctrlz )
+_funcs=( base pkg security )
+_aliases=( base dev pkg mounts )
+_completions=( base )
+
+for dir in _bindkeys _funcs _aliases _completions; do
+    for file in ${(P)dir}; do
+        source "${ZDOTDIR}/zshrc.d/${dir:1}/${file}.zsh"
+    done
+    eval "unset ${dir}"
 done
 
-#==============================#
-#           Aliases            #
-#==============================#
-
-for file in {base,dev,firejail,mounts} ; do
-    . "${ZDOTDIR}/zshrc.d/alias/${file}.sh"
-done
-
-#==============================#
-#          Completion          #
-#==============================#
-
-. "${ZDOTDIR}/zshrc.d/completion/base.zsh"
-#autoload -U +X bashcompinit && bashcompinit
-
-#==============================#
-#           Bindkeys           #
-#==============================#
-
-for file in {base,edit-command-line,fg-ctrlz} ; do
-    . "${ZDOTDIR}/zshrc.d/bindkey/${file}.zsh"
-done
-
-#==============================#
-#           Plugins            #
-#==============================#
-
-# Set the title of the current terminal's graphical window
-. "${ZDOTDIR}/zshrc.d/plugins/term_window_title.zsh"
+# After sourcing
+run_with_firejail okular eom riot-desktop

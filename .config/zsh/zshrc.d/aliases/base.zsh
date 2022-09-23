@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 alias ls='ls -bh -CF --color=always --hide="*~" --color -h --group-directories-first'
 alias l='ls -1'
 alias ll='ls -lhF'
@@ -37,10 +35,19 @@ alias i3log='DISPLAY=${DISPLAY} i3-dump-log | less'
 alias mux='tmuxinator'
 alias phone="run scrcpy --turn-screen-off --disable-screensaver --window-width 480"
 alias wifiscan='watch -c -n 1 nmcli -c yes -f SSID,BSSID,BARS,ACTIVE,CHAN,SECURITY dev wifi list'
+alias rfirefox="firejail --private --nogroups --timeout=00:45:00 \
+                         --dns=8.8.8.8 \
+                         --dns=8.8.4.4 \
+                         firefox -no-remote -private-window"
+
 if _systemd_running; then
     alias klog-live="journalctl --dmesg -o short -f -n 50"
     alias klog="journalctl --dmesg -o short"
     alias noidle='systemd-inhibit'
+    alias unit-state='systemctl list-unit-files --user --state=enabled \
+      && systemctl list-unit-files --system --state=enabled'
+    alias news-about='journalctl --user --pager-end --follow -u'
+    alias sc="systemctl"
 else
     alias klog-live="sudo dmesg --human -w"
     alias klog="sudo dmesg"
