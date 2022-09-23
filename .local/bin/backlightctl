@@ -18,7 +18,7 @@ set -e
 
 . "${HOME}/.local/lib/notify_helper.sh"
 
-prog="backlightctl"
+prog="$(basename "$0")"
 _die()
 {
     notify_err "$prog" "Error"
