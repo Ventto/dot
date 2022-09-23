@@ -35,13 +35,13 @@
     },
     "custom/disk-root": {
         "interval": 10,
-        "format": "root: {}",
+        "format": " root: {}",
         "exec": "df -h --output=avail / | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
         "tooltip": false
     },
     "custom/disk-home": {
         "interval": 10,
-        "format": "home: {}",
+        "format": " home: {}",
         "exec": "df -h --output=avail /home | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
         "tooltip": false
     },
