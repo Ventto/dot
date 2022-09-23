@@ -125,6 +125,7 @@ bindsym XF86Sleep exec systemctl suspend
 
 set $term           alacritty
 set $screenshot     grimshot --notify save area
+set $lock "${XDG_CONFIG_HOME}/sway/scripts/lock.sh"
 
 bindsym Print exec $screenshot
 bindsym $mod+Ctrl+l exec $lock
@@ -224,7 +225,7 @@ exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
 exec nm-applet --indicator
 
 # Wayland status bars and Bluetooth manager applet
-exec_always "${XDG_CONFIG_HOME}/sway/run-waybar.sh"
+exec_always "${XDG_CONFIG_HOME}/sway/scripts/run-waybar.sh"
 
 # Lightweight Wayland notification daemon
 exec mako

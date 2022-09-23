@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=SC1091
-. "${XDG_CONFIG_HOME}/sway/colors/starcitizen.sh"
+. "${XDG_CONFIG_HOME}/sway/scripts/colors/starcitizen.sh"
 
 swaylock --ignore-empty-password \
     --daemonize \
