@@ -123,16 +123,14 @@ bindsym XF86Sleep exec systemctl suspend
 
 # Applications
 
-set $launcher       "${XDG_CONFIG_HOME}/rofi/scripts/launcher"
 set $term           alacritty
-set $powermenu      "${XDG_CONFIG_HOME}/rofi/scripts/powermenu"
 set $screenshot     grimshot --notify save area
 
 bindsym Print exec $screenshot
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
-bindsym Alt+Return exec $launcher
-bindsym Alt+Ctrl+Backspace exec $powermenu
+bindsym Alt+Return exec launcher
+bindsym Alt+Ctrl+Backspace exec powermenu
 
 # Workspaces
 

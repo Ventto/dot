@@ -100,7 +100,7 @@
     },
     "custom/powermenu": {
         "format": "",
-        "on-click": "${HOME}/.config/rofi/scripts/powermenu",
+        "on-click": "powermenu",
         "tooltip": false
     }
 }]
