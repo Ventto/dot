@@ -14,6 +14,19 @@ function _err()
     return "$errcode"
 }
 
+function _show() {
+    echo $@
+    $@
+}
+
+function _may() {
+    if [[ -n $noop ]]; then
+        echo $@
+    else
+        $@
+    fi
+}
+
 # Checks the given command is an existing plain executable
 function _require() {
     local cmd

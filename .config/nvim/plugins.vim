@@ -38,7 +38,7 @@ Plug 'SirVer/ultisnips'
 " Snippet templates
 Plug 'honza/vim-snippets'
 " Text Prediction
-Plug 'tabnine/YouCompleteMe'
+"Plug 'tabnine/YouCompleteMe'
 " Cscope maps plugin
 Plug 'chazy/cscope_maps'
 " Comment / uncomment lines regarding the filetype

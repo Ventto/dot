@@ -1,6 +1,6 @@
 [user]
-    email = thomas.venries@gmail.com
-    name = Thomas Venriès
+	email = thomas.venries@gmail.com
+	name = Thomas Venriès
 [core]
     editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol

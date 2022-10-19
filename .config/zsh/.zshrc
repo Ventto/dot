@@ -44,7 +44,7 @@ REPORTTIME=5
 #
 export XDG_CONFIG_HOME="${HOME}/.config"
 # Basic internals
-export BROWSER="env MOZ_ENABLE_WAYLAND=1 firefox --profile ${XDG_CONFIG_HOME}/firefox"
+#export BROWSER="env MOZ_ENABLE_WAYLAND=1 firefox --profile ${XDG_CONFIG_HOME}/firefox"
 export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LESSHISTFILE=/dev/null
@@ -58,7 +58,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-export XDG_CURRENT_DESKTOP=Unity
+#export XDG_CURRENT_DESKTOP=Unity
 # Themes, cursors and icons
 ## GTK2
 ### Force the theme and settings of few applications still in GTK2 (ex: gimp)
@@ -95,7 +95,7 @@ if $default_prompt; then
     # Enable colors in prompt
     autoload -U colors && colors
 
-    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%H:%M}]${cpwd}${icon}  %{$reset_color%} '
+    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%H:%M}]${cpwd}${icon} > %{$reset_color%} '
     function precmd {
         [ "$?" -eq 0 ] && prompt_bg_color="green" || prompt_bg_color="red"
         [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
@@ -113,7 +113,7 @@ source "${ZDOTDIR}/zshrc.d/funcs/internals.zsh"
 typeset -a _bindkeys _funcs _aliases _completions
 
 _bindkeys=( base edit-command-line fg-ctrlz )
-_funcs=( base pkg security )
+_funcs=( base pkg security git )
 _aliases=( base dev pkg mounts )
 _completions=( base )
 

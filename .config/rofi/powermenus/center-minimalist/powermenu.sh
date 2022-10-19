@@ -11,12 +11,12 @@
 
 # Current Theme
 dir="${XDG_CONFIG_HOME}/rofi/powermenus/center-minimalist"
-theme="starcitizen"
+theme="harmo"
 
 # CMDs
-lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+lastlogin="$(last "$USER" | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7)"
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostname)
 
 # Options
 hibernate=''
@@ -28,15 +28,13 @@ logout=''
 yes=''
 no=''
 
-# Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
 		-p "$USER@$host" \
 		-mesg " Last Login: $lastlogin |  Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}/${theme}.rasi"
 }
 
-# Confirmation CMD
 confirm_cmd() {
 	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
@@ -46,11 +44,10 @@ confirm_cmd() {
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}/${theme}.rasi"
 }
 
-# Ask for confirmation
-confirm_exit() {
+run_confirm() {
 	echo -e "$yes\n$no" | confirm_cmd
 }
 
@@ -58,32 +55,19 @@ confirm_exit() {
 run_rofi() {
 	echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
 }
-
 # Execute Command
-run_cmd() {
-	selected="$(confirm_exit)"
+ask_run_cmd() {
+	selected="$(run_confirm)"
 	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
-		elif [[ $1 == '--hibernate' ]]; then
-			systemctl hibernate
-		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			fi
-		fi
+        case $1 in
+            --shutdown) systemctl poweroff;;
+		    --reboot) systemctl reboot;;
+            --hibernate) systemctl hibernate;;
+            --suspend) mpc -q pause
+			           amixer set Master mute
+			           systemctl suspend;;
+            --logout) wlogout;;
+        esac
 	else
 		exit 0
 	fi
@@ -91,27 +75,11 @@ run_cmd() {
 
 # Actions
 chosen="$(run_rofi)"
-case ${chosen} in
-    $shutdown)
-		run_cmd --shutdown
-        ;;
-    $reboot)
-		run_cmd --reboot
-        ;;
-    $hibernate)
-		run_cmd --hibernate
-        ;;
-    $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
-        ;;
-    $suspend)
-		run_cmd --suspend
-        ;;
-    $logout)
-		run_cmd --logout
-        ;;
+case $chosen in
+    "$shutdown")  ask_run_cmd --shutdown;;
+    "$reboot")    ask_run_cmd --reboot;;
+    "$hibernate") ask_run_cmd --hibernate;;
+    "$lock")      lock;;
+    "$suspend")   ask_run_cmd --suspend;;
+    "$logout")    ask_run_cmd --logout;;
 esac
