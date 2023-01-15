@@ -1,0 +1,106 @@
+@define-color theme-bg-color rgb(40, 44, 52); /* #292c34 */
+@define-color theme-border-color rgb(171, 178, 191); /* #abb2bf */
+@define-color theme-text-color rgb(237, 237, 233); /* #edede9 */
+@define-color theme-active-color rgb(237, 237, 233); /* #edede9 */
+@define-color theme-inactive-color rgb(102, 106, 114); /* #666a72 */
+@define-color theme-warning-color rgb(255, 140, 0); /* #ff8c00 */
+@define-color theme-urgent-color rgb(229, 60, 76); /* #e53c4c */
+@define-color theme-urgent-color rgb(255, 40, 40); /* #ff2828 */
+@define-color theme-green rgb(153, 204, 102); /* #5fd700 */
+
+/* ======================= */
+/*         Global          */
+/* ======================= */
+
+* {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SauceCodePro Nerd Font";
+    border: none;
+    margin:0;
+    opacity: 1;
+}
+
+window#waybar {
+    background: transparent;
+    color: @theme-text-color;
+}
+/* Module container */
+window#waybar > * > * {
+    background-color: @theme-bg-color;
+    border: 2px solid @theme-border-color;
+    /*
+     * Make the edge radius a circular arc or a pill shape
+     * (https://stackoverflow.com/questions/29966499/border-radius-in-percentage-and-pixels-px-or-em
+     */
+    border-radius: 999px;
+    border-style: solid;
+    /* Same right/left gap than sway windows minus the waybar's border size */
+    margin: 4px 15px 0 15px;
+    padding: 10px 10px 10px 16px;
+}
+/* Modules */
+window#waybar > * > * > * > * {
+    margin: 0 10px;
+    padding: 0 5px;
+}
+
+#tray menu, tooltip {
+    background-color: @theme-bg-color;
+    color: #ffffff;
+    border: 2px solid @theme-border-color;
+}
+
+/* ======================= */
+/*         Modules         */
+/* ======================= */
+
+#workspaces button {
+    color: @theme-inactive-color;
+    padding: 2px 0;
+    margin: 0 10px;
+    border-bottom: 2px solid transparent;
+}
+#workspaces button.focused {
+    color: @theme-active-color;
+    border: 0 solid;
+    border-radius: 0;
+    border-bottom: 2px solid @theme-active-color;
+}
+#workspaces button.urgent {
+    color: @theme-urgent-color;
+    border-bottom: 2px solid @theme-urgent-color;
+}
+#workspaces button:hover {
+    background: inherit;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @theme-active-color;
+}
+
+#custom-usb-serial.active {
+    color: @theme-active-color;
+    border-color: @theme-active-color;
+}
+#custom-usb-serial.inactive {
+    color: @theme-inactive-color;
+    border-color: @theme-inactive-color;
+}
+
+#battery.charging {
+    color: @theme-green;
+    border-bottom: 2px solid @theme-green;
+}
+
+.warning,
+.muted,
+.activated {
+    color: @theme-warning-color;
+    border-bottom: 2px solid @theme-warning-color;
+}
+
+.disabled,
+.critical {
+    color: @theme-urgent-color;
+    border-bottom: 2px solid @theme-urgent-color;
+}

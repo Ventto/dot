@@ -1,26 +1,41 @@
 [{
     "layer": "top",
     "position": "top",
-
     "modules-left": [
         "clock",
         "sway/workspaces",
     ],
     "modules-center": [
-        "custom/disk-root",
-        "custom/disk-home",
-        "temperature",
-        "cpu",
-        "memory",
+        "custom/do-not-disturb",
+        "idle_inhibitor",
     ],
     "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
+        "custom/notifications",
         "tray",
+        "pulseaudio",
+        "cpu",
+        "memory",
         "battery",
-        "custom/powermenu",
+        "custom/powermenu"
     ],
-
+    "custom/do-not-disturb": {
+        "format": "",
+        "return-type": "json",
+        "exec": "${XDG_CONFIG_HOME}/waybar/modules/do-not-disturb/exec.sh",
+        "on-click": "${XDG_CONFIG_HOME}/waybar/modules/do-not-disturb/toggle.sh",
+        "restart-interval": 0,
+    },
+    "custom/notifications": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "${XDG_CONFIG_HOME}/waybar/modules/notifications/exec.sh",
+        "restart-interval": 1,
+    },
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "powermenu",
+        "tooltip": false
+    },
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name}",
@@ -29,78 +44,65 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "custom/disk-root": {
-        "interval": 10,
-        "format": " root: {}",
-        "exec": "df -h --output=avail / | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
+            "activated": "零",
+            "deactivated": "鈴"
+        },
         "tooltip": false
     },
-    "custom/disk-home": {
-        "interval": 10,
-        "format": " home: {}",
-        "exec": "df -h --output=avail /home | tail -n 2 | tr '\\n' ' ' | tr -d ' ' | sed -e 's%Avail\\(.*\\)$%\\1%'",
-        "tooltip": false
+    "tray": {
+        "icon-size": 20,
+        "spacing": 30
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}% ",
-        "format-muted": "",
+        "format-muted": "婢",
         "format-icons": {
             "headphones": "",
             "default": [ "", "" ]
         },
+        "states": {
+		    "warning": 80,
+		    "critical": 90
+	    },
         "scroll-step": 0,
         "on-click": "pavucontrol"
     },
     "memory": {
-        "interval": 3,
         "format": "﬙ {}%",
+    	"states": {
+		    "warning": 70,
+		    "critical": 85
+	    },
+        "interval": 3,
         "tooltip": true
     },
-    /* Highest temperature from CPU core sensors: dell_smm-isa-0000 */
-    "temperature": {
-        "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
-        "critical-threshold": 80,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C",
-        "max-length": 10,
-        "interval": 3,
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 30
-    },
     "cpu": {
-        "interval": 3,
         "format": " {usage}%",
-        "max-length": 10
+    	"states": {
+		    "warning": 70,
+		    "critical": 85
+	    },
+        "max-length": 10,
+        "interval": 3
     },
     "battery": {
         "bat": "BAT0",
-        "interval": 60,
+        "full-at": "100",
         "states": {
             "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": "+ {capacity}%",
-        "format-icons": [ "", "", "", "", "" ]
+        "format-charging": " {capacity}%",
+        "format-icons": [ "", "", "", "", "" ],
+        "interval": 3
     },
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%d/%m %H:%M}",
         "timezone": "Europe/Paris",
         "interval": 60,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    },
-    "custom/powermenu": {
-        "format": "",
-        "on-click": "powermenu",
-        "tooltip": false
     }
 }]
