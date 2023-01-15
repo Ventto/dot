@@ -205,35 +205,22 @@ bindsym $mod+r mode "resize"
 #     Run In Config
 # =======================
 
-# Avoid any laptop's screen with high brightness to burn my eyes
-exec lux -S 40%
+##
+# Laptop-specific setting:
+# Avoid the laptop's backlight to burn my eyes
+exec lux -S 60%
 
-# Mute volume
+# Volume muted
 exec pactl set-sink-mute @DEFAULT_SINK@ true
 
-# Run X11 apps as root
+# Allow root to display applications on your desktop (ex: gparted)
 exec xhost si:localuser:root
 
-# Open a terminal on dedicated workspace
+# Go to code workspace and open a terminal
 exec swaymsg 'workspace $ws2; exec $term'
 
-# Setup auto-sleep (with locking)
-set $lock "${XDG_CONFIG_HOME}/sway/lock.sh"
-exec swayidle -d -w timeout 600 'systemctl suspend' before-sleep "$lock"
-
-# Network manager applet
-exec nm-applet --indicator
-
-# Wayland status bars and Bluetooth manager applet
-exec_always "${XDG_CONFIG_HOME}/sway/scripts/run-waybar.sh"
-
-# Lightweight Wayland notification daemon
-exec mako
-
 # =======================
-#    Run After Config
+#        Systemd
 # =======================
 
-# Synchronization point to launch services part of "graphical-session" after
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
-      systemctl --user start sway-session.target"
+include "/etc/sway/config.d/*"
