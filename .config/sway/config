@@ -6,19 +6,12 @@ set $mod Mod4
 #        Outputs
 # =======================
 
-##
 # Laptop-specific settings:
-# Closing the lid disables the builtin screen (first of all for power-saving)
-# and only enables the external monitor if plugged in because we like
-# focusing on only one screen. For instance, when using the docking station
-# with both external monitor and keyboard, we close the lid and put the laptop
-# aside.
-# Opening the lid enables the builtin screen and disables the external monitor.
-# In this case, we assume the laptop is unplugged in from the docking station.
 set $laptop_output "eDP-1"
-set $extern_output "DP-1"
-bindswitch --reload --locked lid:on output $extern_output enable, output $laptop_output disable
-bindswitch --reload --locked lid:off output $laptop_output enable, output $extern_output disable
+# Closing the lid disables the builtin screen and only enables external monitors
+bindswitch --reload --locked lid:on output $laptop_output disable, output "DP-1" enable, output "DP-2" enable
+# Opening the lid enables the builtin screen and disables the external monitors
+bindswitch --reload --locked lid:off output $laptop_output enable, output "DP-1" disable, output "DP-2" disable
 
 exec_always swaymsg output "*" \
   background "${XDG_CONFIG_HOME}/sway/wallpapers/current.jpg" fill
@@ -27,7 +20,8 @@ exec_always swaymsg output "*" \
 #        Inputs
 # =======================
 
-# Laptop builtin keyboard
+# Laptop-specific setting:
+# Builtin keyboard
 exec_always swaymsg input 1:1:AT_Translated_Set_2_keyboard {
   xkb_layout myus
 }
@@ -63,7 +57,6 @@ for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^blueman-manager$"] floating enable, resize set 20 ppt 60 ppt
 for_window [app_id="^org.kde.dolphin$"] floating enable, resize set 60 ppt 80 ppt
 
-##
 # Issue: https://bugzilla.mozilla.org/show_bug.cgi?id=1628431
 # When using webRTC with Firefox, the browser opens a sharing indicator
 # window like a new browser page window. This sharing indicator icons must be
@@ -109,8 +102,8 @@ assign [class="^[sS]tremio"] $ws6
 # We want to focus on only one screen. When using an external monitor
 # but no external keyboard, we are using the builtin one so we cannot rely on
 # lid action. That's why we need to choose the output manually.
-bindsym $mod+Alt+1 output $extern_output disable,output $laptop_output enable
-bindsym $mod+Alt+2 output $laptop_output disable,output $extern_output enable
+bindsym $mod+Alt+1 output $laptop_output enable,output "DP-1" disable, output "DP-2" disable
+bindsym $mod+Alt+2 output $laptop_output disable, output "DP-1" enable, output "DP-2" enable
 
 # Media
 
