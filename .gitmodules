@@ -1,0 +1,6 @@
+[submodule ".config/dot/sway-services"]
+	path = .config/dot/sway-services
+	url = git@github.com:Ventto/sway-services.git
+[submodule ".config/dot/deps/sway-services"]
+	path = .config/dot/deps/sway-services
+	url = git@github.com:Ventto/sway-services.git
