@@ -27,8 +27,9 @@ alias wget='wget --hsts-file /dev/null'
 
 # Original basics
 alias calc="bc -l"
-alias cam="run ffplay /dev/video0"
+alias camera="run ffplay /dev/video0"
 alias color="grim -g \"\$(slurp -p)\" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-"
+alias font-list="fc-list"
 alias getipv4="curl -4 icanhazip.com"
 alias getipv6="curl -6 icanhazip.com"
 alias i3log='DISPLAY=${DISPLAY} i3-dump-log | less'
@@ -44,10 +45,11 @@ if _systemd_running; then
     alias klog-live="journalctl --dmesg -o short -f -n 50"
     alias klog="journalctl --dmesg -o short"
     alias noidle='systemd-inhibit'
-    alias unit-state='systemctl list-unit-files --user --state=enabled \
+    alias systemd-unit-states='systemctl list-unit-files --user --state=enabled \
       && systemctl list-unit-files --system --state=enabled'
-    alias news-about='journalctl --user --pager-end --follow -u'
-    alias sc="systemctl"
+    alias systemd-news-about='journalctl --user --pager-end --follow -u'
+    alias scs="systemctl --system"
+    alias scu="systemctl --user"
 else
     alias klog-live="sudo dmesg --human -w"
     alias klog="sudo dmesg"
