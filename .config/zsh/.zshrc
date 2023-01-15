@@ -95,7 +95,7 @@ if $default_prompt; then
     # Enable colors in prompt
     autoload -U colors && colors
 
-    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%H:%M}]${cpwd}${icon}  %{$reset_color%} '
+    PROMPT=$'%{$bg[${prompt_bg_color}]%}%{$fg[black]%}[%D{%H:%M}]${cpwd}${icon} > %{$reset_color%} '
     function precmd {
         [ "$?" -eq 0 ] && prompt_bg_color="green" || prompt_bg_color="red"
         [ -z "${vcs_info_msg_0_}" ] && cpwd=$' %~ ' || cpwd=$''
