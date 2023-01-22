@@ -1,11 +1,27 @@
 #!/usr/bin/env bash
 
+declare -a IGNORE_APPNAMES=( volumectl backlightctl )
+
 function mako_running() {
     pgrep -u "$(id -u)" -l mako > /dev/null
 }
 
+function mako_notification_appname_filter() {
+    local json="$*"
+    local compare=""
+    for app in "${IGNORE_APPNAMES[@]}"; do
+        compare+=",\"${app}\""
+    done
+    echo "$json" \
+        | jq "del(.data[][] | select(.\"app-name\".data == (\"@\"${compare})))"
+}
+
+function mako_notification_filter() {
+    mako_notification_appname_filter "$*"
+}
+
 function mako_notification_count() {
-    makoctl list | grep -oE app-name | wc -w
+    mako_notification_filter "$(makoctl list)" | grep -oE app-name | wc -w
 }
 
 function waybar_return_err() {
