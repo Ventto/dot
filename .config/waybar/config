@@ -62,8 +62,8 @@
             "default": [ "", "" ]
         },
         "states": {
-		    "warning": 80,
-		    "critical": 90
+		    "warning": 101,
+		    "critical": 200
 	    },
         "scroll-step": 0,
         "on-click": "pavucontrol"
