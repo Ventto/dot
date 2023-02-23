@@ -55,5 +55,6 @@ else
     alias klog="sudo dmesg"
 fi
 
+alias start-sway='sway-user-service'
 # Put in containers
 alias yay='taskset -c 5 yay'
