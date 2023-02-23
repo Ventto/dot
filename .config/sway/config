@@ -14,7 +14,7 @@ bindswitch --reload --locked lid:on output $laptop_output disable, output "DP-1"
 bindswitch --reload --locked lid:off output $laptop_output enable, output "DP-1" disable, output "DP-2" disable
 
 exec_always swaymsg output "*" \
-  background "${XDG_CONFIG_HOME}/sway/wallpapers/current.jpg" fill
+  background "${HOME}/Pictures/Wallpapers/current.jpg" fill
 
 # =======================
 #        Inputs
