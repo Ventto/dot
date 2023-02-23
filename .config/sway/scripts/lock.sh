@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=SC1091
-. "${XDG_CONFIG_HOME}/sway/scripts/colors/starcitizen.sh"
+. "${XDG_CONFIG_HOME}/sway/scripts/colors/ventto.sh"
 
 swaylock --ignore-empty-password \
     --daemonize \
@@ -14,18 +14,18 @@ swaylock --ignore-empty-password \
     --indicator-radius 256 \
     --indicator-thickness 12 \
     --color "$THEME_BG" \
-    --separator-color "$THEME_BG_ALT" \
+    --separator-color "$THEME_ACTIVE" \
     --ring-color "$THEME_INACTIVE" \
-    --inside-color "$THEME_BG_ALT" \
-    --line-color "$THEME_BG" \
+    --inside-color "$THEME_BG" \
+    --line-color "$THEME_ACTIVE" \
     --text-caps-lock-color "$THEME_WARNING" \
-    --inside-caps-lock-color "$THEME_BG_ALT" \
+    --inside-caps-lock-color "$THEME_BG" \
     --ring-caps-lock-color "$THEME_WARNING" \
     --text-clear-color "$THEME_FG" \
     --inside-clear-color "$THEME_WARNING" \
     --ring-clear-color "$THEME_WARNING" \
     --text-ver-color "$THEME_FG" \
-    --inside-ver-color "$THEME_BG_ALT" \
+    --inside-ver-color "$THEME_BG" \
     --ring-ver-color "$THEME_ACTIVE" \
     --text-wrong-color "$THEME_FG" \
     --inside-wrong-color "$THEME_URGENT" \

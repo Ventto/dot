@@ -11,7 +11,7 @@
 
 # Current Theme
 dir="${XDG_CONFIG_HOME}/rofi/powermenus/center-minimalist"
-theme="starcitizen"
+theme="ventto"
 
 # CMDs
 lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"

@@ -38,7 +38,7 @@ exec_always swaymsg geat * hide_cursor when-typing enable
 #         Theme
 # =======================
 
-include "${XDG_CONFIG_HOME}/sway/conf.d/themes/starcitizen.conf"
+include "${XDG_CONFIG_HOME}/sway/conf.d/themes/ventto.conf"
 
 # =======================
 #         Windows
