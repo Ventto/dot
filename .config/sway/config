@@ -23,12 +23,12 @@ exec_always swaymsg output "*" \
 # Laptop-specific setting:
 # Builtin keyboard
 exec_always swaymsg input 1:1:AT_Translated_Set_2_keyboard {
-  xkb_layout myus
+  xkb_layout ventto
 }
 
 # External 60% custom keyboard
 exec_always swaymsg input 17498:4641:DZTECH_DZ60RGB_ANSI {
-  xkb_layout myus
+  xkb_layout ventto
 }
 
 exec_always swaymsg geat * hide_cursor when-typing enable
