@@ -10,7 +10,7 @@
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
-dir="${XDG_CONFIG_HOME}/rofi/powermenus/center-minimalist"
+dir="${XDG_CONFIG_HOME}/rofi/powermenus/ventto"
 theme="ventto"
 
 # CMDs
