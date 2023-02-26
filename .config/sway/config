@@ -226,3 +226,6 @@ exec xhost si:localuser:root
 # =======================
 
 include "/etc/sway/config.d/*"
+
+# Blueman applet's tray icon disappears from Waybar after reloading Sway
+exec_always systemctl --user restart blueman-applet
