@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2009
+pids=$(ps -eT -o pid,tty,command \
+    | grep -E "^[0-9]+ tty[0-9].*${SYSTEMD_ENV_TTY_SHELL}$" \
+    | awk '{print $1}' | tr '\n' ' ')
+
+for pid in $pids; do
+    if [[ "$pid" =~ ^[0-9]+$ ]]; then
+        kill -9 "$pid"
+    fi
+done
