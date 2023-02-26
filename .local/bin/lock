@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [[ -n $SWAYSOCK ]]; then
+    "${XDG_CONFIG_HOME}/sway/scripts/lock.sh"
+fi
