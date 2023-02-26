@@ -13,7 +13,7 @@
 #appcontent > #content > tabbox > tabpanels,
 #navigator-toolbox, #TabsToolbar, #nav-bar, #urlbar {
     background: #2e3132 !important;
-    font-family: "Sora" !important;
+    font-family: "Sora 11" !important;
 }
 
 :root {
@@ -78,11 +78,6 @@
     visibility: hidden !important;
 }
 
-.tabbrowser-tab *,
-.tab-stack * {
-    font-size: 11px !important;
-}
-
 /* Closer pinned tab icons */
 .tab-content[pinned] {
   border: none !important;
@@ -138,12 +133,10 @@
 /* Set toolbars order */
 #TabsToolbar {
     -moz-box-ordinal-group: 1 !important;
-    font-family: "Hack" !important;
     margin-bottom: -1px !important;
 }
 #nav-bar {
     -moz-box-ordinal-group: 0 !important;
-    font-size: 11px;
     margin-top: 2px !important;
 }
 
