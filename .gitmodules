@@ -1,3 +1,4 @@
 [submodule ".config/dot/deps/sway-services"]
 	path = .config/dot/deps/sway-services
 	url = git@github.com:Ventto/sway-services.git
+	branch = ventto-dev
