@@ -4,7 +4,7 @@ Name=Firefox
 GenericName=Web Browser
 Comment=Browse the World Wide Web
 Keywords=Internet;WWW;Browser;Web;Explorer
-Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox --new-tab %u
+Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox/profile --new-tab %u
 Icon=firefox
 Terminal=false
 X-MultipleArgs=false
@@ -16,9 +16,9 @@ Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox --new-window %u
+Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox/profile --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
-Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox --private-window %u
+Exec=env MOZ_ENABLE_WAYLAND=1 /usr/lib/firefox/firefox --profile /home/ventto/.config/firefox/profile --private-window %u
 MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
