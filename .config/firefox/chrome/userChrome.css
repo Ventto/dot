@@ -1,31 +1,6 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#browser { margin-top: -1px !important;}
-
-/*
-==========================
-           App
-==========================
-*/
-
-#appcontent,
-#appcontent > #content,
-#appcontent > #content > tabbox > tabpanels,
-#navigator-toolbox, #TabsToolbar, #nav-bar, #urlbar {
-    background: #2e3132 !important;
-    font-family: "Sora 11" !important;
-}
-
-:root {
-    --toolbarbutton-border-radius: 0px !important;
-}
-
-/*
-==========================
-        Buttons
-==========================
-*/
-
+/* DOM I want to hide */
 #alltabs-button,
 #back-button,
 #forward-button,
@@ -44,130 +19,62 @@
 #search-container,
 #main-menubar,
 #window-controls,
+#tabbrowser-arrowscrollbox-periphery,
+.titlebar-close,
+.titlebar-spacer,
 .tabs-newtab-button,
 .tabs-closebutton-box,
 .tab-close-button {
     display: none !important;
 }
 
-#downloads-button {
-    display: block !important;
-}
-
-/*
-==========================
-          Tabs
-==========================
+/**
+ * Custom navigator toolbox
+ *
+ * DOM overview:
+ *    --------------------------------------------------------------------
+ *   |                          #navigator-toolbox                        |
+ *   | [  [#TabsToolbar]                       ] #titlebar (or "tab bar") |
+ *   | [  [#urlbar] <toolbar(button|item)/>... ] #nav-bar  (or "url bar") |
+ *    --------------------------------------------------------------------
+ *   |                               #browser                             |
+ *   .                                                                    .
 */
 
-.tabbrowser-tab {
-    border-bottom: 0px none !important;
-    box-shadow: none !important;
+#browser {
+    margin-top: -1px !important;
 }
 
-.tabbrowser-tab[selected=true] .tab-background {
-    background: #5675b9 !important;
+/* Reduce height of tabs */
+#titlebar {
+    --tab-min-height: 28px !important;
 }
 
-.tabbrowser-tab:hover {
-    background: #415074 !important;
-}
-
-.tabbrowser-tab::before,
-.tabbrowser-tab::after {
-    visibility: hidden !important;
-}
-
-/* Closer pinned tab icons */
-.tab-content[pinned] {
-  border: none !important;
-}
-
-/* Resize the pinned tabs */
-.tabbrowser-tab[pinned], .tabs-newtab-button {
-    max-width: 36px !important;
-    min-width: 36px !important;
-}
-
-/* Keep the pinned tab icon aligned center when tabs are compacted */
-:root:not([uidensity="compact"]) .tab-content[pinned] {
-    padding: 0 10px !important;
-}
-
-/* Remove the spinning wheel but keep the loading animation */
-.tab-throbber {
-  list-style-image: url("chrome://mozapps/skin/places/defaultFavicon.png") !important;
-}
-
-/* Hide the selected-tab-border edges */
-.tabbrowser-tab[selected=true] .tab-background .tab-line {
-    opacity: 0 !important;
-}
-
-/*
-==========================
-        Tool Bars
-==========================
-*/
-
-/* Set toolbars height */
-#titlebar, #tabbrowser-tabs {
-    --tab-min-height: 26px !important;
-}
-#nav-bar {
-    height: 26px !important;
-}
-
-/* Align toolbar plugin's buttons with pinned tabs */
-#nav-bar .toolbarbutton-1 {
-    max-width: 36px !important;
-    min-width: 36px !important;
-}
-
-#TabsToolbar, #nav-bar, #urlbar {
-    padding: 0 !important;
+#navigator-toolbox, #nav-bar, #titlebar, #urlbar {
     margin: 0 !important;
-    border-radius: 0 0 0 0 !important;
+    padding: 0 !important;
+    border: none !important;
 }
 
-/* Set toolbars order */
-#TabsToolbar {
-    -moz-box-ordinal-group: 1 !important;
-    margin-bottom: -1px !important;
-}
-#nav-bar {
-    -moz-box-ordinal-group: 0 !important;
-    margin-top: 2px !important;
+#titlebar, #nav-bar, #urlbar-background, #navigator-toolbox-background {
+    background-color: #292c34 !important;
 }
 
-#urlbar {
-    border-color: #2e3132 !important;
-}
-
-#urlbar, .searchbar-textbox {
-    min-height: 22px !important;
-}
+/**
+ * Colors the identity box of urlbar based on website security.
+ * The identity box is the locker icon in the URL bar on the left.
+ */
 
 #identity-box {
     border-radius: 4px !important;
+    margin-left: 2px !important;
 }
-
-toolbarbutton .toolbarbutton-badge-stack {
-    margin-top: -4px !important;
-}
-
-/*
-==========================
-   Color urlbar based on
-     website security
-==========================
-*/
 
 /* https://www.github.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.verifiedIdentity,
 /* https://www.google.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.verifiedDomain {
-       background: #12bc00 !important; /* ok=green */
+       background: #5fd700 !important; /* ok=green */
 }
 
 /* https://mixed-script.badssl.com/ (form subits to HTTP) */
@@ -176,7 +83,7 @@ toolbarbutton .toolbarbutton-badge-stack {
 #urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent,
 /* https://very.badssl.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked {
-       background: #d7b600 !important; /* risky=yellow */
+       background: #ff8c00 !important; /* risky=yellow */
 }
 
 /* https://self-signed.badssl.com/ but add certificate exception */
@@ -187,5 +94,5 @@ toolbarbutton .toolbarbutton-badge-stack {
 #urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent,
 /* http://http-login.badssl.com/ */
 #urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms {
-       background: #d70022 !important;  /* dangerous=red */
+       background: #ff2828 !important;  /* dangerous=red */
 }
