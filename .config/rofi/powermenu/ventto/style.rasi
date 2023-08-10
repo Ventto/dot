@@ -27,7 +27,7 @@ window {
     anchor:                      west;
     fullscreen:                  false;
     width:                       115px;
-    x-offset:                    15px;
+    x-offset:                    16px;
     y-offset:                    0px;
 
     /* properties for all widgets */
