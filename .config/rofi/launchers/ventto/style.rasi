@@ -27,7 +27,7 @@ window {
     fullscreen:                  false;
     width:                       200px;
     height:                      80%;
-    x-offset:                    0px;
+    x-offset:                    16px;
     y-offset:                    0px;
 
     enabled:                     true;
