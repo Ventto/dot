@@ -58,6 +58,7 @@ for_window [app_id="^blueman-manager$"] floating enable, resize set 20 ppt 60 pp
 for_window [app_id="^org.kde.dolphin$"] floating enable, resize set 60 ppt 80 ppt
 for_window [app_id="pavucontrol"] floating enable, resize set 30 ppt 40 ppt
 for_window [app_id="system-config-printer"] floating enable, resize set 30 ppt 40 ppt
+for_window [app_id="Alacritty" title="floating"] floating enable
 
 # Issue: https://bugzilla.mozilla.org/show_bug.cgi?id=1628431
 # When using webRTC with Firefox, the browser opens a sharing indicator
@@ -125,6 +126,7 @@ set $lock "${XDG_CONFIG_HOME}/sway/scripts/lock.sh"
 bindsym Print exec $screenshot
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term --title floating
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss -a
 bindsym Alt+Return exec launcher
