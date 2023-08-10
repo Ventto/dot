@@ -6,8 +6,11 @@
 #
 # ```
 #   [app-name=volumectl]
-#   font=Font Awesome 5 Free Solid 14
-#   format=%s
+#   format=%s\n%b
+#
+#   (OR) -->
+#               [category=system-config-status]
+#               format=%s\n%b
 #
 #   [app-name=error]
 #   format=<b>%s</b>
@@ -117,6 +120,6 @@ main()
         toggle) _volume_toggle;;
         *) _usage; _die 2;;
     esac
-    notify_log "$prog" "$icon" "$summary"
+    notify_log "$prog" "$icon" "$summary" "system-config-status"
 }
 main "$@"

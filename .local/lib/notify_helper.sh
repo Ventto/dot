@@ -47,7 +47,10 @@ notify_log()
     _subject="$1"
     _icon="$2"
     _summary="$3"
+    _category="$4"
 
-    notify-send -a "$_subject" -i "$(notify_get_icon "$_icon")" \
-        "$_summary"
+    notify-send -a "$_subject" \
+                -i "$(notify_get_icon "$_icon")" \
+                -c "$_category" \
+                "$_summary"
 }

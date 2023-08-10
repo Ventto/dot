@@ -6,8 +6,11 @@
 #
 # ```
 #   [app-name=backlightctl]
-#   font=Font Awesome 5 Free Solid 14
 #   format=%s\n%b
+
+#   (OR) -->
+#               [category=system-config-status]
+#               format=%s\n%b
 #
 #   [app-name=error]
 #   format=<b>%s</b>
@@ -48,7 +51,7 @@ main()
     level="$(lux -G | sed 's/.$//')"
     summary=$(notify_percent_to_summary "$level")
 
-    notify_log "$prog" "sunny" "$summary"
+    notify_log "$prog" "sunny" "$summary" "system-config-status"
 }
 
 main "$@"
