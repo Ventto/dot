@@ -54,9 +54,8 @@ export SUDO_EDITOR="rnano"
 export VISUAL="$EDITOR"
 # Dev
 export ANDROID_HOME="/opt/android-sdk"
-export GOPATH="$HOME/.config/go"
+export GOPATH="${XDG_CONFIG_HOME}/go"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/opt/xtools/arm-unknown-eabi/bin:${PATH}"
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 #export XDG_CURRENT_DESKTOP=Unity
