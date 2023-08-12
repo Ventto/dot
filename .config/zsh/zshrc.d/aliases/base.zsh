@@ -20,7 +20,7 @@ alias dd='dd status=progress'
 alias gdb='gdb -q'
 alias grep='grep --color=auto'
 alias less='LESSHISTFILE=- less -R -i'
-alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSUSED,FSUSE%,TYPE,MOUNTPOINT'
+alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSAVAIL,FSUSE%,TYPE,MOUNTPOINT'
 alias ssh='TERM=xterm ssh'
 alias watch='watch -c '
 alias wget='wget --hsts-file /dev/null'
@@ -42,19 +42,22 @@ alias rfirefox="firejail --private --nogroups --timeout=00:45:00 \
                          firefox -no-remote -private-window"
 
 if _systemd_running; then
-    alias klog-live="journalctl --dmesg -o short -f -n 50"
-    alias klog="journalctl --dmesg -o short"
-    alias noidle='systemd-inhibit'
-    alias systemd-unit-states='systemctl list-unit-files --user --state=enabled \
-      && systemctl list-unit-files --system --state=enabled'
-    alias systemd-news-about='journalctl --user --pager-end --follow -u'
-    alias scs="systemctl --system"
     alias scu="systemctl --user"
+    alias s="systemctl"
+    alias j="journalctl"
+    alias klog="journalctl --dmesg -o short"
+    alias klog-follow="journalctl --dmesg -o short -f -n 50"
+    alias systemd-unit-states='printf "======= SYSTEM FILES\n\n"; \
+        systemctl list-unit-files --state=enabled; \
+        printf "\n======= USER FILES\n\n"; \
+        systemctl list-unit-files --user --state=enabled'
+    alias dontsleep='systemd-inhibit'
+    alias about='journalctl --user -e -u'
+    alias follow='journalctl --user --follow -n 50 -u'
 else
     alias klog-live="sudo dmesg --human -w"
     alias klog="sudo dmesg"
 fi
 
-alias start-sway='sway-user-service'
 # Put in containers
 alias yay='taskset -c 5 yay'
