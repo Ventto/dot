@@ -46,7 +46,10 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LESSHISTFILE=/dev/null
-export PATH="/usr/local/bin:${HOME}/.local/bin:${PATH}"
+##
+# We store very personal control scripts (ex: volume, backlight)
+# and wrapper for some apps .
+export PATH="${HOME}/.local/bin:/usr/local/bin:${PATH}"
 export SUDO_EDITOR="rnano"
 export VISUAL="$EDITOR"
 # Dev

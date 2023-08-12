@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+make -C "${XDG_CONFIG_HOME}/firefox"
+echo "$@" > /tmp/firefox.desktop.tmp
+env MOZ_ENABLE_WAYLAND=1 \
+    /usr/lib/firefox/firefox --profile "${XDG_CONFIG_HOME}/firefox" "$@"
