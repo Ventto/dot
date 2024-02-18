@@ -31,6 +31,8 @@ window:
   #     - transparent: Title bar, transparent background, but no title bar buttons
   decorations: full
 
+  option_as_alt: both
+
 scrolling:
   # How many lines of scrollback to keep,
   # '0' will disable scrolling.
@@ -198,21 +200,29 @@ shell:
   program: /bin/zsh
 
 key_bindings:
-  - { key: Y,              mods: Control, action: Paste                      }
-  - { key: W,              mods: Alt,     action: Copy                       }
-  - { key: Insert,         mods: Shift,   action: PasteSelection             }
-  - { key: Key0,           mods: Control, action: ResetFontSize              }
-  - { key: Equals,         mods: Control, action: IncreaseFontSize           }
-  - { key: NumpadAdd,      mods: Control, action: IncreaseFontSize           }
-  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize           }
-  - { key: Minus,          mods: Control, action: DecreaseFontSize           }
-  - { key: Return,         mods: Alt,     action: ToggleFullscreen           }
-  - { key: Paste,                         action: Paste                      }
-  - { key: Copy,                          action: Copy                       }
-  - { key: L,              mods: Control, action: ClearLogNotice             }
-  - { key: L,              mods: Control, chars: "\x0c"                      }
-  - { key: PageUp,         mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
-  - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt }
-  - { key: Home,           mods: Shift,   action: ScrollToTop,    mode: ~Alt }
-  - { key: End,            mods: Shift,   action: ScrollToBottom, mode: ~Alt }
-  - { key: T,   mods: Control|Shift, action: SpawnNewInstance }
+  - { key: Key0,     mods: Control,       action: ResetFontSize      }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize   }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize   }
+  - { key: Paste,                         action: Paste              }
+  - { key: Copy,                          action: Copy               }
+  - { key: L,        mods: Control,       action: ClearLogNotice     }
+  - { key: L,        mods: Control,       chars: "\x0c"              }
+  - { key: T,        mods: Control|Shift,       action: SpawnNewInstance, mode: ~AppCursor }
+    # Cursor home (based on builtin keybinding C-A)
+  - { key: Q,        mods: Control,       chars: "\x01",            mode: ~AppCursor }
+  - { key: Left,     mods: Shift,         chars: "\x01",            mode: ~AppCursor }
+  - { key: Left,     mods: Shift,         chars: "\x1b[1;2D",       mode: AppCursor  }
+    # Cursor end (based on builtin keybinding C-E)
+  - { key: Right,    mods: Shift,         chars: "\x05",            mode: ~AppCursor }
+  - { key: Right,    mods: Shift,         chars:  "\x1b[1;2C",      mode: AppCursor }
+    # Page Up
+  - { key: Up,       mods: Shift,         action: ScrollPageUp,     mode: ~AppCursor }
+  - { key: Up,       mods: Shift,         chars: "\x1b[1;2A",       mode: AppCursor  }
+    # Page Down
+  - { key: Down,     mods: Shift,         action: ScrollPageDown,   mode: ~AppCursor }
+  - { key: Down,     mods: Shift,         chars: "\x1b[1;2B",       mode: AppCursor  }
+  - { key: Up,       mods: Control|Shift, action: ScrollToTop,      mode: ~AppCursor }
+  - { key: Down,     mods: Control|Shift, action: ScrollToBottom,   mode: ~AppCursor }
+
+  # In Neovim, we could not map <CTRL+'> so far. We turn it into <CTRL+Right>.
+  #- { key: 40,       mods: Control,       chars: "\x1b[1;5C"                 }
