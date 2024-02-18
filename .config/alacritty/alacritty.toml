@@ -1,0 +1,215 @@
+live_config_reload = true
+#custom_cursor_colors = false # unused since yml->toml
+#render_timer = false # unused since yml->toml
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x4d4d4d"
+blue = "0xcaa9fa"
+cyan = "0x9aedfe"
+green = "0x5af78e"
+magenta = "0xff92d0"
+red = "0xff6e67"
+white = "0xe6e6e6"
+yellow = "0xf4f99d"
+
+[colors.cursor]
+cursor = "0xf8f8f2"
+text = "0x44475a"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x5294e2"
+cyan = "0x66cccc"
+green = "0x99cc66"
+magenta = "0xed6666"
+red = "0xe53238"
+white = "0xbfbfbf"
+yellow = "0xcc9966"
+
+[colors.primary]
+background = "0x292b2e"
+foreground = "0xf8f8f2"
+
+[colors.selection]
+background = "0x44475a"
+text = "0xf8f8f2"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+#scale_with_dpi = true # unused since yml->toml
+
+[font.bold]
+family = "SauceCodePro Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "SauceCodePro Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "T"
+mode = "~AppCursor"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "Q"
+mode = "~AppCursor"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "Left"
+mode = "~AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2D"
+key = "Left"
+mode = "AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u0005"
+key = "Right"
+mode = "~AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2C"
+key = "Right"
+mode = "AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "Up"
+mode = "~AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2A"
+key = "Up"
+mode = "AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "Down"
+mode = "~AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;2B"
+key = "Down"
+mode = "AppCursor"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Up"
+mode = "~AppCursor"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "Down"
+mode = "~AppCursor"
+mods = "Control|Shift"
+
+[mouse]
+hide_when_typing = false
+#faux_scrolling_lines = 1 # unused since yml->toml
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+#[mouse.double_click] # unused key since yml->toml
+#threshold = 300
+
+#[mouse.triple_click] # unused key since yml->toml
+#threshold = 300
+
+[scrolling]
+history = 10000
+multiplier = 3
+#auto_scroll = false # unused since yml->toml
+#faux_multiplier = 3 # unused since yml->toml
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 0.9
+#option_as_alt = "both" # unused since yml->toml
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 0
+y = 0
