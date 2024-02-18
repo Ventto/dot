@@ -109,7 +109,7 @@
         "format": "{:%d/%m %H:%M}",
         "interval": 60,
         "tooltip-format": "<tt>{calendar}</tt>",
-        "timezones": [ "America/Sao_Paulo", "Europe/Paris" ],
+        "timezones": [ "Europe/Paris", "America/Sao_Paulo" ],
         "calendar": {
                     "mode"          : "year",
                     "mode-mon-col"  : 3,
@@ -125,8 +125,7 @@
                     },
         "actions":  {
                     "on-click-right": "mode",
-                    "on-click-forward": "tz_up",
-                    "on-click-backward": "tz_down",
+                    "on-click": "tz_up",
                     }
     }
 }]
