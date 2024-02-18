@@ -114,7 +114,7 @@ typeset -a _bindkeys _funcs _aliases _completions
 
 _bindkeys=( base edit-command-line fg-ctrlz )
 _funcs=( base pkg security git )
-_aliases=( base dev pkg mounts )
+_aliases=( base dev pkg )
 _completions=( base )
 
 for dir in _bindkeys _funcs _aliases _completions; do
