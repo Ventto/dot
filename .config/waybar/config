@@ -13,6 +13,7 @@
         "custom/notifications",
         "tray",
         "pulseaudio",
+        "disk",
         "cpu",
         "memory",
         "battery",
@@ -67,6 +68,11 @@
 	    },
         "scroll-step": 0,
         "on-click": "pavucontrol"
+    },
+    "disk": {
+        "interval": 5,
+        "format": " {percentage_used}%",
+        "path": "/"
     },
     "memory": {
         "format": "﬙ {}%",
