@@ -143,3 +143,13 @@ if PlugLoaded("lightline.vim")
       return line('.') . '/' . line('$')
     endfunction
 endif
+
+if PlugLoaded("suda.vim")
+    " Save changes using sudo without involving nvim
+    cnoreabbrev w!! w suda://%
+endif
+
+if PlugLoaded("nvim-hlslens")
+    let g:nvim_open_default_mappings = 1
+    let g:nvim_open_browser = 'xdg-open'
+endif

@@ -24,6 +24,8 @@ Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Clickable URL
+Plug 'kevinhwang91/nvim-hlslens'
 
 " == Syntax Hightlighter ==
 Plug 'peterhoeg/vim-qml'
@@ -31,6 +33,7 @@ Plug 'martinlroth/vim-acpi-asl'
 Plug 'mfukar/robotframework-vim'
 Plug 'LnL7/vim-nix'
 Plug 'lervag/vimtex'
+Plug 'NoahTheDuke/vim-just'
 
 " == Content ==
 " Snippet engine (FIXME)
@@ -64,7 +67,7 @@ Plug 'tpope/vim-fugitive'
 
 " == Optimization ==
 " Speed up neovim startup time
-Plug 'nathom/filetype.nvim'
+"Plug 'nathom/filetype.nvim'
 
 call plug#end()
 filetype plugin indent on
