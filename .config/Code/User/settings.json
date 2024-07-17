@@ -1,0 +1,50 @@
+{
+  "redhat.telemetry.enabled": true,
+  "files.trimTrailingWhitespace": true,
+  "cmake.configureOnOpen": true,
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#ff5e00"
+    },
+    {
+      "column": 120,
+      "color": "#ff0000"
+    },
+  ],
+  "[git-commit]": {
+    "editor.rulers": [
+      50,
+      75
+    ]
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "d",
+        "l"
+      ],
+      "commands": [
+        "deleteAllLeft"
+      ]
+    },
+    {
+      "before": [
+        "d",
+        "'"
+      ],
+      "commands": [
+        "deleteAllRight"
+      ]
+    },
+  ],
+  "vim.neovimUseConfigFile": true,
+  "diffEditor.renderSideBySide": false,
+  "workbench.colorTheme": "Atom One Dark",
+  "editor.minimap.scale": 2,
+  "editor.minimap.showSlider": "always",
+  "vim.smartRelativeLine": true,
+  "editor.minimap.enabled": false,
+  "vim.vimrc.enable": true,
+  //"vim.smartRelativeLine": true
+}

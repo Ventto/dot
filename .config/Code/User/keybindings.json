@@ -1,0 +1,93 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+q",
+        "command": "cursorHome",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "end",
+        "command": "-cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "browserback",
+        "command": "undo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "browserforward",
+        "command": "redo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-extension.vim_ctrl+down",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-extension.vim_ctrl+up",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    },
+	{
+	    "key": "ctrl+up",
+		"command": "editorScroll",
+		"when": "editorTextFocus",
+		"args":
+		{
+			"to": "up",
+			"by": "line",
+			"revealCursor": true
+		}
+	},
+	{
+		"key": "ctrl+down",
+		"command": "editorScroll",
+		"when": "editorTextFocus",
+		"args":
+		{
+			"to": "down",
+			"by": "line",
+			"revealCursor": true
+		}
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    }
+]
+//    {
+//        "key": "'",
+//        "command": "editor.unfoldAllExcept",
+//        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+//    },
+//    {
+//        "key": "]",
+//        "command": "editor.action.jumpToBracket",
+//        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+//    },
