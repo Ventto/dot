@@ -31,6 +31,10 @@ exec_always swaymsg input 17498:4641:DZTECH_DZ60RGB_ANSI {
   xkb_layout ventto
 }
 
+exec_always swaymsg input 1739:30383:DELL07E6:00_06CB:76AF_Touchpad {
+  natural_scroll enabled
+}
+
 exec_always swaymsg geat * hide_cursor when-typing enable
 
 
