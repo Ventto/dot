@@ -1,20 +1,23 @@
 [user]
-    email = thomas.venries@gmail.com
     name = Thomas Venriès
 [core]
+    pager = delta
     editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore
-[sendemail]
-    from = Thomas Venriès <thomas.venries@gmail.com>
-    suppresscc = self
-    smtpuser = thomas.venries@gmail.com
-    smtpserver = smtp.gmail.com
-    smtpencryption = ssl
-    smtpserverport = 465
-    chainreplyto = false
 [push]
     default = matching
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    line-numbers = true
+    side-by-side = true
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
 [color]
     ui = auto
 [color "branch"]
@@ -33,6 +36,7 @@
     untracked = red bold
 [diff]
     tool = vimdiff
+    colorMoved = default
 [difftool]
     prompt = false
 [alias]
@@ -50,6 +54,7 @@
     ba = branch -a
     bd = branch -d
     br = branch -r
+    branch-changes = diff --name-only master..HEAD
     #############
     c = commit -s
     ca = commit -s -a
@@ -72,6 +77,7 @@
     dk = diff --check
     dp = diff --patience
     dck = diff --cached --check
+    edit = "!${EDITOR} $(git ls-files -m $(git rev-parse --show-toplevel) | fzf -m)"
     #############
     f = fetch
     fo = fetch origin
@@ -83,13 +89,10 @@
     #############
     g = grep -p
     #############
-    l = log --oneline
-    lb = log --left-right --graph --cherry-pick --decorate
-    lbo = log --left-right --graph --cherry-pick --oneline --decorate
-    lg = log --oneline --decorate
-    lgb = "!git log --oneline --graph --decorate master..$(git symbolic-ref --short HEAD)"
-    lgr = log --full-history --graph  --decorate --all --pretty=format:"%h%x09(%ar)%x09%d%x20%s"
-    ll = log --format=%B -n 1
+    l = log --oneline --left-right --pretty=format:\"%h [%ad] %an: %s\" --date=format:\"%Y-%m-%d\"
+    lg = l --graph
+    lb = lg --cherry-pick
+    lgb = lg origin/master..
     #############
     ls = ls-files
     lsf = "!git ls-files | grep -i"
@@ -100,6 +103,7 @@
     ms = merge --skip
     #############
     o = checkout
+    oo = "!git checkout $(git branch --format=\"%(refname:short)\" | fzf)"
     ob = checkout -b
     om = checkout master
     #############
@@ -188,6 +192,7 @@
     #############
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    wl = worktree list
     #############
     barebranch = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
     flat = clone --depth 1
