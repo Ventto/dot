@@ -1,10 +1,10 @@
 alias ls='ls -bh -CF --color=always --hide="*~" --color -h --group-directories-first'
 alias l='ls -1'
 alias ll='ls -lhF'
-alias la='ls -lhAF'
 alias ld='ls -ld */'
 alias lad='ls -lAd .*/'
 alias laf='ls -lAd .* | grep --color=never -v "^d"'
+alias la='lad; laf'
 
 alias bb='popd > /dev/null'
 alias b='cd ..'
@@ -24,8 +24,10 @@ alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSAVAIL,FSUSE%,TYPE,MOUNTPOINT
 alias ssh='TERM=xterm ssh'
 alias watch='watch -c '
 alias wget='wget --hsts-file /dev/null'
+alias top='btop'
 
 # Original basics
+alias g="rg -i"
 alias calc="bc -l"
 alias camera="run ffplay /dev/video0"
 alias color="grim -g \"\$(slurp -p)\" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-"
@@ -36,7 +38,7 @@ alias i3log='DISPLAY=${DISPLAY} i3-dump-log | less'
 alias mux='tmuxinator'
 alias phone="run scrcpy --turn-screen-off --disable-screensaver --window-width 480"
 alias wifiscan='watch -c -n 1 nmcli -c yes -f SSID,BSSID,BARS,ACTIVE,CHAN,SECURITY dev wifi list'
-alias rfirefox="firejail --private --nogroups --timeout=00:45:00 \
+alias rfirefox="firejail --private --nogroups \
                          --dns=8.8.8.8 \
                          --dns=8.8.4.4 \
                          firefox -no-remote -private-window"
@@ -46,7 +48,7 @@ if _systemd_running; then
     alias s="systemctl"
     alias j="journalctl"
     alias klog="journalctl --dmesg -o short"
-    alias klog-follow="journalctl --dmesg -o short -f -n 50"
+    alias klog-live="journalctl --dmesg -o short -f -n 50"
     alias systemd-unit-states='printf "======= SYSTEM FILES\n\n"; \
         systemctl list-unit-files --state=enabled; \
         printf "\n======= USER FILES\n\n"; \

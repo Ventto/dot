@@ -202,8 +202,123 @@ fi
 if _require tar xz; then
     function tarxz()
     {
-        local readonly _dir="$1"
+        local _dir="$1"
+        readonly _dir
 
         tar --xz -cvf "${_dir}.tar.xz" "$_dir"
+    }
+fi
+
+if _require xargs; then
+    function ixargs() {
+        xargs -I{} zsh -ic "$@"
+    }
+fi
+
+if _require inkscape; then
+    function svg2pdf() {
+        inkscape --export-type=pdf --export-filename="${1%.*}.pdf" "${1}"
+    }
+fi
+
+function loop() {
+    local count=$1
+    shift
+    if [[ $count =~ ^[0-9]+$ && $count -ge 0 ]]; then
+        while [ $count -gt 0 ]; do
+            eval "$@"
+            count=$((count - 1))
+            sleep 3
+        done
+    elif [[ $count == "forever" ]]; then
+        while true; do
+            eval "$@"
+            sleep 3
+        done
+    else
+        echo "Error: count is not a non-negative integer" >&2
+        return 1
+    fi
+}
+
+if _require ssh; then
+    function autossh () {
+        local opts=( -o ServerAliveInterval=2
+                     -o ServerAliveCountMax=2
+                     -o ConnectTimeout=1
+                     -o UserKnownHostsFile=/dev/null
+                     -o StrictHostKeyChecking=no )
+        if (( $# == 0)); then
+            echo "_autossh HOST CMD" >&2
+            return 1
+        fi
+        local host="$1"
+        local _ssh=( ssh "${opts[@]}" "$host")
+        shift
+        while true; do
+            printf "[ host: %s ]\n\nConnecting..." "$host"
+            while true; do
+                if ${_ssh} echo; then
+                    break
+                fi
+                sleep 2
+                printf '.'
+            done
+            clear
+            if (( $# >= 1)); then
+                ${_ssh} $@
+            fi
+            # If there is no specific command  to run or the specific command
+            # exits for any reason open a shell.
+            ${_ssh}
+            # Give us enough time to exit the loop with CTRL-C
+            sleep 2
+            clear
+        done
+    }
+fi
+
+function _wait_to_pass() {
+    local timeout="$1"
+    shift
+    while ! eval "$@" && [[ $((timeout--)) > 0 ]]; do
+        sleep 1
+    done
+}
+
+function tmux-set-pane-title() {
+    printf '\033]2;%s\033\\' "$1"
+}
+
+if _require bat fzf; then
+    function c() {
+        if [ $# -gt 0 ]; then
+            bat "$@"
+        else
+            bat "$(fzf)"
+        fi
+    }
+fi
+
+if _require nvim fzf; then
+    function e() {
+        local editor=( nvim -p )
+
+        readonly editor
+        if [ "$#" -eq 0 ]; then
+            ${editor} $(fzf -m)
+        else
+            ${editor} "$@"
+        fi
+    }
+fi
+
+if _require fd fzf; then
+    function cdf() {
+        if [ "$#" -eq 0 ]; then
+            cd $(fd --type d | fzf)
+        else
+            cd "$@"
+        fi
     }
 fi

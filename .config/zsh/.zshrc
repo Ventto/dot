@@ -9,6 +9,8 @@ fpath=("${ZDOTDIR}/zshrc.d/completions" $fpath)
 #           Options            #
 #==============================#
 
+unsetopt BEEP
+
 # History
 
 HISTFILE=~/.cache/zsh_hist
@@ -43,7 +45,7 @@ REPORTTIME=5
 export XDG_CONFIG_HOME="${HOME}/.config"
 # Basic internals
 #export BROWSER="env MOZ_ENABLE_WAYLAND=1 firefox --profile ${XDG_CONFIG_HOME}/firefox"
-export EDITOR="nvim"
+export EDITOR="nvim -p"
 export LANG=en_US.UTF-8
 export LESSHISTFILE=/dev/null
 ##
@@ -55,7 +57,8 @@ export VISUAL="$EDITOR"
 # Dev
 export ANDROID_HOME="/opt/android-sdk"
 export GOPATH="${XDG_CONFIG_HOME}/go"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/.config/go/bin:${PATH}"
+export PATH="${HOME}/.cargo/bin:$PATH"
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 #export XDG_CURRENT_DESKTOP=Unity
@@ -72,6 +75,7 @@ export GTK_DATA_PREFIX=
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
+source "$HOME/.cargo/env"
 
 #==============================#
 #          Prompts             #
@@ -113,16 +117,14 @@ source "${ZDOTDIR}/zshrc.d/funcs/internals.zsh"
 typeset -a _bindkeys _funcs _aliases _completions
 
 _bindkeys=( base edit-command-line fg-ctrlz )
-_funcs=( base pkg security git )
-_aliases=( base dev pkg )
+_funcs=( base security dev)
+_aliases=( base dev pkg mounts work )
 _completions=( base )
+_plugins=()
 
-for dir in _bindkeys _funcs _aliases _completions; do
+for dir in _bindkeys _funcs _aliases _completions _plugins; do
     for file in ${(P)dir}; do
         source "${ZDOTDIR}/zshrc.d/${dir:1}/${file}.zsh"
     done
     eval "unset ${dir}"
 done
-
-# After sourcing
-run_with_firejail okular eom riot-desktop
