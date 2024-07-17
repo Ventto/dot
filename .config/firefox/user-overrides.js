@@ -10,15 +10,34 @@ user_pref("signon.rememberSignons", false);
 /* We dislike the margins */
 user_pref("privacy.resistFingerprinting.letterboxing", false); // 4504
 
+/**
+ * Avoid wrong timezone on webmail client
+ * TODO: Open webmail client on a dedicated browser window
+ */
+user_pref("privacy.resistFingerprinting", false); // 4501
+
 /* Enable session restore */
 user_pref("browser.startup.page", 3); // 0102
 user_pref("privacy.clearOnShutdown.history", false); // 2811
+user_pref("browser.download.useDownloadDir", false); // 2651
 
-user_pref("browser.download.useDownloadDir", true); // 2651
-
-/* Preferences we personally want but already handled by Arkenfox */
+/* Preferences we personally want but already handled by Ar */
 //user_pref("browser.download.alwaysOpenPanel", false); // 2652
 //user_pref("browser.download.always_ask_before_handling_new_types", true); // 2654
+
+/**
+ * Max Protection:
+ * Firefox will always use secure DNS. You’ll see a security risk warning before we use your system DNS.
+ * Only use the provider you select
+ * Always warn if secure DNS isn’t available
+ * If secure DNS is not available sites will not load or function properly
+ */
+user_pref("network.trr.mode", 3); // 0710
+user_pref("network.trr.default_provider_uri", "https://firefox.dns.nextdns.io");
+user_pref("network.trr.custom_uri", "https://firefox.dns.nextdns.io");
+
+/* Needed for my router web UI */
+user_pref("webgl.disabled", false); // 4520
 
 /*
  =============================
