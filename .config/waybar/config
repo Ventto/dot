@@ -80,7 +80,7 @@
 		    "warning": 70,
 		    "critical": 85
 	    },
-        "interval": 3,
+        "interval": 5,
         "tooltip": true
     },
     "cpu": {
