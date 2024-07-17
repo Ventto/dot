@@ -45,7 +45,7 @@ window#waybar > * > * > * > * {
     padding: 0 5px;
 }
 
-#tray menu, tooltip {
+#tray menu {
     font-size: 14px;
     font-weight: normal;
     font-family: "Sora";
