@@ -35,9 +35,11 @@ window#waybar > * > * {
      */
     border-radius: 999px;
     border-style: solid;
-    /* Same right/left gap than sway windows minus the waybar's border size */
-    margin: 4px 15px 0 15px;
-    padding: 10px 10px 10px 16px;
+    /* margin: right = left = (sway_gaps_inner - sway_default_border) */
+    /*        top  right  bottom  left */
+    margin:   4px  6px    0px     6px;
+    /*        top  right  bottom  left */
+    padding:  5px  8px    7px     8px;
 }
 /* Modules */
 window#waybar > * > * > * > * {
