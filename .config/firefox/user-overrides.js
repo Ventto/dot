@@ -47,8 +47,8 @@ user_pref("webgl.disabled", false); // 4520
 
 user_pref("browser.bookmarks.showMobileBookmarks", true);
 user_pref("browser.download.autohideButton", false);
+user_pref("browser.download.folderList", 1);
 user_pref("browser.download.dir", "/home/ventto/Downloads/Browser");
-user_pref("browser.download.lastdir", "/home/ventto/Downloads/Browser");
 user_pref("browser.quitShortcut.disabled", true);
 user_pref("browser.startup.homepage", "about:blank");
 user_pref("mousewheel.with_control.action", 1);
