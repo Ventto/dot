@@ -83,11 +83,15 @@ source "$HOME/.cargo/env"
 
 # Shell is running in a pseudo terminal slave
 if tty | grep -E '^/dev/pts/[0-9]+$' >/dev/null 2>&1; then
-    custom_prompt="${ZDOTDIR}/.p10k.zsh"
-    if [ -f $custom_prompt ];
+    prompt_theme="${HOME}/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
+    prompt_custom="${ZDOTDIR}/.p10k.zsh"
+    if [ -f $prompt_theme ];
     then
-        source "${HOME}/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
-        source "$custom_prompt"
+        source "$prompt_custom"
+        source "$prompt_theme"
+        default_prompt=false
+    elif [ -f ${XDG_CONFIG_HOME}/zsh/zshrc.d/plugins/oh-my-zsh.zsh ]; then
+        source ${XDG_CONFIG_HOME}/zsh/zshrc.d/plugins/oh-my-zsh.zsh
         default_prompt=false
     fi
     unset custom_prompt
