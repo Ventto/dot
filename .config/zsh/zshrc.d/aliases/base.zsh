@@ -20,14 +20,14 @@ alias dd='dd status=progress'
 alias gdb='gdb -q'
 alias grep='grep --color=auto'
 alias less='LESSHISTFILE=- less -R -i'
-alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSAVAIL,FSUSE%,TYPE,MOUNTPOINT'
+alias lsblk='lsblk -o NAME,PATH,MODEL,VENDOR,SIZE,FSAVAIL,FSUSE%,FSTYPE,MOUNTPOINT'
 alias ssh='TERM=xterm ssh'
 alias watch='watch -c '
 alias wget='wget --hsts-file /dev/null'
 alias top='btop'
 
 # Original basics
-alias g="rg -i"
+alias g="rg -i --hidden"
 alias calc="bc -l"
 alias camera="run ffplay /dev/video0"
 alias color="grim -g \"\$(slurp -p)\" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-"
@@ -63,3 +63,6 @@ fi
 
 # Put in containers
 alias yay='taskset -c 5 yay'
+
+# WM
+alias clip='xclip -selection clipboard -o'
