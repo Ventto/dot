@@ -125,7 +125,7 @@ _bindkeys=( base edit-command-line fg-ctrlz )
 _funcs=( base security dev)
 _aliases=( base dev pkg mounts work )
 _completions=( base )
-_plugins=()
+_plugins=( wsl android )
 
 for dir in _bindkeys _funcs _aliases _completions _plugins; do
     for file in ${(P)dir}; do
