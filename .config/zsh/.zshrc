@@ -75,7 +75,8 @@ export GTK_DATA_PREFIX=
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
-source "$HOME/.cargo/env"
+## Google Cloud CLI
+export PATH="/opt/google-cloud-cli/bin:${PATH}"
 
 #==============================#
 #          Prompts             #
