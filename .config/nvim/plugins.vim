@@ -19,7 +19,7 @@ Plug 'famiu/feline.nvim'
 " Configurable statusline/tabline plugin
 Plug 'itchyny/lightline.vim'
 " Displays tags in a window
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 " Fuzzy file, buffer, mru, tag, etc finder
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -37,11 +37,11 @@ Plug 'NoahTheDuke/vim-just'
 
 " == Content ==
 " Snippet engine (FIXME)
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 " Snippet templates
 Plug 'honza/vim-snippets'
 " Text Prediction
-Plug 'tabnine/YouCompleteMe'
+"Plug 'tabnine/YouCompleteMe'
 " Cscope maps plugin
 Plug 'chazy/cscope_maps'
 " Comment / uncomment lines regarding the filetype
@@ -59,7 +59,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Visually selects increasingly larger regions
 Plug 'terryma/vim-expand-region'
 " Syntax checking hacks
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " == Git ==
 " Git wrapper so awesome
