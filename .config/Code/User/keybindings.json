@@ -44,28 +44,6 @@
         "command": "-extension.vim_ctrl+up",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
-	{
-	    "key": "ctrl+up",
-		"command": "editorScroll",
-		"when": "editorTextFocus",
-		"args":
-		{
-			"to": "up",
-			"by": "line",
-			"revealCursor": true
-		}
-	},
-	{
-		"key": "ctrl+down",
-		"command": "editorScroll",
-		"when": "editorTextFocus",
-		"args":
-		{
-			"to": "down",
-			"by": "line",
-			"revealCursor": true
-		}
-    },
     {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
@@ -79,15 +57,73 @@
         "key": "ctrl+w",
         "command": "-extension.vim_ctrl+w",
         "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "editor.fold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+[",
+        "command": "-editor.fold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+.",
+        "command": "editor.unfold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+]",
+        "command": "-editor.unfold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "n",
+        "command": "-editor.action.moveSelectionToNextFindMatch",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && vim.mode != 'Command'"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.keepCursorPosScrollUp"
+        },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.keepCursorPosScrollDown"
+        },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "git-graph.view"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-extension.vim_ctrl+g",
+        "when": "editorTextFocus && vim.active && vim.use<C-g> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+    {
+        "key": "shift+up",
+        "command": "cursorMove",
+        "args": { "to": "up",   "by": "line", "value": 20 }
+    },
+    {
+        "key": "shift+down",
+        "command": "cursorMove",
+        "args": { "to": "down", "by": "line", "value": 20 }
     }
 ]
-//    {
-//        "key": "'",
-//        "command": "editor.unfoldAllExcept",
-//        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-//    },
-//    {
-//        "key": "]",
-//        "command": "editor.action.jumpToBracket",
-//        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-//    },

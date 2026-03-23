@@ -1,7 +1,6 @@
 {
-  "redhat.telemetry.enabled": true,
-  "files.trimTrailingWhitespace": true,
   "cmake.configureOnOpen": true,
+  "diffEditor.renderSideBySide": false,
   "editor.rulers": [
     {
       "column": 80,
@@ -12,6 +11,11 @@
       "color": "#ff0000"
     },
   ],
+  "editor.minimap.scale": 2,
+  "editor.minimap.showSlider": "always",
+  "files.trimTrailingWhitespace": true,
+  "redhat.telemetry.enabled": true,
+  "workbench.colorTheme": "Atom One Dark",
   "[git-commit]": {
     "editor.rulers": [
       50,
@@ -38,13 +42,81 @@
       ]
     },
   ],
-  "vim.neovimUseConfigFile": true,
-  "diffEditor.renderSideBySide": false,
-  "workbench.colorTheme": "Atom One Dark",
-  "editor.minimap.scale": 2,
-  "editor.minimap.showSlider": "always",
   "vim.smartRelativeLine": true,
-  "editor.minimap.enabled": false,
   "vim.vimrc.enable": true,
-  //"vim.smartRelativeLine": true
+  "security.allowedUNCHosts": [
+    "wsl.localhost"
+  ],
+  "explorer.confirmDelete": false,
+  "editor.stickyScroll.enabled": false,
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.keepCursorPosScrollUp",
+      "sequence": [
+        {
+          "command": "editorScroll",
+          "args": {
+            "to": "up",
+            "by": "line",
+            "revealCursor": false
+          }
+        },
+        "cursorUp"
+      ]
+    },
+    {
+      "command": "multiCommand.keepCursorPosScrollDown",
+      "sequence": [
+        {
+          "command": "editorScroll",
+          "args": {
+            "to": "down",
+            "by": "line",
+            "revealCursor": false
+          }
+        },
+        "cursorDown"
+      ]
+    }
+  ],
+  "security.workspace.trust.untrustedFiles": "open",
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "cmake.showOptionsMovedNotification": false,
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "graphite.commandPath": " C:\\Users\\thoma\\AppData\\Roaming\\npm\\gt",
+  "workbench.externalBrowser": "firefox",
+  "gitlens.graph.minimap.additionalTypes": [
+    "stashes",
+    "localBranches"
+  ],
+  "yaml.customTags": [
+   "!reference sequence"
+  ],
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.io": "linux",
+    "spoonqireng-testappunit-15r10ncsrzh.vss.gitpod.io": "linux"
+  },
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "dev.containers.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "docker.extension.enableComposeLanguageServer": false,
+  "git.blame.statusBarItem.enabled": false,
+  "git.blame.editorDecoration.enabled": true,
+  "workbench.panel.showLabels": false,
+  "editor.minimap.enabled": false,
+  "window.customTitleBarVisibility": "windowed",
+  "workbench.activityBar.location": "top",
+  "workbench.editor.showTabs": "single",
+  "python.terminal.activateEnvironment": false,
+  "claudeCode.preferredLocation": "panel",
+  "window.openFoldersInNewWindow": "on",
+  "workbench.editor.enablePreview": false
 }
