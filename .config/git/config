@@ -5,6 +5,8 @@
     editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore
+    autocrlf = false
+	 compression = 0
 [push]
     default = matching
 [interactive]
@@ -51,6 +53,7 @@
     ams = am --skip
     #############
     b = branch
+    b- = "!git b | grep -E -v '\\s+(release|hotfix|main|develop|feature)'"
     ba = branch -a
     bd = branch -d
     br = branch -r
@@ -66,6 +69,7 @@
     cd = commit --amend
     cad = commit -s -a --amend
     ced = commit -s --allow-empty --amend
+    contrib = shortlog -s -n --all --no-merges
     #############
     cl = clean
     cldf = clean -d -f
@@ -82,6 +86,7 @@
     f = fetch
     fo = fetch origin
     fu = fetch upstream
+    fix = commit --fixup
     #############
     fp = format-patch
     #############
@@ -90,6 +95,7 @@
     g = grep -p
     #############
     l = log --oneline --left-right --pretty=format:\"%h [%ad] %an: %s\" --date=format:\"%Y-%m-%d\"
+    ll = l -10
     lg = l --graph
     lb = lg --cherry-pick
     lgb = lg origin/master..
@@ -130,8 +136,9 @@
     pb = pull --rebase
     pbo = pull --rebase origin
     pbp = pull --rebase upstream
-    pbom = pull --rebase origin master
     pbpm = pull --rebase upstream master
+    pbom = pull --rebase origin master
+    up = "!git fetch --all --prune && git pull --rebase origin $(git symbolic-ref --short HEAD)"
     #############
     rb = rebase
     rba = rebase --abort
@@ -164,18 +171,11 @@
     #############
     s = status
     sb = status -s -b
+    select = "!git checkout $(git branch --all | grep -v 'HEAD' | sed 's/.* //' | sort -u | fzf)"
     #############
-    sa = stash apply
-    sc = stash clear
-    sd = stash drop
-    sl = stash list
-    sp = stash pop
-    ss = stash save
-    sw = stash show
-    #############
-    w = show
-    wp = show -p
-    wr = show -p --no-color
+    w = show --diff-algorithm=patience
+    wp = w -p
+    wr = w -p --no-color
     #############
     svnr = svn rebase
     svnd = svn dcommit
@@ -201,3 +201,8 @@
     human = name-rev --name-only --refs=refs/heads/*
     serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+	lfs-total-size = "!f() {\n  git lfs ls-files --size | awk '\n    match($0, /\\(([0-9.]+) ([MG]B)\\)/, a) {\n      val = a[1]\n      unit = a[2]\n      if (unit == \"GB\") bytes = val * 1024 * 1024 * 1024\n      else if (unit == \"MB\") bytes = val * 1024 * 1024\n      sum += bytes\n    }\n    END { printf \"%.0f\\n\", sum }\n  ' | numfmt --to=iec --suffix=B --format=\"%.2f\"\n}; f"
+[init]
+	defaultBranch = master
+[http]
+	postBuffer = 524288000
