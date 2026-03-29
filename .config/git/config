@@ -1,12 +1,14 @@
 [user]
     name = Thomas Venriès
+    mail = thomas.venries@spoon.ai
+    email = thomas.venries@spoon.ai
 [core]
     pager = delta
     editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore
     autocrlf = false
-	 compression = 0
+    compression = 0
 [push]
     default = matching
 [interactive]
@@ -17,7 +19,6 @@
     side-by-side = true
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-
 [merge]
     conflictstyle = diff3
 [color]
@@ -44,32 +45,17 @@
 [alias]
     a = "!git archive --format=tar.gz --prefix=$(basename -s .git `git config --get remote.origin.url`)-master/ --output master.tar.gz master"
     #############
-    ap = apply
-    aps = apply --stat
-    apc = apply --check
-    #############
-    ama = am --abort
-    amr = am --resolved
-    ams = am --skip
-    #############
     b = branch
-    b- = "!git b | grep -E -v '\\s+(release|hotfix|main|develop|feature)'"
-    ba = branch -a
-    bd = branch -d
-    br = branch -r
+    bf = "!git b | grep -E -v '\\s+(release|hotfix|main|develop|feature)'"
     branch-changes = diff --name-only master..HEAD
     #############
+    flat = clone --depth 1
+    #############
     c = commit -s
-    ca = commit -s -a
     cc = "!git log master..`git symbolic-ref --short HEAD` --pretty=oneline | wc -l"
     cm = commit -m
-    csm = commit -s -m
-    cem = commit -s --allow-empty -m
-    cam = commit -s -am
     cd = commit --amend
-    cad = commit -s -a --amend
-    ced = commit -s --allow-empty --amend
-    contrib = shortlog -s -n --all --no-merges
+    fix = commit --fixup
     #############
     cl = clean
     cldf = clean -d -f
@@ -81,18 +67,16 @@
     dk = diff --check
     dp = diff --patience
     dck = diff --cached --check
-    edit = "!${EDITOR} $(git ls-files -m $(git rev-parse --show-toplevel) | fzf -m)"
     #############
     f = fetch
     fo = fetch origin
     fu = fetch upstream
-    fix = commit --fixup
     #############
     fp = format-patch
     #############
-    fk = fsck
-    #############
     g = grep -p
+    #############
+    go = "!git checkout $(git branch --all | grep -v 'HEAD' | sed 's/.* //' | sort -u | fzf)"
     #############
     l = log --oneline --left-right --pretty=format:\"%h [%ad] %an: %s\" --date=format:\"%Y-%m-%d\"
     ll = l -10
@@ -113,32 +97,12 @@
     ob = checkout -b
     om = checkout master
     #############
-    pr = prune -v
-    #############
     ps = push
     psf = push -f
     psu = push -u
     pso = push origin
-    psao = push --all origin
     psfo = push -f origin
     psuo = push -u origin
-    psom = push origin master
-    psfom = push -f origin master
-    psuom = push -u origin master
-    #############
-    pl = pull
-    plu = pull -u
-    plo = pull origin
-    plp = pull upstream
-    plom = pull origin master
-    plpm = pull upstream master
-    #############
-    pb = pull --rebase
-    pbo = pull --rebase origin
-    pbp = pull --rebase upstream
-    pbpm = pull --rebase upstream master
-    pbom = pull --rebase origin master
-    up = "!git fetch --all --prune && git pull --rebase origin $(git symbolic-ref --short HEAD)"
     #############
     rb = rebase
     rba = rebase --abort
@@ -149,60 +113,52 @@
     r = remote
     ra = remote add
     rr = remote rm
-    rv = remote -v
-    rm = remote rename
-    rp = remote prune
-    rs = remote show
+    rv = remote --verbose
     rao = remote add origin
     rau = remote add upstream
-    rso = remote show origin
-    rsu = remote show upstream
-    rpo = remote prune origin
-    rpu = remote prune upstream
     #############
-    re = reset
-    rh = reset HEAD
-    reh = reset --hard
-    rem = reset --mixed
-    res = reset --soft
-    rehh = reset --hard HEAD
-    remh = reset --mixed HEAD
-    resh = reset --soft HEAD
+    contrib = shortlog -s -n --all --no-merges
+    #############
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     #############
     s = status
     sb = status -s -b
-    select = "!git checkout $(git branch --all | grep -v 'HEAD' | sed 's/.* //' | sort -u | fzf)"
     #############
-    w = show --diff-algorithm=patience
-    wp = w -p
-    wr = w -p --no-color
+    e = "!${EDITOR} $(git ls-files -m $(git rev-parse --show-toplevel) | fzf -m)"
+    wt = "!f() { \
+            branch=\"$1\"; \
+            base=\"${2:-origin/main}\"; \
+            repo=$(basename \"$(pwd)\"); \
+            target=\"../${repo}.worktrees/${branch}\"; \
+            git fetch origin && \
+            git show-ref --verify --quiet \"refs/remotes/$base\" || { echo \"Base $base not found\"; exit 1; }; \
+            git worktree add \"$target\" -b \"$branch\" \"$base\"; \
+          }; f"
+    wtl = worktree list
     #############
-    svnr = svn rebase
-    svnd = svn dcommit
-    svnl = svn log --oneline --show-commit
-    #############
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-    unassumeall = !git assumed | xargs git update-index --no-assume-unchanged
-    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
-    #############
-    ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-    #############
+    lfs-size = "!f() { git lfs ls-files --size | awk 'match($0, /\\(([0-9.]+) ([KMG]B)\\)/, a) { val = a[1] + 0; unit = a[2]; if (unit == \"GB\") bytes = val * 1024 * 1024 * 1024; else if (unit == \"MB\") bytes = val * 1024 * 1024; else if (unit == \"KB\") bytes = val * 1024; else bytes = val; sum += bytes } END { printf \"%.0f\\n\", sum }' | numfmt --to=iec --suffix=B --format=\"%.2f\"; }; f"
+    show = show --diff-algorithm=patience
+    snap = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-    wl = worktree list
-    #############
-    barebranch = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
-    flat = clone --depth 1
-    subpull = !git submodule foreach git pull --tags origin master
-    subrepo = !sh -c 'filter-branch --prune-empty --subdirectory-filter $1 master' -
-    human = name-rev --name-only --refs=refs/heads/*
-    serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
-    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-	lfs-total-size = "!f() {\n  git lfs ls-files --size | awk '\n    match($0, /\\(([0-9.]+) ([MG]B)\\)/, a) {\n      val = a[1]\n      unit = a[2]\n      if (unit == \"GB\") bytes = val * 1024 * 1024 * 1024\n      else if (unit == \"MB\") bytes = val * 1024 * 1024\n      sum += bytes\n    }\n    END { printf \"%.0f\\n\", sum }\n  ' | numfmt --to=iec --suffix=B --format=\"%.2f\"\n}; f"
+    up = "!git fetch --all --prune && git pull --rebase origin $(git symbolic-ref --short HEAD)"
+[alias]
+   iam = "!f() { \
+     identities_dir=\"${HOME}/.config/git/identities\"; \
+     command -v fzf >/dev/null || { echo \"fzf missing\"; exit 1; }; \
+     selected=$(find \"$identities_dir\" -type f | sort | fzf --prompt='Identity > ' --height=40% --reverse); \
+     [ -n \"$selected\" ] || { echo \"No identity selected\"; exit 1; }; \
+     line=$(head -n 1 \"$selected\"); \
+     NAME=$(echo \"$line\" | sed -E 's/ <.*//'); \
+     EMAIL=$(echo \"$line\" | sed -E 's/.*<([^>]*)>/\\1/'); \
+     [ -n \"$NAME\" ] || { echo \"Invalid format (name)\"; exit 1; }; \
+     [ -n \"$EMAIL\" ] || { echo \"Invalid format (email)\"; exit 1; }; \
+     git rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo \"Not a git repo\"; exit 1; }; \
+     git config user.name \"$NAME\" && \
+     git config user.email \"$EMAIL\" && \
+     echo \"✔ Applied:\" && \
+     echo \"  $NAME <$EMAIL>\"; \
+   }; f"
 [init]
-	defaultBranch = master
+    defaultBranch = main
 [http]
-	postBuffer = 524288000
+    postBuffer = 524288000
