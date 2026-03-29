@@ -41,6 +41,11 @@ setopt NOGLOBDOTS
 setopt AUTO_CD
 REPORTTIME=5
 
+autoload -Uz compinit && compinit
+bindkey " " self-insert
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+skip_global_compinit=1
+
 #==============================#
 #    Environment Variables     #
 #==============================#
