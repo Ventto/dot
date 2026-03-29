@@ -1,6 +1,9 @@
 alias reload=". $ZDOTDIR/.zshrc"
 alias dot="/usr/bin/git --git-dir=$HOME/.config/dot/ --work-tree=$HOME"
 
+source "$HOME"/.config/antidote/antidote.zsh
+antidote load
+
 # Fix slow git autocompletion
 # FIXME: Did it work ?
 fpath=("${ZDOTDIR}/zshrc.d/completions" $fpath)
