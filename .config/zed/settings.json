@@ -1,0 +1,30 @@
+{
+  "use_system_window_tabs": false,
+  "tabs": {
+    "git_status": true,
+    "close_position": "left",
+  },
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false,
+    "show_tab_bar_buttons": true,
+    "show": true,
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "icon_theme": "Material Icon Theme",
+  "ui_font_size": 17,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Dark",
+    "dark": "One Dark",
+  },
+}
