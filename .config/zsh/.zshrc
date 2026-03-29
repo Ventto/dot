@@ -127,5 +127,3 @@ for dir in _bindkeys _funcs _aliases _completions _plugins; do
     done
     eval "unset ${dir}"
 done
-export GEM_HOME="$(gem env user_gemhome)"
-export PATH="$PATH:$GEM_HOME/bin"
