@@ -116,10 +116,10 @@ source "${ZDOTDIR}/zshrc.d/funcs/internals.zsh"
 typeset -a _bindkeys _funcs _aliases _completions
 
 _bindkeys=( base edit-command-line fg-ctrlz )
-_funcs=( base security dev)
+_funcs=( base security )
 _aliases=( base dev pkg mounts work )
 _completions=( base )
-_plugins=( wsl android )
+_plugins=( git wsl android )
 
 for dir in _bindkeys _funcs _aliases _completions _plugins; do
     for file in ${(P)dir}; do
