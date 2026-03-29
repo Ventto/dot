@@ -1,10 +1,6 @@
-alias fd='fd --no-ignore --exclude .git --hidden'
 alias gocam='cd ~/Workspace/camera'
 alias linux-flasher='sudo ~/Workspace/embedded-tools/Linux/flasher/flasher'
 alias hid2adb='linux-flasher -forceadbmode'
-#alias rebase-i='git rebase -i $(git rev-parse --abbrev-ref --symbolic-full-name @{u})~1'
-
-unalias cp
 alias exa='eza --oneline --color=always --group-directories-first --icons'
 alias l='eza'
 alias ll='eza -l'

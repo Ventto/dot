@@ -25,6 +25,7 @@ alias ssh='TERM=xterm ssh'
 alias watch='watch -c '
 alias wget='wget --hsts-file /dev/null'
 alias top='btop'
+alias fd='fd --no-ignore --exclude .git --hidden'
 
 # Original basics
 alias g="rg -i --hidden"
