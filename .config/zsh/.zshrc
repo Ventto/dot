@@ -85,24 +85,15 @@ export PATH="/opt/google-cloud-cli/bin:${PATH}"
 #          Prompts             #
 #==============================#
 
+fallback_prompt=true
 # Shell is running in a pseudo terminal slave
 if tty | grep -E '^/dev/pts/[0-9]+$' >/dev/null 2>&1; then
-    prompt_theme="${HOME}/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
-    prompt_custom="${ZDOTDIR}/.p10k.zsh"
-    if [ -f $prompt_theme ];
-    then
-        source "$prompt_custom"
-        source "$prompt_theme"
-        default_prompt=false
-    elif [ -f ${XDG_CONFIG_HOME}/zsh/zshrc.d/plugins/oh-my-zsh.zsh ]; then
-        source ${XDG_CONFIG_HOME}/zsh/zshrc.d/plugins/oh-my-zsh.zsh
-        default_prompt=false
+    if [[ -r "${ZDOTDIR}/p10k.zsh" ]]; then
+      source "${ZDOTDIR}/p10k.zsh"
+      fallback_prompt=false
     fi
-    unset custom_prompt
-else
-    default_prompt=true
 fi
-if $default_prompt; then
+if $fallback_prompt; then
     setopt prompt_subst
     # Enable colors in prompt
     autoload -U colors && colors
