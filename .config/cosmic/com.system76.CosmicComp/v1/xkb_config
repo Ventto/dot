@@ -1,0 +1,7 @@
+(
+    rules: "",
+    model: "",
+    layout: "us,fr",
+    variant: ",azerty",
+    options: Some("lv3:ralt_switch"),
+)
