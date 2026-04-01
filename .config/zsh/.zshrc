@@ -53,7 +53,7 @@ skip_global_compinit=1
 export XDG_CONFIG_HOME="${HOME}/.config"
 # Basic internals
 #export BROWSER="env MOZ_ENABLE_WAYLAND=1 firefox --profile ${XDG_CONFIG_HOME}/firefox"
-export EDITOR="nvim -p"
+export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LESSHISTFILE=/dev/null
 ##
