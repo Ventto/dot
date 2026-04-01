@@ -124,7 +124,7 @@ _bindkeys=( base edit-command-line fg-ctrlz )
 _funcs=( base security )
 _aliases=( base dev pkg mounts work )
 _completions=( base )
-_plugins=( rm git wsl android zed zellij experimental )
+_plugins=( rm git nix wsl android zed zellij experimental )
 
 for dir in _bindkeys _funcs _aliases _completions _plugins; do
     for file in ${(P)dir}; do
