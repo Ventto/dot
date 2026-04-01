@@ -121,7 +121,7 @@ source "${ZDOTDIR}/zshrc.d/internals.zsh"
 typeset -a _funcs _completions _modules
 _funcs=( base )
 _completions=( base )
-_modules=( aliases bindkeys git nix android zed zellij mise temporary )
+_modules=( aliases bindkeys git ia nix android zed zellij mise temporary )
 
 for dir in _bindkeys _funcs _aliases _completions _modules; do
     for file in ${(P)dir}; do
