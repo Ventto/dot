@@ -1,3 +1,4 @@
+# nix-home update|edit: update nix flake or edit flake.nix
 function nix-home()
 {
 	case $1 in

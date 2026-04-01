@@ -18,6 +18,4 @@ bindkey "\e[3;6~" kill-line
 # urxvt
 bindkey "\e[3@" kill-line
 
-alias w='just --justfile ${HOME}/.local/share/myjustfiles/justfile.windows --working-directory .'
 alias pws='powershell.exe -ExecutionPolicy Bypass'
-alias ws='cd /mnt/c/Users/thoma/Workspaces'

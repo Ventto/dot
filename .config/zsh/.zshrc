@@ -116,15 +116,12 @@ fi
 # Caution: Source functions first, aliases could require functions, but
 # functions don't require alias.
 # Before sourcing
-source "${ZDOTDIR}/zshrc.d/funcs/internals.zsh"
+source "${ZDOTDIR}/zshrc.d/internals.zsh"
 
-typeset -a _bindkeys _funcs _aliases _completions
-
-_bindkeys=( base edit-command-line fg-ctrlz )
-_funcs=( base security )
-_aliases=( base dev pkg mounts work )
+typeset -a _funcs _completions _modules
+_funcs=( base )
 _completions=( base )
-_modules=( rm git nix wsl android zed zellij mise experimental )
+_modules=( aliases bindkeys git nix android zed zellij mise temporary )
 
 for dir in _bindkeys _funcs _aliases _completions _modules; do
     for file in ${(P)dir}; do

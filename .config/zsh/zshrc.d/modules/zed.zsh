@@ -1,3 +1,4 @@
+# zed [DIR]: pick git repos under DIR with fzf and open them in Zed
 function zed() {
 	_require fzf fdfind git || return 1
 

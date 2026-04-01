@@ -1,3 +1,4 @@
+# zj: attach to or create a zellij session for the current git repo
 zj()
 {
 	local root session layout fallback_layout

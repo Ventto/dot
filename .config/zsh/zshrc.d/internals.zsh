@@ -23,21 +23,7 @@ function _require()
 	done
 }
 
-function _systemd_running()
+function _systemd_active()
 {
 	ps --no-headers -o comm 1 | grep systemd >/dev/null 2>&1
-}
-
-function _tmux_send_keys_all_panes()
-{
-	local session="$1"
-	shift
-	local win
-	local pane
-	for win in $(tmux list-windows -t "$session" -F '#W'); do
-		for pane in $(tmux list-panes -t "${session}:${win}" -F '#P'); do
-			echo tmux send-keys -t "${session}:${win}.${pane}" "$@"
-			tmux send-keys -t "${session}:${win}.${pane}" "$@"
-		done
-	done
 }

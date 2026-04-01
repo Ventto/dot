@@ -1,3 +1,4 @@
+# gst FILE: show blame and commit stats for FILE
 function gst()
 {
 	_require git || return 1
@@ -42,8 +43,9 @@ function gst()
 	_git_file_commit_stats "$filepath"
 }
 
+# gcl URL [DIR]: clone repo into DIR, cd into it and set git identity
 # Avoid conflict with oh-my-zsh
-unalias gcl
+unalias gcl 2>/dev/null
 function gcl()
 {
 	_require git || return 1
@@ -57,6 +59,7 @@ function gcl()
 	git iam
 }
 
+# gwtadd BRANCH [BASE]: create a worktree for BRANCH (default base: origin/main)
 function gwtadd()
 {
 	_require git fzf || return 1
@@ -99,8 +102,9 @@ function gwtadd()
 	[ "$choice" = "Go to new worktree" ] && cd "$target"
 }
 
+# gwtrm: pick and remove a worktree (fzf), optionally delete its branch
 # Avoid conflict with oh-my-zsh
-unalias gwtrm
+unalias gwtrm 2>/dev/null
 function gwtrm()
 {
 	_require git fzf || return 1
@@ -149,6 +153,7 @@ function gwtrm()
 	fi
 }
 
+# gwtls: list all worktrees
 function gwtls()
 {
 	_require git || return 1
