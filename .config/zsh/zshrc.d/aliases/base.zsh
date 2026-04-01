@@ -45,21 +45,21 @@ alias rfirefox="firejail --private --nogroups \
                          firefox -no-remote -private-window"
 
 if _systemd_running; then
-    alias scu="systemctl --user"
-    alias s="systemctl"
-    alias j="journalctl"
-    alias klog="journalctl --dmesg -o short"
-    alias klog-live="journalctl --dmesg -o short -f -n 50"
-    alias systemd-unit-states='printf "======= SYSTEM FILES\n\n"; \
+	alias scu="systemctl --user"
+	alias s="systemctl"
+	alias j="journalctl"
+	alias klog="journalctl --dmesg -o short"
+	alias klog-live="journalctl --dmesg -o short -f -n 50"
+	alias systemd-unit-states='printf "======= SYSTEM FILES\n\n"; \
         systemctl list-unit-files --state=enabled; \
         printf "\n======= USER FILES\n\n"; \
         systemctl list-unit-files --user --state=enabled'
-    alias dontsleep='systemd-inhibit'
-    alias about='journalctl --user -e -u'
-    alias follow='journalctl --user --follow -n 50 -u'
+	alias dontsleep='systemd-inhibit'
+	alias about='journalctl --user -e -u'
+	alias follow='journalctl --user --follow -n 50 -u'
 else
-    alias klog-live="sudo dmesg --human -w"
-    alias klog="sudo dmesg"
+	alias klog-live="sudo dmesg --human -w"
+	alias klog="sudo dmesg"
 fi
 
 # Put in containers
