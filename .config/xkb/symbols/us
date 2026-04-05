@@ -5,17 +5,14 @@ xkb_symbols "ventto" {
 
     name[Group1] = "English (US, custom accents)";
 
-    // AltGr + letter -> accents
-    key <AC01> { [ a, A, U00E1, U00C1 ] }; // á Á
+    // AltGr + letter -> most common french accents and symbols
+    key <AC01> { [ a, A, U00E0, U00C0 ] }; // à À
+    key <AB03> { [ c, C, U00E7, U00C7 ] }; // ç Ç
     key <AD03> { [ e, E, U00E9, U00C9 ] }; // é É
-    key <AD08> { [ i, I, U00ED, U00CD ] }; // í Í
-    key <AD09> { [ o, O, U00F3, U00D3 ] }; // ó Ó
-    key <AD07> { [ u, U, U00FA, U00DA ] }; // ú Ú
-    key <AD06> { [ y, Y, U00FD, U00DD ] }; // ý Ý
-
-    // exception: AltGr + r -> è
+    key <AD07> { [ u, U, U00F9, U00D9 ] }; // ù Ù
     key <AD04> { [ r, R, U00E8, U00C8 ] }; // è È
-
+    // AltGr + " -> dead_diaeresis
+    key <AC11> { [ apostrophe, quotedbl, dead_diaeresis, dead_diaeresis ] };
     // ^ -> dead_circumflex
     key <AE06> { [ 6, dead_circumflex, 6, asciicircum ] };
 };
