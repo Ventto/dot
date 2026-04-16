@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitLab Feature MR"
+  short_description: "Create GitLab MRs with Jira-prefixed titles"
+  default_prompt: "Use $gitlab-feature-mr to create a GitLab merge request with a Jira-prefixed title and the standard MR template."
