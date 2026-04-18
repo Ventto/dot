@@ -16,6 +16,7 @@ Create the merge request from the repository the user is currently working in.
 3. Build the MR title with the Jira key as prefix.
 4. Build the MR description from the template below.
 5. Before creating the MR, show the user the proposed title and description if confirmation is required by other active instructions.
+6. Unless the user says otherwise, assign the MR to the requesting user when their GitLab identity is known. If it is not known, ask before creating the MR unassigned.
 
 ## Title Rules
 
