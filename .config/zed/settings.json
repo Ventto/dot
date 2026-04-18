@@ -1,4 +1,18 @@
 {
+  "preferred_line_length": 92,
+  "minimap": {
+    "max_width_columns": 92,
+  },
+  "agent": {
+    "enable_feedback": false,
+    "favorite_models": [],
+    "profiles": {},
+    "model_parameters": [],
+  },
+  "auto_indent": "preserve_indent",
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
   "use_system_window_tabs": false,
   "tabs": {
     "git_status": true,
@@ -10,6 +24,9 @@
     "show": true,
   },
   "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
     "claude-acp": {
       "type": "registry",
     },
@@ -18,6 +35,7 @@
     "trust_all_worktrees": true,
   },
   "vim_mode": true,
+  "relative_line_numbers": "enabled",
   "base_keymap": "VSCode",
   "icon_theme": "Material Icon Theme",
   "ui_font_size": 17,
@@ -27,4 +45,5 @@
     "light": "One Dark",
     "dark": "One Dark",
   },
+  "format_on_save": "off",
 }

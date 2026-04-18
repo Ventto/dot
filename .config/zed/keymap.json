@@ -9,18 +9,35 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    },
+      "ctrl-n": null,
+      "ctrl-shift-n": null
+    }
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      // do something
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // do something
     },
   },
   {
     "bindings": {
-      "ctrl-q": null
-    }
-  }
+      "ctrl-n": "editor::SelectNext",
+      "ctrl-shift-n": "editor::UndoSelection",
+      "ctrl-q": null,
+      "ctrl-alt-n": [
+        "agent::NewExternalAgentThread",
+        { "agent": { "custom": { "name": "codex-acp" } } },
+      ],
+      "ctrl-alt-h": [
+        "agent::OpenHistory",
+        { "agent": { "custom": { "name": "codex-acp" } } },
+      ],
+    },
+  },
 ]
