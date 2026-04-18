@@ -15,11 +15,25 @@
         paths = with pkgs; [
           gitui
           rip2
+          ripgrep
           showmethekey
           yazi
           zellij
           shfmt
           shellcheck
+          ncdu
+          btop
+          viddy
+          fzf
+          smem
+          fd
+          glab
+          rsync
+          eza
+          neovim
+          google-cloud-sdk
+          ffmpeg
+          ydotool
         ];
       };
     };
