@@ -1,2 +1,2 @@
 ZDOTDIR="${HOME}/.config/zsh"
-cd ${HOME}
+#cd ${HOME}

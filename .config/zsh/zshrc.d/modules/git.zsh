@@ -51,10 +51,11 @@ function gcl()
 	_require git || return 1
 
 	local url dir
-	url="$1"
-	dir="${2:-$(basename "$url" .git)}"
 
-	git clone "$url" "$dir" || return 1
+    for dir; do; done # get last function arg from cli
+	dir="$(basename "$dir" .git)"
+
+	git clone "$@" || return 1
 	cd "$dir" || return 1
 	git iam
 }

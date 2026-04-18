@@ -15,7 +15,7 @@ alias su="systemctl --user"
 alias sus="systemctl --user list-unit-files --state=enabled"
 alias s="systemctl"
 alias ss="systemctl list-unit-files --state=enabled"
-alias j="journalctl"
+alias j="journalctl -e -u"
 alias ju='journalctl --user -e -u'
 alias jul='journalctl --user --follow -n 50 -u'
 alias jk="journalctl --dmesg -o short"
@@ -52,6 +52,8 @@ alias getip="getipv4"
 alias getphone="run scrcpy --turn-screen-off --disable-screensaver --window-width 480"
 alias notrail="fd --type f --exec sed -i 's/[[:space:]]\+$//' {} \;"
 alias rfirefox="firejail --private --nogroups --dns=9.9.9.9 firefox -no-remote -private-window"
+alias tt="t2t --clipboard"
 alias watch=viddy
 alias wifiscan='viddy --disable_auto_save -n 1 nmcli -c yes -f SSID,BSSID,BARS,ACTIVE,CHAN,SECURITY dev wifi list'
 alias x=ixargs
+alias z='zed .'

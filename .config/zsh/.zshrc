@@ -21,13 +21,15 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
+setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 #setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_SPACE
+# Keep pasted commands in history even if they get accidental leading spaces.
+unsetopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
@@ -85,6 +87,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_FONT_DPI=96
 ## Google Cloud CLI
 export PATH="/opt/google-cloud-cli/bin:${PATH}"
+# Secrets
+source "${XDG_CONFIG_HOME}/secrets/openai.env"
 
 #==============================#
 #          Prompts             #
@@ -121,7 +125,7 @@ source "${ZDOTDIR}/zshrc.d/internals.zsh"
 typeset -a _funcs _completions _modules
 _funcs=( base )
 _completions=( base )
-_modules=( aliases bindkeys git ia nix android zed zellij mise temporary )
+_modules=( aliases bindkeys git nix android zed zellij mise temporary ia )
 
 for dir in _bindkeys _funcs _aliases _completions _modules; do
     for file in ${(P)dir}; do

@@ -1,13 +1,19 @@
+export PATH="${HOME}/.nix-profile/bin:${PATH}"
+
+eval "$(direnv hook zsh)"
+
 # nix-home update|edit: update nix flake or edit flake.nix
 function nix-home()
 {
 	case $1 in
 		update)
 			{
-				set -x
-				cd "${XDG_CONFIG_HOME}/nix/"
-				nix flake update
-				nix profile add .#default
+				(   set -x
+				    cd "${XDG_CONFIG_HOME}/nix/"
+				    nix flake update
+                    nix profile remove --all
+				    nix profile add .#default
+                )
 			}
 			;;
 		edit) $EDITOR "${XDG_CONFIG_HOME}/nix/flake.nix" ;;

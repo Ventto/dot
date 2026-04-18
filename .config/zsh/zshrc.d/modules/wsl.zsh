@@ -10,8 +10,12 @@ bindkey "\e[3;5~" kill-word
 # urxvt
 bindkey "\e[3^" kill-word
 
-### ctrl+backspace
-bindkey '^H' backward-kill-word
+### backspace
+# Many terminals send ^H or ^? for a plain Backspace key. Do not hijack
+# those sequences for Ctrl+Backspace, or interactive TTY apps can receive
+# an unexpected double deletion pattern.
+bindkey '^H' backward-delete-char
+bindkey '^?' backward-delete-char
 
 ### ctrl+shift+delete
 bindkey "\e[3;6~" kill-line
